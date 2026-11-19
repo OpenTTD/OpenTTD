@@ -31,12 +31,12 @@ another personal directory: Linux uses `$XDG_DATA_HOME/openttd`, and a test run 
 |---|---|
 | `info.nut` | Name, API version and every setting. All settings are `CONFIG_INGAME`, so a running bot takes a change at once (`openttd.ai.set_setting`, gated by the owner's approval) |
 | `main.nut` | The heartbeat: the planner's air, freight and passenger lines first, then the bot's own lines, buses, fleet, line reconciliation and loan |
-| `rail.nut` | Rail lines: termini with a throat, the A* line search, laying, the walk check, depots, trains, platform length |
+| `rail.nut` | Rail lines: termini with a throat, the A* line search, laying, the walk check, depots, trains, platform length; the opt-in double track (`BuildDoubleRailLineAndTrain`: a junction at each terminus, two one-way tracks, one-way path signals) |
 | `lines.nut` | Rail lines as desired state: line slots, the record the Rhai steward reads (with station ids), and the reconciliation of its targets; closing removes only what the line owns |
 | `fleet.nut` | Road and air capacity follows waiting cargo and the link graph's planned flow; vehicles that lose money are sold |
 | `catchment.nut`, `statues.nut` | Mechanisms learned from AAAHogEx: joined drive-through stops that ring each airport to collect the whole town, and statues in the towns of our stations; each behind its setting, off by default |
 | `autopilot.nut` | Autopilot's own air routes for a bot without a plan: the best big-town pairs, built first on borrowed money with a real budget check; a half-built route takes its airport down again |
-| `steward.nut` | The in-bot steward behind `self_steward=1`: the Rhai steward's line policy for lines with no external target, and reinvestment of idle money in more own lines |
+| `steward.nut` | The in-bot steward behind `self_steward=1`: the Rhai steward's line policy for lines with no external target, and reinvestment of idle money in more own lines; on a double-track line, a train more while half a trainload waits and no train loads at the source |
 | `roadstop.nut`, `intercity.nut`, `air.nut` | Bus stops and depots facing their road, intercity roads tile by tile, airports and aircraft |
 
 ## Rail lines a train can always run
@@ -64,6 +64,49 @@ Full rationale: [`research/rail-steward.md`](../../../research/rail-steward.md),
   `vehicle.max_train_length` and `station.station_spread`, unless `rail_len` or `rail_wagons`
   override them.
 
+## Double track (`rail_double=1`, opt-in)
+
+After AAAHogEx, whose rail scales by double track while a single-track line here holds two
+trains. With `rail_double=1` each new own freight line gets a junction at both termini and two
+tracks, one each way (`rail.nut` `BuildDoubleRailLineAndTrain`):
+
+```mermaid
+flowchart LR
+  subgraph src["Source terminus"]
+    P1["platform 1"] --> T["throat M"]
+    P2["platform 2"] --> T
+    T --> L0["L0"] --> J["junction A1"]
+  end
+  subgraph dst["Far terminus"]
+    J2["junction A1"] --> L02["L0"] --> T2["throat M"]
+    T2 --> Q1["platform 1"]
+    T2 --> Q2["platform 2"]
+  end
+  J -- "track A: loaded trains, one-way path signals" --> J2
+  J2 -- "track B: empty trains back, one-way path signals" --> J
+```
+
+- **One A\* search, twice.** Track A is `FindRailPath` between the junctions. Track B is the
+  same search with track A's tiles left out. Both are walked (`VerifyRailLine`, `VerifyJunction`)
+  before a train is bought. L0 is straight, so no route through the junction turns 90 degrees.
+- **One-way path signals** every `RAIL_SIGNAL_SPACING` tiles, plus one on the last tile before
+  each far junction, so an arriving train waits on its own track.
+- **The throat's path signals face departing trains**, unlike a single-track throat.
+  `AIRail.BuildSignal(tile, front)` signals trains that come *from* `front` (`script_rail.cpp`
+  `_possible_trackdirs`). A signal facing arrivals let an arriving train wait on M, the tile every
+  departure needs, and the first build deadlocked there.
+- **`trains_max`** is the platforms plus the signal blocks of the shorter track: half of what
+  both tracks and all four platforms hold.
+- **Growth.** The in-bot steward adds a train while half a trainload waits and no train of the
+  line is loading at the source (AAAHogEx's rule). It adds at most one a game month.
+- **Fallback.** When track B cannot be found, laid or walked, the junction's spur is removed and
+  the line runs single track with `trains_max` = platforms. On hilly maps this is common: track A
+  takes the only bridge site across a valley.
+- **Not ported.** AAAHogEx's third source platform, signals at the top of slopes, and cloning
+  without the steward's monthly rhythm.
+
+The measured effect is in `research/ai-battle/README.md` (section *Double track*).
+
 ## Steering from outside
 
 | Setting | Set by | Meaning |
@@ -78,6 +121,8 @@ Full rationale: [`research/rail-steward.md`](../../../research/rail-steward.md),
 | `invest_min`, `invest_ppv_div`, `invest_road_cap`, `invest_air_cap`, `reinvest_budgets` | the same surfaces | when idle money buys vehicles and how far a route grows (`fleet.nut` InvestSurplus), and how many line budgets in the bank fund own lines beyond `own_lines` (`steward.nut`) |
 | `catchment_stops`, `catchment_spacing`, `statue_money`, `air_full_load`, `invest_borrow` | the same surfaces; genes of the battle's GA | mechanisms learned from AAAHogEx's source, each off by default because one recorded ablation (`research/results/ablation-20261119T062938-seed930967890.md`) did not favour turning it on: joined road-stop rings around airports (`catchment.nut`), statues (`statues.nut`), full load at both airports, borrowing for vehicles that pay back |
 | `air_add_waiting`, `rail_twin_max` | the same surfaces; GA genes | a plane more while both airports have passengers waiting; twin rail lines for saturated lines. Both off by default, see the recorded ablations `research/results/ablation-20261119T06*` |
+| `rail_double` | the owner, any surface above | 1: the bot's own new freight lines are double track, see below; 0 (default): single track, unchanged |
+| `autopilot` with a plan | the panel | since 2026-11-19 a plan no longer switches growth off: the planner's lines come first, and then the in-bot steward, the autopilot's own air routes and InvestSurplus run on top (`main.nut` `grows`) |
 | `self_steward` | the owner, e.g. the headless LAN AI battle ([`research/ai-battle/README.md`](../../../research/ai-battle/README.md)) | 1: lines without a steward's target follow the Rhai steward's policy inside the bot, and idle money funds own lines beyond `own_lines` (`steward.nut`); 0 (default): unchanged |
 
 Every finished line logs a record once at build time and again every game month:

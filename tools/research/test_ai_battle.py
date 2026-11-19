@@ -273,12 +273,12 @@ class Tuning(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             f = Path(tmp) / "brain.json"
             f.write_text(json.dumps({"schema": "battle-brain/v1", "proposals": [
-                {"settings": "a=37,b=99,zzz=1"}, {"settings": "a=200"}]}))
+                {"settings": "a=37,b=99,zzz=1", "kind": "safe"}, {"settings": "a=200"}]}))
             t = dict(self.T, brain_offspring=2, brain_file=str(f))
-            self.assertEqual(battle.brain_proposals(t), [{"a": 40, "b": 10}, {"a": 100, "b": 4}])
+            self.assertEqual(battle.brain_proposals(t), [({"a": 40, "b": 10}, "Safe"), ({"a": 100, "b": 4}, "")])
             g0 = battle.first_generation(t)
             g1 = battle.next_generation(t, {"generation": 0}, [(v, {"score": i}) for i, v in enumerate(g0)])
-            self.assertEqual([v["label"].rsplit(" ", 1)[1] for v in g1[1:3]], ["g1.brain0", "g1.brain1"])
+            self.assertEqual([v["label"].rsplit(" ", 1)[1] for v in g1[1:3]], ["g1.brainSafe", "g1.brain1"])
             f.write_text("{}")
             self.assertEqual(battle.brain_proposals(t), [])
 

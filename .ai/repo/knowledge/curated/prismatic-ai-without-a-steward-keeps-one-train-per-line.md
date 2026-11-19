@@ -93,7 +93,10 @@ Four of these became bot settings (catchment rings, statues, full load, borrowin
 default. The recorded single-seed ablation (`research/results/ablation-20261119T062938-seed930967890.md`)
 gave catchment rings +4%, full load -2%, borrowing 0 and statues -45%. Transplanted alone into a bot
 built otherwise, they do not carry AAAHogEx's edge. The battle's genetic algorithm explores them on
-many seeds. Double-track rail (item 4) and the unified pool (item 2) are not ported yet.
+many seeds. The unified pool (item 2) is not ported yet. Double-track rail (item 4) is the opt-in
+setting `rail_double` since 2026-11-19. Its recorded 3-seed, 10-year ablations gave -24.2%, -15.5%
+and +16.4%, and rail trains did not grow (knowledge `rail-lines-a-train-can-turn-on`, section
+*Double track*). It stays off by default.
 
 Two further mechanisms were measured with recorded 3-seed, 10-year ablations
 (`research/results/ablation-20261119T06*`):
@@ -109,6 +112,39 @@ the default on 36 common seeds. It had a +14.8% higher mean value and was better
 since 2026-11-19 the bot's defaults are `air_add_waiting=10` and `catchment_stops=8`. This is
 a default change on battle evidence (paired, deterministic, 36 seeds), not on the held-start duel
 pairs that rule `project.a-tuning-claim-needs-held-start-pairs` asks for; those have not been run.
+
+**A plan from the panel switched growth off.** Held-start duels by openttd-1e (seed 4242, 120 months)
+found the planned bot A ending with ~20 vehicles and no plane, while the unplanned autopilot
+rival ran ~190 vehicles with 100 planes and won. `Behaviour()` turned the whole autopilot off once
+a plan existed. Since 2026-11-19 `autopilot=1` keeps the growth layer on top of a plan (`grows`:
+in-bot steward, own air routes after the planner's pair, idle money buying vehicles), while the
+planner's lines and own_lines/max_routes/cash_reserve stand. The planner's air pair is now built on
+borrowed money; on cash alone it had built both airports and no plane. A route that gets no plane
+takes its airports down again.
+
+Recorded ablations (`research/results/ablation-20261119T094*`, 10 years, a plan of the air pair
+`air_a=0,air_b=1`) gave +219%, +103% and +61% for growth on a plan against the old planned bot.
+This is the reason the planner (AlgoGlyph kernels through the panel) lost to the bot's own
+autopilot: its plan replaced growth instead of seeding it.
+
+Double track (`rail_double`), after its add rule fills a free source platform, was paired with the
+default in the battle on 74 common seeds over 20 years: +14.8% mean value, better in 56 of 74,
+while single 10-year seeds swung from -29% to +48%. Its gain comes late. Since 2026-11-19 it is
+the default, on the same basis and with the same caveat as air10+catch (battle evidence, not
+held-start duel pairs).
+
+**The GA's champion became the default.** `PrismaticAI GA g14.0` (= g15.0; its genes came from the
+battle brain's safe proposal g13.brainSafe) beat the default on 20 of 20 common seeds over 20 years,
+with +30.9% mean value. Variants with a higher GA score on 6-7 matches did worse in pairs (g15.3:
+0.903), so the paired comparison, not the GA score, decides a default. Since 2026-11-19 the
+defaults are its genes:
+- aggressiveness 20,
+- air_add_waiting 0, air_max_tiles 420, air_planes 1, air_routes_max 3, air_towns 50,
+- invest_air_cap 12, invest_borrow 1, invest_min 50 (thousand), invest_ppv_div 2, invest_road_cap 20,
+- line_budget 90000,
+- the autopilot's own-lines floor 10.
+max_routes and cash_reserve stay under the autopilot's floors. In short: fewer air routes, and
+investment that starts earlier, accepts lower returns, borrows, and lets routes grow further.
 
 # How to apply it
 

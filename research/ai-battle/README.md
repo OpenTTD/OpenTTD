@@ -22,31 +22,31 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261119T072805-76e7404c.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261119T072805-76e7404c`](../results/battle-20261119T072805-76e7404c.md) (1/1 replays identical).
+<!-- derived from research/results/battle-20261119T110859-f063413c.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261119T110859-f063413c`](../results/battle-20261119T110859-f063413c.md) (0/1 replays identical).
 
-- Edition `76e7404cc8781ed5`: PrismaticAI and referee at `f3b937c7ede4e8217e291abc19a8523e05933eea`, base set `opengfx-8.0.tar`
+- Edition `f063413cd336e1fe`: PrismaticAI and referee at `1f3400b85de084fcb4bb1230b95817962e917176`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 43 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-m55328bdb56), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 1 of 1 identical to their original on another arena
+- 46 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261119-master-mec42cfe720), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 43 | 43 | 172 | 4.0 | 1.0 | 94.6 M | 0 | 1 |
-| 2 | PrismaticAI air10+catch | 7 | 0 | 20 | 2.857 | 2.14 | 11.2 M | 0 | 0 |
-| 3 | PrismaticAI GA g3.0 | 6 | 0 | 17 | 2.833 | 2.17 | 12.1 M | 0 | 0 |
-| 4 | PrismaticAI GA g3.brain1 | 6 | 0 | 17 | 2.833 | 2.17 | 8.6 M | 0 | 0 |
-| 5 | PrismaticAI | 5 | 0 | 14 | 2.8 | 2.2 | 9.7 M | 0 | 2 |
-| 6 | PrismaticAI GA g3.brain0 | 6 | 0 | 15 | 2.5 | 2.5 | 7.0 M | 0 | 0 |
-| 7 | PrismaticAI solo-max | 6 | 0 | 15 | 2.5 | 2.5 | 5.7 M | 0 | 6 |
-| 8 | AdmiralAI | 43 | 0 | 98 | 2.279 | 2.72 | 6.9 M | 0 | 2 |
-| 9 | PrismaticAI GA g3.3 | 7 | 0 | 12 | 1.714 | 3.29 | 3.0 M | 0 | 0 |
-| 10 | LuDiAI AfterFix | 43 | 0 | 37 | 0.86 | 4.14 | 1.5 M | 0 | 4 |
-| 11 | CivilAI | 43 | 0 | 13 | 0.302 | 4.7 | 647.8 k | 0 | 9 |
+| 1 | AAAHogEx | 46 | 46 | 184 | 4.0 | 1.0 | 93.3 M | 0 | 0 |
+| 2 | PrismaticAI | 7 | 0 | 21 | 3.0 | 2.0 | 17.3 M | 0 | 0 |
+| 3 | PrismaticAI GA g16.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 13.6 M | 0 | 5 |
+| 4 | PrismaticAI GA g16.0 | 7 | 0 | 21 | 3.0 | 2.0 | 10.3 M | 0 | 0 |
+| 5 | PrismaticAI pre-champion | 7 | 0 | 20 | 2.857 | 2.14 | 14.1 M | 0 | 0 |
+| 6 | PrismaticAI GA g16.brainExplore | 7 | 0 | 20 | 2.857 | 2.14 | 8.5 M | 0 | 2 |
+| 7 | PrismaticAI GA g16.3 | 6 | 0 | 16 | 2.667 | 2.33 | 12.3 M | 0 | 0 |
+| 8 | PrismaticAI solo-max | 6 | 0 | 14 | 2.333 | 2.67 | 5.9 M | 0 | 6 |
+| 9 | AdmiralAI | 46 | 0 | 100 | 2.174 | 2.83 | 6.9 M | 59 | 2 |
+| 10 | LuDiAI AfterFix | 46 | 0 | 38 | 0.826 | 4.17 | 1.7 M | 0 | 2 |
+| 11 | CivilAI | 46 | 0 | 8 | 0.174 | 4.83 | 735.3 k | 0 | 10 |
 
 | Seed | Original | Replay | Arenas | Identical |
 |---|---|---|---|---|
-| 1251879686 | m-0013 | m-0064 | mbp2 / mbp | yes |
+| 1237256277 | m-0004 | m-0048 | imac / mbp | NO |
 <!-- battle:end -->
 
 ## How it fits together
@@ -237,16 +237,49 @@ The first editions showed two failures. The battle now catches both by itself.
 - **Model-guided offspring.** Each new generation also takes the top `brain_offspring` proposals
   of `tools/research/battle-brain` (`~/ttd-battle/results/brain.json`, schema `battle-brain/v1`):
   an Axon/EXLA ensemble trained on every PrismaticAI result, scoring the gene space by UCB.
-  Proposals join as `g<gen>.brain<k>`, clamped into the space. A missing, stale (older than
+  Proposals join as `g<gen>.brainSafe` (best lower confidence bound) or `g<gen>.brainExplore`
+  (best upper bound), clamped into the space. A missing, stale (older than
   `brain_max_age_s`) or invalid file adds nothing.
 - **Candidates under test.** `PrismaticAI air10+catch` (`air_add_waiting=10,catchment_stops=8`,
   mechanisms learned from AAAHogEx) played in the group as an anchor. Paired on 36 common seeds
   over 20 years, it beat the default by +14.8% mean value and won 27 of 36. Its settings became
   the default, and the anchor was retired.
+- **`PrismaticAI double-track`** (`rail_double=1`) played as an anchor, paired on 74 common seeds over
+  20 years: +14.8% mean value, better in 56 of 74. Double track became the default and the anchor
+  was retired; `solo-max` keeps single track. Its add rule now fills a
+  free source platform (it used to wait until no train was loading, which almost never held under
+  a full load). On 3 seeds at 10 years it gave -28.8%, +47.5% and +11.6%: too chaotic for a single
+  seed to decide, so the battle pairs it over 20 years.
+- **Champion to default.** The GA's elite g14.0/g15.0 (a brain proposal) beat the default on
+  20 of 20 common seeds (+30.9%), and its genes became the bot's defaults. A paired comparison
+  against the default decides this; a variant's GA score over 6-7 matches can rank wrongly.
+- **`PrismaticAI pre-champion`** (the defaults before the champion, as settings; only the
+  autopilot's own-lines floor of 10 cannot be set back to 8) plays as an anchor, so the pairing
+  keeps confirming the switch and the battle brain keeps a fixed baseline across it.
 - **Last places cost.** The score subtracts `last_penalty` x the share of matches a variant
   ended last, so explorers that end last are culled fast.
 - **Defaults.** A tuned variant is a candidate. It becomes a default only through held-start duel
   pairs (rule `project.a-tuning-claim-needs-held-start-pairs`).
+
+## Double track
+
+AAAHogEx's rail scales by double track; PrismaticAI's single-track line holds two trains. The
+opt-in setting `rail_double=1` builds the bot's own freight lines with one one-way track each way
+and path signals (`tools/research/prismatic-ai/README.md`, section *Double track*). It is off by
+default. Recorded 10-year ablations against AAAHogEx and AdmiralAI, one per seed:
+[`seed930967890`](../results/ablation-20261119T083455-seed930967890.md),
+[`seed1814625749`](../results/ablation-20261119T083459-seed1814625749.md),
+[`seed1251879686`](../results/ablation-20261119T083502-seed1251879686.md).
+
+- **Value.** Lower on two seeds and higher on one.
+- **Train count.** Rail trains did not grow. The steward adds a train only while half a trainload
+  waits and no train loads at the source. With full load at the source and short trains (the
+  platform follows demand), a train is nearly always loading, so the extra track is paid for and
+  carries no extra trains.
+- **Noise.** A bot edit that changes no decision still moves a 10-year result by a few percent.
+  HEAD with one no-op expression added to `LineRecord` matched the edited tree's `rail_double=0`
+  value exactly, and both differed from HEAD. A shift of a few Squirrel opcodes moves an action by
+  one tick, and the match diverges from there. Read a single-seed difference of that size as noise.
 
 ## Never last
 

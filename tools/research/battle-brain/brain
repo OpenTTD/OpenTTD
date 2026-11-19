@@ -17,10 +17,16 @@ EVERY=0
 
 once() {
   local tmp; tmp="$(mktemp -d)"
+  # The target is paired: a variant's value share divided by the default PrismaticAI's on the same
+  # edition and seed (the signal that held: GA g14.0 won 20/20 paired seeds). Unpaired rows are left out.
   duckdb -readonly "$RESULTS/analytics.duckdb" -csv \
-    "SELECT a.edition, a.contestant, c.settings, a.value_share_of_winner AS share
-     FROM analyses a JOIN contestants c USING (edition, contestant)
-     WHERE c.prismatic AND a.value_share_of_winner > 0" > "$tmp/rows.csv"
+    "WITH a AS (SELECT a.edition, a.seed, a.contestant, c.settings, a.value_share_of_winner AS s
+                FROM analyses a JOIN contestants c USING (edition, contestant)
+                WHERE c.prismatic AND a.value_share_of_winner > 0 AND a.seed IS NOT NULL),
+          d AS (SELECT edition, seed, s FROM a WHERE contestant = 'PrismaticAI')
+     SELECT a.edition, a.contestant, a.settings, a.s / d.s AS share
+     FROM a JOIN d USING (edition, seed) WHERE a.contestant <> 'PrismaticAI'" > "$tmp/rows.csv"
+  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed"
   curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json"
   local args=()
   for l in nx exla axon polaris complex telemetry xla elixir_make nimble_pool jason; do args+=(-pa "$LIBS/$l/ebin"); done

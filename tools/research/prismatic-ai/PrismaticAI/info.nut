@@ -24,10 +24,7 @@ class PrismaticAI extends AIInfo {
 			description = "How aggressively to expand (0 = passive, 100 = maximal). Set via start_ai/reload_ai settings string, e.g. 'aggressiveness=75'.",
 			min_value = 0,
 			max_value = 100,
-			easy_value = 25,
-			medium_value = 50,
-			hard_value = 75,
-			custom_value = 50,
+			easy_value = 20, medium_value = 20, hard_value = 20, custom_value = 20,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -219,7 +216,7 @@ class PrismaticAI extends AIInfo {
 			name = "line_budget",
 			description = "Money (bank balance plus loan headroom) the bot wants at hand before it builds the planner's next freight rail line.",
 			min_value = 10000, max_value = 1000000,
-			easy_value = 80000, medium_value = 80000, hard_value = 80000, custom_value = 80000, step_size = 10000,
+			easy_value = 90000, medium_value = 90000, hard_value = 90000, custom_value = 90000, step_size = 10000,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -233,14 +230,14 @@ class PrismaticAI extends AIInfo {
 			name = "air_routes_max",
 			description = "Autopilot: most own air routes (autopilot.nut).",
 			min_value = 0, max_value = 30,
-			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 1,
+			easy_value = 3, medium_value = 3, hard_value = 3, custom_value = 3, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
 			name = "air_towns",
 			description = "Autopilot: how many of the most populous towns air pairs are chosen from.",
 			min_value = 4, max_value = 60,
-			easy_value = 25, medium_value = 25, hard_value = 25, custom_value = 25, step_size = 1,
+			easy_value = 50, medium_value = 50, hard_value = 50, custom_value = 50, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -254,7 +251,7 @@ class PrismaticAI extends AIInfo {
 			name = "air_max_tiles",
 			description = "Autopilot: longest air pair, in tiles.",
 			min_value = 60, max_value = 800,
-			easy_value = 260, medium_value = 260, hard_value = 260, custom_value = 260, step_size = 10,
+			easy_value = 420, medium_value = 420, hard_value = 420, custom_value = 420, step_size = 10,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -268,28 +265,28 @@ class PrismaticAI extends AIInfo {
 			name = "invest_min",
 			description = "Fleet: idle money (in thousands) above which InvestSurplus buys vehicles where they earn most.",
 			min_value = 0, max_value = 2000,
-			easy_value = 150, medium_value = 150, hard_value = 150, custom_value = 150, step_size = 10,
+			easy_value = 50, medium_value = 50, hard_value = 50, custom_value = 50, step_size = 10,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
 			name = "invest_ppv_div",
 			description = "Fleet: a route gets one more vehicle while its vehicles earn more than price / this per year.",
 			min_value = 1, max_value = 10,
-			easy_value = 3, medium_value = 3, hard_value = 3, custom_value = 3, step_size = 1,
+			easy_value = 2, medium_value = 2, hard_value = 2, custom_value = 2, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
 			name = "invest_road_cap",
 			description = "Fleet: most road vehicles per route that InvestSurplus grows to.",
 			min_value = 1, max_value = 40,
-			easy_value = 12, medium_value = 12, hard_value = 12, custom_value = 12, step_size = 1,
+			easy_value = 20, medium_value = 20, hard_value = 20, custom_value = 20, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
 			name = "invest_air_cap",
 			description = "Fleet: most planes per route (InvestSurplus, and fleet growth with the steward on).",
 			min_value = 1, max_value = 30,
-			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 1,
+			easy_value = 12, medium_value = 12, hard_value = 12, custom_value = 12, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -331,14 +328,14 @@ class PrismaticAI extends AIInfo {
 			name = "invest_borrow",
 			description = "1: InvestSurplus may borrow up to the loan limit for a vehicle that pays back (learned from AAAHogEx, which keeps its cash near zero); 0 (default): bank money only; borrowing changed nothing on the fitness seed at 6 years.",
 			min_value = 0, max_value = 1,
-			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
 			name = "air_add_waiting",
 			description = "Planes (learned from AAAHogEx): add a plane to an air route while the passengers waiting at BOTH of its airports exceed this, up to invest_air_cap (fleet.nut; default 10 together with catchment_stops=8 since 2026-11-19: in the battle, 20 years, paired on 36 common seeds, +14.8% mean value and better in 27 of 36; 0: the old rule of 1.5 loads at one end).",
 			min_value = 0, max_value = 500,
-			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 10,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 10,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({
@@ -347,6 +344,13 @@ class PrismaticAI extends AIInfo {
 			min_value = 0, max_value = 24,
 			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
 			flags = CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "rail_double",
+			description = "1: the bot's own new freight lines are double track (after AAAHogEx): one one-way track each way with path signals, so a line runs many trains and the in-bot steward adds one while half a trainload waits and no train loads at the source (rail.nut BuildDoubleRailLine); 0 (default): single track, two trains a line. Default 1 since 2026-11-19: in the battle, 20 years, paired on 74 common seeds, +14.8% mean value and better in 56 of 74; 0: single track.",
+			min_value = 0, max_value = 1,
+			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
+			flags = CONFIG_INGAME | CONFIG_BOOLEAN,
 		});
 		AddSetting({
 			name = "autopilot",
@@ -367,10 +371,7 @@ class PrismaticAI extends AIInfo {
 			description = "Aircraft on the planner's air route.",
 			min_value = 1,
 			max_value = 8,
-			easy_value = 2,
-			medium_value = 2,
-			hard_value = 3,
-			custom_value = 2,
+			easy_value = 1, medium_value = 1, hard_value = 1, custom_value = 1,
 			step_size = 1,
 			flags = CONFIG_INGAME,
 		});

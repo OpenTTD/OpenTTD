@@ -2429,6 +2429,8 @@ fn query_params(path: &str) -> &'static [(&'static str, bool)] {
         "/api/content" => &[("q", true)],
         "/api/result" => &[("name", true)],
         "/api/db/query" => &[("sql", false)],
+        // panel_realworld::h_scenario answers 400 without a place name.
+        "/api/realworld/scenario" => &[("name", true)],
         // The script workspace (panel_scripts.rs): one script, and a service's lines after a seq.
         "/api/script" => &[("name", true)],
         "/api/services/log" => &[("name", true), ("since", false)],
@@ -3289,6 +3291,9 @@ mod tests {
         assert_eq!(query("readResource"), vec![("uri".to_string(), true)]);
         assert_eq!(query("script"), vec![("name".to_string(), true)]);
         assert_eq!(query("serviceLog"), vec![("name".to_string(), true), ("since".to_string(), false)]);
+        assert_eq!(query("realWorldScenario"), vec![("name".to_string(), true)]);
+        // A path template's input is not a query parameter: the check skips it by its path.
+        assert!(ops.iter().any(|o| o.id == "playFile" && o.path.contains('{')));
         assert!(query("events").iter().all(|(_, required)| !required));
         assert!(ops.iter().any(|o| o.id == "eventStream" && o.stream));
         let _ = no_op;

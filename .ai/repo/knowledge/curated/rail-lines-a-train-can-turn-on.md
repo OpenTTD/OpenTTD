@@ -22,6 +22,9 @@ provenance:
     - file:tools/research/prismatic-ai/PrismaticAI/rail.nut
     - file:research/results/duel-20261118T063729-seed4242.md
     - file:research/rail-steward.md
+    - file:research/results/ablation-20261119T083455-seed930967890.md
+    - file:research/results/ablation-20261119T083459-seed1814625749.md
+    - file:research/results/ablation-20261119T083502-seed1251879686.md
 ---
 
 # Constraint
@@ -65,9 +68,12 @@ wait off it.**
   `IsSafeWaitingPosition` with `include_line_end`).
 - With two platforms per terminus and a two-tile throat, as many trains as the smaller end has
   platforms share the track with no passing loop.
-- `AIRail.BuildSignal(tile, front, …)` signals trains moving from `tile` toward `front`, and a plain
-  path signal can be passed from behind. The exit signals therefore stand on the straight tiles
-  just beyond the platforms.
+- `AIRail.BuildSignal(tile, front, …)` signals the trains that come **from** `front`: the signal is
+  built along the trackdir leading away from `front` (`script_rail.cpp` `_possible_trackdirs`). A
+  plain path signal can be passed from behind. The throat's `BuildSignal(T1, M)` therefore faces
+  trains entering a platform, not leaving it. Until 2026-11-19 this record said the opposite. The
+  double-track build below showed it: one-way signals placed with the far tile as `front` sent
+  every train the wrong way along each track.
 
 # Evidence
 
@@ -97,12 +103,50 @@ Earlier evidence: the 12-month duel on seed 4242 (`research/results/duel-2026111
 built six lines, each with two-platform termini, path-signalled throats and a depot behind a
 platform, and logged no "no rail path", broken line or refused throat.
 
+# Double track (`rail_double=1`, 2026-11-19)
+
+PrismaticAI can build its own freight lines double track:
+- one one-way track each way, both found by the same A\* search,
+- a junction at each terminus (`rail.nut` `BuildDoubleRailLineAndTrain`),
+- one-way path signals every 7 tiles,
+- a single-track fallback when the second track cannot be built.
+
+Two signal facts decide whether it runs:
+- **One-way signals take the tile the train comes from as `front`** (see above).
+- **On a double track the throat's path signals must face departing trains.** Facing arrivals, they
+  made M, the tile every departure needs, a safe waiting position. An arriving train stopped there
+  while both platforms held loaded trains, and the line deadlocked with nine trains standing.
+
+Recorded 10-year ablations against AAAHogEx and AdmiralAI (`battle.py ablate`, commit 9a43755):
+
+| Seed | `rail_double=0` | `rail_double=1` | Change | Rail trains off / on | Record |
+|---|---|---|---|---|---|
+| 930967890 | 4,620,322 | 3,501,074 | -24.2% | 17 / 15 | `ablation-20261119T083455-seed930967890` |
+| 1814625749 | 4,679,708 | 3,955,350 | -15.5% | 20 / 15 | `ablation-20261119T083459-seed1814625749` |
+| 1251879686 | 3,705,692 | 4,313,470 | +16.4% | 19 / 20 | `ablation-20261119T083502-seed1251879686` |
+
+- **No Squirrel error** in any arm.
+- **Track B failed on some lines.** In a verbose run on seed 930967890 it failed on 3 of 6 lines,
+  which then ran single track. Track A had taken the only bridge site across a valley.
+- **Rail does not scale.** The steward's rule (a train more while half a trainload waits and none
+  loads at the source) rarely fires. With full load at the source, one of the line's short trains
+  is nearly always loading. The second track is paid for and carries no extra train.
+- **Longer platforms did not fix it** (`rail_len=6`, exploratory, not recorded).
+- **Not ported from AAAHogEx:** a third source platform, signals at the top of slopes, and
+  production-driven line choice. The setting stays off by default.
+
+**Noise floor.** A bot edit that changes no decision moved seed 930967890 from 4,737,340 to
+4,620,322. HEAD with one no-op expression added to `LineRecord` gave exactly 4,620,322. A few
+Squirrel opcodes more shift an action by one tick, and the match diverges from there. A
+single-seed difference of a few percent is therefore not evidence.
+
 # How to apply
 
 - Any rail builder here (the bot, `mcp-human`, an AlgoGlyph track plan handed to one) checks
   `Turns90` on the whole sequence, the station ends included, before laying.
 - A lost train in the monitor (`openttd://vehicles` `lost`, `rail_monitor.rhai`) is first a track
   question: walk its line with `AIRail.AreTilesConnected` and look for two same-way corners in a row.
-- Never add a second train to a single track without the throat's exit signals. `trains_max` in the
+- Never add a second train to a single track without the throat's path signals.
+- Placing a signal: `front` is the tile the train comes from. `trains_max` in the
   line record says how many the line holds.
 - Related: [[the-bots-rail-pathfinder-lays-plain-track-only]], [[auto-approve-is-the-owners-switch]].

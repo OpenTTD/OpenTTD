@@ -1,0 +1,68 @@
+{
+ "schema": "ai-battle-ablation/v1",
+ "id": "ablation-20261119T094209-seed1814625749",
+ "generated_at": "2026-11-19T09:42:09+00:00",
+ "seed": 1814625749,
+ "years": 10,
+ "field": [
+  "AAAHogEx",
+  "AdmiralAI"
+ ],
+ "match_cfg": {
+  "years": 10,
+  "start_year": 1960,
+  "landscape": "temperate",
+  "map_x": 8,
+  "map_y": 8,
+  "breakdowns": 1
+ },
+ "rev": "26d86c75f5578e8dd773b7195f46892a3dbcf480",
+ "tree_dirty": true,
+ "rows": [
+  {
+   "variant": "planned_old",
+   "settings": "air_a=0,air_b=1,autopilot=0",
+   "exit_code": 0,
+   "value": 1329645,
+   "money": 1192053,
+   "vehicles": 7,
+   "rail": 0,
+   "road": 3,
+   "air": 4,
+   "errors": 0,
+   "field_best": 17524144,
+   "t": "1970-01",
+   "vs_first": 0.0
+  },
+  {
+   "variant": "planned_grow",
+   "settings": "air_a=0,air_b=1",
+   "exit_code": 0,
+   "value": 2703390,
+   "money": 2154912,
+   "vehicles": 41,
+   "rail": 2,
+   "road": 13,
+   "air": 26,
+   "errors": 0,
+   "field_best": 18716014,
+   "t": "1970-01",
+   "vs_first": 1.0332
+  },
+  {
+   "variant": "unplanned",
+   "settings": "autopilot=1",
+   "exit_code": 0,
+   "value": 2831412,
+   "money": 2093803,
+   "vehicles": 47,
+   "rail": 12,
+   "road": 14,
+   "air": 21,
+   "errors": 0,
+   "field_best": 16322758,
+   "t": "1970-01",
+   "vs_first": 1.1294
+  }
+ ]
+}

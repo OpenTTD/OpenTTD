@@ -1,5 +1,6 @@
 /*
- * Autopilot's own air routes (RESEARCH-ONLY; Behaviour().autopiloted: autopilot=1 and no plan).
+ * Autopilot's own air routes (RESEARCH-ONLY; Behaviour().grows: autopilot=1, with or without a plan;
+ * with a plan they come after the planner's own air pair).
  *
  * In the LAN AI battle the gap to the winner opened in the first two quarters
  * (research/ai-battle/README.md "Where we lose"). AAAHogEx ran six aircraft by July 1960 and earned
@@ -77,7 +78,7 @@ function PrismaticAI::AutopilotAir(b) {
 	/* Failed pairs are forgiven once a game year: a richer company affords a site it could not before. */
 	local year = AIDate.GetYear(AIDate.GetCurrentDate());
 	if (year != this.air_year) { this.air_year = year; this.air_failed = 0; }
-	if (!b.autopiloted || this.auto_air >= b.air_routes_max || this.air_failed >= AUTOPILOT_AIR_MAX_FAILS) return false;
+	if (!b.grows || this.auto_air >= b.air_routes_max || this.air_failed >= AUTOPILOT_AIR_MAX_FAILS) return false;
 	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 	local headroom = AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
 	/* The real price of the route: two airports, the planes, and a margin for levelling. Without

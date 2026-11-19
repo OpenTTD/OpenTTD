@@ -53,12 +53,12 @@ Elixir 1.19 / Erlang 28 (`$BRAIN_LIBS`, `ASDF_*_VERSION`), so XLA is not downloa
 
 | Step | What |
 |---|---|
-| Data | `analyses JOIN contestants` from the post-mortem's `analytics.duckdb`: every PrismaticAI non-winner match result with its settings and its value share of the winner |
+| Data | `analyses JOIN contestants` from the post-mortem's `analytics.duckdb`, **paired**: every PrismaticAI variant's result with its settings, against the default `PrismaticAI` on the same edition and seed (`analyses.seed`, backfilled for every edition in the store) |
 | Features | each gene of the GA's space scaled to [0, 1]; a gene the setting does not name takes the midpoint and a 0 "named" flag, so the net can tell a default from a value |
-| Target | log of the value share of the winner |
+| Target | log of (the variant's value share of the winner / the default's on the same seed); `brain.json` names it in `target`, and `predicted_share` is that ratio |
 | Model | 5 members, each 2 × 32 tanh with dropout 0.1, trained by Adam (lr 0.01, 400 steps) on its own bootstrap sample |
 | Search | 50,000 random candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member |
-| Pick | the top 8 by UCB with κ = 1, each with its predicted share and its spread |
+| Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread), κ = 1, each with its kind, predicted share and spread |
 
 `brain.json` (schema `battle-brain/v1`) records the data it had (`rows`, `distinct_settings`) and the
 in-sample R² of the ensemble mean, which is a sanity figure and not a validation. `enough_data` is
@@ -74,6 +74,29 @@ Tooling language: the repository's rule `project.tooling-language-preference` as
 The owner asked for EXLA and Axon by name, and both are Elixir libraries, so the learned part is a
 single Elixir script behind a thin runner. Its input and output are files (CSV in, JSON out), and
 nothing else in the repository depends on Elixir.
+
+### The champion, and why the target is paired
+
+The brain's safe proposal in generation 13, `g13.brainSafe`, carried into the GA as `g14.0` and
+`g15.0`, was paired with the default on 20 common seeds over 20 years. It won all 20, with a mean
+value 30.9 % higher. Its genes became the bot's defaults (`1f3400b85d`): fewer air routes, and
+investment that starts earlier, borrows and grows routes further. A variant with a higher GA
+score over 6 to 7 matches, `g15.3`, lost its pairing (0.903). Short GA scores rank noisily, and
+paired comparisons on the same seeds decide. The brain's target is therefore the paired ratio
+against the default, not the raw share. On the first paired run (2026-11-19) the brain had 607
+paired rows with 53 distinct settings for 19 genes, enough data for the first time. Its safe pick
+predicted 1.48 × the default, with a spread of 0.09 in log terms.
+
+### Why a safe pick comes first
+
+Until 2026-11-19 the brain proposed by UCB only, so both of the GA's brain offspring were
+explorers. In edition `508356ae`, `GA g10.brain0` finished last in 1 of 6 matches. In match m-0039
+its fleet collapsed from 25 to 6 vehicles (`fleet_decays`, `low_yield`, `idle_stations`). Its
+settings sat far from the data: `rail_double=1`, which the battle owner had measured as a loss,
+`own_lines=22`, and `air_add_waiting=90`, which means almost no planes. Now the first proposal is
+the best by lower confidence bound, where the ensemble agrees, and the second is the explorer.
+The GA takes the first two, so each generation gets one of each. The GA's last-place penalty
+culls an explorer that ends last.
 
 ## The live tuner in detail (`tools/research/mcp-panel/rhai/prismatic_tune.rhai`)
 

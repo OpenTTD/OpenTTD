@@ -42,6 +42,7 @@ Generated from each document's title and first paragraph (`tools/surfaces/surfac
 <!-- surfaces:begin docs-index dir=research -->
 | Document | What it is |
 |---|---|
+| [The agent loop: retrieve, coordinate, decide, approve, act, verify](agent-loop.md) | RESEARCH-ONLY. The owner asked (2026-11-19) for one real loop: an agent retrieves versioned evidence with citations, coordinates through a shared blackboard, forms a decision from observed bridge and game state,... |
 | [LAN AI battle](ai-battle/README.md) | RESEARCH-ONLY. A tournament between company AIs that never stops. Every machine on the local network that answers SSH and has an OpenTTD build becomes an arena. The contestants are PrismaticAI from this repository,... |
 | [Experiment report: baseset-prerequisite-macos](baseset-prerequisite-macos.md) | The four regression ctest cases (regression_regression, regression_stationlist, regression_gs, regression_gs_compat) require a base graphics set to be installed, even though they run headless (-vnull -snull -mnull).... |
 | [Battle brain and live tuner](battle-brain.md) | RESEARCH-ONLY. Self-improvement in two loops, both fed from the LAN battle's recorded data: |
@@ -120,6 +121,12 @@ Generated from each document's title and first paragraph (`tools/surfaces/surfac
 | [ablation-20261119T065438-seed930967890](results/ablation-20261119T065438-seed930967890.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
 | [ablation-20261119T065448-seed1814625749](results/ablation-20261119T065448-seed1814625749.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
 | [ablation-20261119T065451-seed1251879686](results/ablation-20261119T065451-seed1251879686.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
+| [ablation-20261119T083455-seed930967890](results/ablation-20261119T083455-seed930967890.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
+| [ablation-20261119T083459-seed1814625749](results/ablation-20261119T083459-seed1814625749.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
+| [ablation-20261119T083502-seed1251879686](results/ablation-20261119T083502-seed1251879686.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
+| [ablation-20261119T094204-seed930967890](results/ablation-20261119T094204-seed930967890.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
+| [ablation-20261119T094209-seed1814625749](results/ablation-20261119T094209-seed1814625749.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
+| [ablation-20261119T094213-seed1251879686](results/ablation-20261119T094213-seed1251879686.md) | Derived from its .json by tools/research/ai-battle/battle.py ablate --write; do not edit. |
 | [battle-20261119T053541-155d18ea](results/battle-20261119T053541-155d18ea.md) | Derived from battle-20261119T053541-155d18ea.json by tools/research/ai-battle/battle.py report; do not edit. |
 | [battle-20261119T054742-91a72662](results/battle-20261119T054742-91a72662.md) | Derived from battle-20261119T054742-91a72662.json by tools/research/ai-battle/battle.py report; do not edit. |
 | [battle-20261119T060827-361b802f](results/battle-20261119T060827-361b802f.md) | Derived from battle-20261119T060827-361b802f.json by tools/research/ai-battle/battle.py report; do not edit. |
@@ -127,6 +134,19 @@ Generated from each document's title and first paragraph (`tools/surfaces/surfac
 | [battle-20261119T070715-fd41eaa1](results/battle-20261119T070715-fd41eaa1.md) | Derived from battle-20261119T070715-fd41eaa1.json by tools/research/ai-battle/battle.py report; do not edit. |
 | [battle-20261119T071745-1be583a5](results/battle-20261119T071745-1be583a5.md) | Derived from battle-20261119T071745-1be583a5.json by tools/research/ai-battle/battle.py report; do not edit. |
 | [battle-20261119T072805-76e7404c](results/battle-20261119T072805-76e7404c.md) | Derived from battle-20261119T072805-76e7404c.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T074324-1e514c9e](results/battle-20261119T074324-1e514c9e.md) | Derived from battle-20261119T074324-1e514c9e.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T075554-e50badb2](results/battle-20261119T075554-e50badb2.md) | Derived from battle-20261119T075554-e50badb2.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T080954-8b438c7d](results/battle-20261119T080954-8b438c7d.md) | Derived from battle-20261119T080954-8b438c7d.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T082306-6b1771b3](results/battle-20261119T082306-6b1771b3.md) | Derived from battle-20261119T082306-6b1771b3.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T083528-fb2ff9b1](results/battle-20261119T083528-fb2ff9b1.md) | Derived from battle-20261119T083528-fb2ff9b1.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T085213-10293148](results/battle-20261119T085213-10293148.md) | Derived from battle-20261119T085213-10293148.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T090423-508356ae](results/battle-20261119T090423-508356ae.md) | Derived from battle-20261119T090423-508356ae.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T092923-f9666900](results/battle-20261119T092923-f9666900.md) | Derived from battle-20261119T092923-f9666900.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T095746-b9fe95ad](results/battle-20261119T095746-b9fe95ad.md) | Derived from battle-20261119T095746-b9fe95ad.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T101219-5133bfd2](results/battle-20261119T101219-5133bfd2.md) | Derived from battle-20261119T101219-5133bfd2.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T103020-8cd07833](results/battle-20261119T103020-8cd07833.md) | Derived from battle-20261119T103020-8cd07833.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T104404-126e4e25](results/battle-20261119T104404-126e4e25.md) | Derived from battle-20261119T104404-126e4e25.json by tools/research/ai-battle/battle.py report; do not edit. |
+| [battle-20261119T110859-f063413c](results/battle-20261119T110859-f063413c.md) | Derived from battle-20261119T110859-f063413c.json by tools/research/ai-battle/battle.py report; do not edit. |
 | [A long duel in one game: planned bot vs unplanned bot (seed 4242, 1950-01 to 1970-11)](results/duel-20261116-long-seed4242.md) | Started as tools/research/mcp-duel --months 120 --seed 4242 with the complete bot (bridge repository 34bd520: turns as the game fits them, level crossings, bridges, tunnels, up to four freight lines as money allows,... |
 | [Duel in one game: planned vs unplanned bot (seed 20208, 24 months)](results/duel-20261116T052833-seed20208.md) | Generated by tools/research/mcp-duel (planner v4 portfolio + fleet both ways vs the same bot unplanned, one map). One game, one map: company 1 is PrismaticAI started from the planner's portfolio (by the panel),... |
 | [Duel in one game: planned vs unplanned bot (seed 20208, 36 months)](results/duel-20261116T074419-seed20208.md) | Generated by tools/research/mcp-duel (track-priced lines, one line per producer, I0074 binary). One game, one map: company 1 is PrismaticAI started from the planner's portfolio (by the panel), company 2 the same AI... |

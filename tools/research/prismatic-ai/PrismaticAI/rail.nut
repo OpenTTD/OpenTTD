@@ -375,7 +375,7 @@ function PrismaticAI::RailStationToJoin(origin, len) {
  * dead end (BuildRailDepotBehind). A company train station already near `origin` gets these
  * platforms (RailStationToJoin) wherever a site fits the station spread; only when none does is a
  * separate station built, with a warning. */
-function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label, platforms = 1) {
+function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label, platforms = 1, hand = 0) {
 	local map_w = AIMap.GetMapSizeX();
 	local dx = AIMap.GetTileX(other) - AIMap.GetTileX(origin), dy = AIMap.GetTileY(other) - AIMap.GetTileY(origin);
 	local along_x = abs(dx) >= abs(dy);
@@ -384,7 +384,10 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 	local side = along_x ? map_w : 1;          /* to the next platform: AIRail.BuildRailStation stacks them so */
 	local forward = along_x ? (dx >= 0) : (dy >= 0);
 	local out = forward ? step : -step;        /* from the platforms' ends toward `other` */
-	local throat = (platforms > 1) ? 2 : 0;
+	/* A double-track terminus (hand +1 at the source, -1 at the far end; DoubleTerminus) has two
+	 * more throat tiles, L0 and the junction A1, where the two one-way tracks meet. */
+	local throat = (hand != 0) ? 4 : ((platforms > 1) ? 2 : 0);
+	local lane = hand * PrismaticAI.QuarterTurn(out);
 	/* The site is the platforms and the throat: flat (ERR_FLAT_LAND_REQUIRED for a station, and a
 	 * corner on a slope may not fit) and buildable. */
 	local w = along_x ? len + throat : platforms, h = along_x ? platforms : len + throat;
@@ -427,7 +430,7 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 		for (local r = list.Begin(); !list.IsEnd() && tried < 20; r = list.Next()) {
 			/* The station's own corner: the throat lies on the `out` side of the platforms. */
 			local t = forward ? r : r + throat * step;
-			local g = PrismaticAI.TerminusGeometry(t, len, platforms, step, side, out);
+			local g = PrismaticAI.TerminusGeometry(t, len, platforms, step, side, out, lane);
 			if (g == null) continue;
 			tried++;
 			AILog.Info("PrismaticAI: survey rail station " + label + " at tile " + t);
@@ -451,8 +454,10 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 			AILog.Info("PrismaticAI: built rail station " + label + " at tile " + t + ", " + platforms + " platform(s) of " + len
 				+ (into == AIStation.STATION_NEW ? "" : ", platforms of " + AIStation.GetName(into)
 					+ (rank == 0 ? " beside its others" : " (apart from its others)")));
-			return {tile = t, end = g.end, exit = g.exit, step = step, platforms = platforms, len = len,
+			local made = {tile = t, end = g.end, exit = g.exit, step = step, platforms = platforms, len = len,
 				platform_rect = [t, corner], throat = throat_tiles, backs = g.backs};
+			if (lane != 0) made.dbl <- g.dbl;
+			return made;
 		}
 	}
 	AILog.Warning("PrismaticAI: no rail station site " + label);
@@ -468,7 +473,7 @@ function PrismaticAI::PlatformCoverage(r, cargo, sw, sh, offset, produce) {
 /* The tiles of a terminus whose station corner is `t` (see BuildRailStationAt), with the main
  * platform chosen so that its exit leads on: {end, exit, throat, backs}, or null when neither choice
  * has an exit the line search can leave (ExitLeadsOn, RailStepCost). */
-function PrismaticAI::TerminusGeometry(t, len, platforms, step, side, out) {
+function PrismaticAI::TerminusGeometry(t, len, platforms, step, side, out, lane = 0) {
 	local forward = (out == step);
 	local rows = [];
 	for (local p = 0; p < platforms; p++) rows.push(t + p * side);
@@ -478,11 +483,20 @@ function PrismaticAI::TerminusGeometry(t, len, platforms, step, side, out) {
 		if (platforms > 1) {
 			/* Two platforms: the other row lies sd beside the main one. */
 			local sec = rows[platforms - 1 - k];
+			/* Double track: the second platform lies on the lane side, where the second track leaves. */
+			if (lane != 0 && sec - main != lane) continue;
 			local end_s = end_m + (sec - main);
 			g.throat = {end_m = end_m, end_s = end_s, t1m = end_m + out, t1s = end_s + out,
 				m = end_m + 2 * out, m2 = end_s + 2 * out, l0 = end_m + 3 * out};
 			g.end = g.throat.m;
 			g.exit = g.throat.l0;
+		}
+		if (lane != 0) {
+			g.dbl <- PrismaticAI.DoubleTerminus(g.throat, out, lane);
+			g.end = g.dbl.a1;
+			g.exit = g.dbl.a2;
+			/* Both tracks leave straight, and the second must lead on as well as the first. */
+			if (PrismaticAI.RailStepCost(g.dbl.b2) < 0 || !PrismaticAI.ExitLeadsOn(g.dbl.b2, out, true)) continue;
 		}
 		if (PrismaticAI.RailStepCost(g.exit) < 0) continue;
 		/* The exit must lead on: a station between houses whose exit faces a road junction is a dead
@@ -509,8 +523,22 @@ function PrismaticAI::BuildThroat(g, built) {
 		if (!AIRail.BuildRail(pc[0], pc[1], pc[2])) return false;
 		built.push(pc[1]);
 	}
-	if (!AIRail.BuildSignal(th.t1m, th.m, AIRail.SIGNALTYPE_PBS)) return false;
-	if (!AIRail.BuildSignal(th.t1s, th.m2, AIRail.SIGNALTYPE_PBS)) return false;
+	if ("dbl" in g) {
+		local d = g.dbl;
+		/* A1 takes two pieces; each tile is recorded once, as soon as it holds track. */
+		foreach (i, pc in [[d.m, d.l0, d.a1], [d.l0, d.a1, d.a2], [d.l0, d.a1, d.s1], [d.a1, d.s1, d.b2]]) {
+			if (!AIRail.BuildRail(pc[0], pc[1], pc[2])) return false;
+			if (i != 2) built.push(pc[1]);
+		}
+		AILog.Info("PrismaticAI: built the double-track junction at tile " + d.a1 + ", tracks leave at tiles " + d.a2 + " and " + d.b2);
+	}
+	/* AIRail.BuildSignal(tile, front) signals the trains that come from `front` (script_rail.cpp
+	 * _possible_trackdirs): here those entering a platform. On a double track they face the trains
+	 * leaving instead, so a train arriving at full platforms waits on its own track, at the last
+	 * one-way signal before the junction, and never on M, the tile every departure needs. */
+	local dbl = "dbl" in g;
+	if (!AIRail.BuildSignal(th.t1m, dbl ? th.end_m : th.m, AIRail.SIGNALTYPE_PBS)) return false;
+	if (!AIRail.BuildSignal(th.t1s, dbl ? th.end_s : th.m2, AIRail.SIGNALTYPE_PBS)) return false;
 	AILog.Info("PrismaticAI: built the throat of two platforms at tile " + th.m + ", path signals at tiles " + th.t1m + " and " + th.t1s);
 	return true;
 }
@@ -723,6 +751,174 @@ function PrismaticAI::BuildRailLineAndTrain(sa, sb, len, cargo, wagons, first_fl
 	return 1;
 }
 
+/*
+ * Double track (RESEARCH-ONLY, opt-in: setting rail_double=1, the bot's own freight lines only).
+ * After AAAHogEx, whose rail earns 2-3M a year by 1970 while a single-track line here holds two
+ * trains: one track each way, one-way path signals every RAIL_SIGNAL_SPACING tiles, so a line holds
+ * as many trains as it has signal blocks and the in-bot steward adds them while cargo waits.
+ *
+ * Each terminus is the two-platform throat (BuildThroat) and two more tiles, L0 and the junction A1,
+ * where the two tracks part (`lane` is the side the second track leaves on):
+ *
+ *     platform main | T1m  M   L0  A1  A2 -> track A
+ *     platform 2nd  | T1s  M2          S1  B2 -> track B
+ *
+ * A1 carries a straight piece (track A) and a corner toward S1, S1 a corner back onto the axis. L0 is
+ * straight, so neither platform's route turns 90 degrees into either track (Turns90: M2 to M, then
+ * two straight moves, then A1 to S1). Seen from the source, the second track leaves on one side,
+ * and at the far end on the same side of the map (hand +1 and -1 in BuildRailStationAt), so track A
+ * runs A2 to the far A2 and track B B2 to the far B2 without crossing.
+ *
+ * Track A carries the trains from the source, track B the trains back: one-way path signals facing
+ * that way (PlaceLaneSignals) make the other way a dead end to the pathfinder. A train leaves its
+ * platform at the throat's path signal, which faces departures on a double track (BuildThroat),
+ * shares M-L0-A1 with arriving trains only, and an arriving train waits at the last one-way signal
+ * before the junction until it can reserve its way into a free platform. Both tracks come from the same A*
+ * search (FindRailPath); the second runs with the first's tiles left out, and both are walked
+ * (VerifyRailLine, VerifyJunction) before a train is bought. When the second track cannot be found,
+ * laid or walked, the junction's spur is taken out again and the line runs single track with
+ * trains_max = platforms, as rail_double=0 builds it.
+ */
+
+/* Tiles between the one-way path signals of a double track: one block holds a train as long as
+ * the longest the game allows by default (vehicle.max_train_length 7). */
+const RAIL_SIGNAL_SPACING = 7;
+
+/* The move a quarter turn from `d` (+-1 along x, +-map width along y), the same way for every d. */
+function PrismaticAI::QuarterTurn(d) {
+	local map_w = AIMap.GetMapSizeX();
+	if (d == 1) return map_w;
+	if (d == map_w) return -1;
+	if (d == -1) return -map_w;
+	return 1;
+}
+
+/* The junction tiles of a double-track terminus from its throat (TerminusGeometry), the move `out`
+ * toward the other end and the side `lane` the second track leaves on (see above). */
+function PrismaticAI::DoubleTerminus(th, out, lane) {
+	local a1 = th.l0 + out, s1 = a1 + lane;
+	return {m = th.m, l0 = th.l0, a1 = a1, a2 = a1 + out, s1 = s1, b2 = s1 + out, out = out, lane = lane};
+}
+
+/* The pieces of a junction (`d`, DoubleTerminus): the first two carry track A, the last two join
+ * track B. Returns the first tile whose piece is missing, or -1. */
+function PrismaticAI::VerifyJunction(d, track_b) {
+	local pieces = [[d.m, d.l0, d.a1], [d.l0, d.a1, d.a2]];
+	if (track_b) pieces.extend([[d.l0, d.a1, d.s1], [d.a1, d.s1, d.b2]]);
+	foreach (pc in pieces) {
+		if (!AIRail.AreTilesConnected(pc[0], pc[1], pc[2])) return pc[1];
+	}
+	return -1;
+}
+
+/* One-way path signals along a laid track `path` (between the junction tiles `a_end` and `b_end`)
+ * for trains that run from path[0] toward its end (`forward`) or back: on the first tile they enter,
+ * then every RAIL_SIGNAL_SPACING tiles, and on the last tile before the far junction, so a train
+ * waits for a platform there and never on the junction. A tile that takes no signal (a bridge or
+ * tunnel head, a level crossing) passes the signal on to the next one. Returns the signals built. */
+function PrismaticAI::PlaceLaneSignals(path, a_end, b_end, forward) {
+	local n = path.len(), placed = 0, last = -RAIL_SIGNAL_SPACING;
+	for (local k = 0; k < n; k++) {
+		if (k - last < RAIL_SIGNAL_SPACING && k != n - 1) continue;
+		local i = forward ? k : n - 1 - k;
+		local p = path[i];
+		local front = forward ? ((i == n - 1) ? b_end : path[i + 1]) : ((i == 0) ? a_end : path[i - 1]);
+		local back = forward ? ((i == 0) ? a_end : path[i - 1]) : ((i == n - 1) ? b_end : path[i + 1]);
+		if (AIMap.DistanceManhattan(p, front) != 1 || AIMap.DistanceManhattan(p, back) != 1) continue;
+		if (!AIRail.IsRailTile(p) || AIRail.IsLevelCrossingTile(p)) continue;
+		/* The tile the trains come from: BuildSignal signals trains arriving from its second tile. */
+		if (AIRail.BuildSignal(p, back, AIRail.SIGNALTYPE_PBS_ONEWAY)) {
+			placed++;
+			last = k;
+		}
+	}
+	return placed;
+}
+
+/* Take out a junction's spur onto track B (A1 to S1 and S1 itself): the line runs single track. */
+function PrismaticAI::RemoveDoubleSpur(d) {
+	AIRail.RemoveRail(d.l0, d.a1, d.s1);
+	AIRail.RemoveRail(d.a1, d.s1, d.b2);
+}
+
+/* The double-track line between two termini built with a junction (BuildRailStationAt with hand),
+ * its depot and one train as long as the platform; the steward adds the rest (steward.nut). Returns
+ * 1 when a train runs, else 0. The line's record says trains_max: the platforms plus the signal
+ * blocks of the shorter track, half of what both tracks and all four platforms hold, so a full
+ * line still has room to move (a train waits for a platform on its own track, never on the other). */
+function PrismaticAI::BuildDoubleRailLineAndTrain(sa, sb, len, cargo, first_flags, label) {
+	local da = sa.dbl, db = sb.dbl;
+	AILog.Info("PrismaticAI: survey double-track rail line from tile " + sa.exit + " to tile " + sb.exit);
+	/* Track A keeps clear of where track B leaves each junction. */
+	local avoid = {};
+	foreach (d in [da, db]) {
+		for (local k = 0; k < 3; k++) avoid[d.b2 + k * d.out] <- 1;
+	}
+	local path = PrismaticAI.FindRailPath(sa.exit, sb.exit, sa.end, sb.end, avoid, null, true, true);
+	if (path == null) {
+		AILog.Warning("PrismaticAI: no rail path between the stations; removing them");
+		PrismaticAI.RemoveRailStation(sa, len); PrismaticAI.RemoveRailStation(sb, len);
+		return 0;
+	}
+	local laid = PrismaticAI.BuildRailAlong(path, sa.end, sb.end, 2, true, true);
+	if (laid == null) return 0;
+	local broken = PrismaticAI.VerifyRailLine(laid, sa.end, sb.end);
+	if (broken == -1) broken = PrismaticAI.VerifyJunction(da, false);
+	if (broken == -1) broken = PrismaticAI.VerifyJunction(db, false);
+	if (broken != -1) {
+		AILog.Warning("PrismaticAI: rail line " + label + " is broken at tile " + broken + "; no train on a line it cannot run");
+		return 0;
+	}
+	/* Track B: the same search, track A's tiles left out, entered sideways at S1 (from_in). */
+	local taken = {};
+	foreach (t in laid) taken[t] <- 1;
+	local laid2 = null;
+	local path2 = PrismaticAI.FindRailPath(da.b2, db.b2, da.s1, db.s1, taken, da.lane, true, true);
+	if (path2 != null) laid2 = PrismaticAI.BuildRailAlong(path2, da.s1, db.s1, 2, true, true);
+	if (laid2 != null) {
+		broken = PrismaticAI.VerifyRailLine(laid2, da.s1, db.s1);
+		if (broken == -1) broken = PrismaticAI.VerifyJunction(da, true);
+		if (broken == -1) broken = PrismaticAI.VerifyJunction(db, true);
+		if (broken != -1) {
+			AILog.Warning("PrismaticAI: second track of " + label + " is broken at tile " + broken);
+			laid2 = null;
+		}
+	}
+	local platforms = min(sa.platforms, sb.platforms);
+	local trains_max = platforms;
+	if (laid2 != null) {
+		local sig_a = PrismaticAI.PlaceLaneSignals(laid, sa.end, sb.end, true);
+		local sig_b = PrismaticAI.PlaceLaneSignals(laid2, da.s1, db.s1, false);
+		if (sig_a == 0 || sig_b == 0) {
+			AILog.Warning("PrismaticAI: no one-way signal on a track of " + label + " (" + sig_a + ", " + sig_b + "); no train on it");
+			return 0;
+		}
+		trains_max = platforms + min(sig_a, sig_b);
+		AILog.Info("PrismaticAI: double track " + label + ": " + laid.len() + " and " + laid2.len() + " tiles, " + sig_a + " and " +
+			sig_b + " one-way path signals, trains_max " + trains_max);
+	} else {
+		PrismaticAI.RemoveDoubleSpur(da);
+		PrismaticAI.RemoveDoubleSpur(db);
+		AILog.Warning("PrismaticAI: no second track for " + label + "; it runs single track, " + platforms + " trains");
+	}
+	AILog.Info("PrismaticAI: rail line " + label + " done, " + laid.len() + " tiles");
+	local depot = PrismaticAI.BuildRailDepotBehind(sa);
+	if (depot == null) depot = PrismaticAI.BuildRailDepotBehind(sb);
+	if (depot == null) depot = PrismaticAI.BuildRailDepotBeside(laid);
+	if (depot == null) { AILog.Warning("PrismaticAI: no rail depot behind a platform or beside the line"); return 0; }
+	/* wagons 0: every train as long as the platform. */
+	local line = {a = sa.tile, b = sb.tile, depot = depot, cargo = cargo, wagons = 0, flags = first_flags,
+		label = label, railtype = AIRail.GetCurrentRailType(), restored = 0, len = len, trains_max = trains_max,
+		path = laid, stations = [sa, sb], closed = false, platforms = platforms};
+	if (laid2 != null) line.path2 <- laid2;
+	local train = PrismaticAI.BuildTrain(line);
+	if (train == -1) return 0;
+	RAIL_LINES.push(line);
+	AILog.Info("PrismaticAI: built a rail route " + label + " with a train of " + AIVehicle.GetNumWagons(train) + " (" + AIEngine.GetName(AIVehicle.GetEngineType(train)) + ")");
+	AILog.Info(PrismaticAI.LineRecord(RAIL_LINES.len(), line));
+	return 1;
+}
+
 /* The engines a line runs: the fastest buildable locomotive for `railtype` (ties: the more powerful)
  * and the wagon of the largest capacity that carries or refits to `cargo`. {loco, wagon}, -1 where
  * there is none. */
@@ -853,8 +1049,10 @@ function PrismaticAI::UseFirstRailType() {
 
 /* The rail settings a route is built with, from Behaviour(): platforms per terminus and the
  * overrides of the derived platform length and wagons (0: derive). */
-function PrismaticAI::RailShape(b) {
-	return {platforms = max(1, b.rail_platforms), len = b.rail_len, wagons = b.rail_wagons};
+function PrismaticAI::RailShape(b, own = false) {
+	/* rail_double applies to the bot's own freight lines only (main.nut passes own = true there). */
+	return {platforms = max(1, b.rail_platforms), len = b.rail_len, wagons = b.rail_wagons,
+		double = own && b.rail_double == 1};
 }
 
 function PrismaticAI::BuildRailRoute(a, b, shape) {
@@ -896,13 +1094,17 @@ function PrismaticAI::BuildFreightRailRoute(p, q, cargo, shape) {
 	/* What a served station gets of the production: the station rating, about 70% once trains call
 	 * regularly. */
 	local supply = AIIndustry.GetLastMonthProduction(p, cargo) * 70 / 100;
-	local plan = PrismaticAI.PlatformPlan(cargo, supply, dist, shape.platforms, shape.len, shape.wagons);
-	AILog.Info("PrismaticAI: rail plan " + label + ": " + plan.why);
-	local sa = PrismaticAI.BuildRailStationAt(pl, ql, plan.len, cargo, "produce", "at " + AIIndustry.GetName(p), shape.platforms);
+	local double = ("double" in shape) && shape.double;
+	/* Double track: two platforms at each end (the junction joins two), trains as long as the platform. */
+	local platforms = double ? 2 : shape.platforms;
+	local plan = PrismaticAI.PlatformPlan(cargo, supply, dist, platforms, shape.len, shape.wagons);
+	AILog.Info("PrismaticAI: rail plan " + label + ": " + plan.why + (double ? ", double track" : ""));
+	local sa = PrismaticAI.BuildRailStationAt(pl, ql, plan.len, cargo, "produce", "at " + AIIndustry.GetName(p), platforms, double ? 1 : 0);
 	if (sa == null) return 0;
-	local sb = PrismaticAI.BuildRailStationAt(ql, pl, plan.len, cargo, "accept", "at " + AIIndustry.GetName(q), shape.platforms);
+	local sb = PrismaticAI.BuildRailStationAt(ql, pl, plan.len, cargo, "accept", "at " + AIIndustry.GetName(q), platforms, double ? -1 : 0);
 	if (sb == null) { PrismaticAI.RemoveRailStation(sa, plan.len); return 0; }
-	local built = PrismaticAI.BuildRailLineAndTrain(sa, sb, plan.len, cargo, plan.wagons, AIOrder.OF_FULL_LOAD_ANY, label);
+	local built = double ? PrismaticAI.BuildDoubleRailLineAndTrain(sa, sb, plan.len, cargo, AIOrder.OF_FULL_LOAD_ANY, label)
+		: PrismaticAI.BuildRailLineAndTrain(sa, sb, plan.len, cargo, plan.wagons, AIOrder.OF_FULL_LOAD_ANY, label);
 	/* The industries it serves, so a saturated line can get a twin (steward.nut TwinLines). */
 	if (built > 0) { RAIL_LINES.top().from <- p; RAIL_LINES.top().to <- q; }
 	return built;
