@@ -143,6 +143,30 @@ export function sharedRows(entries, now = Date.now() / 1000) {
   }).join('') || '<tr><td colspan="5" class="px-4 py-3 text-gray-500 dark:text-gray-400">Nothing shared yet.</td></tr>';
 }
 
+/** Which debug buttons work in a session's status (src/rhai_debug.rs): idle or finished starts one;
+    paused steers it; running can only be stopped. */
+export function debugControls(status) {
+  const paused = status === 'paused';
+  const live = paused || status === 'running';
+  return { start: !live, continue: paused, step: paused, over: paused, out: paused, stop: live };
+}
+
+/** A paused session's variables as table rows, escaped; a name declared twice shows its latest. */
+export function varRows(vars) {
+  const latest = new Map();
+  for (const v of vars || []) latest.set(v.name, v);
+  return [...latest.values()].map((v) => `<tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"><td class="px-4 py-2 font-mono text-gray-900 dark:text-white">${esc(v.name)}${v.constant ? ' <span class="text-xs text-gray-400">const</span>' : ''}</td>`
+    + `<td class="px-4 py-2 font-mono text-xs">${esc(v.type)}</td><td class="px-4 py-2 font-mono text-xs break-all">${esc(v.value)}</td></tr>`).join('')
+    || '<tr><td colspan="3" class="px-4 py-3 text-gray-500 dark:text-gray-400">Nothing in scope.</td></tr>';
+}
+
+/** A paused session's call stack, innermost first, each frame a button to its call's line. */
+export function stackItems(stack, line) {
+  const frames = (stack || []).map((f) => `<li><button type="button" data-line="${Number(f.line) || ''}" class="w-full p-2 text-left rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"><span class="font-mono text-blue-600 dark:text-blue-300">${esc(f.function)}</span><span class="font-mono text-xs text-gray-500 dark:text-gray-400">(${(f.args || []).map((a) => esc(a.value)).join(', ')})</span>`
+    + `<span class="float-right text-xs text-gray-400">${f.source ? `${esc(f.source)}:` : 'line '}${Number(f.line) || '?'}</span></button></li>`);
+  return [`<li class="p-2 font-mono text-xs text-gray-500 dark:text-gray-400">paused at line ${Number(line) || '?'}</li>`, ...frames].join('');
+}
+
 /** The first line of a doc, for the list. */
 export const firstLine = (doc) => String(doc || '').split('\n').find((l) => l.trim()) || '';
 
@@ -418,6 +442,48 @@ async function boot() {
       }
     }
   }, 1000);
+
+  // The debugger (src/rhai_debug.rs, I0090): a session pauses at the gutter's breakpoints.
+  const dbg = { id: 0, status: '', timer: 0 };
+  function renderDebug(s) {
+    dbg.status = s?.status || '';
+    const ctl = debugControls(dbg.status);
+    for (const [k, id] of [['start', 'dbg-start'], ['continue', 'dbg-continue'], ['step', 'dbg-step'], ['over', 'dbg-over'], ['out', 'dbg-out'], ['stop', 'dbg-stop']]) $(id).disabled = !ctl[k];
+    const tone = { paused: 'yellow', running: 'blue', finished: s?.finished?.ok ? 'green' : 'red' }[dbg.status] || 'gray';
+    const label = dbg.status === 'paused' ? `paused at line ${s.line}${s.source ? ` of ${s.source}` : ''}`
+      : dbg.status === 'finished' ? (s.finished?.ok ? `finished: ${s.finished.value?.value ?? ''}` : (s.finished?.stopped ? 'stopped' : `error: ${s.finished?.error || ''}`)) : dbg.status;
+    $('dbg-status').innerHTML = dbg.status ? badge(label, tone) : '';
+    $('dbg-vars').innerHTML = dbg.status === 'paused' ? varRows(s.vars) : '';
+    $('dbg-stack').innerHTML = dbg.status === 'paused' ? stackItems(s.stack, s.line) : '';
+    $('dbg-out-log').textContent = (s?.output || []).join('\n');
+    ed.paused?.(dbg.status === 'paused' && !s.source ? s.line : null);
+    clearTimeout(dbg.timer);
+    if (dbg.status === 'running') dbg.timer = setTimeout(async () => renderDebug(await api(`/api/rhai/debug?id=${dbg.id}`)), 500);
+  }
+  async function debugStart() {
+    if (!debugControls(dbg.status).start) return;
+    // The session's own `status` (paused, running, finished) overrides api()'s HTTP status: read `id`.
+    const r = await api('/api/rhai/debug', { script: ed.value, breakpoints: ed.breakpoints?.() || [] });
+    if (r.error || !r.id) { $('msg').textContent = `not debugged: ${r.error || 'no session'}`; return; }
+    dbg.id = r.id;
+    renderDebug(r);
+  }
+  async function debugCommand(command) {
+    if (!dbg.id || !debugControls(dbg.status)[command === 'step' ? 'step' : command]) return;
+    const r = await api('/api/rhai/debug/command', { id: dbg.id, command, breakpoints: ed.breakpoints?.() || [] });
+    renderDebug(r.error ? (r.session || null) : r);
+    if (r.error) $('msg').textContent = r.error;
+  }
+  $('dbg-start').addEventListener('click', debugStart);
+  for (const c of ['continue', 'step', 'over', 'out', 'stop']) $(`dbg-${c}`).addEventListener('click', () => debugCommand(c));
+  $('dbg-stack').addEventListener('click', (e) => { const l = Number(e.target.closest('[data-line]')?.dataset.line); if (l) ed.goto(l); });
+  document.addEventListener('keydown', (e) => {
+    const key = `${e.shiftKey ? 'Shift+' : ''}${e.key}`;
+    const action = { F5: () => (dbg.status === 'paused' ? debugCommand('continue') : debugStart()), 'Shift+F5': () => debugCommand('stop'),
+      F10: () => debugCommand('over'), F11: () => debugCommand('step'), 'Shift+F11': () => debugCommand('out') }[key];
+    if (action) { e.preventDefault(); action(); }
+  });
+  renderDebug(null);
 
   // The shared memory, live: every second, under the typed prefix (src/rhai_shared.rs, I0091).
   async function loadShared() {

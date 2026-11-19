@@ -113,3 +113,22 @@ test('the shared memory renders as escaped rows with revision, writer and age', 
   assert.ok(html.includes('…'), 'a long value is cut');
   assert.match(sharedRows([]), /Nothing shared yet/);
 });
+
+test('the debug controls follow the session, and its scope and stack render escaped', async () => {
+  const { debugControls, varRows, stackItems } = await import('../static/scripts.js');
+  assert.deepEqual(debugControls(''), { start: true, continue: false, step: false, over: false, out: false, stop: false });
+  assert.deepEqual(debugControls('paused'), { start: false, continue: true, step: true, over: true, out: true, stop: true });
+  assert.deepEqual(debugControls('running'), { start: false, continue: false, step: false, over: false, out: false, stop: true });
+  assert.equal(debugControls('finished').start, true);
+  const rows = varRows([{ name: 'x', type: 'i64', value: '1' }, { name: 'x', type: 'i64', value: '2' }, { name: 'k', type: 'string', value: '<i>', constant: true }]);
+  assert.equal((rows.match(/<tr/g) || []).length, 2, 'a shadowed name shows once, its latest value');
+  assert.match(rows, />2</);
+  assert.match(rows, /const/);
+  assert.ok(!rows.includes('<i>'));
+  assert.match(varRows([]), /Nothing in scope/);
+  const stack = stackItems([{ function: 'add', args: [{ value: '1' }, { value: '<2>' }], line: 6, source: null }], 2);
+  assert.match(stack, /paused at line 2/);
+  assert.match(stack, /data-line="6"/);
+  assert.match(stack, /add/);
+  assert.ok(!stack.includes('<2>'));
+});

@@ -6,8 +6,8 @@
    scripts.js falls back to its plain editor when it cannot load. Same interface as that editor:
    {value, focus(), markError(err), goto(line)}. */
 
-import { EditorView, keymap, lineNumbers, highlightActiveLine, highlightActiveLineGutter, drawSelection, hoverTooltip } from '@codemirror/view';
-import { EditorState, Compartment } from '@codemirror/state';
+import { EditorView, keymap, lineNumbers, highlightActiveLine, highlightActiveLineGutter, drawSelection, hoverTooltip, gutter, GutterMarker, Decoration } from '@codemirror/view';
+import { EditorState, Compartment, StateField, StateEffect, RangeSet } from '@codemirror/state';
 import { StreamLanguage, syntaxHighlighting, HighlightStyle, bracketMatching, indentOnInput, foldGutter, indentUnit } from '@codemirror/language';
 import { defaultKeymap, history, historyKeymap, indentWithTab } from '@codemirror/commands';
 import { autocompletion, closeBrackets, closeBracketsKeymap, completionKeymap } from '@codemirror/autocomplete';
@@ -54,7 +54,59 @@ const theme = EditorView.theme({
   '.cm-tooltip': { backgroundColor: '#1f2937', border: '1px solid #374151', color: '#f3f4f6', borderRadius: '0.5rem' },
   '.cm-tooltip-autocomplete ul li[aria-selected]': { backgroundColor: '#1d4ed8' },
   '.cm-scroller': { overflow: 'auto' },
+  '.cm-breakpoint-gutter': { width: '1.1em', cursor: 'pointer' },
+  '.cm-breakpoint': { color: '#ef4444', paddingLeft: '2px' },
+  '.cm-paused-line': { backgroundColor: '#a1620740' },
 }, { dark: true });
+
+/* ---- the debugger's marks (I0090): breakpoints in a gutter, the paused line highlighted ------ */
+
+const breakpointEffect = StateEffect.define({ map: (v, m) => ({ pos: m.mapPos(v.pos), on: v.on }) });
+const clearBreakpoints = StateEffect.define();
+const breakpointMarker = new (class extends GutterMarker {
+  toDOM() { const d = document.createElement('span'); d.textContent = '●'; d.className = 'cm-breakpoint'; d.setAttribute('aria-label', 'breakpoint'); return d; }
+})();
+/** The breakpoints, one marker per line start, moved with the text as it is edited. */
+const breakpointState = StateField.define({
+  create: () => RangeSet.empty,
+  update(set, tr) {
+    set = set.map(tr.changes);
+    for (const e of tr.effects) {
+      if (e.is(clearBreakpoints)) set = RangeSet.empty;
+      else if (e.is(breakpointEffect)) set = e.value.on ? set.update({ add: [breakpointMarker.range(e.value.pos)], sort: true }) : set.update({ filter: (from) => from !== e.value.pos });
+    }
+    return set;
+  },
+});
+function toggleBreakpoint(view, pos) {
+  let on = true;
+  view.state.field(breakpointState).between(pos, pos, () => { on = false; });
+  view.dispatch({ effects: breakpointEffect.of({ pos, on }) });
+}
+const breakpointGutter = [breakpointState, gutter({
+  class: 'cm-breakpoint-gutter',
+  markers: (v) => v.state.field(breakpointState),
+  initialSpacer: () => breakpointMarker,
+  renderEmptyElements: true, // every line takes a click, not only those with a breakpoint
+  domEventHandlers: { mousedown(view, line) { toggleBreakpoint(view, line.from); return true; } },
+})];
+const pausedEffect = StateEffect.define();
+const pausedLine = Decoration.line({ class: 'cm-paused-line' });
+/** The line a debug session is paused on, highlighted. */
+const pausedState = StateField.define({
+  create: () => Decoration.none,
+  update(deco, tr) {
+    deco = deco.map(tr.changes);
+    for (const e of tr.effects) {
+      if (e.is(pausedEffect)) {
+        const n = e.value;
+        deco = n && n <= tr.state.doc.lines ? Decoration.set([pausedLine.range(tr.state.doc.line(n).from)]) : Decoration.none;
+      }
+    }
+    return deco;
+  },
+  provide: (f) => EditorView.decorations.from(f),
+});
 
 /** The catalogue of GET /api/rhai/functions, fetched once and again every 30 seconds. */
 function catalogueSource(fetcher = fetch) {
@@ -104,7 +156,7 @@ export function rhaiEditor(host, { onChange, onSave, onRun, onStop } = {}) {
     state: EditorState.create({
       doc: '',
       extensions: [
-        keys, lineNumbers(), highlightActiveLineGutter(), foldGutter(), lintGutter(), history(), drawSelection(),
+        keys, breakpointGutter, pausedState, lineNumbers(), highlightActiveLineGutter(), foldGutter(), lintGutter(), history(), drawSelection(),
         indentOnInput(), indentUnit.of('    '), bracketMatching(), closeBrackets(), highlightActiveLine(), highlightSelectionMatches(),
         rhai, syntaxHighlighting(rhaiHighlight), theme, autocompletion({ override: [complete] }), hover,
         EditorView.contentAttributes.of({ 'aria-label': 'Script text', spellcheck: 'false' }),
@@ -125,6 +177,24 @@ export function rhaiEditor(host, { onChange, onSave, onRun, onStop } = {}) {
     markError(err) {
       const d = err && typeof err === 'object' ? diagnostic(view.state.doc.toString(), err) : null;
       view.dispatch(setDiagnostics(view.state, d ? [d] : []));
+    },
+    /** The lines with a breakpoint, in order. */
+    breakpoints() {
+      const out = [];
+      const it = view.state.field(breakpointState).iter();
+      while (it.value) { out.push(view.state.doc.lineAt(it.from).number); it.next(); }
+      return [...new Set(out)];
+    },
+    /** Set exactly these breakpoint lines. */
+    setBreakpoints(lines) {
+      const effects = [clearBreakpoints.of(null), ...lines.filter((n) => n >= 1 && n <= view.state.doc.lines).map((n) => breakpointEffect.of({ pos: view.state.doc.line(n).from, on: true }))];
+      view.dispatch({ effects });
+    },
+    /** Highlight the line a session is paused on (null: none) and bring it into view. */
+    paused(line) {
+      const effects = [pausedEffect.of(line || null)];
+      if (line && line <= view.state.doc.lines) effects.push(EditorView.scrollIntoView(view.state.doc.line(line).from, { y: 'center' }));
+      view.dispatch({ effects });
     },
     goto(line) {
       const l = view.state.doc.line(Math.min(Math.max(1, line), view.state.doc.lines));

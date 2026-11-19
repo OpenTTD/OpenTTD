@@ -31,3 +31,17 @@ validation:
 evidence_required:
   - validation_run
 created_at: '2026-11-19'
+started_at: 2026-11-19T13:43:34Z
+started_event: sha256:d9ec45bedccf6d3bf8c02a6c9663086981434bf84724e69adfb32c0c61439558
+updated_at: 2026-11-19T13:44:00Z
+verified_at: 2026-11-19T13:43:43Z
+verified_event: sha256:d2b2f45d9752e50e28392fc84e962caf4c0e9cdc502f1b87c9f654677d18a651
+completed_at: 2026-11-19T13:44:00Z
+completed_event: sha256:38fe0aaeedc4dc08115fa1c76273c120c8faf9e68d4f1a6275e61465d92c223e
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release --bin mcp-panel; tools/research/mcp-scripts-check http://127.0.0.1:8870; tools/research/mcp-route-check http://127.0.0.1:8870"
+    result: "153/153 (7 debugger tests); scripts check 29/29 live (gutter breakpoint, pause at line 6, highlighted line, scope x=1, step into add, continue to the end); route check 841 passed 0 failed"
+    commit: b126ac3e7cdf0ae943dafa289813768f305d5ad4
+    recorded_at: 2026-11-19T13:43:53Z

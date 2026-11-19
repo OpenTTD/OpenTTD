@@ -153,7 +153,8 @@ highlighting, the parser's error as a lint marker while you type, and completion
 every function a script can call, from `GET /api/rhai/functions` (host functions, one per MCP
 tool, OpenAPI route and console command, and every library function under the alias a script
 imports it as). A script runs once with its output streamed, or as a service that reloads when its
-file changes. Scripts and services share keys through `shared_set`, `shared_get` and `shared_cas`
+file changes, or under the debugger: breakpoints in the gutter, step into, over and out, the
+variables in scope and the call stack while it is paused. Scripts and services share keys through `shared_set`, `shared_get` and `shared_cas`
 (a write that names the revision it expects, so concurrent writers never lose an update), shown
 live on the page, every write a `rhai.shared` event on the bus
 ([`research/rhai-ide.md`](research/rhai-ide.md)). Examples from [`tools/research/mcp-panel/rhai/`](tools/research/mcp-panel/rhai/):
@@ -1338,7 +1339,7 @@ Milestones of the plan with the issues done and still open, derived from the iss
 | [The fork is published, supervised by Majordomus, and current with upstream](.ai/repo/project/milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
 | [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](.ai/repo/project/milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
 | [Planning decisions read recorded history from the store and publish what they chose as data](.ai/repo/project/milestones/planning-is-generated-from-recorded-history.yaml) | 7/7 | — |
-| [Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard](.ai/repo/project/milestones/rhai-is-a-live-ide.yaml) | 3/6 | I0090, I0092, I0093 |
+| [Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard](.ai/repo/project/milestones/rhai-is-a-live-ide.yaml) | 4/6 | I0092, I0093 |
 <!-- surfaces:end ai-plan -->
 
 ## 1.0) About

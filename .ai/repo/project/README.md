@@ -52,5 +52,5 @@ issues, the same derivation `majordomus plan` makes.
 | [The fork is published, supervised by Majordomus, and current with upstream](milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
 | [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
 | [Planning decisions read recorded history from the store and publish what they chose as data](milestones/planning-is-generated-from-recorded-history.yaml) | 7/7 | — |
-| [Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard](milestones/rhai-is-a-live-ide.yaml) | 3/6 | I0090, I0092, I0093 |
+| [Rhai is a live IDE: edited, run, debugged and inspected in the panel, and it reaches Prismatic's models and blackboard](milestones/rhai-is-a-live-ide.yaml) | 4/6 | I0092, I0093 |
 <!-- surfaces:end ai-plan -->

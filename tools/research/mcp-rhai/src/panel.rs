@@ -2365,6 +2365,12 @@ pub fn routes() -> Vec<Route> {
           s(json!({"key": st(), "value": {}, "writer": st(), "rev": {"type": "integer", "minimum": 0}}), &["key", "value"]), crate::rhai_shared::h_shared_set),
         r("POST", "/api/rhai/shared/delete", "rhaiSharedDelete", "Delete a shared key (with rev, only at that revision); 409 when it is absent or at another revision. Published as a rhai.shared event", false,
           s(json!({"key": st(), "writer": st(), "rev": {"type": "integer", "minimum": 0}}), &["key"]), crate::rhai_shared::h_shared_delete),
+        // The debugger (src/rhai_debug.rs, I0090): a script run as a session that pauses at breakpoints.
+        r("POST", "/api/rhai/debug", "rhaiDebugStart", "Run a Rhai script as a debug session: it pauses at the given breakpoint lines; answers the session once it pauses or finishes (status, line, column, depth, the variables in scope, the call stack, printed lines, the result). A paused script never pauses the game", false,
+          s(json!({"script": st(), "breakpoints": {"type": "array", "items": {"type": "integer", "minimum": 1}}}), &["script"]), crate::rhai_debug::h_debug_start),
+        r("GET", "/api/rhai/debug", "rhaiDebug", "A debug session's state (?id=), or every session without one", false, None, crate::rhai_debug::h_debug),
+        r("POST", "/api/rhai/debug/command", "rhaiDebugCommand", "Steer a paused debug session: continue, step (into a function), over, out (of the function), stop; breakpoints may be replaced with any command (an empty command only sets them). Answers the session once it pauses again or finishes", false,
+          s(json!({"id": {"type": "integer"}, "command": st(), "breakpoints": {"type": "array", "items": {"type": "integer", "minimum": 1}}}), &["id"]), crate::rhai_debug::h_debug_command),
         r("GET", "/api/services", "services", "The scripts running as services in this panel: running, started, reloads, the last line's sequence number and the files watched for hot reload", false, None, crate::panel_scripts::h_services),
         r("POST", "/api/services/start", "serviceStart", "Start a script as a service in the background (rail_monitor, rail_steward, ...); it reloads when its file or a library it imports changes", false,
           s(json!({"name": st()}), &["name"]), crate::panel_scripts::h_service_start),
@@ -2441,6 +2447,7 @@ fn query_params(path: &str) -> &'static [(&'static str, bool)] {
         "/api/script" => &[("name", true)],
         "/api/services/log" => &[("name", true), ("since", false)],
         "/api/rhai/shared" => &[("key", false), ("prefix", false)],
+        "/api/rhai/debug" => &[("id", false)],
         _ => &[],
     }
 }
@@ -3114,7 +3121,8 @@ mod tests {
         // and the real-world places (GET /api/realworld, GET /api/realworld/scenario, POST /api/realworld/compile),
         // and the Rhai function catalogue (GET /api/rhai/functions; rhai_catalogue.rs, I0088), and the
         // shared memory (GET and POST /api/rhai/shared, POST /api/rhai/shared/delete; rhai_shared.rs, I0091).
-        assert_eq!(rs.len(), 66);
+        // And the debugger (POST /api/rhai/debug, GET /api/rhai/debug, POST /api/rhai/debug/command; I0090).
+        assert_eq!(rs.len(), 69);
         for (m, p) in [("GET", "/api/status"), ("POST", "/api/console"), ("POST", "/api/rhai"), ("GET", "/api/news"), ("POST", "/api/news"),
                        ("GET", "/api/content"), ("POST", "/api/content/download"),
                        ("GET", "/api/ask"), ("POST", "/api/ask"), ("POST", "/api/instances/call"), ("GET", "/api/ui/classes"),
@@ -3127,7 +3135,7 @@ mod tests {
             "/api/content", "/api/content/download", "/api/overview/history", "/api/results", "/api/result", "/api/duel", "/api/scoreboard", "/api/calibration",
             "/api/bus", "/api/bus/publish", "/api/db/tables", "/api/db/query",
             "/api/scripts", "/api/script", "/api/script/check", "/api/script/save",
-            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete",
+            "/api/services", "/api/services/start", "/api/services/stop", "/api/services/log", "/api/rhai/functions", "/api/rhai/shared", "/api/rhai/shared/delete", "/api/rhai/debug", "/api/rhai/debug/command",
             "/api/realworld", "/api/realworld/scenario", "/api/realworld/compile"].contains(&r.path)));
     }
 

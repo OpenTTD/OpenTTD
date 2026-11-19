@@ -58,7 +58,7 @@ flowchart LR
 |---|---|
 | I0088 | **done**: `GET /api/rhai/functions` answers 1,866 functions on a live panel (24 host, 786 tool, 876 route, 87 console, 93 library), signatures as Rhai reads them (`rpc(string) -> Dynamic`); `mcp-route-check` 835 passed, 0 failed; `cargo test --release --bin mcp-panel` 139/139 |
 | I0089 | **done**: CodeMirror 6 on the Scripts page; `tools/research/mcp-scripts-check` against a live panel 19/19 (CodeMirror loads, colours, numbers lines, marks and underlines a parse error, completes `rpc`, saves, reloads a service, runs once, no horizontal scroll at 390 px); `node --test` 265/265 |
-| I0090 | planned |
+| I0090 | **done**: `src/rhai_debug.rs` on rhai's debugging interface; `POST /api/rhai/debug`, `GET /api/rhai/debug`, `POST /api/rhai/debug/command`; a breakpoint gutter, the paused line highlighted, Continue/Step/Over/Out/Stop and F5/F10/F11 keys, the scope and the call stack on the page; `cargo test` 153/153 (7 new: breakpoint, into, out, over, stop, breakpoints changed while paused, run-through); live: `mcp-scripts-check` 29/29 (gutter click, pause at line 6, highlight, scope `x = 1`, Step into `add`, Continue to the end), `mcp-route-check` 841 passed 0 failed |
 | I0091 | **done**: `src/rhai_shared.rs`, `GET/POST /api/rhai/shared`, `POST /api/rhai/shared/delete`, Rhai `shared_get`, `shared_entry`, `shared_set`, `shared_cas`, `shared_delete`, `shared_keys`; the Scripts page's live Shared memory table; `cargo test` 146/146 (7 new, among them 8 threads × 50 compare-and-swap increments losing none); live: `mcp-scripts-check` 23/23, `mcp-route-check` 838 passed 0 failed, every write a `rhai.shared` event in the DuckDB store; not a session console (deferred: a script runs once or as a service, see I0090) |
 | I0092 | planned |
 | I0093 | planned |
@@ -87,6 +87,17 @@ Beside this milestone, the AI battle already runs Axon on EXLA locally:
 with prismatic-platform's compiled Nx/EXLA/Axon, and `prismatic_tune.rhai` applies its best
 settings through approval-gated tools. Its output, `brain.json`, is a second source a Rhai
 function can read.
+
+## The debugger
+
+Debug runs the editor's text as a session in the panel's own process, with rhai's debugging
+interface attached. It pauses at a breakpoint line of the script (a library it imports has no
+breakpoints of its own; step into goes inside), shows the variables in scope and the call stack,
+and waits for Continue, Step (into a function), Over, Out (of the function) or Stop. A breakpoint
+fires once per arrival on its line. A session waits at most 30 minutes paused, eight run at once,
+and a paused script never pauses the game: anything it changes still goes through approval-gated
+tools. Rhai marks its debugging interface volatile: it moves with the rhai version `Cargo.lock`
+pins.
 
 ## Shared memory
 

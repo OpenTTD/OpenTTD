@@ -121,6 +121,30 @@ try {
   check('every shared write is a rhai.shared event', (bus.events || []).filter((e) => e.data?.key === key).length === 2, `${(bus.events || []).length} rhai.shared events`);
   const gone = await api('/api/rhai/shared/delete', { key, rev: 2 });
   check('a shared key is deleted at its revision', gone.deleted === true && (await api(`/api/rhai/shared?key=${key}`)).status === 404);
+  // The debugger (I0090): a breakpoint set in the gutter pauses the script there with its scope;
+  // Step enters the function, Continue runs to the end.
+  const dbgName = `${name}_dbg`;
+  const dbgFile = path.join(libDir, `${dbgName}.rhai`);
+  await api('/api/script/save', { name: dbgName, text: 'fn add(a, b) {\n    let s = a + b;\n    s\n}\nlet x = 1;\nlet y = add(x, 2);\nprint(y * 10);\n' });
+  await page.goto(`${base}/scripts/${dbgName}`, { waitUntil: 'networkidle' });
+  await page.waitForFunction(() => window.scriptsEditor?.value.includes('add(x, 2)'), null, { timeout: 5000 }).catch(() => {});
+  const gutters = await page.$$('#editor .cm-breakpoint-gutter .cm-gutterElement');
+  const line6 = gutters.length >= 7 ? gutters[6] : null; // the first element is the gutter's spacer
+  if (line6) await line6.click();
+  check('a click in the gutter sets a breakpoint', JSON.stringify(await page.evaluate(() => window.scriptsEditor.breakpoints())) === '[6]');
+  await page.click('#dbg-start', { timeout: 3000 }).catch(() => {});
+  await page.waitForFunction(() => document.querySelector('#dbg-status')?.textContent.includes('paused'), null, { timeout: 8000 }).catch(() => {});
+  check('Debug pauses at the breakpoint', (await page.textContent('#dbg-status')).includes('paused at line 6'), await page.textContent('#dbg-status'));
+  check('the paused line is highlighted', (await page.$$('#editor .cm-paused-line')).length === 1);
+  const scope = await page.$$eval('#dbg-vars tr', (rows) => rows.map((r) => [...r.cells].map((c) => c.textContent.trim())));
+  check('the scope shows x = 1', scope.some(([n, t, v]) => n === 'x' && t === 'i64' && v === '1'), JSON.stringify(scope));
+  await page.click('#dbg-step', { timeout: 3000 }).catch(() => {});
+  await page.waitForFunction(() => document.querySelector('#dbg-status')?.textContent.includes('line 2'), null, { timeout: 8000 }).catch(() => {});
+  check('Step enters the function, its frame on the stack', (await page.textContent('#dbg-stack')).includes('add'), await page.textContent('#dbg-status'));
+  await page.click('#dbg-continue', { timeout: 3000 }).catch(() => {});
+  await page.waitForFunction(() => document.querySelector('#dbg-status')?.textContent.includes('finished'), null, { timeout: 8000 }).catch(() => {});
+  check('Continue runs to the end, its output shown', (await page.textContent('#dbg-out-log')).includes('30'), await page.textContent('#dbg-status'));
+  fs.rmSync(dbgFile, { force: true });
   check('no script error on the page', errors.length === 0, errors.join('; '));
 
   // A phone: nothing wider than the screen.
@@ -133,6 +157,7 @@ try {
   await api('/api/services/stop', { name }).catch(() => {});
   await sleep(300);
   fs.rmSync(file, { force: true });
+  fs.rmSync(path.join(libDir, `${name}_dbg.rhai`), { force: true });
   await browser.close();
 }
 const failed = results.filter((r) => !r).length;

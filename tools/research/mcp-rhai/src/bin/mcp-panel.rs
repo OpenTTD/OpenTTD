@@ -51,6 +51,8 @@ mod rhai_catalogue;
 mod panel_npm;
 #[path = "../rhai_shared.rs"]
 mod rhai_shared;
+#[path = "../rhai_debug.rs"]
+mod rhai_debug;
 #[path = "../panel_realworld.rs"]
 mod panel_realworld;
 #[path = "../panel_store.rs"]
