@@ -33,6 +33,8 @@ flowchart TB
   MAJ["Majordomus supervision"] --> VAL
   BUS -->|"digest"| MAJ
   STEW -->|"rail problems"| MAJ
+  RW["Real-world scenario"] -->|"a real place as the map"| PLAN
+  RW -->|"/realworld, its routes"| PANEL
 ```
 
 ## The pages
@@ -52,3 +54,4 @@ flowchart TB
 | [Validation gate](validation-gate.md) | Four cost tiers behind `tools/gate.sh`, a fail-closed status vocabulary, every web page driven in a browser |
 | [Published surfaces](published-surfaces.md) | Site, wiki and in-document tables generated from the repository, checked on every commit |
 | [Majordomus supervision](majordomus-supervision.md) | The `.ai/` layer, scoped tasks, handovers, hooks and the board, as this fork uses them |
+| [Real-world scenario](real-world-scenario.md) | A place name becomes a map from OpenStreetMap and Copernicus GLO-30, every entity labelled OBSERVED, DERIVED, INFERRED or HYPOTHETICAL |

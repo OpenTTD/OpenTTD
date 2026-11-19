@@ -6,6 +6,12 @@ weaker name applies. A check that did not run is reported as not run, never as p
 
 ## In the game
 
+The same discipline applies to data, not only to validation. The
+[real-world scenario](../mechanisms/real-world-scenario.md) labels every game entity it makes from a
+real place OBSERVED, DERIVED, INFERRED or HYPOTHETICAL, with its evidence, rule and confidence, and
+refuses an ambiguous place rather than guess. The validation statuses below say what ran; those
+classes say what is known.
+
 **The taxonomy** is defined in [`research/README.md`](../README.md), "Recording an experiment":
 
 | Status | Meaning |

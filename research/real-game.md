@@ -111,5 +111,8 @@ any duel.
 
 ## Related
 
+The map of a real game can be a real place: [`real-world-scenario.md`](real-world-scenario.md) turns
+a place name into a heightmap and a GameScript that a dedicated server loads.
+
 [`net-compat.md`](net-compat.md), [`vanilla-client.md`](vanilla-client.md), [`mcp-control.md`](mcp-control.md),
 [`rail-steward.md`](rail-steward.md), [`mechanisms/`](mechanisms/README.md), [`concepts/`](concepts/README.md).

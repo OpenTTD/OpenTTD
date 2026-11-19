@@ -8,6 +8,12 @@ with real economic structure.
 
 ## In the game
 
+The twin can be a real place, not only a generated map. The
+[real-world scenario](../mechanisms/real-world-scenario.md) turns a place name such as Brno into a
+heightmap, towns and industries from OpenStreetMap and Copernicus GLO-30, and labels every entity
+with how it is known. An agent then plans on a real geography, and a reader can tell which parts of
+the map are observed and which are game stand-ins.
+
 OpenTTD simulates an economy: towns that grow and produce passengers, industries that produce and
 accept cargo, payment that depends on distance and transit time, construction and running costs,
 loans, inflation and competing companies. The fork reads all of it through the MCP server's

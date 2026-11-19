@@ -464,7 +464,7 @@ from the code. The right-hand column says what was counted.
 | **33** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **86** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
 | **84** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **449** | published documents on the site and the wiki | published documents under `/` |
+| **450** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
@@ -532,7 +532,7 @@ flowchart LR
 | [Desired-state reconciliation](research/concepts/desired-state-reconciliation.md) | the steward sets each rail line's target, the bot makes it so | controllers, fleet management | [rail steward and monitor](research/mechanisms/rail-steward-and-monitor.md) |
 | [Portfolio under a budget](research/concepts/portfolio-under-a-budget.md) | which lines to build and which trains to buy, chosen by a knapsack over spare money | capital allocation, deal pipelines | [planner and AlgoGlyph](research/mechanisms/planner-and-algoglyph.md) |
 | [Calibration against reality](research/concepts/calibration-against-reality.md) | the planner's predictions checked against what each line earned | forecasting, model risk | [planner and AlgoGlyph](research/mechanisms/planner-and-algoglyph.md) |
-| [Digital twin as a testbed](research/concepts/digital-twin-testbed.md) | two companies, one map, held starts: the plan against no plan | A/B tests, trials | [duels](research/mechanisms/duels.md) |
+| [Digital twin as a testbed](research/concepts/digital-twin-testbed.md) | two companies, one map, held starts: the plan against no plan; the map can be a real place, every entity labelled with its evidence | A/B tests, trials, site studies | [duels](research/mechanisms/duels.md), [real-world scenario](research/mechanisms/real-world-scenario.md) |
 | [Evidence and validation status](research/concepts/evidence-and-validation-status.md) | PASS, FAIL, PARTIAL, NOT RUN: never a claim without a run | audits, compliance | [validation gate](research/mechanisms/validation-gate.md) |
 | [End to end, or it does not exist](research/concepts/end-to-end-or-it-does-not-exist.md) | every web page driven in a real browser, enforced | release quality | [validation gate](research/mechanisms/validation-gate.md) |
 | [Derived, not restated](research/concepts/derived-not-restated.md) | site, wiki, tables and charts generated from the sources | documentation that cannot drift | [published surfaces](research/mechanisms/published-surfaces.md) |
