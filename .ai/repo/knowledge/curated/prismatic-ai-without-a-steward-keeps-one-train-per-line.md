@@ -337,6 +337,14 @@ the balance falls below it, and `RepaySurplus` never repays below that floor. `B
 stops buying planes once the funds left would not run them for half a year. Replayed for 20
 years, g145.3 survives at 1.06M. The default meets the floor twice in that game.
 
+The guard cannot rescue a company that has already borrowed its whole loan. In edition 6f7457c4,
+g152.3 (seed 464398984, `air_level_max=5`, `air_planes=6`, `aggressiveness=100`) went bankrupt
+with the guard in place. Replayed in its start slot, it kept the loan at 270k to 290k of a 300k
+maximum. It had six planes and about fifteen bus routes, all built on borrowed money, and an income
+that never covered them. The guard borrowed twice, then had no headroom left. That failure belongs
+to the gene combination, which the GA selects out, not to a missing borrowing path. The default
+has no bankruptcy in the editions since the guard.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
