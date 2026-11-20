@@ -221,6 +221,13 @@ function PrismaticAI::BuildAirRoute(a, b, planes) {
 	local hangar = AIAirport.GetHangarOfAirport(pa);
 	local running = 0;
 	for (local i = 0; i < planes; i++) {
+		/* Past the first plane, buy only what leaves half a year of the route's running costs: six
+		 * planes on a 100k opener left 6k and a balance that never recovered (edition b8b04ae2). */
+		local funds = AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
+		if (i > 0 && funds < AIEngine.GetPrice(engine) + (i + 1) * AIEngine.GetRunningCost(engine) / 2) {
+			AILog.Info("PrismaticAI: stopped at " + running + " plane(s): " + funds + " left would not run more");
+			break;
+		}
 		local v = AIVehicle.BuildVehicle(hangar, engine);
 		if (!AIVehicle.IsValidVehicle(v)) {
 			AILog.Warning("PrismaticAI: plane " + i + " not bought: " + AIError.GetLastErrorString());

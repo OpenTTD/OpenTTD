@@ -329,6 +329,14 @@ across maps. The default is now adaptive (`air_level_step` 0): any step until a 
 refused in the game, then 1. It ended at 8.7M, 12.0M and 17.2M on the same three seeds, better
 than step 2 on each.
 
+A GA mutation went truly bankrupt in edition b8b04ae2 (seed 289036769, g145.3). The opener bought
+six planes on a 100k start and kept 6k. With `invest_borrow=0` and an air route, no borrowing path
+fired, so the balance stayed negative quarter after quarter until 1962-04. Two guards now hold
+independent of genes. `StayAfloat` borrows back to a quarter of the fleet's running costs whenever
+the balance falls below it, and `RepaySurplus` never repays below that floor. `BuildAirRoute`
+stops buying planes once the funds left would not run them for half a year. Replayed for 20
+years, g145.3 survives at 1.06M. The default meets the floor twice in that game.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

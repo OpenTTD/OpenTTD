@@ -217,6 +217,28 @@ function PrismaticAI::DiscloseName() {
 	return false;
 }
 
+/* What a quarter of the fleet's running costs comes to: the balance the bot never lets fall below. */
+function PrismaticAI::QuarterRunningCost() {
+	local cost = 0;
+	foreach (v, _ in AIVehicleList()) cost += AIVehicle.GetRunningCost(v);
+	return cost / 4;
+}
+
+/* Survival borrowing, independent of invest_borrow (which only governs borrowing to invest): OpenTTD
+ * bankrupts a company whose balance stays negative quarter after quarter, and a GA mutation that spent
+ * the opener on six planes went bankrupt in 1962 with half its loan unused (edition b8b04ae2). */
+function PrismaticAI::StayAfloat(floor) {
+	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
+	if (money >= floor) return;
+	local loan = AICompany.GetLoanAmount(), max_loan = AICompany.GetMaxLoanAmount();
+	if (loan >= max_loan) return;
+	local step = AICompany.GetLoanInterval();
+	local want = min(max_loan, loan + ((floor - money) / step + 1) * step);
+	if (AICompany.SetLoanAmount(want)) {
+		AILog.Info("PrismaticAI: borrowed " + (want - loan) + " to stay afloat (balance was " + money + ", floor " + floor + ")");
+	}
+}
+
 /* Repay the loan down to what keeps `keep` in the bank, in the game's loan steps. */
 function PrismaticAI::RepaySurplus(keep) {
 	local loan = AICompany.GetLoanAmount();
@@ -346,6 +368,8 @@ function PrismaticAI::Start() {
 		 * names a company after its first station's town, so this waits for that name. */
 		if (!disclosed && AIController.GetSetting("disclose_name") == 1) disclosed = PrismaticAI.DiscloseName();
 		this.steward_on = b.self_steward == 1;
+		local afloat = PrismaticAI.QuarterRunningCost();
+		PrismaticAI.StayAfloat(afloat);
 		/* Before anything is built this heartbeat: the first air route reads it too. */
 		PRISMATIC_FULL_LOAD = b.air_full_load;
 		AIR_LEVEL_MAX = b.air_level_max;
@@ -513,7 +537,8 @@ function PrismaticAI::Start() {
 		this.ReconcileLines(b.cash_reserve);
 		if (PrismaticAI.MonthKey() != this.month) { this.month = PrismaticAI.MonthKey(); PrismaticAI.LogLines(); }
 		/* Borrowed money that sits idle only costs interest: repay what is above twice the reserve. */
-		PrismaticAI.RepaySurplus(2 * b.cash_reserve);
+		PrismaticAI.RepaySurplus(max(2 * b.cash_reserve, afloat));
+		PrismaticAI.StayAfloat(afloat);
 
 		AILog.Info("PrismaticAI heartbeat: date=" + AIDate.GetCurrentDate() +
 			" money=" + AICompany.GetBankBalance(AICompany.COMPANY_SELF) +
