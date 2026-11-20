@@ -345,6 +345,12 @@ that never covered them. The guard borrowed twice, then had no headroom left. Th
 to the gene combination, which the GA selects out, not to a missing borrowing path. The default
 has no bankruptcy in the editions since the guard.
 
+A GA candidate can leave the population before the interval rule has enough pairs to decide it.
+When it does, it plays on as a trial contestant under its exact settings string, and its pairs
+pool, because pairing is keyed by settings. g150.0 became the default that way (2026-11-20): 36
+pairs, ratio 1.154, interval low end 1.046. It flies more routes on shallow levelling and builds
+fewer, better-funded road routes.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

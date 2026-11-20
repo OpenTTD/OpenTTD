@@ -22,26 +22,31 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261120T170219-be00f066.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261120T170219-be00f066`](../results/battle-20261120T170219-be00f066.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261120T172301-1a43fb5a.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261120T172301-1a43fb5a`](../results/battle-20261120T172301-1a43fb5a.md) (1/1 replays identical).
 
-- Edition `be00f066f0358193`: PrismaticAI and referee at `2b32ecb6f1049e718e513efb309e963aa0a5205c`, base set `opengfx-8.0.tar`
+- Edition `1a43fb5a9fb34f5c`: PrismaticAI and referee at `2b32ecb6f1049e718e513efb309e963aa0a5205c`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 40 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 0 identical to their original on another arena
+- 46 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 1 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 40 | 40 | 160 | 4.0 | 1.0 | 94.8 M | 0 | 0 |
-| 2 | PrismaticAI GA g163.3 | 6 | 0 | 18 | 3.0 | 2.0 | 15.7 M | 0 | 2 |
-| 3 | PrismaticAI pre-elite | 7 | 0 | 21 | 3.0 | 2.0 | 14.9 M | 0 | 0 |
-| 4 | PrismaticAI | 7 | 0 | 21 | 3.0 | 2.0 | 13.5 M | 0 | 2 |
-| 5 | PrismaticAI GA g163.0 | 8 | 0 | 23 | 2.875 | 2.12 | 12.3 M | 0 | 6 |
-| 6 | PrismaticAI GA g163.brainSafe | 6 | 0 | 16 | 2.667 | 2.33 | 8.4 M | 0 | 4 |
-| 7 | PrismaticAI GA g163.brainExplore | 6 | 0 | 15 | 2.5 | 2.5 | 7.1 M | 0 | 2 |
-| 8 | AdmiralAI | 40 | 0 | 79 | 1.975 | 3.02 | 6.1 M | 0 | 1 |
-| 9 | LuDiAI AfterFix | 40 | 0 | 39 | 0.975 | 4.03 | 1.9 M | 0 | 0 |
-| 10 | CivilAI | 40 | 0 | 8 | 0.2 | 4.8 | 787.9 k | 0 | 6 |
+| 1 | AAAHogEx | 46 | 46 | 184 | 4.0 | 1.0 | 103.0 M | 0 | 0 |
+| 2 | PrismaticAI GA g165.0 | 7 | 0 | 21 | 3.0 | 2.0 | 15.3 M | 0 | 2 |
+| 3 | PrismaticAI GA g165.brainExplore | 6 | 0 | 18 | 3.0 | 2.0 | 14.8 M | 0 | 2 |
+| 4 | PrismaticAI pre-elite | 7 | 0 | 20 | 2.857 | 2.14 | 17.3 M | 0 | 0 |
+| 5 | PrismaticAI trial g150.0 | 7 | 0 | 20 | 2.857 | 2.14 | 15.1 M | 0 | 0 |
+| 6 | PrismaticAI | 5 | 0 | 14 | 2.8 | 2.2 | 16.9 M | 0 | 3 |
+| 7 | PrismaticAI GA g165.brainSafe | 8 | 0 | 22 | 2.75 | 2.25 | 14.2 M | 0 | 6 |
+| 8 | PrismaticAI GA g165.3 | 6 | 0 | 14 | 2.333 | 2.67 | 8.3 M | 0 | 2 |
+| 9 | AdmiralAI | 46 | 0 | 101 | 2.196 | 2.8 | 9.0 M | 0 | 1 |
+| 10 | LuDiAI AfterFix | 46 | 0 | 39 | 0.848 | 4.15 | 1.8 M | 0 | 0 |
+| 11 | CivilAI | 46 | 0 | 7 | 0.152 | 4.85 | 854.4 k | 3670 | 8 |
+
+| Seed | Original | Replay | Arenas | Identical |
+|---|---|---|---|---|
+| 1468369372 | m-0013 | m-0056 | mbp2 / mbp | yes |
 <!-- battle:end -->
 
 ## How it fits together
@@ -263,11 +268,20 @@ The first editions showed two failures. The battle now catches both by itself.
   flies under the current code. It lost all 13 of its pairs with the default (mean ratio 0.38)
   and caused most of the remaining PrismaticAI last places. It stays in the fitness check, which
   covers the autopilot-off code path.
-- **A near-promotion that left the GA plays on as a trial (2026-11-20).** GA g150.0 left the
-  population at 24 pairs with the default (15 wins, geometric mean ratio 1.12, interval low end
-  0.99), so it could never reach the 30 pairs the interval rule needs. **`PrismaticAI trial
-  g150.0`** plays its exact settings string. Its new matches pool with its GA pairs, because pairs
-  are keyed by settings, and the trial ends when the rule promotes or drops it.
+- **A near-promotion that left the GA played on as a trial, and became the default (2026-11-20).**
+  GA g150.0 left the population at 24 pairs with the default and could never reach the 30 pairs
+  the interval rule needs. **`PrismaticAI trial g150.0`** played its exact settings string, and its
+  new matches pooled with its GA pairs, because pairs are keyed by settings. At 36 pairs the rule
+  fired:
+  - geometric mean ratio 1.154, with a 95% bootstrap interval starting at 1.046,
+  - 23 wins.
+
+  Its genes are now the defaults, and the GA starts from them. It plays fewer and bigger air
+  routes: up to 15 autopilot routes, plus one more per 2.5M of idle money, shallow levelling
+  (10k at most, height range 8). On the ground it keeps a 25k reserve, 18 own lines on a 50k
+  budget, catchment rings of 8, at most 6 road vehicles a route, and up to 6 twin rail lines.
+  **`PrismaticAI pre-g150`** plays the former defaults as settings. It replaces pre-elite as an
+  anchor, after pre-elite ended at a ratio of 0.946 over 112 pairs.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not
