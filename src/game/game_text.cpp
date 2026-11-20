@@ -238,7 +238,7 @@ static std::shared_ptr<GameStrings> LoadTranslations()
 
 				/* Check the path and extension. */
 				if (!name.starts_with(ldir)) continue;
-				if (!name.ends_with(".txt")) continue;
+				if (!StrEndsWithIgnoreCase(name, ".txt")) continue;
 
 				scanner.AddFile(name, 0, tar_filename);
 			}

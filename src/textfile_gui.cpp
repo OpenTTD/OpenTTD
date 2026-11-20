@@ -870,12 +870,12 @@ static std::vector<char> Xunzip(std::span<char> input)
 
 #if defined(WITH_ZLIB)
 	/* In-place gunzip */
-	if (textfile.ends_with(".gz")) buf = Gunzip(buf);
+	if (StrEndsWithIgnoreCase(textfile, ".gz")) buf = Gunzip(buf);
 #endif
 
 #if defined(WITH_LIBLZMA)
 	/* In-place xunzip */
-	if (textfile.ends_with(".xz")) buf = Xunzip(buf);
+	if (StrEndsWithIgnoreCase(textfile, ".xz")) buf = Xunzip(buf);
 #endif
 
 	if (buf.empty()) return;
