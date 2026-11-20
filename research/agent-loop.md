@@ -48,7 +48,7 @@ flowchart LR
 | Stage | Status | What exists | What is missing |
 |---|---|---|---|
 | Retrieve | PARTIAL | the panel's `GET /api/evidence?q=&k=` and the `mcp-evidence` CLI (`tools/research/mcp-rhai/src/evidence.rs`): BM25 over every git-tracked text file at `HEAD` (source, tests, rules, ADRs, knowledge, plans, docs, records), in windows of 30 lines; each passage carries its path, lines, source class, commit and file digest, is ranked current code and policy before plans and records, and is checked against the file now (`current`, moved, `stale`, `deleted`); a question no passage covers by half is answered `insufficient evidence`. Alongside it: `majordomus_search` over the `.ai/` layer and the Markdown, `majordomus context resolve` with a sha256 per document, `tools/knowledge/refs check` for every cited path and symbol | lexical, not semantic (no embeddings): recall@5 0.69 and MRR 0.60 on `research/evidence-benchmark.json` v1; uncommitted changes are not indexed; the CLI `majordomus search` reads only the unversioned `.ai/local/` records |
-| Coordinate | PARTIAL | mesh claims (exclusive or advisory over paths, liveness by beats, a signed journal), handovers with front matter, the peer board's free-text announcements (`src/board.rs`), `mcp-bus-blackboard`'s monthly digest | typed records (observation, decision, blocker, ...), a revision or compare-and-swap on content; the typed bus (`panel_events.rs` `KINDS`) is local to one panel |
+| Coordinate | PARTIAL | mesh claims (exclusive or advisory over paths, liveness by beats, a signed journal), handovers with front matter, the peer board's free-text announcements (`src/board.rs`), `mcp-bus-blackboard`'s monthly digest | typed records (observation, decision, blocker, ...), a revision or compare-and-swap on content, which the owner placed in the Majordomus mesh journal (see "Owner answers"); the typed bus (`panel_events.rs` `KINDS`) is local to one panel |
 | Observe | IMPLEMENTED in the panel | every answer of the panel's `GET /api/bridge/companies` is recorded as an observation: its game tick and date and a digest of the companies' identities (`panel_decision.rs` `observe`, `identity_digest`), readable at `GET /api/bridge/observation` | the Python bridge's `/companies` still carries no tick or digest |
 | Decide | PARTIAL | Prismatic's `GET /api/openttd/decision` (Monte Carlo over `aggressiveness`); the panel binds its directive to the observation Prismatic made during the pull | Prismatic does not echo `observed_digest` yet (the panel reads it when it does); a change in prismatic-platform |
 | Validate | IMPLEMENTED | the panel's contract checks (`panel_decision.rs` `directive`, `fit_of`), its freshness check before any step (`freshness`: observed during the pull, the echoed digest, companies unchanged, at most 31 game days old, an AI company; 409 otherwise) and the game's `ValidateAction` | the bridge does not validate a directive |
@@ -116,3 +116,14 @@ Each closes one row above without a new tracking record:
    ZeroMQ and DuckDB ranks first), two curated knowledge records and the real-world scenario doc
    (their implementation ranks first). The questions are not tuned to the results; a new version
    adds questions.
+
+## Owner answers
+
+- 2026-11-20, session `2845686e-0ccb-4c11-a008-3c46a644c866`. Question: "Fable workstream B (typed
+  blackboard records: observation/hypothesis/plan/decision/blocker/handoff/outcome, revision CAS,
+  leases, supersession, provenance) has no home yet. Majordomus mesh (prismatic-majordomus) already
+  has claims, leases, signed journal and handovers for development workers but no typed records;
+  the OpenTTD panel has an in-memory CAS shared memory for Rhai scripts with an audit trail on the
+  bus/DuckDB. Where should typed records live?" Answer: "Majordomus mesh (Recommended)": extend the
+  canonical mesh journal in prismatic-majordomus with typed records; this fork's panel then reads
+  and writes them. The panel's shared memory stays what it is, script state, not a blackboard.
