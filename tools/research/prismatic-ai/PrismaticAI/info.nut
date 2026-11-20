@@ -277,9 +277,9 @@ class PrismaticAI extends AIInfo {
 		});
 		AddSetting({
 			name = "air_level_step",
-			description = "Most height steps between the corners of an airport site that is still levelled (a bigger step moves corners outside the site, where houses and roads stop it).",
-			min_value = 1, max_value = 8,
-			easy_value = 2, medium_value = 2, hard_value = 2, custom_value = 2, step_size = 1,
+			description = "Most height steps between the corners of an airport site that is still levelled (a bigger step moves corners outside the site, where houses and roads stop it); 0: any step until a levelled site is refused in this game, then 1.",
+			min_value = 0, max_value = 8,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({

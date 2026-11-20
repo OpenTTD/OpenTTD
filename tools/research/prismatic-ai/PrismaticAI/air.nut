@@ -119,7 +119,9 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 					if (z > hi) hi = z;
 				}
 			}
-			local level_ok = !level_lost && hi - lo <= AIR_LEVEL_STEP && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
+			/* air_level_step 0: adaptive per map, any step until a levelled site was refused, then 1. */
+			local step_max = AIR_LEVEL_STEP > 0 ? AIR_LEVEL_STEP : (AIR_LEVEL_REFUSED ? 1 : 255);
+			local level_ok = !level_lost && hi - lo <= step_max && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
 			local real = AIAccounting();
 			if (level_ok && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
 				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
@@ -127,6 +129,7 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			}
 			/* Say why: a test pass that succeeded leaves ERR_NONE as the last error. */
 			if (level_ok && AIR_LEVEL_ONCE == 1) level_lost = true;
+			if (level_ok) AIR_LEVEL_REFUSED = true;
 			if (level_ok) AILog.Warning("PrismaticAI: levelled tile " + t + " for " + real.GetCosts() + " (estimated " + cost + ") and the airport was still refused: " + AIError.GetLastErrorString());
 			if (!level_ok) {
 				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + ", height range " + (hi - lo) +

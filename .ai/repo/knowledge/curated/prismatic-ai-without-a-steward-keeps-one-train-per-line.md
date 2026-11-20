@@ -324,7 +324,10 @@ within that many height steps. Results over 20 years:
 | 930967890 | 5.0M | 8.0M | 13.4M |
 | 31337 | 14.7M | 15.8M | 15.8M |
 
-Step 2 is the default: it avoids the last place and stays close on the other seeds.
+Step 2 avoided the last place but cost 40% on seed 930967890, so the step is not monotone
+across maps. The default is now adaptive (`air_level_step` 0): any step until a levelled site is
+refused in the game, then 1. It ended at 8.7M, 12.0M and 17.2M on the same three seeds, better
+than step 2 on each.
 
 # How to apply it
 

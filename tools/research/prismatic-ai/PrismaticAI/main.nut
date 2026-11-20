@@ -29,7 +29,9 @@ AIR_KEEP_LAST <- 1;
 /* Whether one airport search stops levelling after a levelled site was refused (setting air_level_once). */
 AIR_LEVEL_ONCE <- 0;
 /* The most height steps between the corners of a site that is still levelled (setting air_level_step). */
-AIR_LEVEL_STEP <- 2;
+AIR_LEVEL_STEP <- 0;
+/* Whether a levelled airport site was refused in this game (air_level_step 0 adapts to it). */
+AIR_LEVEL_REFUSED <- false;
 
 
 class PrismaticAI extends AIController {

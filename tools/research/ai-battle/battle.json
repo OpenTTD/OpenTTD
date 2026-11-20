@@ -178,7 +178,7 @@
       "air_grow_money": 0,
       "air_level_once": 0,
       "own_fail_pause": 0,
-      "air_level_step": 2
+      "air_level_step": 0
     },
     "space": {
       "aggressiveness": [
@@ -302,7 +302,7 @@
         1
       ],
       "air_level_step": [
-        1,
+        0,
         8,
         1
       ]
