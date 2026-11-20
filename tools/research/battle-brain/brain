@@ -74,7 +74,11 @@ once() {
     rm -rf "$tmp"; return 0
   fi
   export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (default changed in 6111dc0fef)"
-  curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json"
+  # The battle API can be down (orchestrator restart): skip this round rather than feed brain.exs
+  # an empty gene space (it used to die with a Jason.DecodeError).
+  if ! curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json" || ! [[ -s "$tmp/space.json" ]]; then
+    echo "battle-brain: battle API $BATTLE unavailable: skipped this round" >&2; rm -rf "$tmp"; return 1
+  fi
   local args=()
   for l in nx exla axon polaris complex telemetry xla elixir_make nimble_pool jason; do args+=(-pa "$LIBS/$l/ebin"); done
   (cd "$tmp" && elixir "${args[@]}" "$HERE/brain.exs" "$tmp/rows.csv" "$tmp/space.json" "$tmp/brain.json")
