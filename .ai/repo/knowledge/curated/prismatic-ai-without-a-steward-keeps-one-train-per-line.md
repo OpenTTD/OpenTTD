@@ -254,6 +254,35 @@ decade.
 Noise: the same default replay of seed 31337 ended at 18.2M before an unrelated script change
 and at 11.6M after it, so one seed alone cannot decide anything.
 
+**Airport levelling never levelled the whole site (2026-11-20).** `BuildAirportNear` passed
+`AITile.LevelTiles` the far corner (x+w-1, y+h-1). Level-land works on tile corners: `TileHeight`
+is a tile's north corner (`terraform_cmd.cpp` `CmdLevelLand`), so a w x h airport needs the corners
+up to (x+w, y+h). The far edge stayed sloped, and every levelled site was paid for and then
+refused for ERR_FLAT_LAND_REQUIRED.
+
+What it cost in two arena matches:
+- Seed 113258830: `g71.brainExplore` levelled nine sites for ~150k and went bankrupt in 1961
+  without a vehicle.
+- Seed 756662687: `g74.3` never had an airport and ended with 13 vehicles against 456.
+
+The fix:
+- levels the right rectangle;
+- levels only when the test pass levels it fully (a test that fails part-way prices only part);
+- keeps funds for two airports and a plane after levelling, with a fourfold margin, because
+  the test pass underprices: 172k real against 53k estimated on one site.
+
+Correct levelling costs more, so the GA's air_level_max of 10, fitted to the cheap broken
+levelling, had become too low. Default air_level_max over 20 years:
+
+| Seed | 10 | 20 | 35 |
+|---|---|---|---|
+| 930967890 | 4.6M | 12.8M | 13.4M |
+| 1516196607 | 19.1M | 20.6M | 19.0M |
+| 31337 | 15.0M | 15.0M | 16.5M |
+
+The default is 35. Replays on the two arena seeds: `g71.brainExplore` survives at 4.4M, and
+`g74.3` ends with 41 planes, 105 vehicles and 7.6M.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

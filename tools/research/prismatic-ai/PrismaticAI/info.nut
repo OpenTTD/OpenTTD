@@ -258,7 +258,7 @@ class PrismaticAI extends AIInfo {
 			name = "air_level_max",
 			description = "Most levelling one airport site may cost, in thousands (a hilly map needs more).",
 			min_value = 0, max_value = 200,
-			easy_value = 10, medium_value = 10, hard_value = 10, custom_value = 10, step_size = 5,
+			easy_value = 35, medium_value = 35, hard_value = 35, custom_value = 35, step_size = 5,
 			flags = CONFIG_INGAME,
 		});
 		AddSetting({

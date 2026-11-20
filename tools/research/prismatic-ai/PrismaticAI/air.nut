@@ -62,6 +62,13 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 	tiles.KeepAboveValue(9);
 	tiles.Sort(AIList.SORT_BY_VALUE, AIList.SORT_DESCENDING);
 	local tried = 0;
+	/* Levelling is paid even when the airport is then refused. On OpenTTD seed 113258830 (company 2)
+	 * the search levelled site after site, the airport was refused each time, and the company went
+	 * bankrupt in 1961 without a vehicle. So a site is levelled only while the money left after it
+	 * still buys two airports and a plane. (A cap on the search's total levelling instead halved the
+	 * default's value on seed 930967890: most first sites need some.) */
+	local plane = PrismaticAI.PickPlane(type, pax);
+	local keep = 2 * AIAirport.GetPrice(type) + (plane == -1 ? 0 : AIEngine.GetPrice(plane));
 	for (local t = tiles.Begin(); !tiles.IsEnd() && tried < 25; t = tiles.Next()) {
 		tried++;
 		AILog.Info("PrismaticAI: survey airport in " + AITown.GetName(town) + " at tile " + t + " (passengers accepted " + tiles.GetValue(t) + ")");
@@ -73,23 +80,38 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 		/* Most refusals in the battle were slopes (ERR_FLAT_LAND_REQUIRED): level the rectangle to the
 		 * height of its first tile and try once more, which a buildable rectangle usually allows. */
 		if (AIError.GetLastError() == AIError.ERR_FLAT_LAND_REQUIRED) {
-			local far = AIMap.GetTileIndex(AIMap.GetTileX(t) + w - 1, AIMap.GetTileY(t) + h - 1);
+			/* LevelTiles levels tile corners (TileHeight is a tile's north corner, terraform_cmd.cpp
+			 * CmdLevelLand), and a w x h airport needs the corners up to x + w, y + h flat. Up to
+			 * x + w - 1, y + h - 1 the far edge stayed sloped: on OpenTTD seed 113258830 nine sites
+			 * were levelled and paid for, every one then refused for ERR_FLAT_LAND_REQUIRED, and the
+			 * company went bankrupt in 1961 without a vehicle. */
+			local far = AIMap.GetTileIndex(min(AIMap.GetMapSizeX() - 1, AIMap.GetTileX(t) + w),
+				min(AIMap.GetMapSizeY() - 1, AIMap.GetTileY(t) + h));
 			/* Only when levelling is cheap: in a battle, levelling plus two airports once left no money
 			 * for a plane, and the company sat on two empty airports for good. */
 			local cost = 0;
 			{
 				local test = AITestMode();
 				local acc = AIAccounting();
-				AITile.LevelTiles(t, far);
-				cost = acc.GetCosts();
+				/* A test pass that fails part-way prices only the part it got through, while the real
+				 * pass then levels that part and fails the same way: money spent, no airport. */
+				if (!AITile.LevelTiles(t, far)) cost = 1 << 30;
+				else cost = acc.GetCosts();
 			}
-			if (cost <= AIR_LEVEL_MAX && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
+			local funds = AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
+			/* The test pass underprices levelling: it does not move the corners it raises, so the real
+			 * pass cost 172055 where the test said 53413 (seed 113258830). Keep a fourfold margin. */
+			local level_ok = cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
+			local real = AIAccounting();
+			if (level_ok && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
 				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
 				return t;
 			}
 			/* Say why: a test pass that succeeded leaves ERR_NONE as the last error. */
-			if (cost > AIR_LEVEL_MAX) {
-				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + " (air_level_max " + AIR_LEVEL_MAX + ")");
+			if (level_ok) AILog.Warning("PrismaticAI: levelled tile " + t + " for " + real.GetCosts() + " (estimated " + cost + ") and the airport was still refused: " + AIError.GetLastErrorString());
+			if (!level_ok) {
+				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + " (air_level_max " +
+					AIR_LEVEL_MAX + "; funds " + funds + ", keeping " + keep + " for the airports and a plane)");
 				continue;
 			}
 		}

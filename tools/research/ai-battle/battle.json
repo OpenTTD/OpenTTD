@@ -163,7 +163,7 @@
       "air_routes_max": 3,
       "air_towns": 50,
       "air_max_tiles": 480,
-      "air_level_max": 10,
+      "air_level_max": 35,
       "invest_min": 50,
       "invest_ppv_div": 5,
       "invest_road_cap": 14,
