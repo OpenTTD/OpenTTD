@@ -29,13 +29,17 @@ REBASE="${BRAIN_BASELINE_REBASE:-1.12}"
 
 once() {
   local tmp; tmp="$(mktemp -d)"
-  local all; all="$("$POSTMORTEM" editions | head -n "$KEEP")"
+  # The cut is applied to every edition in the store first, then the newest $KEEP are kept: a cut
+  # edition that has scrolled out of the newest $KEEP still bounds the data (it used to read as
+  # "not recorded yet" and empty the brain).
+  local all; all="$("$POSTMORTEM" editions)"
   # A behaviour change that interacts with the genes (not a uniform shift) cannot be rebased by one
   # factor: $BRAIN_TRAIN_SINCE drops every edition older than the named one (newest first).
   # An edition not yet in the store means nothing since the cut has been recorded.
   if [[ -n "${BRAIN_TRAIN_SINCE:-}" ]]; then
     if grep -qx "$BRAIN_TRAIN_SINCE" <<<"$all"; then all="$(awk -v e="$BRAIN_TRAIN_SINCE" '{print} $0==e{exit}' <<<"$all")"; else all=""; fi
   fi
+  all="$(head -n "$KEEP" <<<"$all")"
   local eds; eds="$(sed "s/.*/'&'/" <<<"$all" | paste -sd, -)"
   [[ -n "$all" ]] || eds="'none'"
   # The default the target pairs against changed in 6111dc0fef (the GA's elite); the first edition
