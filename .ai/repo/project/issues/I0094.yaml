@@ -26,4 +26,16 @@ evidence_required:
 created_at: '2026-11-20'
 started_at: 2026-11-20T10:21:15Z
 started_event: sha256:2bbae3af36811b0071b5763c301c784f985f4490dfa479428b93e1fbcb976397
-updated_at: 2026-11-20T10:21:15Z
+updated_at: 2026-11-20T10:24:43Z
+verified_at: 2026-11-20T10:24:25Z
+verified_event: sha256:9658b7e79673fe45f32dc6a65ed623234de3e56fc23ef43995497c7f2a97e95f
+completed_at: 2026-11-20T10:24:43Z
+completed_event: sha256:498b6f0d2587002745f9104012b4214386e3814bc0cb31728356ea1ac878d217
+evidence:
+  - covers: "validation_run"
+    type: test
+    command: "cargo test --release --bin mcp-panel --bin mcp-hub; MCP_PANEL_DIR=<dir> mcp-hub --port 8797 then curl /static/marker.js and /static/shell.js, with and without the variable"
+    result: "mcp-hub 40/40, mcp-panel 184/184 incl. the_panel_directory_comes_from_mcp_panel_dir_else_the_build_checkout; live hub: with MCP_PANEL_DIR it served the marker from that directory and 404 for shell.js; without it the marker 404 and shell.js 200 from the build checkout"
+    artifact: "a2f5e072e2"
+    commit: a2f5e072e262d01d14ac885dd22cc9f163dbde59
+    recorded_at: 2026-11-20T10:24:31Z

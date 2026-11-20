@@ -1344,7 +1344,7 @@ Milestones of the plan with the issues done and still open, derived from the iss
 | [A change is validated at the tier its size needs, and the report cannot round up](.ai/repo/project/milestones/a-change-is-validated-in-cost-tiers.yaml) | 4/4 | — |
 | [Internal state is observable through gated instrumentation, and every experiment records how it ran](.ai/repo/project/milestones/internals-are-observable-with-recorded-provenance.yaml) | 8/8 | — |
 | [Prismatic steers a company in a live game through the standalone bridge](.ai/repo/project/milestones/prismatic-steers-a-company-through-the-bridge.yaml) | 5/5 | — |
-| [An agent reads and, with approval, changes the game over an embedded MCP server](.ai/repo/project/milestones/an-agent-reaches-the-game-over-mcp.yaml) | 52/53 | I0094 |
+| [An agent reads and, with approval, changes the game over an embedded MCP server](.ai/repo/project/milestones/an-agent-reaches-the-game-over-mcp.yaml) | 53/53 | — |
 | [The fork is published, supervised by Majordomus, and current with upstream](.ai/repo/project/milestones/the-fork-is-published-supervised-and-current.yaml) | 7/7 | — |
 | [NoirGFX: the game in the owner's SIG NIHL noir, from OpenGFX and Kenney models](.ai/repo/project/milestones/the-game-wears-the-owners-noir-style.yaml) | 1/1 | — |
 | [Planning decisions read recorded history from the store and publish what they chose as data](.ai/repo/project/milestones/planning-is-generated-from-recorded-history.yaml) | 7/7 | — |
