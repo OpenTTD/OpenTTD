@@ -143,6 +143,10 @@ Until there are `BRAIN_MIN_ROWS` (20) paired rows since the cut, the runner writ
 moves `brain.json` aside to `brain.withdrawn.json`. While it is absent, the GA takes no brain
 offspring.
 
+The second cut is `fad8c1af62` (first edition `406a089b`). It levels airport sites only within
+`air_level_step` height steps (default 2, before it about 8). The effect varies too much per seed for a
+rebase: from 0.6× to about 10,000×, where a map that went bankrupt now reaches 9.9M.
+
 ### Why a safe pick comes first
 
 Until 2026-11-19 the brain proposed by UCB only, so both of the GA's brain offspring were
