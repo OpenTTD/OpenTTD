@@ -128,6 +128,15 @@ class MatchContract(unittest.TestCase):
         self.assertEqual(battle.contestant_key({"ai": "P", "label": "P max"}), "P max")
 
 
+class HostShell(unittest.TestCase):
+    def test_an_unanswering_host_times_out_into_an_exit_code_not_an_exception(self):
+        host = battle.Host({"name": "h", "ssh": None}, "$HOME/ttd-battle")
+        r = host.try_sh("sleep 5", timeout=1)
+        self.assertEqual(r.returncode, 124)
+        self.assertIn("timed out", r.stderr)
+        self.assertEqual(host.try_sh("echo ok").stdout.strip(), "ok")
+
+
 class Scoring(unittest.TestCase):
     def test_points_wins_and_exclusions(self):
         ms = [match("m-0001", "h1", 1, [30, 20, 10]),

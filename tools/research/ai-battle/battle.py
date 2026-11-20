@@ -328,6 +328,14 @@ class Host:
                else ["ssh", *SSH_OPTS, *self.ssh_args, self.ssh, script])
         return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
 
+    def try_sh(self, script: str, timeout: int = 60) -> subprocess.CompletedProcess:
+        """Best-effort `sh`: a host that stops answering yields exit 124 instead of an exception,
+        so one unreachable arena can never take the orchestrator down."""
+        try:
+            return self.sh(script, timeout)
+        except subprocess.TimeoutExpired:
+            return subprocess.CompletedProcess(script, 124, "", f"timed out after {timeout}s")
+
     def probe(self) -> None:
         try:
             r = self.sh(f'b={self.binary}; if [ -x "$b" ]; then "$b" -h 2>&1 | head -1; '
@@ -1054,7 +1062,7 @@ class Orchestrator:
             if m["status"] == "running":
                 host = next((h for h in self.hosts if h.name == m["host"]), None)
                 if host:
-                    host.sh(f"kill $(cat {match_dir(host.root, m)}/pid) 2>/dev/null; true")
+                    host.try_sh(f"kill $(cat {match_dir(host.root, m)}/pid) 2>/dev/null; true")
                 m["status"] = "abandoned"
                 self.save(m)
         self.event(f"TUNING generation {state['generation']}: " + ", ".join(
@@ -1081,7 +1089,7 @@ class Orchestrator:
                 continue
             while len(self.running_on(host)) < host.slots and not self.stop.is_set():
                 m = self.new_match(host)
-                r = host.sh(launch_script(host, m, self.cfg["match"]))
+                r = host.try_sh(launch_script(host, m, self.cfg["match"]))
                 m["status"] = "running" if "launched" in r.stdout else "failed"
                 tag = f" (replay of {m['replica_of']})" if m["replica_of"] else ""
                 self.event(f"{m['id']} started on {host.name}{tag}, seed {m['seed']}"
@@ -1129,7 +1137,7 @@ class Orchestrator:
             elif time.time() - m.get("progress_at", m["started_at"]) > self.cfg.get("stall_s", 600):
                 # A hung binary (e.g. a blocking OS error dialog) never writes exit_code.
                 d = match_dir(host.root, m)
-                host.sh(f"kill $(cat {d}/pid) 2>/dev/null; echo 137 > {d}/exit_code")
+                host.try_sh(f"kill $(cat {d}/pid) 2>/dev/null; echo 137 > {d}/exit_code")
                 self.event(f"{m['id']} on {host.name}: no referee output for "
                            f"{self.cfg.get('stall_s', 600)}s, killed")
             else:
