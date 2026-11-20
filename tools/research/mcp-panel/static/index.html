@@ -14,8 +14,8 @@
     <span id="endpoint" data-nav-extra class="hidden md:inline font-mono"></span>
 
     <div id="live" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4" data-frame>
-      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live view: what your game window shows</h2>
+      <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+        <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Live view: what your game window shows</h2>
           <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">openttd.view.screenshot on the GUI client, about once a second</p></div>
       </div>
       <img id="live-img" alt="The owner's OpenTTD window, refreshed about once a second" class="w-full rounded-sm bg-gray-900">
@@ -60,8 +60,8 @@
 
     <div class="grid gap-4 mb-4 xl:grid-cols-3">
       <div id="ov-companies-card" data-maximize="ov-companies" data-chart="ov-companies" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 xl:col-span-2 flex flex-col">
-        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <div class="min-w-0 flex-1 basis-48">
+        <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+          <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2">
             <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Companies over time</h2>
         <p id="ov-samples" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">waiting for the first game day</p>
           </div>
@@ -80,8 +80,8 @@
         </div>
       </div>
       <div id="ov-standing-card" data-maximize="ov-standing" data-chart="ov-standing" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col">
-        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <div class="min-w-0 flex-1 basis-48">
+        <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+          <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2">
             <h2 id="ov-standing-title" class="text-xl font-bold leading-none text-gray-900 dark:text-white">Standing today</h2>
         <p id="ov-standing-note" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">The same metric, the last game day; click a company to focus it</p>
           </div>
@@ -93,8 +93,8 @@
         </div>
       </div>
       <div id="ov-monthly-card" data-maximize="ov-monthly" data-chart="ov-monthly" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col xl:col-span-2 scroll-mt-20">
-        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <div class="min-w-0 flex-1 basis-48">
+        <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+          <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2">
             <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Result per month</h2>
         <p id="ov-monthly-note" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">How much each company's chosen metric moved in each game month: above zero it gained, below it lost; click a bar to focus the company</p>
           </div>
@@ -103,8 +103,8 @@
         <div id="ov-monthly" role="img" aria-label="Change of the chosen metric per company per game month" class="w-full h-64 sm:h-72"></div>
       </div>
       <div id="ov-fleet-card" data-maximize="ov-fleet" data-chart="ov-fleet" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 flex flex-col">
-        <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-          <div class="min-w-0 flex-1 basis-48">
+        <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+          <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2">
             <h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Fleet by type</h2>
         <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Trains, road vehicles, ships and aircraft (wagons and effects not counted); click for every vehicle</p>
           </div>
@@ -116,8 +116,8 @@
     </section>
 
     <div id="plan" data-nav="Plan (DAG)" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
-      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Plan before acting (AlgoGlyph action-plan)</h2>
+      <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+        <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Plan before acting (AlgoGlyph action-plan)</h2>
           <p id="plan-msg" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">POST /api/actionplan: a DAG of actions, expanded into presses and cash-checked before anything runs</p></div>
       </div>
       <div class="grid gap-4 lg:grid-cols-2">
@@ -135,8 +135,8 @@
     </div>
 
     <div id="content" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
-      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Content (BaNaNaS): AIs to play against</h2>
+      <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+        <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Content (BaNaNaS): AIs to play against</h2>
           <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">GET /api/content?q= and POST /api/content/download: the game's own content state, select and download</p></div>
       </div>
       <form id="content-form" class="flex gap-2 mb-3">
@@ -156,8 +156,8 @@
     </div>
 
     <div id="news" data-nav="News" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
-      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">News in your game window</h2>
+      <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+        <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">News in your game window</h2>
           <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">openttd.view.news.* on the GUI client; new items stream as events news.shown</p></div>
       </div>
       <form id="news-form" class="grid gap-3 mb-4 md:grid-cols-6">
@@ -185,8 +185,8 @@
     </div>
 
     <div id="cluster" data-nav="Cluster" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4">
-      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cluster: every MCP instance</h2>
+      <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+        <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Cluster: every MCP instance</h2>
           <p id="cluster-reg" class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400"></p></div>
       </div>
       <div class="relative overflow-x-auto rounded-lg">
@@ -270,8 +270,8 @@
     </div>
 
     <div id="catalogue" data-nav="MCP catalogue" class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6 dark:border-gray-700 dark:bg-gray-800 mb-4 scroll-mt-20">
-      <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
-        <div class="min-w-0 flex-1 basis-48"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">MCP catalogue</h2>
+      <div class="flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1 mb-4">
+        <div class="min-w-0 sm:has-[p]:contents sm:*:last:col-span-2"><h2 class="text-xl font-bold leading-none text-gray-900 dark:text-white">MCP catalogue</h2>
         <p class="mt-2 text-sm font-normal text-gray-500 dark:text-gray-400">Every tool and resource of the live game, each with its own page: a form, a call, the answer, and the same call over REST, MCP and the console</p></div>
         <div class="flex items-center gap-2">
           <a href="/tools" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 whitespace-nowrap focus:outline-none disabled:opacity-50 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Full catalogue</a>

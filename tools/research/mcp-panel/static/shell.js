@@ -87,10 +87,13 @@
     table: 'w-full text-sm text-left text-gray-500 dark:text-gray-400',
     thead: 'text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400',
     badge: 'text-xs font-medium px-2.5 py-0.5 rounded-sm',
-    // A card's header row and its title block: the title grows and wraps, its actions stay on its
-    // row (mcp-overview-check: Maximize never falls below its title).
-    cardHead: 'flex flex-wrap items-start justify-between gap-3',
-    cardHeadTitle: 'min-w-0 flex-1 basis-48',
+    // A card's header row and its title block. From sm up the row is a grid: the title in the first
+    // column, the actions (the row's second child) in the second on the title's line, and a title
+    // block with a note dissolves (contents) so the note spans both columns below. A long note no
+    // longer pushes the actions under it at any width (mcp-overview-check, 1440 and 1280 px). On a
+    // phone the row stacks: title, note, actions.
+    cardHead: 'flex flex-col items-start gap-3 sm:grid sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:gap-x-3 sm:gap-y-0 sm:*:nth-2:col-start-2 sm:*:nth-2:row-start-1',
+    cardHeadTitle: 'min-w-0 sm:has-[p]:contents sm:*:last:col-span-2',
   });
   /** Flowbite badge tones, one per state; a badge is UI.badge plus one of them. */
   const TONE = Object.freeze({

@@ -127,14 +127,20 @@ try {
   await page.waitForFunction(() => document.querySelectorAll('#news-list li').length > 0, null, { timeout: 8000 }).catch(() => {});
   const codes = await page.evaluate(() => [...document.body.innerText].filter((c) => c.codePointAt(0) >= 0xe000 && c.codePointAt(0) <= 0xf8ff).length);
   check("the page shows no game formatting code", codes === 0, `${codes} code(s) in the text`);
-  // 2026-11-18: a long note pushed Maximize under it in three cards; at desktop width every card's
-  // toolbar sits on its title's row.
-  const heads = await page.evaluate(() => [...document.querySelectorAll('#overview [data-chart]')].map((card) => {
+  // 2026-11-18: a long note pushed Maximize under it in three cards; 2026-11-20 the same at 1280 px,
+  // where a side card is narrow. At either desktop width (the check's 1600, and 1280) every card's toolbar sits on its title's row.
+  const headRows = () => page.evaluate(() => [...document.querySelectorAll('#overview [data-chart]')].map((card) => {
     const bar = card.querySelector('[data-toolbar]');
     const title = card.querySelector('h2');
     return bar && title && bar.offsetHeight ? [card.id, Math.round(bar.getBoundingClientRect().top - title.getBoundingClientRect().top)] : [card.id, null];
   }));
-  check("every overview card's toolbar is on its title's row", heads.every(([, d]) => d !== null && Math.abs(d) <= 12), heads.map(([id, d]) => `${id} ${d}`).join(', '));
+  for (const width of [1600, 1280]) {
+    await page.setViewportSize({ width, height: 1400 });
+    await page.waitForTimeout(300);
+    const heads = await headRows();
+    check(`every overview card's toolbar is on its title's row at ${width} px`, heads.every(([, d]) => d !== null && Math.abs(d) <= 12), heads.map(([id, d]) => `${id} ${d}`).join(', '));
+  }
+  await page.setViewportSize({ width: 1600, height: 1400 });
   const anchored = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   watch(anchored);
   await anchored.goto(`${base}/#overview`);

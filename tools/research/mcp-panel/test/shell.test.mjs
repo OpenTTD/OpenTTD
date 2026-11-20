@@ -131,7 +131,8 @@ for (const name of PANEL_PAGES) {
       ['tableWrap', (e) => e.tag === 'div' && e.cls.has('overflow-x-auto')],
       ['table', (e) => e.tag === 'table'],
       ['thead', (e) => e.tag === 'thead'],
-      ['cardHead', (e) => e.cls.has('justify-between') && e.cls.has('flex-wrap')],
+      // a header row: the role's grid, or the flex-wrap row it replaced (which then lacks the role)
+      ['cardHead', (e) => e.cls.has('sm:*:nth-2:col-start-2') || (e.cls.has('justify-between') && e.cls.has('flex-wrap'))],
     ];
     const all = tags(html.replace(/<section id="console"[\s\S]*?<\/section>/, ''));
     // A card header row's first child is its title block, which grows so the row's actions stay on
