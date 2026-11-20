@@ -1280,7 +1280,10 @@ class Orchestrator:
                 self.send_header("Access-Control-Allow-Origin", "*")
                 self.send_header("Content-Length", str(len(body)))
                 self.end_headers()
-                self.wfile.write(body)
+                try:
+                    self.wfile.write(body)
+                except (BrokenPipeError, ConnectionResetError):
+                    pass  # the client (a poller or a closed tab) left before the reply
 
             def json(self, data, code: int = 200):
                 self.send_body(json.dumps(data).encode(), "application/json", code)
