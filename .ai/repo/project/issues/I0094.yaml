@@ -1,0 +1,26 @@
+id: I0094
+milestone: an-agent-reaches-the-game-over-mcp
+title: "The panel serves its pages from a directory chosen at startup, so a UI fix deploys without moving the AI a duel has pinned"
+slug: panel-static-dir-at-startup
+priority: p3
+profile: implementation
+parallel_safe: true
+objective: "mcp-panel and mcp-hub take the directory of their pages (static/, the Rhai library, npm packages) from a startup option or environment variable, defaulting to the checkout the binary was built from (panel.rs here(), today CARGO_MANIFEST_DIR); tools/research/mcp-e2e passes it through, and research/mcp-control.md says how to serve a worktree's pages while ~/Documents/OpenTTD/ai/PrismaticAI stays on another checkout."
+why: "On 2026-11-20 a panel UI fix (86cc8bc622) waited because :8800 is built from the primary checkout, which also holds the PrismaticAI that the installed-AI symlink points at, and fast-forwarding the primary would have changed the AI under a frozen-control duel series. Raised by session sonic-playground-d8; the panel lane (session cd8d20a8) took it."
+scope:
+  - "tools/research/mcp-rhai/src/panel.rs"
+  - "tools/research/mcp-rhai/src/hub.rs"
+  - "tools/research/mcp-rhai/src/bin/mcp-panel.rs"
+  - "tools/research/mcp-e2e"
+  - "research/mcp-control.md"
+depends_on: []
+serves:
+  - "an-agent-plays-the-game-through-governed-channels#an-agent-reaches-the-game-over-mcp"
+acceptance_criteria:
+  - "a panel started with the option serves static/ from that directory, and one started without it serves the same files as today"
+  - "cargo test of mcp-panel and mcp-hub pass; mcp-hub-check against a panel started with the option passes"
+validation:
+  - "cargo test --release --bin mcp-panel --bin mcp-hub"
+evidence_required:
+  - validation_run
+created_at: '2026-11-20'
