@@ -116,6 +116,12 @@ Each closes one row above without a new tracking record:
    ZeroMQ and DuckDB ranks first), two curated knowledge records and the real-world scenario doc
    (their implementation ranks first). The questions are not tuned to the results; a new version
    adds questions.
+   Then (2026-11-20) every answer and result names its repository (the `origin` remote with any
+   user or password removed), and a fixture in a real temporary git repository proves the
+   freshness end to end: an uncommitted edit is `stale`, a rename or deletion before its commit is
+   `deleted`, a commit rebuilds the index so the answer cites the new path at the new commit, a
+   tracked `*.token` file is never indexed, and the remote's password never appears (`cargo test
+   --release --bin mcp-evidence` 12/12).
 
 ## Owner answers
 

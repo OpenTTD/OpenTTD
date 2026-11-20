@@ -463,7 +463,8 @@ identical setting still meets the game's own approval, which reuses the pending 
 
 `GET /api/evidence?q=<question>&k=<1-20>` answers passages of this repository at `HEAD` that bear on
 the question (research/agent-loop.md step 5): each with `path`, `lines`, `class` (implementation,
-test, policy, design, knowledge, plan, configuration, documentation, candidate, record), `commit`,
+test, policy, design, knowledge, plan, configuration, documentation, candidate, record), `repository`
+(the `origin` remote without user or password), `commit`,
 `file_digest` and `freshness` against the file now (`current`, with `now_lines` when it moved;
 `stale`; `deleted`), and `status` `answered` or `insufficient evidence` when no passage covers half
 of the question's terms. `q` missing answers 400. The CLI `mcp-evidence` answers the same and scores

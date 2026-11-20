@@ -15,9 +15,13 @@
 //!   (implementation, tests and policy; then design, knowledge and documentation; then candidates and
 //!   records), BM25 over identifiers and words within a tier, so an old plan never outranks the code
 //!   or the rule in force.
+//! - Provenance: every answer and every result names the repository (its `origin` remote without
+//!   any user or password, else its directory's name), the commit, the path, the lines and the
+//!   file's content digest.
 //! - Freshness: at query time each passage is read again from the work tree: `current` when its
 //!   file is unchanged or the passage is still there (its new lines given), `stale` when the passage
-//!   is gone, `deleted` when the file is.
+//!   is gone, `deleted` when the file is (a renamed file too, until a commit moves the index).
+//!   The index is rebuilt when HEAD moves, so a commit never leaves an old one answering.
 
 use std::collections::{BTreeMap, BTreeSet, HashMap};
 use std::path::Path;
@@ -126,6 +130,7 @@ pub struct Passage {
 
 /// An index of passages at one commit.
 pub struct Index {
+    pub repository: String,
     pub commit: String,
     pub indexed_at: u64,
     pub files: usize,
@@ -175,7 +180,7 @@ impl Index {
         let mut df: HashMap<String, usize> = HashMap::new();
         for p in &passages { for t in p.tf.keys() { *df.entry(t.clone()).or_insert(0) += 1; } }
         let avg_len = if passages.is_empty() { 1.0 } else { passages.iter().map(|p| p.len).sum::<usize>() as f64 / passages.len() as f64 };
-        Index { commit: commit.to_string(), indexed_at, files: n, passages, df, avg_len }
+        Index { repository: String::new(), commit: commit.to_string(), indexed_at, files: n, passages, df, avg_len }
     }
 
     /// The passages that answer `question`, best first: (score, coverage of the question's terms,
@@ -215,7 +220,7 @@ impl Index {
         let results: Vec<Value> = ranked.iter().map(|(score, coverage, i)| {
             let p = &self.passages[*i];
             let mut v = json!({"path": p.path, "class": p.class, "lines": [p.start, p.end], "score": (score * 1000.0).round() / 1000.0,
-                               "coverage": (coverage * 100.0).round() / 100.0, "commit": self.commit, "file_digest": p.file_digest,
+                               "coverage": (coverage * 100.0).round() / 100.0, "repository": self.repository, "commit": self.commit, "file_digest": p.file_digest,
                                "text": p.text});
             let (fresh, lines) = freshness(p, now(&p.path).as_deref());
             v["freshness"] = json!(fresh);
@@ -223,7 +228,7 @@ impl Index {
             v
         }).collect();
         let status = if results.is_empty() || best < MIN_COVERAGE { "insufficient evidence" } else { "answered" };
-        json!({"question": question, "status": status, "commit": self.commit, "indexed_at": self.indexed_at,
+        json!({"question": question, "status": status, "repository": self.repository, "commit": self.commit, "indexed_at": self.indexed_at,
                "files": self.files, "passages": self.passages.len(), "min_coverage": MIN_COVERAGE, "results": results})
     }
 }
@@ -240,6 +245,26 @@ pub fn freshness(p: &Passage, now: Option<&str>) -> (&'static str, Option<(usize
         }
         None => ("stale", None),
     }
+}
+
+/// The repository's identity: its `origin` remote with any `user[:password]@` removed and the
+/// scheme and `.git` dropped (`github.com/korczis/OpenTTD`), else the name of its directory.
+pub fn repository_of(root: &Path) -> String {
+    let remote = std::process::Command::new("git").arg("-C").arg(root).args(["config", "--get", "remote.origin.url"]).output()
+        .ok().filter(|o| o.status.success()).map(|o| String::from_utf8_lossy(&o.stdout).trim().to_string()).unwrap_or_default();
+    if !remote.is_empty() { return identity_of_remote(&remote); }
+    let top = std::process::Command::new("git").arg("-C").arg(root).args(["rev-parse", "--show-toplevel"]).output()
+        .ok().map(|o| String::from_utf8_lossy(&o.stdout).trim().to_string()).unwrap_or_default();
+    Path::new(&top).file_name().map(|n| n.to_string_lossy().to_string()).unwrap_or_else(|| "unknown".into())
+}
+
+/// A remote URL as an identity without credentials: `https://u:p@host/a/b.git`, `ssh://git@host/a/b`
+/// and `git@host:a/b.git` all become `host/a/b`.
+pub fn identity_of_remote(url: &str) -> String {
+    let rest = url.split_once("://").map(|(_, r)| r).unwrap_or(url);
+    let rest = rest.rsplit_once('@').map(|(_, r)| r).unwrap_or(rest);
+    let rest = if url.contains("://") { rest.to_string() } else { rest.replacen(':', "/", 1) };
+    rest.trim_end_matches('/').trim_end_matches(".git").to_string()
 }
 
 /// The tracked files of the repository at `root` with their text: (path, text).
@@ -264,15 +289,16 @@ pub fn index_of(root: &Path) -> Result<std::sync::Arc<Index>, String> {
     let head = std::process::Command::new("git").arg("-C").arg(root).args(["rev-parse", "HEAD"]).output()
         .map_err(|e| format!("git: {e}"))?;
     let head = String::from_utf8_lossy(&head.stdout).trim().to_string();
-    let key = format!("{}@{head}", root.display());
+    // One index per repository, replaced when its HEAD moves.
+    let key = root.display().to_string();
     let cache = CACHE.get_or_init(|| Mutex::new(BTreeMap::new()));
-    if let Some(i) = cache.lock().map_err(|_| "poisoned")?.get(&key) { return Ok(i.clone()); }
+    if let Some(i) = cache.lock().map_err(|_| "poisoned")?.get(&key).filter(|i| i.commit == head) { return Ok(i.clone()); }
     let (commit, files) = tracked(root)?;
     let at = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
-    let index = Arc::new(Index::build(&commit, at, &files));
-    let mut c = cache.lock().map_err(|_| "poisoned")?;
-    c.clear();
-    c.insert(key, index.clone());
+    let mut index = Index::build(&commit, at, &files);
+    index.repository = repository_of(root);
+    let index = Arc::new(index);
+    cache.lock().map_err(|_| "poisoned")?.insert(key, index.clone());
     Ok(index)
 }
 
@@ -403,12 +429,73 @@ mod tests {
         assert_eq!(Index::build("c", 1, &[("src/big.cpp".into(), big)]).files, 0);
     }
 
+    #[test]
+    fn a_remote_is_an_identity_without_credentials() {
+        assert_eq!(identity_of_remote("https://user:hunter2@github.com/korczis/OpenTTD.git"), "github.com/korczis/OpenTTD");
+        assert_eq!(identity_of_remote("git@github.com:korczis/OpenTTD.git"), "github.com/korczis/OpenTTD");
+        assert_eq!(identity_of_remote("ssh://git@gitlab.com/korczis/bridge"), "gitlab.com/korczis/bridge");
+        assert_eq!(identity_of_remote("/srv/git/local.git/"), "/srv/git/local");
+    }
+
+    /// A real git repository in a temporary directory: an edit makes a passage stale, a rename or
+    /// a deletion makes it deleted, and a commit rebuilds the index so the answer moves with it.
+    #[test]
+    fn edits_renames_deletions_and_commits_are_followed() {
+        let dir = std::env::temp_dir().join(format!("evidence-fixture-{}-{}", std::process::id(), digest(&format!("{:?}", std::time::Instant::now()))));
+        std::fs::create_dir_all(dir.join("src")).unwrap();
+        let git = |args: &[&str]| { let o = std::process::Command::new("git").arg("-C").arg(&dir).args(args).output().unwrap(); assert!(o.status.success(), "git {args:?}: {}", String::from_utf8_lossy(&o.stderr)); };
+        git(&["init", "-q"]);
+        git(&["config", "user.email", "fixture@example.invalid"]);
+        git(&["config", "user.name", "fixture"]);
+        git(&["remote", "add", "origin", "https://someone:s3cret@example.invalid/lab/fixture.git"]);
+        std::fs::write(dir.join("src/signal.cpp"), "/** Place a signal on a rail tile. */
+CommandCost CmdBuildSingleSignal() {}
+").unwrap();
+        std::fs::write(dir.join("src/api.token"), "CmdBuildSingleSignal signal rail tile
+").unwrap();
+        git(&["add", "-A"]);
+        git(&["commit", "-q", "-m", "one"]);
+        let now = |p: &str| std::fs::read_to_string(dir.join(p)).ok();
+        let q = "CmdBuildSingleSignal signal rail tile";
+
+        let first = index_of(&dir).unwrap();
+        let a = first.answer(q, 5, &now);
+        assert_eq!(a["status"], "answered", "{a}");
+        assert_eq!(a["repository"], "example.invalid/lab/fixture", "no credentials in the identity");
+        assert!(!a.to_string().contains("s3cret"));
+        assert_eq!(a["results"].as_array().unwrap().len(), 1, "the token file is never indexed: {a}");
+        let r = &a["results"][0];
+        assert_eq!((r["path"].clone(), r["freshness"].clone(), r["commit"].clone()), (json!("src/signal.cpp"), json!("current"), json!(first.commit)));
+
+        std::fs::write(dir.join("src/signal.cpp"), "// rewritten
+int nothing();
+").unwrap();
+        assert_eq!(first.answer(q, 5, &now)["results"][0]["freshness"], "stale", "an uncommitted edit");
+        git(&["checkout", "-q", "--", "src/signal.cpp"]);
+        git(&["mv", "src/signal.cpp", "src/signals.cpp"]);
+        assert!(std::sync::Arc::ptr_eq(&first, &index_of(&dir).unwrap()), "same HEAD, same index");
+        assert_eq!(first.answer(q, 5, &now)["results"][0]["freshness"], "deleted", "a rename before its commit");
+
+        git(&["commit", "-q", "-m", "rename"]);
+        let second = index_of(&dir).unwrap();
+        assert_ne!(second.commit, first.commit, "a commit rebuilds the index");
+        let b = second.answer(q, 5, &now);
+        assert_eq!((b["results"][0]["path"].clone(), b["results"][0]["freshness"].clone()), (json!("src/signals.cpp"), json!("current")));
+
+        git(&["rm", "-q", "src/signals.cpp"]);
+        assert_eq!(second.answer(q, 5, &now)["results"][0]["freshness"], "deleted");
+        git(&["commit", "-q", "-m", "delete"]);
+        assert_eq!(index_of(&dir).unwrap().answer(q, 5, &now)["status"], "insufficient evidence", "nothing is left to cite");
+        std::fs::remove_dir_all(&dir).ok();
+    }
+
     /// The index of this repository itself, at its HEAD, answers a question about its own code.
     #[test]
     fn this_repository_is_indexed_at_its_head() {
         let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../../..");
         let ix = index_of(&root).unwrap();
         assert!(ix.files > 500 && ix.commit.len() == 40, "{} files at {}", ix.files, ix.commit);
+        assert!(!ix.repository.is_empty() && !ix.repository.contains('@'), "{}", ix.repository);
         let a = ix.answer("observation digest freshness directive stale", 5, &|p| std::fs::read_to_string(root.join(p)).ok());
         assert_eq!(a["status"], "answered");
         assert!(a["results"].as_array().unwrap().iter().any(|r| r["path"] == "tools/research/mcp-rhai/src/panel_decision.rs"), "{a}");
