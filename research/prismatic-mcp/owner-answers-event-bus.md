@@ -44,3 +44,20 @@ Answer: "Stop them (Recommended)": send them SIGTERM and remove their stale regi
 the hub check for I0084.
 
 Done by the lead at about 14:55 local: both panels stopped; no registry record referenced them.
+
+## 2026-11-20T10:05 local, session cd8d20a8-9d79-4332-b63e-b2592beb2cbd
+
+Question: "The agent's next commit and push need a local Elixir compile in their pre-commit and pre-push
+hooks. The machine is out of swap (≈41 GB used), largely because the ttd-battle run holds 32 OpenTTD
+processes. What should happen?"
+
+Answer: "Stop ttd-battle, compile": the lead stops the ttd-battle OpenTTD processes, waits for memory to
+free, then the Prismatic agent commits and pushes; matches in progress end.
+
+Done by the lead at about 10:06 local: `pkill -f 'ttd-battle/openttd-src/build/openttd'`; 0 processes left
+and none respawned within 2 minutes; load fell from about 48 to 25. No session on the mesh had claimed the
+run (openttd-07, -94, -28, -cb and this session denied it on 2026-11-19).
+
+The same answer set also covered Prismatic !204: "Yes, part of the ratchet (Recommended)" for the
+quarantine of non-compiling test files (#2226) and "Keep 30 min (Recommended)" for the `docs:verify`
+timeout; those are recorded in prismatic-platform's rule `land-on-green-mr-pipeline`.
