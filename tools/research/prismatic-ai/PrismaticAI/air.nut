@@ -69,6 +69,10 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 	 * default's value on seed 930967890: most first sites need some.) */
 	local plane = PrismaticAI.PickPlane(type, pax);
 	local keep = 2 * AIAirport.GetPrice(type) + (plane == -1 ? 0 : AIEngine.GetPrice(plane));
+	/* A levelled site can still be refused (a corner it shares with a house or road does not move),
+	 * so after one such loss this search levels nothing more: on OpenTTD seed 1439892342 five
+	 * levelled sites in a row were refused. */
+	local level_lost = false; /* only with air_level_once (AIR_LEVEL_ONCE, main.nut) */
 	for (local t = tiles.Begin(); !tiles.IsEnd() && tried < 25; t = tiles.Next()) {
 		tried++;
 		AILog.Info("PrismaticAI: survey airport in " + AITown.GetName(town) + " at tile " + t + " (passengers accepted " + tiles.GetValue(t) + ")");
@@ -101,13 +105,14 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			local funds = AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
 			/* The test pass underprices levelling: it does not move the corners it raises, so the real
 			 * pass cost 172055 where the test said 53413 (seed 113258830). Keep a fourfold margin. */
-			local level_ok = cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
+			local level_ok = !level_lost && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
 			local real = AIAccounting();
 			if (level_ok && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
 				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
 				return t;
 			}
 			/* Say why: a test pass that succeeded leaves ERR_NONE as the last error. */
+			if (level_ok && AIR_LEVEL_ONCE == 1) level_lost = true;
 			if (level_ok) AILog.Warning("PrismaticAI: levelled tile " + t + " for " + real.GetCosts() + " (estimated " + cost + ") and the airport was still refused: " + AIError.GetLastErrorString());
 			if (!level_ok) {
 				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + " (air_level_max " +

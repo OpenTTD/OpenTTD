@@ -175,7 +175,9 @@
       "air_add_waiting": 0,
       "rail_twin_max": 2,
       "air_reuse": 0,
-      "air_grow_money": 0
+      "air_grow_money": 0,
+      "air_level_once": 0,
+      "own_fail_pause": 0
     },
     "space": {
       "aggressiveness": [
@@ -287,6 +289,16 @@
         0,
         4000,
         500
+      ],
+      "air_level_once": [
+        0,
+        1,
+        1
+      ],
+      "own_fail_pause": [
+        0,
+        6,
+        1
       ]
     },
     "brain_offspring": 2,

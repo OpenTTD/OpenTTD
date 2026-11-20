@@ -276,6 +276,20 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_BOOLEAN | CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "air_level_once",
+			description = "1: an airport search levels no further site once a levelled site was refused anyway (a corner shared with a house or road does not move); 0: it keeps levelling.",
+			min_value = 0, max_value = 1,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0,
+			flags = CONFIG_BOOLEAN | CONFIG_INGAME,
+		});
+		AddSetting({
+			name = "own_fail_pause",
+			description = "After this many own freight lines in a row could not be built, try no more that game year (a failed line still costs its stations); 0: never pause.",
+			min_value = 0, max_value = 10,
+			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "air_keep_last",
 			description = "Never sell the last plane of an air route for losing money (a dead route never flies again).",
 			min_value = 0, max_value = 1,

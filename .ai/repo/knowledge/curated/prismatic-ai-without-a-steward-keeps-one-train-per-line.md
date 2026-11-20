@@ -294,6 +294,21 @@ plus 30000 for the next road route. Anything unspent is repaid at the end of the
 replay survives (14 vehicles). The default's 20-year values on seeds 930967890, 31337 and
 1516196607 are identical to before, because the guard never fires for it.
 
+**Two money leaks, now gated by genes (2026-11-20).** On seed 1439892342 (company 4), GA
+`g91.3` ended at value 1 after five years, holding the whole loan. Two leaks drained it:
+- Own freight lines failed one after another: the stations had no way out ("1 nodes"), and
+  each attempt still cost its stations and part of its track.
+- Five levelled airport sites were refused anyway. A corner shared with a house or road does
+  not move, so even correct levelling can leave a site sloped.
+
+Two settings, off by default and GA genes, now limit these:
+- `own_fail_pause`: no more own lines for the game year after that many failures in a row.
+- `air_level_once`: an airport search levels nothing more after one levelled site was refused.
+
+With both on, the replay ends at 294k instead of 266k. On three default seeds the effect could
+not be told from noise: one seed fell from 13.4M to 8.7M, while the others moved by -10% and
+-3%. So the tournament decides.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
