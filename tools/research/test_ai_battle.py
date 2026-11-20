@@ -111,6 +111,13 @@ class MatchContract(unittest.TestCase):
             out = subprocess.run(["/bin/sh", "-c", battle.reap_script(tmp, "cur")], capture_output=True,
                                  text=True).stdout.strip()
             self.assertEqual(out, "reaped 1")
+            # A signal lands asynchronously: give a killed process a moment to be reaped before polling
+            # (under full CPU load an immediate poll() still saw it alive).
+            for ed, mid, p in self._procs:
+                try:
+                    p.wait(timeout=5 if (ed, mid) == ("old", "m-0001") else 0.1)
+                except subprocess.TimeoutExpired:
+                    pass
             alive = {(ed, mid): p.poll() is None for ed, mid, p in self._procs}
             self.assertEqual(alive, {("cur", "m-0001"): True, ("old", "m-0001"): False, ("old", "m-0002"): True})
             for _, _, p in self._procs:
