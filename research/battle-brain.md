@@ -132,6 +132,11 @@ explores. On the next default change, set both variables to the new edition and 
 A behaviour change that interacts with the genes cannot be rebased by one factor. One example is a
 fix that makes levelling cost more, which moves the best `air_level_max`. For such a change, set
 `BRAIN_TRAIN_SINCE` to the first edition with it, and older editions are left out entirely.
+The first such cut is the airport levelling fix (`f4fcbbfef8`, first edition `2d4e0173`). It also
+changed the default (`air_level_max` 10 → 35), so `BRAIN_BASELINE_SINCE` is the same edition.
+Until there are `BRAIN_MIN_ROWS` (20) paired rows since the cut, the runner writes no proposals and
+moves `brain.json` aside to `brain.withdrawn.json`. While it is absent, the GA takes no brain
+offspring.
 
 ### Why a safe pick comes first
 

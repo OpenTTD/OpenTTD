@@ -20,7 +20,11 @@ EVERY=0
 # there failed on fresh maps (GA g30.brainSafe/brainSafe1 each ended last once).
 POSTMORTEM="${BRAIN_POSTMORTEM:-$HERE/../mcp-rhai/target/release/battle-postmortem}"
 KEEP="${BRAIN_EDITIONS:-10}"
-BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-ad8114473cb357a6}"
+# The airport levelling fix (f4fcbbfef8, first edition 2d4e0173) changed what the genes cost, and
+# the default with it (air_level_max 10 -> 35): older editions are left out, not rebased.
+BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-2d4e0173c260b1f0}"
+MIN_ROWS="${BRAIN_MIN_ROWS:-20}"
+BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-2d4e0173c260b1f0}"
 REBASE="${BRAIN_BASELINE_REBASE:-1.12}"
 
 once() {
@@ -28,15 +32,16 @@ once() {
   local all; all="$("$POSTMORTEM" editions | head -n "$KEEP")"
   # A behaviour change that interacts with the genes (not a uniform shift) cannot be rebased by one
   # factor: $BRAIN_TRAIN_SINCE drops every edition older than the named one (newest first).
-  if [[ -n "${BRAIN_TRAIN_SINCE:-}" ]] && grep -qx "$BRAIN_TRAIN_SINCE" <<<"$all"; then
-    all="$(sed -n "1,/^${BRAIN_TRAIN_SINCE}\$/p" <<<"$all")"
+  # An edition not yet in the store means nothing since the cut has been recorded.
+  if [[ -n "${BRAIN_TRAIN_SINCE:-}" ]]; then
+    if grep -qx "$BRAIN_TRAIN_SINCE" <<<"$all"; then all="$(awk -v e="$BRAIN_TRAIN_SINCE" '{print} $0==e{exit}' <<<"$all")"; else all=""; fi
   fi
   local eds; eds="$(sed "s/.*/'&'/" <<<"$all" | paste -sd, -)"
-  [[ -n "$eds" ]] || { echo "battle-brain: no editions in the store" >&2; return 1; }
+  [[ -n "$all" ]] || eds="'none'"
   # The default the target pairs against changed in 6111dc0fef (the GA's elite); the first edition
   # with it is $BASELINE_SINCE. Older rows paired against the former default, so they are rebased by
   # the measured ratio of the elite over it ($BASELINE_REBASE: geometric mean 1.12 over 40 new maps).
-  local cur; cur="$(sed -n "1,/^${BASELINE_SINCE}\$/p" <<<"$all" | sed "s/.*/'&'/" | paste -sd, -)"
+  local cur; cur="$(awk -v e="$BASELINE_SINCE" '{print} $0==e{exit}' <<<"$all" | sed "s/.*/'&'/" | paste -sd, -)"
   grep -qx "$BASELINE_SINCE" <<<"$all" || cur="$eds"
   # The target is paired: a variant's value share divided by the default PrismaticAI's on the same
   # edition and seed (the signal that held: GA g14.0 won 20/20 paired seeds). Unpaired rows are left out.
@@ -48,6 +53,14 @@ once() {
      SELECT a.edition, a.contestant, a.settings,
             a.s / d.s / (CASE WHEN a.edition IN ($cur) THEN 1.0 ELSE $REBASE END) AS share
      FROM a JOIN d USING (edition, seed) WHERE a.contestant <> 'PrismaticAI'" > "$tmp/rows.csv"
+  local n; n=$(( $(wc -l < "$tmp/rows.csv") - 1 ))
+  if (( n < MIN_ROWS )); then
+    # Too little data since the cut: withdraw the proposals instead of fitting noise. The GA takes
+    # no brain offspring while brain.json is absent (battle.py brain_proposals).
+    [[ -f "$RESULTS/brain.json" ]] && mv "$RESULTS/brain.json" "$RESULTS/brain.withdrawn.json"
+    echo "battle-brain: $n paired rows since ${BRAIN_TRAIN_SINCE:-the start} (< $MIN_ROWS): no proposals"
+    rm -rf "$tmp"; return 0
+  fi
   export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (default changed in 6111dc0fef)"
   curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json"
   local args=()
