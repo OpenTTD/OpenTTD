@@ -276,6 +276,13 @@ class PrismaticAI extends AIInfo {
 			flags = CONFIG_BOOLEAN | CONFIG_INGAME,
 		});
 		AddSetting({
+			name = "air_level_step",
+			description = "Most height steps between the corners of an airport site that is still levelled (a bigger step moves corners outside the site, where houses and roads stop it).",
+			min_value = 1, max_value = 8,
+			easy_value = 2, medium_value = 2, hard_value = 2, custom_value = 2, step_size = 1,
+			flags = CONFIG_INGAME,
+		});
+		AddSetting({
 			name = "air_level_once",
 			description = "1: an airport search levels no further site once a levelled site was refused anyway (a corner shared with a house or road does not move); 0: it keeps levelling.",
 			min_value = 0, max_value = 1,

@@ -309,6 +309,23 @@ With both on, the replay ends at 294k instead of 266k. On three default seeds th
 not be told from noise: one seed fell from 13.4M to 8.7M, while the others moved by -10% and
 -3%. So the tournament decides.
 
+**Levelling only shallow sites (2026-11-20).** On seed 1787809485 (company 2) the default itself
+ended last with a value of 1. It levelled two airport sites and both were refused:
+- the first cost 59120 against an estimate of 31435;
+- the second cost 152982 against an estimate of 32604.
+
+A big height step makes level-land move corners outside the site as well, and houses and roads
+there stop it. `air_level_step` (default 2, a GA gene) now levels only sites whose corners lie
+within that many height steps. Results over 20 years:
+
+| Seed | Step 1 | Step 2 | Step 8 (the old behaviour) |
+|---|---|---|---|
+| 1787809485 | 9.9M | 9.9M | value 1 |
+| 930967890 | 5.0M | 8.0M | 13.4M |
+| 31337 | 14.7M | 15.8M | 15.8M |
+
+Step 2 is the default: it avoids the last place and stays close on the other seeds.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

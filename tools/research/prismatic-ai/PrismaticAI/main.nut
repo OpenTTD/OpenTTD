@@ -28,6 +28,8 @@ AIR_LEVEL_MAX <- 15000;
 AIR_KEEP_LAST <- 1;
 /* Whether one airport search stops levelling after a levelled site was refused (setting air_level_once). */
 AIR_LEVEL_ONCE <- 0;
+/* The most height steps between the corners of a site that is still levelled (setting air_level_step). */
+AIR_LEVEL_STEP <- 2;
 
 
 class PrismaticAI extends AIController {
@@ -265,6 +267,7 @@ function PrismaticAI::Behaviour() {
 		air_grow_money = AIController.GetSetting("air_grow_money") * 1000,
 		air_reuse = AIController.GetSetting("air_reuse"),
 		air_level_once = AIController.GetSetting("air_level_once"),
+		air_level_step = AIController.GetSetting("air_level_step"),
 		own_fail_pause = AIController.GetSetting("own_fail_pause"),
 		foreign_airports = AIController.GetSetting("foreign_airports"),
 		invest_min = AIController.GetSetting("invest_min") * 1000,
@@ -346,6 +349,7 @@ function PrismaticAI::Start() {
 		AIR_LEVEL_MAX = b.air_level_max;
 		AIR_KEEP_LAST = b.air_keep_last;
 		AIR_LEVEL_ONCE = b.air_level_once;
+		AIR_LEVEL_STEP = b.air_level_step;
 		local knobs = "aggressiveness=" + b.aggressiveness + " max_routes=" + b.max_routes + " cash_reserve=" + b.cash_reserve +
 			" intercity=" + b.intercity + " self_steward=" + b.self_steward + " own_lines=" + b.own_lines +
 			(b.autopiloted ? " autopilot=engaged" : (b.grows ? " autopilot=growth-on-plan" : ""));

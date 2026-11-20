@@ -105,7 +105,21 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			local funds = AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
 			/* The test pass underprices levelling: it does not move the corners it raises, so the real
 			 * pass cost 172055 where the test said 53413 (seed 113258830). Keep a fourfold margin. */
-			local level_ok = !level_lost && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
+			/* Only a site within air_level_step height steps (AIR_LEVEL_STEP, main.nut) is levelled. A bigger step makes level-land move corners
+			 * outside the site as well, where houses and roads stop it: on OpenTTD seed 1787809485 the
+			 * default levelled two such sites for 59120 and 152982 (estimated 31435 and 32604), both
+			 * were refused, and the company was last with value 1. */
+			local lo = 255, hi = 0;
+			for (local dx = 0; dx <= w; dx++) {
+				for (local dy = 0; dy <= h; dy++) {
+					local c = AIMap.GetTileIndex(min(AIMap.GetMapSizeX() - 1, AIMap.GetTileX(t) + dx),
+						min(AIMap.GetMapSizeY() - 1, AIMap.GetTileY(t) + dy));
+					local z = AITile.GetCornerHeight(c, AITile.CORNER_N);
+					if (z < lo) lo = z;
+					if (z > hi) hi = z;
+				}
+			}
+			local level_ok = !level_lost && hi - lo <= AIR_LEVEL_STEP && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
 			local real = AIAccounting();
 			if (level_ok && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
 				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
@@ -115,8 +129,8 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			if (level_ok && AIR_LEVEL_ONCE == 1) level_lost = true;
 			if (level_ok) AILog.Warning("PrismaticAI: levelled tile " + t + " for " + real.GetCosts() + " (estimated " + cost + ") and the airport was still refused: " + AIError.GetLastErrorString());
 			if (!level_ok) {
-				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + " (air_level_max " +
-					AIR_LEVEL_MAX + "; funds " + funds + ", keeping " + keep + " for the airports and a plane)");
+				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + ", height range " + (hi - lo) +
+					" (air_level_max " + AIR_LEVEL_MAX + "; funds " + funds + ", keeping " + keep + " for the airports and a plane)");
 				continue;
 			}
 		}
