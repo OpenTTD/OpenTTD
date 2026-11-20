@@ -95,13 +95,18 @@ defmodule Brain do
     rows = csv |> File.stream!() |> Enum.drop(1) |> Enum.map(&parse_csv/1) |> Enum.reject(&is_nil/1)
     distinct = rows |> Enum.map(& &1.settings) |> Enum.uniq() |> length()
     x = rows |> Enum.map(&features(parse_settings(&1.settings), genes, space)) |> Nx.tensor(type: :f32)
-    y = rows |> Enum.map(&[:math.log(max(&1.share, 1.0e-6))]) |> Nx.tensor(type: :f32)
+    # A bankrupt variant ends at value 1, a paired ratio near 1e-7: its log (about -16) would
+    # dominate the squared loss and drag the whole fit. Clamp at a floor ($BRAIN_SHARE_FLOOR,
+    # default 0.05 of the default's value): a bankruptcy still scores as the worst outcome.
+    floor_share = String.to_float(System.get_env("BRAIN_SHARE_FLOOR", "0.05"))
+    floored = Enum.count(rows, &(&1.share < floor_share))
+    y = rows |> Enum.map(&[:math.log(max(&1.share, floor_share))]) |> Nx.tensor(type: :f32)
     {train_us, members} = :timer.tc(fn -> for s <- 1..@members, do: train(x, y, s) end)
     model = model(elem(Nx.shape(x), 1))
     {_init, predict} = Axon.build(model, compiler: EXLA)
     # Parents: the best measured settings by their mean paired share (at least 2 rows each).
     parents = rows |> Enum.group_by(& &1.settings) |> Enum.filter(fn {_, rs} -> length(rs) >= 2 end)
-              |> Enum.map(fn {st, rs} -> {st, Enum.sum(Enum.map(rs, &:math.log(max(&1.share, 1.0e-6)))) / length(rs)} end)
+              |> Enum.map(fn {st, rs} -> {st, Enum.sum(Enum.map(rs, &:math.log(max(&1.share, floor_share)))) / length(rs)} end)
               |> Enum.sort_by(&elem(&1, 1), :desc) |> Enum.take(5) |> Enum.map(&parse_settings(elem(&1, 0)))
     n_local = if parents == [], do: 0, else: div(@candidates, 2)
     cands = candidates(genes, space, @candidates - n_local, length(rows)) ++
@@ -143,7 +148,7 @@ defmodule Brain do
     end
     best_seen = rows |> Enum.max_by(& &1.share, fn -> nil end)
     doc = %{schema: "battle-brain/v1", target: System.get_env("BRAIN_TARGET", "raw: log value share of the winner"), rows: length(rows), distinct_settings: distinct, genes: genes,
-      members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa, explore_floor: :math.exp(floor), trust_region: not enough and n_local > 0, parents: length(parents),
+      members: @members, epochs: @epochs, candidates: @candidates, kappa: @kappa, explore_floor: :math.exp(floor), share_floor: floor_share, floored_rows: floored, trust_region: not enough and n_local > 0, parents: length(parents),
       backend: "EXLA #{inspect(EXLA.Client.get_supported_platforms() |> Map.keys())}",
       train_ms: div(train_us, 1000), score_ms: div(score_us, 1000), in_sample_r2: Float.round(r2, 3),
       enough_data: enough,

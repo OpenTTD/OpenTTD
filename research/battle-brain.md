@@ -60,7 +60,7 @@ proposals until they were backfilled.
 |---|---|
 | Data | `analyses JOIN contestants` from the post-mortem's `analytics.duckdb`, **paired**: every PrismaticAI variant's result with its settings, against the default `PrismaticAI` on the same edition and seed (`analyses.seed`, backfilled for every edition in the store) |
 | Features | each gene of the GA's space scaled to [0, 1]; a gene the setting does not name takes the midpoint and a 0 "named" flag, so the net can tell a default from a value |
-| Target | log of (the variant's value share of the winner / the default's on the same seed); `brain.json` names it in `target`, and `predicted_share` is that ratio |
+| Target | log of (the variant's value share of the winner / the default's on the same seed), clamped below at `$BRAIN_SHARE_FLOOR` (0.05) so that a bankruptcy (value 1, a ratio near 1e-7) scores as the worst outcome without dominating the squared loss; `brain.json` names it in `target` and counts `floored_rows`, and `predicted_share` is that ratio |
 | Model | 5 members, each 2 × 32 tanh with dropout 0.1, trained by Adam (lr 0.01, 400 steps) on its own bootstrap sample |
 | Search | 50,000 candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member: half uniform over the space, half local (one of the 5 best measured settings, with at least 2 rows each, with 1 to 3 genes moved) |
 | Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread, among candidates whose lower bound is at least `$BRAIN_EXPLORE_FLOOR` × the default, 0.9 by default), κ = 1, each with its kind, predicted share and spread |
