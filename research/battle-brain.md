@@ -49,6 +49,11 @@ The brain needs the duckdb CLI, the battle API on `:8765`, and Elixir with Nx, E
 and Jason compiled. By default it uses the prismatic-platform checkout's `_build/dev/lib` with its
 Elixir 1.19 / Erlang 28 (`$BRAIN_LIBS`, `ASDF_*_VERSION`), so XLA is not downloaded again.
 
+The runner does not depend on the post-mortem watch running: before each fit it runs the
+post-mortem for any of its editions that has no rows in `analytics.duckdb`. On 2026-11-20 the watch
+was down for two hours, ten editions went unanalysed, and the brain read 0 rows and withdrew its
+proposals until they were backfilled.
+
 ## The brain in detail (`tools/research/battle-brain/brain.exs`)
 
 | Step | What |

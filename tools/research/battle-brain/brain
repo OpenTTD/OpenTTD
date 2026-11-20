@@ -40,6 +40,13 @@ once() {
     if grep -qx "$BRAIN_TRAIN_SINCE" <<<"$all"; then all="$(awk -v e="$BRAIN_TRAIN_SINCE" '{print} $0==e{exit}' <<<"$all")"; else all=""; fi
   fi
   all="$(head -n "$KEEP" <<<"$all")"
+  # Backfill: an edition the post-mortem watch missed (it was not running) has no analyses in
+  # DuckDB; run the post-mortem for it here, so the brain never trains on a silently shrunken window.
+  local e n
+  for e in $all; do
+    n="$(duckdb -readonly "$RESULTS/analytics.duckdb" -noheader -csv "SELECT count(*) FROM analyses WHERE edition = '$e'" 2>/dev/null || echo 0)"
+    [[ "$n" == "0" ]] && "$POSTMORTEM" --edition "$e" --out "$RESULTS" >/dev/null 2>&1 && echo "battle-brain: backfilled post-mortem $e"
+  done
   local eds; eds="$(sed "s/.*/'&'/" <<<"$all" | paste -sd, -)"
   [[ -n "$all" ]] || eds="'none'"
   # The default the target pairs against changed in 6111dc0fef (the GA's elite); the first edition
