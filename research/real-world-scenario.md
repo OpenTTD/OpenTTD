@@ -276,6 +276,27 @@ generated config silently dropped the heightmap rotation and the town count, and
 without a byte-order mark garbled every non-ASCII name. Both are fixed and covered (the config is
 grouped by section, the GameScript starts with a UTF-8 BOM and a test checks it).
 
+## Decision: closed with three items NOT RUN
+
+Asked in session b841bd49 (AskUserQuestion, 2026-11-20): "Disk has 16 GiB free, below the shared
+35 GiB floor. Every remaining step of the real-world slice needs a new build: gate.sh change, the
+live second-place run, and the MCP plain-text fix. Deleting the OpenTTD build dirs only frees about
+2.5 GiB; the big consumers are prismatic-platform (68 GiB), v6-wt (15), oscilla-wt (12),
+majordomus-reel (12) and Library/Caches (8). How should I proceed?" Answer: "Close with NOT RUN
+(Recommended)".
+
+So the slice closes with these NOT RUN, each because it needs a build the disk floor forbade:
+
+- `tools/gate.sh change` on the slice (a cold research build of OpenTTD).
+- A live acquisition and `load-check` of a second place. Place independence is shown only by the
+  synthetic-snapshot test in `tests/pipeline.rs`, not by real data.
+- The schema check of the snapshot by an external validator (`uvx jsonschema` was refused earlier);
+  the snapshot is checked by the crate's own tests only.
+
+Run them, in this order, once the disk allows: `tools/research/real-world/rw-scenario acquire --live
+--query "<place>" --out build-real-world/<place>.snapshot.json`, then `compile` and `load-check` as
+under Commands, then `tools/gate.sh change`.
+
 ## Validation
 
 What ran, with exit codes, is recorded in the task's report; never read a row here as a pass that
