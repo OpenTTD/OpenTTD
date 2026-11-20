@@ -150,6 +150,11 @@ rebase: from 0.6× to about 10,000×, where a map that went bankrupt now reaches
 refuses a levelled site, then only one-step sites. That is the third cut. Edition `406a089b` ran only a
 few matches.
 
+On 2026-11-20 the GA's `g150.0` became the default (`962699034c`, geometric mean 1.154 over 36 pairs,
+CI lower bound 1.046), first edition `121f34cd`. That change touches only settings, so older rows
+since the cut are rebased by 1/1.154 (`BRAIN_BASELINE_SINCE=121f34cd`, `BRAIN_BASELINE_REBASE=1.154`)
+rather than cut.
+
 ### Why a safe pick comes first
 
 Until 2026-11-19 the brain proposed by UCB only, so both of the GA's brain offspring were
