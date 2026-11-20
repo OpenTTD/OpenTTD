@@ -39,9 +39,20 @@ use crate::panel_realworld;
 use crate::panel_store;
 use crate::rhai_host;
 
-/// The panel's own directory (static pages, Rhai library, npm packages).
+/// The panel's own directory (static pages, Rhai library, npm packages): `MCP_PANEL_DIR` when it is
+/// set and not empty, else the checkout this binary was built from. Setting it serves one
+/// checkout's pages while the installed PrismaticAI stays on another, so a UI fix deploys without
+/// moving an AI a running experiment pinned (I0094).
 pub fn here() -> PathBuf {
-    PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel"))
+    dir_from(std::env::var_os("MCP_PANEL_DIR"))
+}
+
+/// `here()` for a given value of `MCP_PANEL_DIR`.
+pub fn dir_from(var: Option<std::ffi::OsString>) -> PathBuf {
+    match var.filter(|v| !v.is_empty()) {
+        Some(v) => PathBuf::from(v),
+        None => PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel")),
+    }
 }
 
 fn statics() -> PathBuf {
@@ -3053,6 +3064,16 @@ pub fn free_port() -> Option<u16> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    /// I0094: MCP_PANEL_DIR names the panel's directory; unset or empty, it is this checkout's.
+    #[test]
+    fn the_panel_directory_comes_from_mcp_panel_dir_else_the_build_checkout() {
+        let built = PathBuf::from(concat!(env!("CARGO_MANIFEST_DIR"), "/../mcp-panel"));
+        assert_eq!(dir_from(None), built);
+        assert_eq!(dir_from(Some("".into())), built, "an empty value is no value");
+        assert_eq!(dir_from(Some("/srv/panel".into())), PathBuf::from("/srv/panel"));
+        assert!(built.join("static").is_dir(), "the default holds static/");
+    }
 
     #[test]
     fn a_failed_read_is_retried_once_and_a_command_only_when_it_never_left() {

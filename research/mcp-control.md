@@ -207,6 +207,14 @@ unpause. The duel form and `mcp-duel` both default to 2 (`PRISMATIC_START_PAUSED
 records the tick it started at (`held_start_tick`, from the store's `game.paused`/`game.resumed`
 events since I0083; its plan log says it in words). Two identical runs then differed by 0.2%.
 
+**Pages from a chosen checkout.** The panel and the hub read their pages, Rhai library and npm
+packages from `MCP_PANEL_DIR` when it is set (`src/panel.rs` `here()`, `src/bin/mcp-hub.rs`
+`default_static()`; the hub's `--static` still wins), else from the checkout the binary was built from.
+`~/Documents/OpenTTD/ai/PrismaticAI` is a symlink into one checkout, so a duel series that pins its AI
+used to hold every panel UI fix too: fast-forwarding that checkout would have moved the AI under the
+series. With `MCP_PANEL_DIR=<worktree>/tools/research/mcp-panel tools/research/mcp-e2e` the panel serves
+that worktree's pages, and the AI the games load stays where the symlink points (I0094).
+
 **Bot settings per run.** The duel form, `POST /api/duel` (`bot_settings`) and `mcp-duel --bot-settings`
 take extra settings for the planned bot, e.g. `own_lines=8`: name=value pairs separated by commas, with
 whole values. They go on top of what the panel derives from the plan, so a bot feature gets its A/B

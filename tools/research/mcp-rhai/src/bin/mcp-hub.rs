@@ -64,8 +64,12 @@ fn default_registry() -> PathBuf {
     })
 }
 
+/// The panel's pages: under `MCP_PANEL_DIR` when it is set, as the panel reads them (I0094).
 fn default_static() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../mcp-panel/static")
+    match std::env::var_os("MCP_PANEL_DIR").filter(|v| !v.is_empty()) {
+        Some(v) => PathBuf::from(v).join("static"),
+        None => PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../mcp-panel/static"),
+    }
 }
 
 type Ws = tungstenite::WebSocket<TcpStream>;
