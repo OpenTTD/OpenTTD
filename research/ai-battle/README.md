@@ -22,30 +22,26 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261120T153542-7fcdd213.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261120T153542-7fcdd213`](../results/battle-20261120T153542-7fcdd213.md) (0/1 replays identical).
+<!-- derived from research/results/battle-20261120T170219-be00f066.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261120T170219-be00f066`](../results/battle-20261120T170219-be00f066.md) (0/0 replays identical).
 
-- Edition `7fcdd21368423a82`: PrismaticAI and referee at `2b32ecb6f1049e718e513efb309e963aa0a5205c`, base set `opengfx-8.0.tar`
+- Edition `be00f066f0358193`: PrismaticAI and referee at `2b32ecb6f1049e718e513efb309e963aa0a5205c`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 43 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 1 identical to their original on another arena
+- 40 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 0 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 43 | 43 | 172 | 4.0 | 1.0 | 86.3 M | 0 | 0 |
-| 2 | PrismaticAI GA g155.brainSafe | 8 | 0 | 24 | 3.0 | 2.0 | 16.7 M | 0 | 0 |
-| 3 | PrismaticAI GA g155.0 | 8 | 0 | 24 | 3.0 | 2.0 | 15.3 M | 0 | 0 |
-| 4 | PrismaticAI | 5 | 0 | 15 | 3.0 | 2.0 | 14.9 M | 0 | 2 |
-| 5 | PrismaticAI pre-elite | 8 | 0 | 24 | 3.0 | 2.0 | 13.8 M | 0 | 0 |
-| 6 | PrismaticAI GA g155.3 | 6 | 0 | 18 | 3.0 | 2.0 | 13.3 M | 0 | 0 |
-| 7 | PrismaticAI GA g155.brainExplore | 8 | 0 | 21 | 2.625 | 2.38 | 11.2 M | 0 | 0 |
-| 8 | AdmiralAI | 43 | 0 | 87 | 2.023 | 2.98 | 6.2 M | 59 | 6 |
-| 9 | LuDiAI AfterFix | 43 | 0 | 39 | 0.907 | 4.09 | 1.4 M | 0 | 0 |
-| 10 | CivilAI | 43 | 0 | 6 | 0.14 | 4.86 | 540.8 k | 0 | 8 |
-
-| Seed | Original | Replay | Arenas | Identical |
-|---|---|---|---|---|
-| 1963069286 | m-0011 | m-0056 | imac / mbp | NO |
+| 1 | AAAHogEx | 40 | 40 | 160 | 4.0 | 1.0 | 94.8 M | 0 | 0 |
+| 2 | PrismaticAI GA g163.3 | 6 | 0 | 18 | 3.0 | 2.0 | 15.7 M | 0 | 2 |
+| 3 | PrismaticAI pre-elite | 7 | 0 | 21 | 3.0 | 2.0 | 14.9 M | 0 | 0 |
+| 4 | PrismaticAI | 7 | 0 | 21 | 3.0 | 2.0 | 13.5 M | 0 | 2 |
+| 5 | PrismaticAI GA g163.0 | 8 | 0 | 23 | 2.875 | 2.12 | 12.3 M | 0 | 6 |
+| 6 | PrismaticAI GA g163.brainSafe | 6 | 0 | 16 | 2.667 | 2.33 | 8.4 M | 0 | 4 |
+| 7 | PrismaticAI GA g163.brainExplore | 6 | 0 | 15 | 2.5 | 2.5 | 7.1 M | 0 | 2 |
+| 8 | AdmiralAI | 40 | 0 | 79 | 1.975 | 3.02 | 6.1 M | 0 | 1 |
+| 9 | LuDiAI AfterFix | 40 | 0 | 39 | 0.975 | 4.03 | 1.9 M | 0 | 0 |
+| 10 | CivilAI | 40 | 0 | 8 | 0.2 | 4.8 | 787.9 k | 0 | 6 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -267,6 +263,11 @@ The first editions showed two failures. The battle now catches both by itself.
   flies under the current code. It lost all 13 of its pairs with the default (mean ratio 0.38)
   and caused most of the remaining PrismaticAI last places. It stays in the fitness check, which
   covers the autopilot-off code path.
+- **A near-promotion that left the GA plays on as a trial (2026-11-20).** GA g150.0 left the
+  population at 24 pairs with the default (15 wins, geometric mean ratio 1.12, interval low end
+  0.99), so it could never reach the 30 pairs the interval rule needs. **`PrismaticAI trial
+  g150.0`** plays its exact settings string. Its new matches pool with its GA pairs, because pairs
+  are keyed by settings, and the trial ends when the rule promotes or drops it.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not
