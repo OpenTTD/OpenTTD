@@ -20,12 +20,12 @@ EVERY=0
 # there failed on fresh maps (GA g30.brainSafe/brainSafe1 each ended last once).
 POSTMORTEM="${BRAIN_POSTMORTEM:-$HERE/../mcp-rhai/target/release/battle-postmortem}"
 KEEP="${BRAIN_EDITIONS:-10}"
-# The current cut: fad8c1af62 levels airport sites only within air_level_step (default 2, the old
-# behaviour was ~8), first edition 406a089b; the per-seed effect ranges from 0.6x to ~10000x, so
-# older editions are left out, not rebased. (Previous cut: 2d4e0173, the levelling fix f4fcbbfef8.)
-BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-406a089b6c084081}"
+# The current cut: 2cab9e0314 makes air_level_step=0 the default (any height step until a levelled
+# site is refused, then step 1), first edition 6590a606. Older editions are left out, not rebased.
+# Previous cuts: 406a089b (fad8c1af62, step 2), 2d4e0173 (the levelling fix f4fcbbfef8).
+BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-6590a606976d3ed1}"
 MIN_ROWS="${BRAIN_MIN_ROWS:-20}"
-BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-406a089b6c084081}"
+BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-6590a606976d3ed1}"
 REBASE="${BRAIN_BASELINE_REBASE:-1.12}"
 
 once() {

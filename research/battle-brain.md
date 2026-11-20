@@ -145,7 +145,10 @@ offspring.
 
 The second cut is `fad8c1af62` (first edition `406a089b`). It levels airport sites only within
 `air_level_step` height steps (default 2, before it about 8). The effect varies too much per seed for a
-rebase: from 0.6× to about 10,000×, where a map that went bankrupt now reaches 9.9M.
+rebase: from 0.6× to about 10,000×, where a map that went bankrupt now reaches 9.9M. Ten minutes later `2cab9e0314` made
+`air_level_step=0` the default (first edition `6590a606`): it levels at any height step until the game
+refuses a levelled site, then only one-step sites. That is the third cut. Edition `406a089b` ran only a
+few matches.
 
 ### Why a safe pick comes first
 
