@@ -45,13 +45,6 @@
       "settings": "aggressiveness=50,air_add_waiting=0,air_grow_money=0,air_level_max=35,air_level_step=0,air_max_tiles=480,air_routes_max=3,cash_reserve=0,catchment_stops=2,invest_ppv_div=5,invest_road_cap=14,line_budget=80000,max_routes=30,own_fail_pause=0,own_lines=0,rail_twin_max=2"
     },
     {
-      "ai": "PrismaticAI",
-      "label": "PrismaticAI trial g185.0",
-      "source": "repository",
-      "group": "PrismaticAI",
-      "settings": "aggressiveness=20,air_add_waiting=20,air_full_load=0,air_grow_money=1500,air_keep_last=1,air_level_max=5,air_level_once=1,air_level_step=5,air_max_tiles=480,air_planes=1,air_reuse=0,air_routes_max=17,air_towns=50,cash_reserve=35000,catchment_stops=8,intercity=1,invest_air_cap=8,invest_borrow=0,invest_min=50,invest_ppv_div=3,invest_road_cap=20,line_budget=30000,max_routes=30,own_fail_pause=6,own_lines=4,rail_twin_max=2,self_steward=1,statue_money=0"
-    },
-    {
       "ai": "AAAHogEx",
       "source": "bananas"
     },
