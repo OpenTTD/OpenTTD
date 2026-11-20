@@ -283,6 +283,17 @@ levelling, had become too low. Default air_level_max over 20 years:
 The default is 35. Replays on the two arena seeds: `g71.brainExplore` survives at 4.4M, and
 `g74.3` ends with 41 planes, 105 vehicles and 7.6M.
 
+**When both openers fail, the bot borrows for its road routes (2026-11-20).** On seed 988774025
+(company 3), `g78.brainExplore` failed to build any airport or rail line. `RepaySurplus` then
+paid the loan down to twice the reserve after every heartbeat, and a road route is built only
+from bank money above the reserve. The company kept 3 buses on about 1000 in the bank, with
+100000 of loan unused, and went bankrupt.
+
+Now a company with no air or rail route and fewer than 20 vehicles borrows up to its reserve
+plus 30000 for the next road route. Anything unspent is repaid at the end of the heartbeat. The
+replay survives (14 vehicles). The default's 20-year values on seeds 930967890, 31337 and
+1516196607 are identical to before, because the guard never fires for it.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

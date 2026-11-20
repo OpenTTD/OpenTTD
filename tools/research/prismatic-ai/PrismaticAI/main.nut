@@ -70,6 +70,10 @@ class PrismaticAI extends AIController {
 /* Autopilot floors (Behaviour): the profile of the battle's "solo-max" contestant, which reached
  * second place with the in-bot steward (research/ai-battle/README.md). */
 const AUTOPILOT_OWN_LINES = 10;
+/* Below START_FLEET vehicles, the bot borrows up to its reserve plus START_ROUTE_MONEY for its next
+ * road route (main.nut). */
+const START_FLEET = 20;
+const START_ROUTE_MONEY = 30000;
 const AUTOPILOT_MAX_ROUTES = 30;
 const AUTOPILOT_CASH_RESERVE = 5000;
 
@@ -434,6 +438,19 @@ function PrismaticAI::Start() {
 					AICompany.SetLoanAmount(loan_before);
 					AILog.Info("PrismaticAI: no freight route built; loan back to " + AICompany.GetLoanAmount());
 				}
+				money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
+			}
+		}
+		/* A small fleet with no air or rail route borrows for its next road route: RepaySurplus pays the loan down to twice the
+		 * reserve after every heartbeat, and a bot whose air and rail openers failed then had too
+		 * little in the bank for any route. On OpenTTD seed 988774025 (company 3) it kept 3 buses on
+		 * about 1000 with 100000 of loan unused, and went bankrupt. Unspent, the loan is repaid again
+		 * at the end of the heartbeat. */
+		if (this.routes < b.max_routes && money <= b.cash_reserve + START_ROUTE_MONEY &&
+				this.auto_air == 0 && RAIL_LINES.len() == 0 && AIVehicleList().Count() < START_FLEET) {
+			local step = AICompany.GetLoanInterval();
+			local want = AICompany.GetLoanAmount() + ((b.cash_reserve + START_ROUTE_MONEY - money) / step + 1) * step;
+			if (AICompany.SetLoanAmount(min(want, AICompany.GetMaxLoanAmount()))) {
 				money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 			}
 		}
