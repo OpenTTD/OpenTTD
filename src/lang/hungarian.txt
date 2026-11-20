@@ -1154,7 +1154,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Jelenlegi illes
 STR_GAME_OPTIONS_INTERFACE                                      :Felület
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Felület mérete
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Használd a csúszkát a felület méretének beállításához. Ctrl+húzás a finom állításhoz.
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Használd a csúszkát a felület méretének beállításához. A tartományt az ablak mérete korlátozza. Ctrl+húzás a finom állításhoz.
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Méret automatikus felismerése
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Kapcsold be a felület méretének automatikus felismeréséhez
 
@@ -3030,7 +3030,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Kijárat
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinált jelző (fény){}A kombinált jelző voltaképpen egy kijárati- és egy bejárati jelző egybeépítve. Segítségével komoly váltókörzetek építhetőek bejárati jelzőkből
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az irányjelzők mellett hátulról is el lehet haladni
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Egyirányú irányjelző (fény){}Egy irányjelző lehetővé teszi, hogy amennyiben a vonatok le tudnak foglalni maguknak egy biztonságos vágányutat a következő jelzőig, több vonat is beléphessen ugyanabba a jelzőblokkba. Az egyirányú jelzők mellett nem lehet hátulról elhaladni
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítása{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átalakítja a kiválasztott jelzőtípusra és -változatra. A Ctrl+kattintás a változatok között vált. A Shift+kattintás megjeleníti a becsült átalakítási költséget.
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Jelző átalakítása{}Amikor ki van jelölve, egy meglévő jelzőre való kattintással átalakítja a kiválasztott jelzőtípusra és változatra. A Ctrl+kattintás a változatok között vált. A költségbecslés megjelenítéséhez nyomd meg a Shift billentyűt is
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Automata jelzőtelepítés esetén a jelzők távolsága
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés esetén a jelzők távolságának csökkentése
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Automata jelzőtelepítés esetén a jelzők távolságának növelése
@@ -4431,10 +4431,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} j�
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció. Ctrl+kattintással a funkciókat a szerelvényre alkalmazod.
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints jobb gombbal egy járműre az adataihoz
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints jobb gombbal egy hajóra az adataihoz
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints jobb gombbal egy repülőgépre az adataihoz
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Vonatok - bal gombbal húzással áthelyezheted a járműveket a vonatba/vonatból, jobb gombbal kattintással járműinformáció. Ctrl+kattintással a funkciókat a szerelvényre alkalmazod. Tartsd nyomva a Ctrl+Shift billentyűkombinációt a rakomány típusának felfedéséhez.
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Járművek - kattints jobb gombbal egy járműre az adataihoz artsd nyomva a Ctrl+Shift billentyű kombinációt a rakomány típusának felfedéséhez
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Hajók - kattints jobb gombbal egy hajóra az adataihoz.  Tartsd nyomva a Ctrl+Shift billentyűkombinációt a rakomány típusának felfedéséhez.
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Repülőgépek - kattints jobb gombbal egy repülőgépre az adataihoz. Tartsd nyomva a Ctrl+Shift billentyű kombinációt a rakomány típusának felfedéséhez.
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Húzz ide egy járművet az eladásához
