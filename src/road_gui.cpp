@@ -31,18 +31,19 @@
 #include "zoom_func.h"
 #include "dropdown_type.h"
 #include "dropdown_func.h"
+#include "engine_base.h"
 #include "station_base.h"
-#include "station_func.h"
 #include "waypoint_base.h"
 #include "strings_func.h"
 #include "core/geometry_func.hpp"
 #include "station_cmd.h"
-#include "tunnelbridge_cmd.h"
 #include "waypoint_cmd.h"
 #include "road_cmd.h"
+#include "tunnelbridge_cmd.h"
 #include "newgrf_badge_gui.h"
 #include "newgrf_roadstop.h"
 #include "picker_gui.h"
+#include "timer/timer.h"
 #include "timer/timer_game_calendar.h"
 
 #include "widgets/road_widget.h"
@@ -384,7 +385,7 @@ struct BuildRoadToolbarWindow : Window {
 			bool close_build_station = this->ModifyRoadType(_cur_roadtype);
 
 			/* Update cursor and all sub windows. */
-			if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
+			if (_thd.GetCallbackWnd() == this) this->SetRoadCursor(this->last_started_action);
 			for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
 				SetWindowDirty(cls, TransportType::Road);
 			}
@@ -575,6 +576,33 @@ struct BuildRoadToolbarWindow : Window {
 		}
 	}
 
+	/**
+	 * Set the cursor for a given widget, using composed cursor when applicable.
+	 * @param widget Widget ID of the button whose cursor to set.
+	 */
+	void SetRoadCursor(WidgetID widget)
+	{
+		CursorID cursor = this->GetCursorForWidget(widget);
+		bool uses_road_cursor;
+		switch (widget) {
+			case WID_ROT_ROAD_X:
+			case WID_ROT_ROAD_Y:
+			case WID_ROT_AUTOROAD:
+			case WID_ROT_DEPOT:
+			case WID_ROT_BUILD_TUNNEL:
+			case WID_ROT_CONVERT_ROAD:
+				uses_road_cursor = true; break;
+			default:
+				uses_road_cursor = false; break;
+		}
+
+		if (uses_road_cursor && GetRoadTypeInfo(this->roadtype)->UseComposedCursors()) {
+			SetComposedCursor(cursor);
+		} else {
+			SetCursor(cursor, PAL_NONE);
+		}
+	}
+
 	void OnClick([[maybe_unused]] Point pt, WidgetID widget, [[maybe_unused]] int click_count) override
 	{
 		bool started;
@@ -584,6 +612,9 @@ struct BuildRoadToolbarWindow : Window {
 		if (widget != WID_ROT_ONE_WAY && widget != WID_ROT_REMOVE) {
 			started = HandlePlacePushButton(this, widget, this->GetCursorForWidget(widget), this->GetHighLightStyleForWidget(widget));
 			this->last_started_action = widget;
+
+			/* Override cursor with composed version when composed cursors are enabled */
+			if (started) this->SetRoadCursor(widget);
 		}
 
 		switch (widget) {
@@ -651,10 +682,8 @@ struct BuildRoadToolbarWindow : Window {
 		}
 		this->ModifyRoadType(_cur_roadtype);
 
-		if (_thd.GetCallbackWnd() == this) SetCursor(this->GetCursorForWidget(this->last_started_action), PAL_NONE);
-		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) {
-			SetWindowDirty(cls, TransportType::Road);
-		}
+		if (_thd.GetCallbackWnd() == this) this->SetRoadCursor(this->last_started_action);
+		for (WindowClass cls : {WindowClass::BuildBusStation, WindowClass::BuildTruckStation, WindowClass::BuildWaypoint, WindowClass::BuildDepot}) SetWindowDirty(cls, TransportType::Road);
 
 		return EventState::Handled;
 	}
@@ -1082,17 +1111,14 @@ Window *ShowBuildRoadToolbar(RoadType roadtype)
 	if (!Company::IsValidID(_local_company)) return nullptr;
 	if (!ValParamRoadType(roadtype)) return nullptr;
 
-	if (GetRoadTramType(roadtype) == GetRoadTramType(_cur_roadtype)) {
-		Window *w = BringWindowToFrontById(WindowClass::BuildToolbar, TransportType::Road);
+	_cur_roadtype = roadtype;
+	Window *w = BringWindowToFrontById(WindowClass::BuildToolbar, TransportType::Road);
 
-		if (w != nullptr) {
-			_cur_roadtype = roadtype;
-			w->OnInvalidateData();
-			return w;
-		}
+	if (w != nullptr) {
+		w->OnInvalidateData();
+		return w;
 	}
 
-	_cur_roadtype = roadtype;
 	CloseWindowByClass(WindowClass::BuildToolbar);
 	return AllocateWindowDescFront<BuildRoadToolbarWindow>(RoadTypeIsRoad(_cur_roadtype) ? _build_road_desc : _build_tramway_desc, TransportType::Road);
 }
@@ -1365,12 +1391,12 @@ public:
 			if (st->owner != _local_company) continue;
 			if (roadstoptype == RoadStopType::Truck && !st->facilities.Test(StationFacility::TruckStop)) continue;
 			if (roadstoptype == RoadStopType::Bus && !st->facilities.Test(StationFacility::BusStop)) continue;
-			items.insert({GrfID{}, 0, ROADSTOP_CLASS_DFLT.base(), 0}); // We would need to scan the map to find out if default is used.
+			items.insert(PickerItem{GrfID{}, 0, ROADSTOP_CLASS_DFLT.base(), 0}); // We would need to scan the map to find out if default is used.
 			for (const auto &sm : st->roadstop_speclist) {
 				if (sm.spec == nullptr) continue;
 				if (roadstoptype == RoadStopType::Truck && sm.spec->stop_type != ROADSTOPTYPE_FREIGHT && sm.spec->stop_type != ROADSTOPTYPE_ALL) continue;
 				if (roadstoptype == RoadStopType::Bus && sm.spec->stop_type != ROADSTOPTYPE_PASSENGER && sm.spec->stop_type != ROADSTOPTYPE_ALL) continue;
-				items.insert({sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
+				items.insert(PickerItem{sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
 			}
 		}
 	}
@@ -1790,10 +1816,10 @@ public:
 	{
 		for (const Waypoint *wp : Waypoint::Iterate()) {
 			if (wp->owner != _local_company || !HasBit(wp->waypoint_flags, WPF_ROAD)) continue;
-			items.insert({GrfID{}, 0, ROADSTOP_CLASS_WAYP.base(), 0}); // We would need to scan the map to find out if default is used.
+			items.insert(PickerItem{GrfID{}, 0, ROADSTOP_CLASS_WAYP.base(), 0}); // We would need to scan the map to find out if default is used.
 			for (const auto &sm : wp->roadstop_speclist) {
 				if (sm.spec == nullptr) continue;
-				items.insert({sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
+				items.insert(PickerItem{sm.grfid, sm.localidx, sm.spec->class_index.base(), sm.spec->index});
 			}
 		}
 	}
