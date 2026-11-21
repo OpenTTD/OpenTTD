@@ -48,6 +48,36 @@ function PrismaticAI::AirportType() {
 	return -1;
 }
 
+/* Level the corners from `t` to `far` without touching the last `keep` of the company's money and
+ * loan headroom. LevelTiles' test pass prices each step of a corner on the unchanged map, without
+ * the neighbouring corners a moved corner drags along: on OpenTTD seed 1383023900
+ * (g304.brainExplore) a site it priced at 42101 cost 237600 with its airport, left nothing for
+ * the plane, and the company went bankrupt in 1961 with two buses. The real pass stops when the bank runs dry
+ * (CmdLevelLand), so the loan is paid down for the duration until only the money beyond `keep` is
+ * in the bank, and taken again after. Only for a site estimated above 30000 whose estimate times
+ * eight reaches what may be spent. Of the levellings logged in the arena, 6 of the 10 estimated
+ * above 30000 cost 2.2 to 5.2 times their estimate; of those estimated between 10000 and 30000,
+ * 3 of 32 cost more than 1.1 times it (12981 cost 40685, 27137 cost 112145). Moving the loan
+ * changes the company's money by a few units (interest at a month's end during the levelling), and
+ * on cheap sites, where the estimate held, that alone sent replays of whole games another way.
+ * Returns whether the site was levelled. */
+function PrismaticAI::LevelKeeping(t, far, keep, cost, funds) {
+	local loan = AICompany.GetLoanAmount();
+	local headroom = AICompany.GetMaxLoanAmount() - loan;
+	local cut = 0;
+	if (keep > headroom && cost > 30000 && 8 * cost >= funds - keep) {
+		local step = AICompany.GetLoanInterval();
+		cut = min(loan, ((keep - headroom + step - 1) / step) * step);
+		if (cut > 0 && !AICompany.SetLoanAmount(loan - cut)) cut = 0;
+	}
+	local spent = AIAccounting();
+	local ok = AITile.LevelTiles(t, far);
+	if (cut > 0) AILog.Info("PrismaticAI: levelled tile " + t + " with " + cut + " of the loan paid down: " +
+		(ok ? "done" : "stopped") + " for " + spent.GetCosts() + " (estimated " + cost + ", keeping " + keep + ")");
+	if (cut > 0) AICompany.SetLoanAmount(min(AICompany.GetMaxLoanAmount(), AICompany.GetLoanAmount() + cut));
+	return ok;
+}
+
 /* Build an airport near `town`; returns its tile or null. */
 function PrismaticAI::BuildAirportNear(town, type, pax) {
 	local w = AIAirport.GetAirportWidth(type), h = AIAirport.GetAirportHeight(type);
@@ -123,8 +153,8 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			local step_max = AIR_LEVEL_STEP > 0 ? AIR_LEVEL_STEP : (AIR_LEVEL_REFUSED ? 1 : 255);
 			local level_ok = !level_lost && hi - lo <= step_max && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
 			local real = AIAccounting();
-			if (level_ok && AITile.LevelTiles(t, far) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
-				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it");
+			if (level_ok && PrismaticAI.LevelKeeping(t, far, keep, cost, funds) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
+				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it for " + real.GetCosts() + " (estimated " + cost + ")");
 				return t;
 			}
 			/* Say why: a test pass that succeeded leaves ERR_NONE as the last error. */

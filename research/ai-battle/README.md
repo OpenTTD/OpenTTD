@@ -22,26 +22,30 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261121T193828-50877fda.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261121T193828-50877fda`](../results/battle-20261121T193828-50877fda.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261121T221911-20aef493.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261121T221911-20aef493`](../results/battle-20261121T221911-20aef493.md) (0/1 replays identical).
 
-- Edition `50877fdaa68836ad`: PrismaticAI and referee at `05aa9a18c30f55c72b8d5101385cbfdce4fa3ba4`, base set `opengfx-8.0.tar`
+- Edition `20aef49320e354ca`: PrismaticAI and referee at `531922be7d7544c6f7d5beecd51ca7906763f532`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 43 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8), `ubuntu` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 0 identical to their original on another arena
+- 40 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 43 | 43 | 172 | 4.0 | 1.0 | 91.8 M | 0 | 0 |
-| 2 | PrismaticAI pre-g150 | 8 | 0 | 23 | 2.875 | 2.12 | 15.0 M | 0 | 0 |
-| 3 | PrismaticAI GA g301.0 | 7 | 0 | 20 | 2.857 | 2.14 | 11.8 M | 0 | 0 |
-| 4 | PrismaticAI GA g301.3 | 7 | 0 | 20 | 2.857 | 2.14 | 9.4 M | 0 | 0 |
-| 5 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 13.0 M | 0 | 0 |
-| 6 | PrismaticAI GA g301.brainExplore | 8 | 0 | 21 | 2.625 | 2.38 | 10.6 M | 0 | 0 |
-| 7 | PrismaticAI GA g301.brainSafe | 7 | 0 | 18 | 2.571 | 2.43 | 11.2 M | 0 | 0 |
-| 8 | AdmiralAI | 43 | 0 | 94 | 2.186 | 2.81 | 7.2 M | 59 | 1 |
-| 9 | LuDiAI AfterFix | 43 | 0 | 41 | 0.953 | 4.05 | 1.6 M | 0 | 4 |
-| 10 | CivilAI | 43 | 0 | 4 | 0.093 | 4.91 | 477.8 k | 0 | 8 |
+| 1 | AAAHogEx | 40 | 40 | 160 | 4.0 | 1.0 | 82.6 M | 0 | 0 |
+| 2 | PrismaticAI | 6 | 0 | 18 | 3.0 | 2.0 | 14.8 M | 0 | 0 |
+| 3 | PrismaticAI pre-g150 | 7 | 0 | 21 | 3.0 | 2.0 | 14.6 M | 0 | 0 |
+| 4 | PrismaticAI GA g314.brainSafe | 8 | 0 | 23 | 2.875 | 2.12 | 13.1 M | 0 | 0 |
+| 5 | PrismaticAI GA g314.0 | 7 | 0 | 20 | 2.857 | 2.14 | 16.6 M | 0 | 0 |
+| 6 | PrismaticAI GA g314.brainExplore | 6 | 0 | 17 | 2.833 | 2.17 | 14.0 M | 0 | 0 |
+| 7 | PrismaticAI GA g314.3 | 6 | 0 | 17 | 2.833 | 2.17 | 12.6 M | 0 | 0 |
+| 8 | AdmiralAI | 40 | 0 | 84 | 2.1 | 2.9 | 6.7 M | 57 | 2 |
+| 9 | LuDiAI AfterFix | 40 | 0 | 32 | 0.8 | 4.2 | 1.6 M | 0 | 2 |
+| 10 | CivilAI | 40 | 0 | 8 | 0.2 | 4.8 | 673.4 k | 0 | 6 |
+
+| Seed | Original | Replay | Arenas | Identical |
+|---|---|---|---|---|
+| 1237493813 | m-0011 | m-0048 | imac / mbp | NO |
 <!-- battle:end -->
 
 ## How it fits together
@@ -323,6 +327,14 @@ The first editions showed two failures. The battle now catches both by itself.
   5e5b9f93-799899b1 matches (GA configurations and the default, in their lineups) the bot's value
   changed by +8.8%, +9.1%, +9.5%, 0, +4.8%, +2.3%, +2.4% and +6.4% (about +5.3% geometric); the
   committed bot made 45 oil-rig plans in those games, the fixed one none.
+- **Airport levelling keeps the money for the plane (2026-11-21).** LevelTiles' test pass prices
+  each step on the unchanged map, so a steep site can cost several times its estimate: g304.brainExplore
+  (512c95be m-0052, seed 1383023900) levelled a site estimated at 42101 for about 220k, had no money
+  left for the plane and went bankrupt in 1961. For a site estimated above 30000 the bot now pays
+  its loan down while levelling, so the real pass stops before the airports' and the plane's
+  reserve. That game ended at 2.91M instead of 1; the 8 replays of the oil-rig A/B came out
+  identical. A first version that moved the loan for every levelling changed those 8 games by
+  -57% to +56% (a few units of interest, then chaos), which is why the threshold exists.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not

@@ -429,6 +429,18 @@ of edition 5e5b9f93-799899b1 matches the committed bot made 45 such plans. The p
 industries with `AIIndustry.IsBuiltOnWater`. Over those 8 games the value changed by +8.8%,
 +9.1%, +9.5%, 0, +4.8%, +2.3%, +2.4% and +6.4% (about +5.3% geometric), with no loss.
 
+g304.brainExplore's year-1 bankruptcy (m-0052 of 512c95be, seed 1383023900) replayed exactly. Its
+autopilot air route levelled an airport site in Huston that `AITile.LevelTiles`' test pass priced
+at 42101; the real pass and the airport cost 237600. `CmdLevelLand` prices every step of a corner
+on the unchanged map, so the neighbouring corners a deep cut drags along are missing from the
+estimate. The loan was at its maximum, no plane could be bought, the airports were removed, and
+the remaining 15k went into bus stops. `LevelKeeping` (air.nut) now pays the loan down while a
+site estimated above 30000 is levelled, so the real pass, which stops when the bank is empty,
+cannot touch the reserve for two airports and a plane. The game ended at 2.91M. Moving the loan
+for every levelling instead shifted the company's money by a few units of interest and sent 3 of 8
+unrelated replays down another path (-57% to +56%): a change that touches every game needs to be
+a no-op where it is not needed, or an A/B over a few games measures chaos.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
