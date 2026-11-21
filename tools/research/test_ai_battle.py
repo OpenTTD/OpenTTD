@@ -83,6 +83,21 @@ class MatchContract(unittest.TestCase):
         field, slot, settings = battle.parse_start_script(battle.start_script_text(lineup))
         self.assertEqual((field, slot, settings), (["AdmiralAI", "LuDiAI AfterFix"], 1, "a=1,b=2"))
 
+    def test_a_match_record_gives_the_inputs_to_replay_it(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp) / "abcdef0123" / "matches"
+            d.mkdir(parents=True)
+            (d / "m-0009.json").write_text(json.dumps({
+                "seed": 7, "years": 20, "host": "h", "host_version": "v",
+                "lineup": [{"ai": "CivilAI", "key": "CivilAI"},
+                           {"ai": "PrismaticAI", "key": "PrismaticAI GA g1.0", "settings": "a=1"},
+                           {"ai": "AAAHogEx", "key": "AAAHogEx"}]}))
+            r = battle.match_replay_inputs(Path(tmp), "abcd/m-0009")
+            self.assertEqual((r["seed"], r["field"], r["slot"], r["settings"], r["key"]),
+                             (7, ["CivilAI", "AAAHogEx"], 1, "a=1", "PrismaticAI GA g1.0"))
+            with self.assertRaises(SystemExit):
+                battle.match_replay_inputs(Path(tmp), "ffff/m-0009")
+
     def test_launch_uses_an_edition_directory_and_refuses_a_leftover(self):
         host = battle.Host({"name": "h", "ssh": None}, "$HOME/ttd-battle")
         m = {"id": "m-0001", "edition": "abc", "lineup": [{"ai": "A"}], "ticks": 7, "seed": 3}

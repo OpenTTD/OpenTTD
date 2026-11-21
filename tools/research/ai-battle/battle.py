@@ -627,6 +627,26 @@ def parse_start_script(text: str) -> tuple[list[str], int, str]:
     return field, slot, settings
 
 
+def match_replay_inputs(results: Path, ref: str) -> dict:
+    """An arena match's replay inputs from its record (`results/<edition>/matches/<id>.json`):
+    `ref` is "<edition prefix>/<m-NNNN>". Returns seed, years, field, slot, settings, the
+    contestant's key and the host's build, so `ablate --match` replays the match as it was played."""
+    edition, _, mid = ref.partition("/")
+    found = sorted(results.glob(f"{edition}*/matches/{mid}.json"))
+    if len(found) != 1:
+        raise SystemExit(f"ablate: --match {ref}: {len(found)} records found under {results}")
+    m = json.loads(found[0].read_text())
+    field, slot, settings, key = [], 0, "", ""
+    for c in m["lineup"]:
+        if c["ai"] == "PrismaticAI":
+            slot, settings, key = len(field), c.get("settings", ""), c.get("key", "")
+        else:
+            field.append(c["ai"])
+    return {"seed": m["seed"], "years": m.get("years", 20), "field": field, "slot": slot,
+            "settings": settings, "key": key, "host": m.get("host"),
+            "host_version": m.get("host_version")}
+
+
 def match_dir(root: str, m: dict) -> str:
     """Match ids restart in every edition, so the directory is per edition."""
     return f"{root}/matches/{m['edition']}/{m['id']}"
@@ -1838,6 +1858,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--lineup", type=Path,
                     help="ablate: a match's game_start.scr; sets --field and --slot from it and adds "
                          "its PrismaticAI settings as variant 'arena'")
+    ap.add_argument("--match", help="ablate: an arena match as <edition prefix>/<m-NNNN>; takes "
+                                    "seed, years, field, slot and settings (variant 'arena') from "
+                                    "its record")
     ap.add_argument("--log-dir", help="ablate: keep each variant's full log (script debug level 4) here")
     ap.add_argument("--edition", help="report: a past edition (its arena bundle must still be the "
                                       "prepared one, for its provenance)")
@@ -1868,11 +1891,19 @@ def main(argv: list[str] | None = None) -> int:
         Orchestrator(cfg).reap()
     elif a.command == "ablate":
         field, slot, variants = a.field.split(","), a.slot, list(a.variant)
-        if a.lineup:
+        seed, years = a.seed, a.years
+        if a.match:
+            r = match_replay_inputs(cfg["results"], a.match)
+            seed, years, field, slot = r["seed"], r["years"], r["field"], r["slot"]
+            if not any(v.partition("=")[0] == "arena" for v in variants):
+                variants.append(f"arena={r['settings']}")
+            print(f"ablate: {a.match} ({r['key']}) seed {seed}, slot {slot}, field {','.join(field)}; "
+                  f"played on {r['host']} with {r['host_version']}")
+        elif a.lineup:
             field, slot, settings = parse_start_script(a.lineup.read_text())
             if not any(v.partition("=")[0] == "arena" for v in variants):
                 variants.append(f"arena={settings}")
-        return cmd_ablate(cfg, a.seed, a.years, variants, field, a.write, a.log_dir, slot)
+        return cmd_ablate(cfg, seed, years, variants, field, a.write, a.log_dir, slot)
     return 0
 
 

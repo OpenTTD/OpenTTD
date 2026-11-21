@@ -19,10 +19,12 @@ battle record cannot show why it happened, but a replay can. This is the order o
    - The whole field matters too. `ablate`'s default field is `AAAHogEx,AdmiralAI`, while the
      arena plays four opponents in a drawn order. g279.3 on seed 853334149 scored 0.66M in the
      arena and 5.37M in a replay against the default field.
-3. **Replay with the bot's log.** Run `battle.py ablate --seed S --years 20 --lineup
-   <match>/home/Documents/OpenTTD/scripts/game_start.scr --variant default= --log-dir DIR
-   --allow-dirty`. `--lineup` sets the field and slot from the match and adds its settings as
-   variant `arena`. It uses the working-tree bot. Compare the replay's yearly `REF Q` lines for the
+3. **Replay with the bot's log.** Run `battle.py ablate --match <edition prefix>/<m-NNNN>
+   --variant default= --log-dir DIR --allow-dirty`. `--match` reads the match's record
+   (`~/ttd-battle/results/<edition>/matches/<id>.json`) for seed, years, field, slot and
+   settings, adds the settings as variant `arena`, and prints the host and build it was played
+   with. A build other than the local `build/openttd` can play another game. `--lineup
+   <game_start.scr>` does the same from a match directory without its record. It uses the working-tree bot. Compare the replay's yearly `REF Q` lines for the
    company with those in the match's own `match.log`: a replay that parts from the arena in the
    first year is a different game, and its log explains nothing.
 4. **Read the log for the leak, not the symptom.**
