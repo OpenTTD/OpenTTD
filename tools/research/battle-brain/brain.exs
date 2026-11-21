@@ -83,7 +83,7 @@ defmodule Brain do
       Map.new(genes, fn g ->
         [lo, hi, step] = space[g]
         steps = max(round((hi - lo) / max(step, 1)), 0)
-        v = if g in moved or not Map.has_key?(base, g), do: lo + step * :rand.uniform(steps + 1) - step, else: base[g]
+        v = if g in moved or not Map.has_key?(base, g), do: lo + step * :rand.uniform(steps + 1) - step, else: min(max(base[g], lo), hi)
         {g, v}
       end)
     end
