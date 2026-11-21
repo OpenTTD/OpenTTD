@@ -45,29 +45,6 @@ enum class TownProductionEffect : uint8_t {
 	Invalid,
 };
 
-/** Cargo classes. */
-enum class CargoClass : uint8_t {
-	Passengers   =  0, ///< Passengers
-	Mail         =  1, ///< Mail
-	Express      =  2, ///< Express cargo (Goods, Food, Candy, but also possible for passengers)
-	Armoured     =  3, ///< Armoured cargo (Valuables, Gold, Diamonds)
-	Bulk         =  4, ///< Bulk cargo (Coal, Grain etc., Ores, Fruit)
-	PieceGoods   =  5, ///< Piece goods (Livestock, Wood, Steel, Paper)
-	Liquid       =  6, ///< Liquids (Oil, Water, Rubber)
-	Refrigerated =  7, ///< Refrigerated cargo (Food, Fruit)
-	Hazardous    =  8, ///< Hazardous cargo (Nuclear Fuel, Explosives, etc.)
-	Covered      =  9, ///< Covered/Sheltered Freight (Transportation in Box Vans, Silo Wagons, etc.)
-	Oversized    = 10, ///< Oversized (stake/flatbed wagon)
-	Powderized   = 11, ///< Powderized, moist protected (powder/silo wagon)
-	NotPourable  = 12, ///< Not Pourable (open wagon, but not hopper wagon)
-	Potable      = 13, ///< Potable / food / clean.
-	NonPotable   = 14, ///< Non-potable / non-food / dirty.
-	Special      = 15, ///< Special bit used for livery refit tricks instead of normal cargoes.
-};
-
-/** Bitset of \c CargoClass elements. */
-using CargoClasses = EnumBitSet<CargoClass, uint16_t>;
-
 static const uint8_t INVALID_CARGO_BITNUM = 0xFF; ///< Constant representing invalid cargo bit number.
 
 static const uint TOWN_PRODUCTION_DIVISOR = 256; ///< By what factor divide town production.
