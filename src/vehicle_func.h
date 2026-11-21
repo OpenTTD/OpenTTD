@@ -207,6 +207,8 @@ void ShowNewGrfVehicleError(EngineID engine, StringID part1, StringID part2, GRF
 CommandCost TunnelBridgeIsFree(TileIndex tile, TileIndex endtile, const Vehicle *ignore = nullptr);
 
 void DecreaseVehicleValue(Vehicle *v);
+bool CanVehicleBreakdown(const Vehicle *v);
+void VehicleBreakdown(Vehicle *v, int chance = 1);
 void CheckVehicleBreakdown(Vehicle *v);
 void EconomyAgeVehicle(Vehicle *v);
 void AgeVehicle(Vehicle *v);
