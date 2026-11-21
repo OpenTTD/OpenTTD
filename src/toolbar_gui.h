@@ -60,8 +60,9 @@ void AllocateToolbar();
 void ToggleBoundingBoxes();
 void ToggleDirtyBlocks();
 void ToggleWidgetOutlines();
+bool IsMainToolbarHorizontal();
 
-extern uint _toolbar_width;
+extern uint _toolbar_bigger_dimention;
 
 extern RailType _last_built_railtype; ///< The most recently used type of rail.
 extern RoadType _last_built_roadtype; ///< The most recently used type of road.
