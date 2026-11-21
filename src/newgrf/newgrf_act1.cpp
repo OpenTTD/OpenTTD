@@ -43,22 +43,51 @@ static void NewSpriteSet(ByteReader &buf)
 		num_sets = buf.ReadExtendedByte();
 	}
 	uint16_t num_ents = buf.ReadExtendedByte();
+	uint32_t total_sprites = num_sets * num_ents;
+	bool has_variations = HasBit(num_sets, 15);
+	ClrBit(num_sets, 15);
+	const uint8_t *variations = has_variations ? buf.ReadBytes(total_sprites) : nullptr;
 
 	if (feature >= GrfSpecFeature::End) {
-		_cur_gps.skip_sprites = num_sets * num_ents;
+		if (variations != nullptr) {
+			_cur_gps.skip_sprites = std::accumulate(variations, variations + total_sprites, 0);
+		} else {
+			_cur_gps.skip_sprites = total_sprites;
+		}
 		GrfMsg(Severity::Error, "NewSpriteSet: Unsupported feature 0x{:02X}, skipping {} sprites", feature, _cur_gps.skip_sprites);
 		return;
 	}
 
-	_cur_gps.AddSpriteSets(feature, _cur_gps.spriteid, first_set, num_sets, num_ents);
+	if (variations != nullptr) {
+		if (!_cur_gps.VerifySpriteSets(feature, first_set, num_sets, num_ents)) {
+			GrfMsg(Severity::Error, "Variation sprite set at {} of feature 0x{:02X} does not match existing sprite set, ignoring", _cur_gps.spriteid, feature);
+			_cur_gps.skip_sprites = std::accumulate(variations, variations + total_sprites, 0);
+			return;
+		}
+	} else {
+		_cur_gps.AddSpriteSets(feature, _cur_gps.spriteid, first_set, num_sets, num_ents);
+	}
 
 	GrfMsg(Severity::Trace1, "New sprite set at {} of feature 0x{:02X}, consisting of {} sets with {} views each (total {})",
-		_cur_gps.spriteid, feature, num_sets, num_ents, num_sets * num_ents
+		_cur_gps.spriteid, feature, num_sets, num_ents, total_sprites
 	);
 
-	for (int i = 0; i < num_sets * num_ents; i++) {
-		_cur_gps.nfo_line++;
-		LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, _cur_gps.nfo_line);
+	if (variations != nullptr) {
+		for (uint i = 0; i < num_sets; ++i) {
+			uint load_index = _cur_gps.GetSprite(feature, first_set + i);
+			for (uint j = 0; j < num_ents; ++j) {
+				uint8_t num_variations = *variations++;
+				if (num_variations == 0) continue;
+				AddSpriteVariations(load_index + j, _cur_gps.spriteid, num_variations);
+				while (num_variations-- > 0) {
+					LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, ++_cur_gps.nfo_line);
+				}
+			}
+		}
+	} else {
+		for (uint i = 0; i < total_sprites; ++i) {
+			LoadNextSprite(_cur_gps.spriteid++, *_cur_gps.file, ++_cur_gps.nfo_line);
+		}
 	}
 }
 
@@ -75,8 +104,16 @@ static void SkipAct1(ByteReader &buf)
 		num_sets = buf.ReadExtendedByte();
 	}
 	uint16_t num_ents = buf.ReadExtendedByte();
+	uint32_t total_sprites = num_sets * num_ents;
+	bool has_variations = HasBit(num_sets, 15);
+	ClrBit(num_sets, 15);
 
-	_cur_gps.skip_sprites = num_sets * num_ents;
+	if (has_variations) {
+		const uint8_t *variations = buf.ReadBytes(total_sprites);
+		_cur_gps.skip_sprites = std::accumulate(variations, variations + total_sprites, 0);
+	} else {
+		_cur_gps.skip_sprites = total_sprites;
+	}
 
 	GrfMsg(Severity::Notice, "SkipAct1: Skipping {} sprites", _cur_gps.skip_sprites);
 }
