@@ -23,9 +23,9 @@ KEEP="${BRAIN_EDITIONS:-10}"
 # The current cut: 2cab9e0314 makes air_level_step=0 the default (any height step until a levelled
 # site is refused, then step 1), first edition 6590a606. Older editions are left out, not rebased.
 # Previous cuts: 406a089b (fad8c1af62, step 2), 2d4e0173 (the levelling fix f4fcbbfef8).
-BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-6590a606976d3ed1}"
+BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-cd02f5e8f136daad}"
 MIN_ROWS="${BRAIN_MIN_ROWS:-20}"
-BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-121f34cdd7e1773d}"
+BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-cd02f5e8f136daad}"
 REBASE="${BRAIN_BASELINE_REBASE:-1.154}"
 
 once() {

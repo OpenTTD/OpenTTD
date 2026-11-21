@@ -155,6 +155,11 @@ CI lower bound 1.046), first edition `121f34cd`. That change touches only settin
 since the cut are rebased by 1/1.154 (`BRAIN_BASELINE_SINCE=121f34cd`, `BRAIN_BASELINE_REBASE=1.154`)
 rather than cut.
 
+The fourth cut is `61b2483618` (first edition `cd02f5e8`): when a hilly map has no flat site for a
+double-track terminus, the bot now levels a sloped one instead of dropping the own line. The default's
+20-year value moved 0.94× to 2.36× per seed (about +32% geometric), and the effect depends on the
+`own_lines` genes, so older editions are cut, not rebased.
+
 ### Why trust-region parents need four rows
 
 In edition `eb9cae38` the safe pick `g241.brainSafe` finished last on seed 199435860. The four other
