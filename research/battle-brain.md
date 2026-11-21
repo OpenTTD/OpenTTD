@@ -174,6 +174,13 @@ real-lineup games (about +1.3% geometric), so the mean shift is small, but the e
 maps and genes that pick electric engines. Older rows understate exactly those rail genes, so they are
 cut, not rebased. The rebase (`BRAIN_BASELINE_SINCE=b7e14fbf`) no longer touches any kept row.
 
+Then `531922be7d` (first edition `000b3198`) made the own freight planner skip industries on water.
+Oil rigs ranked first by output, every attempt failed for want of a rail station site, and each failure
+counted against `own_lines` and `own_fail_pause`. Over 8 replayed matches (`ablate --match`, real
+lineups, editions `5e5b9f93` to `799899b1`) the change moved value 0% to +9.5%, +5.3% geometric, with
+no loss. The spread is narrow and no configuration lost, so rows since the `5e5b9f93` cut are rebased
+by 1/1.053 (`BRAIN_BASELINE_SINCE=000b3198`, `BRAIN_BASELINE_REBASE=1.053`) rather than cut.
+
 ### Why trust-region parents need four rows
 
 In edition `eb9cae38` the safe pick `g241.brainSafe` finished last on seed 199435860. The four other

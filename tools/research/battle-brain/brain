@@ -27,8 +27,10 @@ KEEP="${BRAIN_EDITIONS:-10}"
 # 6590a606 (2cab9e0314, air_level_step=0), 406a089b (fad8c1af62), 2d4e0173 (f4fcbbfef8).
 BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-5e5b9f934f7f7216}"
 MIN_ROWS="${BRAIN_MIN_ROWS:-20}"
-BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-b7e14fbff103a5ba}"
-REBASE="${BRAIN_BASELINE_REBASE:-1.07}"
+# Rebase since the cut: 531922be7d (the own freight planner skips industries on water), first
+# edition 000b3198; +0% to +9.5% over 8 replayed matches, +5.3% geometric.
+BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-000b3198d9e14685}"
+REBASE="${BRAIN_BASELINE_REBASE:-1.053}"
 
 once() {
   local tmp; tmp="$(mktemp -d)"
@@ -75,7 +77,7 @@ once() {
     echo "battle-brain: $n paired rows since ${BRAIN_TRAIN_SINCE:-the start} (< $MIN_ROWS): no proposals"
     rm -rf "$tmp"; return 0
   fi
-  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (cut at 05aa9a18c3, rail engines with power)"
+  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (cut at 05aa9a18c3, rail engines with power; rebase at 531922be7d, no oil-rig plans)"
   # The battle API can be down (orchestrator restart): skip this round rather than feed brain.exs
   # an empty gene space (it used to die with a Jason.DecodeError).
   if ! curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json" || ! [[ -s "$tmp/space.json" ]]; then
