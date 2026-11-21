@@ -284,6 +284,7 @@ decides when a measurement may change a default.
 | Document | What it is |
 |---|---|
 | [Curated notes](.ai/repo/knowledge/curated/README.md) | What this repository chose to write about itself, discovered as a knowledge source class. |
+| [A PrismaticAI change that moves a few units of money in every game sends exact replays down other paths](.ai/repo/knowledge/curated/a-bot-change-that-moves-money-in-every-game-replays-as-chaos.md) | Before reading an ablate --match A/B of a PrismaticAI change: replays are exact, so any game-state difference, even a few units of interest, diverges the whole game, and a few replays then measure chaos, not the change. |
 | [Rewriting history under an active task leaves finish nothing to accept](.ai/repo/knowledge/curated/a-history-rewrite-strands-the-active-task.md) | Before rewriting fork history while a Majordomus task is open, or when finish refuses with 'diverged from recorded head'. |
 | [A panel announces itself before its game's MCP server is up, so a catalogue read once at discovery lacks every resource route](.ai/repo/knowledge/curated/a-panel-registers-before-its-game-is-up.md) | When a client caches what an instance offers (hub, Rhai, a bot): read it again, never only at discovery. |
 | [In the shared checkout a peer's commit rides every push; whether it goes out is the owner's call](.ai/repo/knowledge/curated/a-peer-commit-rides-every-push-of-a-shared-checkout.md) | When local master holds a commit by another session whose own session refused to push it, and you are about to push your own work. |
@@ -523,8 +524,8 @@ from the code. The right-hand column says what was counted.
 | **14** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **93** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
-| **86** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **810** | published documents on the site and the wiki | published documents under `/` |
+| **87** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
+| **811** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
