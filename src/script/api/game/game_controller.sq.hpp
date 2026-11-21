@@ -9,7 +9,7 @@
 
 #include "../script_controller.hpp"
 
-template <> SQInteger PushClassName<ScriptController, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSController"); return 1; }
+template <> void PushClassName<ScriptController, ScriptType::GS>(HSQUIRRELVM vm) { sq_pushstring(vm, "GSController"); }
 
 void SQGSController_Register(Squirrel &engine)
 {
