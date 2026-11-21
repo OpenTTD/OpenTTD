@@ -25,6 +25,7 @@
  * \li AIRail::RemoveRailDepot
  * \li AIDepot
  * \li AIError::ERR_CAT_DEPOT
+ * \li AIRoad::GetExistingRoadParts
  *
  * \b 15.0
  *

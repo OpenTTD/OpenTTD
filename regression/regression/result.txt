@@ -8645,6 +8645,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     HasRoadType(Road):             true
     HasRoadType(Tram):             false
     GetNeighbourRoadCount():       2
+    GetExistingRoadParts():        [ 1 -1 ]
     RemoveRoad():                  false
     RemoveRoad():                  true
     RemoveRoad():                  false
@@ -8664,6 +8665,11 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRoadTypeAvailable(Tram):     false
     SetCurrentRoadType(Tram):      (null : 0x00000000)
     GetCurrentRoadType():          0
+    GetExistingRoadParts(4 parts): [ -256 1 256 -1 ]
+    GetExistingRoadParts(3 parts): [ 1 256 -1 ]
+    GetExistingRoadParts(2 parts): [ 1 256 ]
+    GetExistingRoadParts(1 part):  [ -1 ]
+    GetExistingRoadParts(0 parts): [ ]
   Depot
     IsRoadTile():                  false
     BuildRoadDepot():              false
@@ -8679,6 +8685,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     IsRoadTile():                  false
     GetRoadDepotFrontTile():       33412
     IsRoadDepotTile():             true
+    GetExistingRoadParts():        [ 1 ]
     IsBuildable():                 false
     DepotList
       Count():                     1
@@ -8705,6 +8712,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetRoadStationFrontTile():     33412
     IsRoadStationTile():           true
     IsDriveThroughRoadStationTile: false
+    GetExistingRoadParts():        [ 1 ]
     RemoveRoadStation():           true
     RemoveRoadStation():           false
   Station Types
@@ -8725,6 +8733,7 @@ ERROR: IsEnd() is invalid as Begin() is never called
     GetDriveThroughBackTile():     33416
     GetRoadStationFrontTile():     33414
     IsRoadTile():                  true
+    GetExistingRoadParts():        [ 1 -1 ]
 
 --Sign--
   BuildSign(33410, 'Some Sign'):       0
@@ -10962,7 +10971,7 @@ CALLSTACK WITH LOCALS
 *FUNCTION [Valuate()] Valuate line [5]
   [args] ARRAY
   [this] INSTANCE
-*FUNCTION [Start()] regression/main.nut line [2523]
+*FUNCTION [Start()] regression/main.nut line [2543]
   [Infinite] CLOSURE
   [list] INSTANCE
   [this] INSTANCE
