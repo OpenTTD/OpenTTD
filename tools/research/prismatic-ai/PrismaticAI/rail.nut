@@ -396,14 +396,20 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 		AIMap.GetTileIndex(min(AIMap.GetMapSizeX() - 3 - w, AIMap.GetTileX(origin) + 10), min(AIMap.GetMapSizeY() - 3 - h, AIMap.GetTileY(origin) + 10)));
 	tiles.Valuate(AITile.IsBuildableRectangle, w, h);
 	tiles.KeepValue(1);
-	tiles.Valuate(PrismaticAI.RectFlat, w, h);
-	tiles.KeepValue(1);
 	/* What the station will catch: the platforms only, never the throat, which is plain track
 	 * (an industry beside the throat but out of the platforms' reach would pass otherwise). */
 	local sw = along_x ? len : platforms, sh = along_x ? platforms : len;
 	local offset = forward ? 0 : throat * step;
 	tiles.Valuate(PrismaticAI.PlatformCoverage, cargo, sw, sh, offset, site == "produce");
 	tiles.KeepAboveValue(site == "produce" ? 0 : 7);
+	/* Sites that are buildable and catch the cargo but are not flat: the last resort, levelled. */
+	local sloped = AITileList();
+	sloped.AddList(tiles);
+	tiles.Valuate(PrismaticAI.RectFlat, w, h);
+	tiles.KeepValue(1);
+	sloped.RemoveList(tiles);
+	sloped.Valuate(PrismaticAI.RectHeightRange, w, h);
+	sloped.KeepBelowValue(RAIL_LEVEL_STEP + 1);
 	local join = PrismaticAI.RailStationToJoin(origin, len);
 	local attempts = [];
 	if (join != null) {
@@ -460,8 +466,67 @@ function PrismaticAI::BuildRailStationAt(origin, other, len, cargo, site, label,
 			return made;
 		}
 	}
-	AILog.Warning("PrismaticAI: no rail station site " + label);
+	/* No flat site: level one. Without this, on OpenTTD seed 260603278 (GA g271.3, slot 3) ten of
+	 * the twelve own lines found no flat site at one end, and the company kept 2.1M idle for 15 years
+	 * on 3 trains. Only rectangles whose corners span at most RAIL_LEVEL_STEP height steps are
+	 * levelled (a bigger step moves corners outside the site, where houses and roads stop it), and
+	 * only while the money left after a fourfold margin on the test price still covers the line. */
+	sloped.Sort(AIList.SORT_BY_VALUE, AIList.SORT_ASCENDING);
+	local levelled = 0;
+	for (local r = sloped.Begin(); !sloped.IsEnd() && levelled < 3; r = sloped.Next()) {
+		local t = forward ? r : r + throat * step;
+		local g = PrismaticAI.TerminusGeometry(t, len, platforms, step, side, out, lane);
+		if (g == null) continue;
+		local far = AIMap.GetTileIndex(min(AIMap.GetMapSizeX() - 1, AIMap.GetTileX(r) + w),
+			min(AIMap.GetMapSizeY() - 1, AIMap.GetTileY(r) + h));
+		local cost = 0;
+		{
+			local test = AITestMode();
+			local acc = AIAccounting();
+			if (!AITile.LevelTiles(r, far)) cost = 1 << 30;
+			else cost = acc.GetCosts();
+		}
+		local funds = AICompany.GetBankBalance(AICompany.COMPANY_SELF) + AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
+		if (cost > RAIL_LEVEL_MAX || funds - 4 * cost < RAIL_LEVEL_KEEP) continue;
+		levelled++;
+		local real = AIAccounting();
+		AILog.Info("PrismaticAI: levelling rail station site " + label + " at tile " + t + " (estimated " + cost + ")");
+		AIController.Sleep(PACE);
+		if (!AITile.LevelTiles(r, far) || !AIRail.BuildRailStation(t, axis, platforms, len, AIStation.STATION_NEW)) {
+			AILog.Warning("PrismaticAI: levelled rail station site at tile " + t + " for " + real.GetCosts() + " and it was still refused: " + AIError.GetLastErrorString());
+			continue;
+		}
+		local corner = t + (platforms - 1) * side + (len - 1) * step;
+		local throat_tiles = [];
+		local rec = {tile = t, platform_rect = [t, corner], throat = throat_tiles, step = step};
+		if (platforms > 1 && !PrismaticAI.BuildThroat(g, throat_tiles)) {
+			AILog.Warning("PrismaticAI: throat of the levelled station at tile " + t + " refused: " + AIError.GetLastErrorString());
+			PrismaticAI.RemoveRailStation(rec, len);
+			continue;
+		}
+		AILog.Info("PrismaticAI: built rail station " + label + " at tile " + t + " after levelling it for " + real.GetCosts() + ", " + platforms + " platform(s) of " + len);
+		local made = {tile = t, end = g.end, exit = g.exit, step = step, platforms = platforms, len = len,
+			platform_rect = [t, corner], throat = throat_tiles, backs = g.backs};
+		if (lane != 0) made.dbl <- g.dbl;
+		return made;
+	}
+	AILog.Warning("PrismaticAI: no rail station site " + label + " (" + sloped.Count() + " sloped site(s) within " + RAIL_LEVEL_STEP + " height step(s))");
 	return null;
+}
+
+/* The height span of the corners of the w x h rectangle at `t` (a valuator for AITileList). */
+function PrismaticAI::RectHeightRange(t, w, h) {
+	local lo = 255, hi = 0;
+	for (local dx = 0; dx <= w; dx++) {
+		for (local dy = 0; dy <= h; dy++) {
+			local c = AIMap.GetTileIndex(min(AIMap.GetMapSizeX() - 1, AIMap.GetTileX(t) + dx),
+				min(AIMap.GetMapSizeY() - 1, AIMap.GetTileY(t) + dy));
+			local z = AITile.GetCornerHeight(c, AITile.CORNER_N);
+			if (z < lo) lo = z;
+			if (z > hi) hi = z;
+		}
+	}
+	return hi - lo;
 }
 
 /* What a terminus whose site starts at `r` catches with its platforms (sw x sh tiles, `offset` from

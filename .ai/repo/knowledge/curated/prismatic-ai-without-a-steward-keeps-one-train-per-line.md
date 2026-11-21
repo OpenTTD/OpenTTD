@@ -378,6 +378,19 @@ That gene value was behind three of the last four non-default last places since 
 own lines. `variant()` clamps every gene into the current space, so a narrowed range also reaches
 the elite and children of older generations.
 
+The stuck variants had a further cause, and it reached the default too. Replayed on seed 260603278
+(slot 3), g271.3 dropped 10 of its 12 own lines with "no rail station site": a double-track
+terminus needs a flat, buildable (len+4) x 2 rectangle within 10 tiles of the industry, and this
+hilly map had none at one end. From 1965 the bot had nothing left to try and banked 354k to 2.1M
+on 3 trains. Its 46 stations were early bus stops, so the stations-up, vehicles-down signature was
+a symptom. `BuildRailStationAt` now levels a site when no flat one is left. The site must be
+buildable, catch the cargo, and have corners within 1 height step. Its estimate must be at most
+40k, a fourfold margin must leave 60k, and at most 3 sites are levelled per station. In an A/B
+ablation against the previous bot (20 years, same seed and slot), the default went 6.99M to 6.54M
+on 260603278/s3, 6.40M to 15.13M on 446449271/s1 and 14.05M to 14.76M on 371319927/s0, about +32%
+geometric. g271.3 went 2.33M to 2.01M, 3.97M to 7.91M and 8.93M to 10.95M. On 260603278 a town
+refused three levelled sites (ERR_LOCAL_AUTHORITY_REFUSES), since levelling clears trees.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

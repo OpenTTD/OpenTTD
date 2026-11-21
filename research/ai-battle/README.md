@@ -22,30 +22,30 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261121T124357-aee94c89.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261121T124357-aee94c89`](../results/battle-20261121T124357-aee94c89.md) (0/1 replays identical).
+<!-- derived from research/results/battle-20261121T131020-da0ed41d.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261121T131020-da0ed41d`](../results/battle-20261121T131020-da0ed41d.md) (0/1 replays identical).
 
-- Edition `aee94c892e7e970d`: PrismaticAI and referee at `52f631b115782334f422f741a79ecabce78e58c4`, base set `opengfx-8.0.tar`
+- Edition `da0ed41db732decf`: PrismaticAI and referee at `52f631b115782334f422f741a79ecabce78e58c4`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 38 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- 40 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
 - Replays: 0 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 38 | 38 | 152 | 4.0 | 1.0 | 106.2 M | 0 | 0 |
-| 2 | PrismaticAI GA g271.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 9.9 M | 0 | 0 |
-| 3 | PrismaticAI pre-g150 | 7 | 0 | 20 | 2.857 | 2.14 | 13.5 M | 0 | 1 |
-| 4 | PrismaticAI | 6 | 0 | 17 | 2.833 | 2.17 | 16.3 M | 0 | 0 |
-| 5 | PrismaticAI GA g271.brainExplore | 6 | 0 | 16 | 2.667 | 2.33 | 9.1 M | 0 | 0 |
-| 6 | AdmiralAI | 38 | 0 | 89 | 2.342 | 2.66 | 8.6 M | 47 | 1 |
-| 7 | PrismaticAI GA g271.0 | 6 | 0 | 14 | 2.333 | 2.67 | 9.2 M | 0 | 1 |
-| 8 | PrismaticAI GA g271.3 | 7 | 0 | 13 | 1.857 | 3.14 | 6.0 M | 0 | 4 |
-| 9 | LuDiAI AfterFix | 38 | 0 | 39 | 1.026 | 3.97 | 2.0 M | 0 | 0 |
-| 10 | CivilAI | 38 | 0 | 2 | 0.053 | 4.95 | 512.1 k | 0 | 3 |
+| 1 | AAAHogEx | 40 | 40 | 160 | 4.0 | 1.0 | 107.9 M | 0 | 0 |
+| 2 | PrismaticAI GA g273.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 14.1 M | 0 | 0 |
+| 3 | PrismaticAI GA g273.brainSafe1 | 7 | 0 | 21 | 3.0 | 2.0 | 12.0 M | 0 | 1 |
+| 4 | PrismaticAI GA g273.0 | 6 | 0 | 18 | 3.0 | 2.0 | 10.6 M | 0 | 1 |
+| 5 | PrismaticAI pre-g150 | 8 | 0 | 22 | 2.75 | 2.25 | 15.5 M | 0 | 2 |
+| 6 | PrismaticAI GA g273.3 | 7 | 0 | 19 | 2.714 | 2.29 | 9.2 M | 0 | 1 |
+| 7 | PrismaticAI | 6 | 0 | 16 | 2.667 | 2.33 | 15.1 M | 0 | 1 |
+| 8 | AdmiralAI | 40 | 0 | 86 | 2.15 | 2.85 | 8.4 M | 70 | 3 |
+| 9 | LuDiAI AfterFix | 40 | 0 | 35 | 0.875 | 4.12 | 1.5 M | 0 | 2 |
+| 10 | CivilAI | 40 | 0 | 5 | 0.125 | 4.88 | 522.4 k | 0 | 2 |
 
 | Seed | Original | Replay | Arenas | Identical |
 |---|---|---|---|---|
-| 1316853059 | m-0010 | m-0048 | imac / mbp | NO |
+| 128619855 | m-0010 | m-0048 | imac / mbp | NO |
 <!-- battle:end -->
 
 ## How it fits together
@@ -297,6 +297,10 @@ The first editions showed two failures. The battle now catches both by itself.
   without a pause, and its stations rise while its vehicles fall. That was behind three of the
   last four non-default last places since g150, including g227.0's bankruptcy. The GA range is
   now 1 to 6, and every bred configuration is clamped into the current range.
+- **Rail station sites are levelled when none is flat (2026-11-21).** On hilly maps the own lines
+  found no flat terminus site and were dropped, and the bot then banked its money. A bounded
+  levelling fallback (1 height step, 40k estimate, 60k kept) raised the default by about +32%
+  geometric on three replayed seeds (A/B against the previous bot).
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not
