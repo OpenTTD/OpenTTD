@@ -1094,6 +1094,19 @@ static bool IsColourSafe(std::string_view buffer)
 }
 
 /**
+ * Parse an action string control code and write the result to a buffer.
+ * @param builder The string builder to write the final string to.
+ * @param string The ID of the string to parse.
+ * @param case_index The case to print the string in. Automatically reset to 0 after the string is written.
+ */
+static inline void FormatActionCode(StringBuilder &builder, StringID string, uint &case_index)
+{
+	StringParameters args{};
+	GetStringWithArgs(builder, string, args, case_index);
+	case_index = 0;
+}
+
+/**
  * Parse most format codes within a string and write the result to a buffer.
  * @param builder The string builder to write the final string to.
  * @param str_arg The original string with format codes.
@@ -1292,6 +1305,26 @@ static void FormatString(StringBuilder &builder, std::string_view str_arg, Strin
 
 				case SCC_RAW_STRING_POINTER: // {RAW_STRING}
 					FormatString(builder, args.GetNextParameterString(), args);
+					break;
+
+				case SCC_CTRL_CLICK: // {CTRL_CLICK}
+					FormatActionCode(builder, STR_CTRL_CLICK, next_substr_case_index);
+					break;
+
+				case SCC_CTRL_DRAG: // {CTRL_DRAG}
+					FormatActionCode(builder, STR_CTRL_DRAG, next_substr_case_index);
+					break;
+
+				case SCC_CTRL_CLICK_DRAG:
+					FormatActionCode(builder, STR_CTRL_CLICK_DRAG, next_substr_case_index);
+					break;
+
+				case SCC_HOLD_CTRL_AND_SHIFT: // {HOLD_CTRL_AND_SHIFT}
+					FormatActionCode(builder, STR_HOLD_CTRL_AND_SHIFT, next_substr_case_index);
+					break;
+
+				case SCC_SHIFT_COST_ESTIMATE: // {SHIFT_COST_ESTIMATE}
+					FormatActionCode(builder, STR_SHIFT_COST_ESTIMATE, next_substr_case_index);
 					break;
 
 				case SCC_STRING: {// {STRING}

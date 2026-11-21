@@ -106,6 +106,12 @@ static const CmdStruct _cmd_structs[] = {
 	{"STRING",            EmitSingleChar, SCC_STRING,             1, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
 	{"RAW_STRING",        EmitSingleChar, SCC_RAW_STRING_POINTER, 1, std::nullopt, {CmdFlag::Gender}},
 
+	{"CTRL_CLICK", EmitSingleChar, SCC_CTRL_CLICK, 0, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
+	{"CTRL_DRAG", EmitSingleChar, SCC_CTRL_DRAG, 0, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
+	{"CTRL_CLICK_DRAG", EmitSingleChar, SCC_CTRL_CLICK_DRAG, 0, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
+	{"HOLD_CTRL_AND_SHIFT", EmitSingleChar, SCC_HOLD_CTRL_AND_SHIFT, 0, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
+	{"SHIFT_COST_ESTIMATE", EmitSingleChar, SCC_SHIFT_COST_ESTIMATE, 0, std::nullopt, {CmdFlag::Case, CmdFlag::Gender}},
+
 	/* Numbers */
 	{"COMMA",             EmitSingleChar, SCC_COMMA,              1,  0, {}}, // Number with comma
 	{"DECIMAL",           EmitSingleChar, SCC_DECIMAL,            2,  0, {}}, // Number with comma and fractional part. Second parameter is number of fractional digits, first parameter is number times 10**(second parameter).
