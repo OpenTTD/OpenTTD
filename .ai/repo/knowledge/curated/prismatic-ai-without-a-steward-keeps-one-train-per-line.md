@@ -411,6 +411,16 @@ as the bank reached `statue_money` (400k), so the bank never held enough for the
 statues off, the same game ended at 3.19M; with a 2,000k threshold, 2.24M. The default, which
 builds no statues, made 14.8M on that game. The GA range for `statue_money` is now 0 to 0.
 
+g288.brainSafe's last place (m-0009 of 20a48c81, seed 112802368, slot 3) replayed exactly at
+1,017,265 with `ablate --match`. It had finished a 320-tile STEL line and then could not buy its
+locomotive (ERR_UNKNOWN). `PickRailEngines` chose by `AIEngine.CanRunOnRail`, which is true for
+an electric locomotive on plain rail. `CmdBuildRailVehicle` refuses an engine without power on
+the depot's rail, and a script reads that CMD_ERROR as ERR_UNKNOWN. The same failure appeared in
+default replays, up to 774 times in one game, from the loop that replaces a line's lost train. The
+pick now also requires `AIEngine.HasPowerOnRail`. Against the committed bot, over 7 games in the
+arena's lineups, the default changed by +27.5%, -5.2%, -4.2%, -5.7%, 0, 0 and 0. The losses are
+games where the newly built trains are slower and do not pay for their running costs.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

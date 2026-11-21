@@ -997,9 +997,13 @@ function PrismaticAI::BuildDoubleRailLineAndTrain(sa, sb, len, cargo, first_flag
 	return 1;
 }
 
-/* The engines a line runs: the fastest buildable locomotive for `railtype` (ties: the more powerful)
- * and the wagon of the largest capacity that carries or refits to `cargo`. {loco, wagon}, -1 where
- * there is none. */
+/* The engines a line runs: the fastest buildable locomotive with power on `railtype` (ties: the
+ * more powerful) and the wagon of the largest capacity that carries or refits to `cargo`. {loco,
+ * wagon}, -1 where there is none. A locomotive must have power, not only run: an electric one can
+ * run on plain rail but not be built in a plain depot (CmdBuildRailVehicle: CMD_ERROR, which a
+ * script reads as ERR_UNKNOWN). Picking it by CanRunOnRail once electric engines appeared left
+ * finished lines without a train and the replacement loop failing every heartbeat (774 times in
+ * one 20-year default replay; g288.brainSafe's 320-tile STEL line in m-0009 of 20a48c81). */
 function PrismaticAI::PickRailEngines(railtype, cargo) {
 	local loco = -1, wagon = -1;
 	local engines = AIEngineList(AIVehicle.VT_RAIL);
@@ -1008,6 +1012,8 @@ function PrismaticAI::PickRailEngines(railtype, cargo) {
 		if (AIEngine.IsWagon(e)) {
 			if ((AIEngine.GetCargoType(e) == cargo || AIEngine.CanRefitCargo(e, cargo)) &&
 					(wagon == -1 || AIEngine.GetCapacity(e) > AIEngine.GetCapacity(wagon))) wagon = e;
+		} else if (!AIEngine.HasPowerOnRail(e, railtype)) {
+			continue;
 		} else if (loco == -1 || AIEngine.GetMaxSpeed(e) > AIEngine.GetMaxSpeed(loco) ||
 				(AIEngine.GetMaxSpeed(e) == AIEngine.GetMaxSpeed(loco) && AIEngine.GetPower(e) > AIEngine.GetPower(loco))) {
 			loco = e;
