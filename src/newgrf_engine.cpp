@@ -26,6 +26,7 @@
 #include "newgrf_railtype.h"
 #include "newgrf_roadtype.h"
 #include "ship.h"
+#include "table/sprites.h"
 
 #include "safeguards.h"
 
@@ -1128,7 +1129,8 @@ static void GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction d
 		int32_t reg100 = sprite_stack ? object.GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
 			result->seq[result->count].sprite = group->sprite + (to_underlying(direction) % group->num_sprites);
-			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
+			result->seq[result->count].pal = GB(reg100, 0, 16); // zero means default recolouring
+			if (HasBit(reg100, 30)) SetBit(result->seq[result->count].pal, PALETTE_MODIFIER_ALT_COLOUR);
 			result->count++;
 		}
 		if (!HasBit(reg100, 31)) break;
@@ -1170,7 +1172,8 @@ static void GetRotorOverrideSprite(EngineID engine, const struct Aircraft *v, En
 		int32_t reg100 = sprite_stack ? object.GetRegister(0x100) : 0;
 		if (group != nullptr && group->num_sprites != 0) {
 			result->seq[result->count].sprite = group->sprite + (rotor_pos % group->num_sprites);
-			result->seq[result->count].pal    = GB(reg100, 0, 16); // zero means default recolouring
+			result->seq[result->count].pal = GB(reg100, 0, 16); // zero means default recolouring
+			if (HasBit(reg100, 30)) SetBit(result->seq[result->count].pal, PALETTE_MODIFIER_ALT_COLOUR);
 			result->count++;
 		}
 		if (!HasBit(reg100, 31)) break;

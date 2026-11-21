@@ -37,11 +37,11 @@ void EngList_SortPartial(GUIEngineList &el, EngList_SortTypeFunction compare, si
 StringID GetEngineCategoryName(EngineID engine);
 std::string GetEngineInfoString(EngineID engine);
 
-void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
-void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
-void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
-void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
-void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type);
+void DrawVehicleEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type);
+void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type);
+void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type);
+void DrawShipEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type);
+void DrawAircraftEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type);
 
 extern bool _engine_sort_direction;
 extern VehicleTypeIndexArray<uint8_t> _engine_sort_last_criteria;

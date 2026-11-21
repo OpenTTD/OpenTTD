@@ -143,16 +143,9 @@ void RoadVehicle::GetImage(Direction direction, EngineImageType image_type, Vehi
 }
 
 /**
- * Draw a road vehicle engine.
- * @param left Left edge to draw within.
- * @param right Right edge to draw within.
- * @param preferred_x Preferred position of the engine.
- * @param y Vertical position of the engine.
- * @param engine Engine to draw
- * @param pal Palette to use.
- * @param image_type Context where the image is being drawn.
+ * Draw a road vehicle engine. @copydoc DrawVehicleEngine
  */
-void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
+void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type)
 {
 	VehicleSpriteSeq seq;
 	GetRoadVehIcon(engine, image_type, &seq);
@@ -163,7 +156,7 @@ void DrawRoadVehEngine(int left, int right, int preferred_x, int y, EngineID eng
 			left - UnScaleGUI(rect.left),
 			right - UnScaleGUI(rect.right));
 
-	seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
+	seq.Draw(preferred_x, y, pal, pal[0] == PALETTE_CRASH);
 }
 
 /**
@@ -402,7 +395,7 @@ CommandCost CmdTurnRoadVeh(DoCommandFlags flags, VehicleID veh_id)
 void RoadVehicle::MarkDirty()
 {
 	for (RoadVehicle *v = this; v != nullptr; v = v->Next()) {
-		v->colourmap = PAL_NONE;
+		v->colourmap.fill(PAL_NONE);
 		v->UpdateViewport(true, false);
 	}
 	RoadVehUpdateCache(this, true);
