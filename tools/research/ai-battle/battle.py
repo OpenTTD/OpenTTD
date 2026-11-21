@@ -171,6 +171,9 @@ def settings_str(genes: dict) -> str:
 
 
 def variant(t: dict, gen: int, i: int, genes: dict, parents: list) -> dict:
+    # Every gene is clamped into the current space, so narrowing a range in battle.json (say
+    # own_fail_pause 0 -> 1) also reaches the elite and children inherited from older generations.
+    genes = {k: clamp_gene(t["space"], k, v) if k in t["space"] else v for k, v in genes.items()}
     return {"ai": t.get("ai", "PrismaticAI"), "label": f"{t['label_prefix']} g{gen}.{i}",
             "group": t["group"], "source": "repository", "genes": genes, "parents": parents,
             "settings": settings_str({**t.get("fixed", {}), **genes})}

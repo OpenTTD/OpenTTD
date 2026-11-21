@@ -296,6 +296,13 @@ class Tuning(unittest.TestCase):
         self.assertTrue(g1[0]["label"].endswith("g1.0"))
         self.assertEqual(g1, battle.next_generation(self.T, {"generation": 0}, scored))
 
+    def test_a_narrowed_range_reaches_the_elite_and_its_children(self):
+        g0 = battle.first_generation(self.T)
+        g0[3]["genes"]["b"] = 0                                    # bred under an older, wider range
+        g1 = battle.next_generation(self.T, {"generation": 0}, [(v, {"score": i}) for i, v in enumerate(g0)])
+        self.assertTrue(all(2 <= v["genes"]["b"] <= 10 for v in g1))
+        self.assertIn("b=2", g1[0]["settings"])
+
     def test_brain_proposals_join_as_clamped_offspring(self):
         with tempfile.TemporaryDirectory() as tmp:
             f = Path(tmp) / "brain.json"

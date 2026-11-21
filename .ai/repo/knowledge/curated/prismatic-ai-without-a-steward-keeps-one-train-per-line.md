@@ -370,6 +370,14 @@ is drawn. The second is whenever money plus loan headroom would not run the flee
 quarters. Replayed, g227.0 survives at 5.8M. The default froze 0 to 2 times a game on the
 reference seeds and scored 13.0M, 13.5M and 17.4M.
 
+The freeze keeps such a variant alive but stuck. In edition 2bfc221a (seed 475454748),
+g268.brainExplore had `own_fail_pause=0`. It held 41 stations and 5 vehicles from 1966 and kept
+2k to 8k for 15 years, while the three other configurations on that seed and slot placed second.
+That gene value was behind three of the last four non-default last places since g150. The GA's
+`own_fail_pause` range now starts at 1, so it can no longer breed a bot that never pauses failing
+own lines. `variant()` clamps every gene into the current space, so a narrowed range also reaches
+the elite and children of older generations.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
