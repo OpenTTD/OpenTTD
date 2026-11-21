@@ -2782,14 +2782,41 @@ struct IndustryCargoesWindow : public Window {
 		ChainField::town_produces.Reset();
 
 		/* Count cargoes accepted by houses. Houses are a single field, so we need the total across all house types. */
+		CargoArray acceptance{};
+
+		/* Get the sum of all cargo acceptance for all houses. */
 		for (const HouseSpec &hs : HouseSpec::Specs()) {
 			if (!hs.enabled || !hs.building_availability.Any(climate_mask)) continue;
-			ChainField::town_accepts.Set({hs.accepts_cargo});
+			for (CargoType cargotype : hs.accepts_cargo) {
+				if (IsValidCargoType(cargotype)) ++acceptance[cargotype];
+			}
 		}
+
+		/* Only consider cargo with acceptance of at least a tenth of the maximum acceptance. */
+		uint threshold = std::ranges::max(acceptance) / 10;
+
+		/* Build a list of cargo types, filtering out those below the threshold. */
+		std::vector<std::pair<CargoType, uint>> sorted_acceptance;
+		for (CargoType cargotype : EnumRange(NUM_CARGO)) {
+			if (acceptance[cargotype] > threshold) sorted_acceptance.emplace_back(cargotype, acceptance[cargotype]);
+		}
+
+		/* Sort the eligible cargo types and limit to the maximum displayable number of cargoes. */
+		if (sorted_acceptance.size() >= ChainField::MAX_CARGOES) {
+			std::ranges::sort(sorted_acceptance, std::greater{}, &std::pair<CargoType, uint>::second);
+			sorted_acceptance.resize(ChainField::MAX_CARGOES);
+		}
+
+		/* Convert to a cargo bitset. */
+		std::ranges::for_each(sorted_acceptance, [](const auto &p) { ChainField::town_accepts.Set(p.first); });
 
 		/* Count cargoes produced by town effects. */
 		for (const CargoSpec *cs : _sorted_cargo_specs) {
-			if (cs->town_production_effect != TownProductionEffect::None) ChainField::town_produces.Set(cs->Index());
+			if (cs->town_production_effect == TownProductionEffect::None) continue;
+			ChainField::town_produces.Set(cs->Index());
+			/* Limit the number of produced cargo types. Unlike accepted cargo types we don't know which
+			 * cargo types have greatest production, so can only limit to the maximum displayable. */
+			if (ChainField::town_produces.Count() >= ChainField::MAX_CARGOES) break;
 		}
 
 		return std::max(ChainField::town_accepts.Count(), ChainField::town_produces.Count());
@@ -2829,6 +2856,7 @@ struct IndustryCargoesWindow : public Window {
 
 		/* Get the number of cargo types that need to be displayed. */
 		ChainField::max_cargoes = std::max<uint>(this->CountIndustryCargoTypes(), this->CountHouseCargoTypes());
+		assert(ChainField::max_cargoes <= ChainField::MAX_CARGOES);
 
 		/* Compute size of the cargo and industry labels. */
 		d = maxdim(d, GetMaximalSizeCargoString(ChainField::fontsize));
