@@ -86,12 +86,15 @@ Badge &GetOrCreateBadge(std::string_view label)
 	if (it != std::end(_badges.specs)) return *it;
 
 	BadgeClassID class_index;
+	BadgeID subclass_index;
 
 	/* Extract class. */
-	auto sep = label.find_first_of(BADGE_CLASS_SEPARATOR);
+	auto sep = label.find_last_of(BADGE_CLASS_SEPARATOR);
 	if (sep != std::string_view::npos) {
 		/* There is a separator, find (and create if necessary) the class label. */
-		class_index = GetOrCreateBadge(label.substr(0, sep)).class_index;
+		const Badge &parent = GetOrCreateBadge(label.substr(0, sep));
+		subclass_index = parent.index;
+		class_index = parent.class_index;
 		it = std::end(_badges.specs);
 	}
 
@@ -99,9 +102,10 @@ Badge &GetOrCreateBadge(std::string_view label)
 	if (sep == std::string_view::npos) {
 		/* There is no separator, so this badge is a class badge. */
 		class_index = GetOrCreateBadgeClass(index);
+		subclass_index = index;
 	}
 
-	it = _badges.specs.emplace(it, label, index, class_index);
+	it = _badges.specs.emplace(it, label, index, class_index, subclass_index);
 	return *it;
 }
 
@@ -268,8 +272,9 @@ void AppendCopyableBadgeList(std::vector<BadgeID> &dst, std::span<const BadgeID>
 /** Apply features from all badges to their badge classes. */
 void ApplyBadgeFeaturesToClassBadges()
 {
-	for (const Badge &badge : GetBadges()) {
-		Badge *class_badge = GetClassBadge(badge.class_index);
+	const auto badges = GetBadges();
+	for (const Badge &badge : std::ranges::subrange{badges.rbegin(), badges.rend()}) {
+		Badge *class_badge = GetBadge(badge.subclass_index);
 		assert(class_badge != nullptr);
 		class_badge->features.Set(badge.features);
 		if (badge.name != STR_NULL) class_badge->flags.Set(BadgeFlag::HasText);
@@ -301,8 +306,8 @@ PalSpriteID GetBadgeSprite(const Badge &badge, GrfSpecFeature feature, std::opti
  */
 UsedBadgeClasses::UsedBadgeClasses(GrfSpecFeature feature) : feature(feature)
 {
-	for (auto index : _badges.classes) {
-		Badge *class_badge = GetBadge(index);
+	for (size_t i = 0; i < _badges.classes.size(); ++i) {
+		Badge *class_badge = GetBadge(_badges.classes[i]);
 		if (!class_badge->features.Test(feature)) continue;
 
 		this->classes.push_back(class_badge->class_index);
