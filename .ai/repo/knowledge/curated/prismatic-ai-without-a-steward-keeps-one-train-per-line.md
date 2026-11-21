@@ -360,6 +360,16 @@ fell to 28 with 640k idle. On the same seed GA g226.0 came second. The former de
 lines of their own (`own_lines=0`) and spread 30 routes thin. g150.0 plans 18 own lines and
 keeps a reserve.
 
+A construction freeze is the guard's second half. GA g227.0 went bankrupt in edition 2befd3c8
+(seed 446449271, slot 1) with StayAfloat in place. With `own_fail_pause=0`, it tried failing
+own lines one after another, and its stations rose from 33 to 40 while its vehicles fell from 7
+to 5. Each failure spent money, StayAfloat refilled the balance from the loan, and the next
+attempt still saw enough headroom. `BuildFrozen` now stops every new route, station and twin
+line in two cases. The first is 90 days after survival borrowing, once more than half the loan
+is drawn. The second is whenever money plus loan headroom would not run the fleet for two
+quarters. Replayed, g227.0 survives at 5.8M. The default froze 0 to 2 times a game on the
+reference seeds and scored 13.0M, 13.5M and 17.4M.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

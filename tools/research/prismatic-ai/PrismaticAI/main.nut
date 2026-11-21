@@ -44,6 +44,8 @@ class PrismaticAI extends AIController {
 	own_built = 0; /* freight lines the bot planned itself and tried (own_lines caps them) */
 	own_failed = 0; /* own freight lines in a row that were not built (OWN_FAIL_PAUSE) */
 	own_failed_year = 0; /* the game year own_failed counts for */
+	rescued_at = -1; /* the date StayAfloat last borrowed to keep the company alive */
+	was_frozen = false; /* whether the last heartbeat froze construction (BuildFrozen) */
 	selling = null; /* vehicle id -> true while it drives to its depot to be sold */
 	resizing = null; /* train id -> true while it drives to its depot to change its wagons (lines.nut) */
 	month = -1; /* the game month the line records were last logged in */
@@ -229,14 +231,28 @@ function PrismaticAI::QuarterRunningCost() {
  * the opener on six planes went bankrupt in 1962 with half its loan unused (edition b8b04ae2). */
 function PrismaticAI::StayAfloat(floor) {
 	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
-	if (money >= floor) return;
+	if (money >= floor) return false;
 	local loan = AICompany.GetLoanAmount(), max_loan = AICompany.GetMaxLoanAmount();
-	if (loan >= max_loan) return;
+	if (loan >= max_loan) return true;
 	local step = AICompany.GetLoanInterval();
 	local want = min(max_loan, loan + ((floor - money) / step + 1) * step);
 	if (AICompany.SetLoanAmount(want)) {
 		AILog.Info("PrismaticAI: borrowed " + (want - loan) + " to stay afloat (balance was " + money + ", floor " + floor + ")");
 	}
+	return true;
+}
+
+/* The second half of the guard: a company that had to borrow to survive builds nothing new for a
+ * while once more than half of its loan is drawn, and nothing while its money and loan headroom
+ * would not run the fleet for two quarters. Survival borrowing alone could be outspent. g227.0
+ * (edition 2befd3c8, seed 446449271, own_fail_pause=0) tried failing own lines one after another.
+ * Stations rose from 33 to 40 while its vehicles fell from 7 to 5, and it went bankrupt in 1967. */
+const FREEZE_DAYS = 90;
+function PrismaticAI::BuildFrozen(afloat) {
+	local money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
+	local max_loan = AICompany.GetMaxLoanAmount(), loan = AICompany.GetLoanAmount();
+	if (money + max_loan - loan < 2 * afloat) return true;
+	return this.rescued_at >= 0 && AIDate.GetCurrentDate() - this.rescued_at < FREEZE_DAYS && 2 * loan > max_loan;
 }
 
 /* Repay the loan down to what keeps `keep` in the bank, in the game's loan steps. */
@@ -369,7 +385,12 @@ function PrismaticAI::Start() {
 		if (!disclosed && AIController.GetSetting("disclose_name") == 1) disclosed = PrismaticAI.DiscloseName();
 		this.steward_on = b.self_steward == 1;
 		local afloat = PrismaticAI.QuarterRunningCost();
-		PrismaticAI.StayAfloat(afloat);
+		if (PrismaticAI.StayAfloat(afloat)) this.rescued_at = AIDate.GetCurrentDate();
+		local frozen = this.BuildFrozen(afloat);
+		if (frozen != this.was_frozen) {
+			AILog.Info("PrismaticAI: construction " + (frozen ? "frozen: the company borrowed to stay afloat" : "resumed"));
+			this.was_frozen = frozen;
+		}
 		/* Before anything is built this heartbeat: the first air route reads it too. */
 		PRISMATIC_FULL_LOAD = b.air_full_load;
 		AIR_LEVEL_MAX = b.air_level_max;
@@ -388,7 +409,7 @@ function PrismaticAI::Start() {
 		/* The planner's air route first: by the game's payment formula the long route between big
 		 * towns earns the most per passenger. Tried once per pair the owner gives. */
 		local air_key = b.air_a + "-" + b.air_b;
-		if (b.air_a >= 0 && b.air_b >= 0 && this.air_done != air_key && money > b.cash_reserve) {
+		if (!frozen && b.air_a >= 0 && b.air_b >= 0 && this.air_done != air_key && money > b.cash_reserve) {
 			this.air_done = air_key;
 			/* Built on borrowed money like every other route: on cash alone the airports were built
 			 * and the plane was not (ERR_NOT_ENOUGH_CASH), leaving two empty airports. */
@@ -406,7 +427,7 @@ function PrismaticAI::Start() {
 		}
 		/* Without a plan, the autopilot's own air routes come first: the gap to the winner opens in the
 		 * first quarters, and a plane between two big towns earns the most per vehicle (autopilot.nut). */
-		if (this.AutopilotAir(b)) money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
+		if (!frozen && this.AutopilotAir(b)) money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 		/* The portfolio's freight first: by the game's payment rates, coal and wood by rail pay most.
 		 * The planner's first line is built at once; each next one (fr2_* to fr16_*) once the bank
 		 * balance plus the loan headroom reach line_budget, one line per heartbeat, each tried once. */
@@ -414,6 +435,7 @@ function PrismaticAI::Start() {
 		foreach (line in b.freight) {
 			local fr_key = line.from + "-" + line.to + "-" + line.cargo;
 			if (this.freight_tried.rawin(fr_key)) { first = false; continue; }
+			if (frozen) break;
 			local headroom = AICompany.GetMaxLoanAmount() - AICompany.GetLoanAmount();
 			if (!first && money + headroom < b.line_budget) break;
 			this.freight_tried[fr_key] <- true;
@@ -435,7 +457,7 @@ function PrismaticAI::Start() {
 		local tried = 0;
 		foreach (line in b.freight) if (this.freight_tried.rawin(line.from + "-" + line.to + "-" + line.cargo)) tried++;
 		local pair_due = tried >= min(b.rail_after, b.freight.len());
-		if (b.rail_a >= 0 && b.rail_b >= 0 && this.rail_done != rail_key && pair_due) {
+		if (!frozen && b.rail_a >= 0 && b.rail_b >= 0 && this.rail_done != rail_key && pair_due) {
 			this.rail_done = rail_key;
 			/* A line pays back over years: borrow up to the limit to build it, as the planner's budget
 			 * assumes; when nothing gets built, give the money back so it does not sit there at interest. */
@@ -464,7 +486,7 @@ function PrismaticAI::Start() {
 		 * after line on a map whose stations had no way out, held the whole loan and ended at value 1. */
 		local year_now = AIDate.GetYear(AIDate.GetCurrentDate());
 		if (year_now != this.own_failed_year) { this.own_failed_year = year_now; this.own_failed = 0; }
-		if (handed_done && !pair_open && this.own_built < own_cap && (b.own_fail_pause == 0 || this.own_failed < b.own_fail_pause) &&
+		if (!frozen && handed_done && !pair_open && this.own_built < own_cap && (b.own_fail_pause == 0 || this.own_failed < b.own_fail_pause) &&
 				money + headroom_own >= b.line_budget) {
 			local own = PrismaticAI.NextOwnFreightLine(this.freight_tried);
 			if (own != null) {
@@ -491,7 +513,7 @@ function PrismaticAI::Start() {
 		 * little in the bank for any route. On OpenTTD seed 988774025 (company 3) it kept 3 buses on
 		 * about 1000 with 100000 of loan unused, and went bankrupt. Unspent, the loan is repaid again
 		 * at the end of the heartbeat. */
-		if (this.routes < b.max_routes && money <= b.cash_reserve + START_ROUTE_MONEY &&
+		if (!frozen && this.routes < b.max_routes && money <= b.cash_reserve + START_ROUTE_MONEY &&
 				this.auto_air == 0 && RAIL_LINES.len() == 0 && AIVehicleList().Count() < START_FLEET) {
 			local step = AICompany.GetLoanInterval();
 			local want = AICompany.GetLoanAmount() + ((b.cash_reserve + START_ROUTE_MONEY - money) / step + 1) * step;
@@ -499,7 +521,7 @@ function PrismaticAI::Start() {
 				money = AICompany.GetBankBalance(AICompany.COMPANY_SELF);
 			}
 		}
-		if (this.routes < b.max_routes && money > b.cash_reserve) {
+		if (!frozen && this.routes < b.max_routes && money > b.cash_reserve) {
 			local pair = (b.intercity == 1) ? PrismaticAI.BuildIntercityRoute(b.aggressiveness, this.used_towns) : null;
 			if (pair != null) {
 				this.used_towns[pair[0]] <- true;
@@ -523,8 +545,10 @@ function PrismaticAI::Start() {
 		/* With the steward on, idle money buys vehicles where vehicles earn most (fleet.nut). */
 		if (b.self_steward == 1) this.InvestSurplus(b);
 		/* Mechanisms learned from AAAHogEx, each behind its own setting (catchment.nut, statues.nut). */
-		this.GrowCatchment(b);
-		this.BuildStatues(b);
+		if (!frozen) {
+			this.GrowCatchment(b);
+			this.BuildStatues(b);
+		}
 		/* Every rail line keeps a train: one lost at a level crossing or sold is replaced. */
 		PrismaticAI.KeepLinesServed(b.cash_reserve);
 		/* Each line runs what the steward's targets say (lines.nut), and its record is logged again
@@ -532,7 +556,7 @@ function PrismaticAI::Start() {
 		/* With self_steward, the bot sets its own line targets once a game month (steward.nut). */
 		if (b.self_steward == 1 && PrismaticAI.MonthKey() != this.month) {
 			this.SelfSteward();
-			this.TwinLines(b);
+			if (!frozen) this.TwinLines(b);
 		}
 		this.ReconcileLines(b.cash_reserve);
 		if (PrismaticAI.MonthKey() != this.month) { this.month = PrismaticAI.MonthKey(); PrismaticAI.LogLines(); }
