@@ -1208,12 +1208,16 @@ function PrismaticAI::BuildFreightRailRoute(p, q, cargo, shape) {
  * 100 to 260 tiles away, the distance the planner's lines run. Scored by what the game pays for the
  * cargo (AICargo.GetCargoIncome) on that distance and transit time, per day of a round trip, times
  * last month's production. `tried` holds the "from-to-cargo" keys already attempted. Returns
- * {from, to, cargo, distance, production, score} or null. */
+ * {from, to, cargo, distance, production, score} or null.
+ * An industry built on water (an oil rig) has no land for a rail station. Its large output put it
+ * first, and every attempt ended at "no rail station site", yet still counted against own_lines and
+ * own_fail_pause: on OpenTTD seed 930967890 its own plans 9 to 12 of 32 were all oil rigs. */
 function PrismaticAI::NextOwnFreightLine(tried) {
 	local best = null, best_score = 0;
 	/* Transit time at the speed of a typical early steam engine: about 100 km/h, some 3.7 tiles a day. */
 	local tiles_a_day = 3.7;
 	foreach (p, _ in AIIndustryList()) {
+		if (AIIndustry.IsBuiltOnWater(p)) continue;
 		if (PrismaticAI.OwnRailStationNear(AIIndustry.GetLocation(p), 8) != null) continue;
 		foreach (c, _ in AICargoList_IndustryProducing(p)) {
 			if (!AICargo.IsFreight(c)) continue;

@@ -421,6 +421,14 @@ pick now also requires `AIEngine.HasPowerOnRail`. Against the committed bot, ove
 arena's lineups, the default changed by +27.5%, -5.2%, -4.2%, -5.7%, 0, 0 and 0. The losses are
 games where the newly built trains are slower and do not pay for their running costs.
 
+The bot's own freight planner (`NextOwnFreightLine`) ranked oil rigs first: they produce more than
+most land industries, but stand on water, so no rail station can be placed near them. Each attempt
+ended at "no rail station site" and spent one of `own_lines` and one step towards
+`own_fail_pause`; on seed 930967890 the own plans 9 to 12 of 32 were all oil rigs, and in 8 replays
+of edition 5e5b9f93-799899b1 matches the committed bot made 45 such plans. The planner now skips
+industries with `AIIndustry.IsBuiltOnWater`. Over those 8 games the value changed by +8.8%,
++9.1%, +9.5%, 0, +4.8%, +2.3%, +2.4% and +6.4% (about +5.3% geometric), with no loss.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
