@@ -402,6 +402,15 @@ any replayed default. Against the levelling bot (20 years, same seed and slot), 
 13.75M to 14.28M on 1878134858/s0, 15.13M to 17.30M on 446449271/s1, 14.76M to 17.17M on
 371319927/s0 and 6.54M to 6.12M on 260603278/s3, about +7% geometric.
 
+The replays above ran against `ablate`'s default field of two opponents, while the arena plays
+four in a drawn order. That is a different game, which is likely why g276.brainSafe1's planes
+did not reproduce. `ablate --lineup` now replays the match's exact field and start order. Its
+first use reproduced g279.3's arena value exactly (660,111 on seed 853334149, slot 1). The leak
+there was not the own lines but statues: 22 of them at about 110k each. Each was bought as soon
+as the bank reached `statue_money` (400k), so the bank never held enough for the next line. With
+statues off, the same game ended at 3.19M; with a 2,000k threshold, 2.24M. The default, which
+builds no statues, made 14.8M on that game. The GA range for `statue_money` is now 0 to 0.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The

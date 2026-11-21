@@ -22,26 +22,26 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261121T153205-ed3b5162.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261121T153205-ed3b5162`](../results/battle-20261121T153205-ed3b5162.md) (0/0 replays identical).
+<!-- derived from research/results/battle-20261121T154319-a2edcad6.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261121T154319-a2edcad6`](../results/battle-20261121T154319-a2edcad6.md) (0/0 replays identical).
 
-- Edition `ed3b5162caf43cfd`: PrismaticAI and referee at `ce3fcf5c2995269a2742c6c1421ca77f924cfb0f`, base set `opengfx-8.0.tar`
+- Edition `a2edcad61a88495f`: PrismaticAI and referee at `ce3fcf5c2995269a2742c6c1421ca77f924cfb0f`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 42 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- 38 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
 - Replays: 0 of 0 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 42 | 42 | 168 | 4.0 | 1.0 | 92.7 M | 0 | 0 |
-| 2 | PrismaticAI pre-g150 | 7 | 0 | 21 | 3.0 | 2.0 | 14.2 M | 0 | 0 |
-| 3 | PrismaticAI | 6 | 0 | 18 | 3.0 | 2.0 | 14.1 M | 0 | 0 |
-| 4 | PrismaticAI GA g283.0 | 8 | 0 | 24 | 3.0 | 2.0 | 12.6 M | 0 | 0 |
-| 5 | PrismaticAI GA g283.brainSafe1 | 7 | 0 | 21 | 3.0 | 2.0 | 12.0 M | 0 | 0 |
-| 6 | PrismaticAI GA g283.3 | 6 | 0 | 18 | 3.0 | 2.0 | 11.8 M | 0 | 0 |
-| 7 | PrismaticAI GA g283.brainSafe | 8 | 0 | 24 | 3.0 | 2.0 | 11.8 M | 0 | 0 |
-| 8 | AdmiralAI | 42 | 0 | 84 | 2.0 | 3.0 | 5.9 M | 47 | 1 |
-| 9 | LuDiAI AfterFix | 42 | 0 | 39 | 0.929 | 4.07 | 1.6 M | 0 | 2 |
-| 10 | CivilAI | 42 | 0 | 3 | 0.071 | 4.93 | 650.9 k | 0 | 15 |
+| 1 | AAAHogEx | 38 | 38 | 152 | 4.0 | 1.0 | 101.6 M | 0 | 0 |
+| 2 | PrismaticAI GA g284.0 | 7 | 0 | 20 | 2.857 | 2.14 | 12.8 M | 0 | 0 |
+| 3 | PrismaticAI GA g284.brainSafe1 | 7 | 0 | 20 | 2.857 | 2.14 | 12.7 M | 0 | 0 |
+| 4 | PrismaticAI GA g284.brainSafe | 7 | 0 | 20 | 2.857 | 2.14 | 12.1 M | 0 | 0 |
+| 5 | PrismaticAI pre-g150 | 6 | 0 | 17 | 2.833 | 2.17 | 14.1 M | 0 | 0 |
+| 6 | PrismaticAI | 5 | 0 | 14 | 2.8 | 2.2 | 15.2 M | 0 | 0 |
+| 7 | PrismaticAI GA g284.3 | 6 | 0 | 16 | 2.667 | 2.33 | 8.8 M | 0 | 0 |
+| 8 | AdmiralAI | 38 | 0 | 81 | 2.132 | 2.87 | 7.6 M | 0 | 1 |
+| 9 | LuDiAI AfterFix | 38 | 0 | 36 | 0.947 | 4.05 | 1.6 M | 0 | 0 |
+| 10 | CivilAI | 38 | 0 | 4 | 0.105 | 4.89 | 720.7 k | 0 | 8 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -301,6 +301,15 @@ The first editions showed two failures. The battle now catches both by itself.
   to a route whose profit per vehicle counted only year-old vehicles, which once put 50 buses on
   one route. It now keeps unjudged vehicles below the judged ones, and the waiting-cargo path
   skips routes that lost money last year. Default about +7% geometric on four replayed seeds.
+- **Statues are out of the GA (2026-11-21).** With `statue_money` set, a variant buys a statue
+  (about 110k in the 1970s) whenever its bank reaches the threshold, which holds the bank below
+  what its next line needs. g279.3 ended last on seed 853334149 at 0.66M after 22 statues, and
+  3.19M with statues off. Over 1,140 GA variants, those with statues averaged 14% less value at
+  every threshold. The range is now 0 to 0, so the clamp turns statues off in every bred
+  configuration.
+- **Replays use the match's whole lineup (2026-11-21).** `ablate --lineup <game_start.scr>`
+  takes the field, slot and settings from the match. With only `--seed` and `--slot`, the replay
+  plays two opponents instead of four, which is another game.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not

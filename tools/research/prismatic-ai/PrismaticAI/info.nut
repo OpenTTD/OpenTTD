@@ -361,7 +361,7 @@ class PrismaticAI extends AIInfo {
 		});
 		AddSetting({
 			name = "statue_money",
-			description = "Statues (learned from AAAHogEx): money in thousands above which the bot builds a statue in each town next to its stations (statues.nut; default 0: off, it cost ~30% on the fitness seed at 6 years; the battle's GA explores it).",
+			description = "Statues (learned from AAAHogEx): money in thousands above which the bot builds a statue in each town next to its stations (statues.nut; default 0: off, it cost ~30% on the fitness seed at 6 years, and the battle's GA no longer explores it: on seed 853334149 statues took g279.3 from 3.19M to 0.66M, and over 1,140 GA variants those with statues averaged 14% less value).",
 			min_value = 0, max_value = 5000,
 			easy_value = 0, medium_value = 0, hard_value = 0, custom_value = 0, step_size = 50,
 			flags = CONFIG_INGAME,
