@@ -20,10 +20,12 @@ EVERY=0
 # there failed on fresh maps (GA g30.brainSafe/brainSafe1 each ended last once).
 POSTMORTEM="${BRAIN_POSTMORTEM:-$HERE/../mcp-rhai/target/release/battle-postmortem}"
 KEEP="${BRAIN_EDITIONS:-10}"
-# The current cut: 2cab9e0314 makes air_level_step=0 the default (any height step until a levelled
-# site is refused, then step 1), first edition 6590a606. Older editions are left out, not rebased.
-# Previous cuts: 406a089b (fad8c1af62, step 2), 2d4e0173 (the levelling fix f4fcbbfef8).
-BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-cd02f5e8f136daad}"
+# The current cut: 05aa9a18c3 makes PickRailEngines require power on the rail type (electric locos
+# were refused in plain depots and left lines trainless), first edition 5e5b9f93. The effect depends
+# on the genes and the map (g288.brainSafe 1.02M -> 1.89M, the default -5% to +28%), so older
+# editions are left out, not rebased. Previous cuts: cd02f5e8 (61b2483618, sloped rail termini),
+# 6590a606 (2cab9e0314, air_level_step=0), 406a089b (fad8c1af62), 2d4e0173 (f4fcbbfef8).
+BRAIN_TRAIN_SINCE="${BRAIN_TRAIN_SINCE-5e5b9f934f7f7216}"
 MIN_ROWS="${BRAIN_MIN_ROWS:-20}"
 BASELINE_SINCE="${BRAIN_BASELINE_SINCE:-b7e14fbff103a5ba}"
 REBASE="${BRAIN_BASELINE_REBASE:-1.07}"
@@ -73,7 +75,7 @@ once() {
     echo "battle-brain: $n paired rows since ${BRAIN_TRAIN_SINCE:-the start} (< $MIN_ROWS): no proposals"
     rm -rf "$tmp"; return 0
   fi
-  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (default changed in ce3fcf5c29, fleet-growth fix)"
+  export BRAIN_TARGET="paired: value share / the default PrismaticAI's on the same edition and seed; the newest $KEEP editions; editions before $BASELINE_SINCE rebased by 1/$REBASE (cut at 05aa9a18c3, rail engines with power)"
   # The battle API can be down (orchestrator restart): skip this round rather than feed brain.exs
   # an empty gene space (it used to die with a Jason.DecodeError).
   if ! curl -fsS -m 10 "$BATTLE/api/tuning" > "$tmp/space.json" || ! [[ -s "$tmp/space.json" ]]; then

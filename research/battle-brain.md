@@ -165,6 +165,15 @@ unjudged vehicles below judged ones on a route. The default moved 0.94× to 1.16
 geometric. That spread is narrow, so rows since the `cd02f5e8` cut are rebased by 1/1.07
 (`BRAIN_BASELINE_SINCE=b7e14fbf`, `BRAIN_BASELINE_REBASE=1.07`) rather than cut again.
 
+The fifth cut is `05aa9a18c3` (first edition `5e5b9f93`): PickRailEngines now requires
+`AIEngine.HasPowerOnRail`. It used to pick electric locomotives by `CanRunOnRail`, a plain depot
+refused them, and finished lines stayed without trains (the restore loop failed up to 774 times a
+game). The peer found it by replaying `g288.brainSafe`'s last place exactly (`ablate --match
+20a48c81/m-0009`): its genes went from 1.02M to 1.89M. The default moved -5.7% to +27.5% over 7
+real-lineup games (about +1.3% geometric), so the mean shift is small, but the effect falls only on
+maps and genes that pick electric engines. Older rows understate exactly those rail genes, so they are
+cut, not rebased. The rebase (`BRAIN_BASELINE_SINCE=b7e14fbf`) no longer touches any kept row.
+
 ### Why trust-region parents need four rows
 
 In edition `eb9cae38` the safe pick `g241.brainSafe` finished last on seed 199435860. The four other
