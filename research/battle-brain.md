@@ -181,6 +181,13 @@ lineups, editions `5e5b9f93` to `799899b1`) the change moved value 0% to +9.5%, 
 no loss. The spread is narrow and no configuration lost, so rows since the `5e5b9f93` cut are rebased
 by 1/1.053 (`BRAIN_BASELINE_SINCE=000b3198`, `BRAIN_BASELINE_REBASE=1.053`) rather than cut.
 
+`8c8d025388` (first edition `ee8e6884`) keeps the reserve for two airports and a plane while an
+airport site is levelled: for a site estimated above 30,000, the loan is paid down during the levelling
+so that CmdLevelLand stops before the reserve. It turned the year-one bust of `g304.brainExplore`
+(`512c95be/m-0052`) into 2.9M, and the 8 oil-rig replays came out byte-identical. It acts only on rare
+steep-site busts, which the brain's target already clamps at `BRAIN_SHARE_FLOOR`, so the brain needs
+neither a cut nor a rebase for it.
+
 ### Why trust-region parents need four rows
 
 In edition `eb9cae38` the safe pick `g241.brainSafe` finished last on seed 199435860. The four other
