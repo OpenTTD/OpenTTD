@@ -20,7 +20,7 @@
  */
 class Font {
 public:
-	FontSize fontsize = FontSize::End; ///< The font size.
+	FontIndex font_index = INVALID_FONT_INDEX; ///< Current font index.
 	ExtendedTextColour colour = TextColour::Invalid; ///< The text colour.
 
 	/**
@@ -33,7 +33,7 @@ public:
 	 * Get the font cache of this font.
 	 * @return The font cache.
 	 */
-	inline FontCache &GetFontCache() const { return *FontCache::Get(this->fontsize); }
+	inline FontCache &GetFontCache() const { return *FontCache::Get(this->font_index); }
 };
 
 /**
@@ -42,6 +42,7 @@ public:
  */
 class FontState : public Font {
 public:
+	FontSize fontsize = FontSize::End; ///< The font size.
 	std::vector<ExtendedTextColour> colour_stack; ///< Stack of colours to assist with colour switching.
 
 	/** Create the font state with an invalid state. */
@@ -52,7 +53,7 @@ public:
 	 * @param colour The colour of the font.
 	 * @param fontsize The size of the font.
 	 */
-	FontState(FontSize fontsize, ExtendedTextColour colour) : Font(fontsize, colour) {}
+	FontState(FontSize fontsize, ExtendedTextColour colour, FontIndex font_index) : Font(font_index, colour), fontsize(fontsize) {}
 
 	/**
 	 * Compare with another instance of this class.
@@ -96,6 +97,7 @@ public:
 	inline void SetFontSize(FontSize f)
 	{
 		this->fontsize = f;
+		this->font_index = FontCache::GetDefaultFontIndex(this->fontsize);
 	}
 };
 
@@ -129,9 +131,10 @@ template <> struct std::hash<FontState> {
 	std::size_t operator()(const FontState &state) const noexcept
 	{
 		size_t h1 = std::hash<FontSize>{}(state.fontsize);
-		size_t h2 = std::hash<ExtendedTextColour>{}(state.colour);
-		size_t h3 = std::hash<std::vector<ExtendedTextColour>>{}(state.colour_stack);
-		return h1 ^ (h2 << 1) ^ (h3 << 2);
+		size_t h2 = std::hash<FontIndex>{}(state.font_index);
+		size_t h3 = std::hash<ExtendedTextColour>{}(state.colour);
+		size_t h4 = std::hash<std::vector<ExtendedTextColour>>{}(state.colour_stack);
+		return h1 ^ (h2 << 1) ^ (h3 << 2) ^ (h4 << 3);
 	}
 };
 

@@ -8,11 +8,20 @@
 /** @file gfx_layout.cpp Handling of laying out text. */
 
 #include "stdafx.h"
+
+#include <unordered_set>
+
 #include "core/math_func.hpp"
+#include "debug.h"
 #include "gfx_layout.h"
+#include "gfx_func.h"
 #include "string_func.h"
 #include "strings_func.h"
 #include "core/utf8.hpp"
+#include "timer/timer.h"
+#include "timer/timer_window.h"
+#include "viewport_func.h"
+#include "window_func.h"
 
 #include "table/control_codes.h"
 
@@ -35,6 +44,70 @@
 
 /** Cache of ParagraphLayout lines. */
 std::unique_ptr<Layouter::LineCache> Layouter::linecache;
+
+class RuntimeMissingGlyphSearcher : public MissingGlyphSearcher {
+	EnumIndexArray<std::set<char32_t>, FontSize, FontSize::End> fs_missing_glyphs{}; ///< List of glyphs to search for.
+	EnumIndexArray<std::unordered_set<char32_t>, FontSize, FontSize::End> fs_blocked_glyphs{}; ///< List of glyphs that were searched and not found.
+public:
+	FontLoadReason GetLoadReason() override { return FontLoadReason::MissingFallback; }
+
+	inline void Insert(FontSize fs, char32_t c)
+	{
+		if (this->fs_blocked_glyphs[fs].contains(c)) return;
+
+		this->fs_missing_glyphs[fs].insert(c);
+		this->search_timeout.Reset();
+	}
+
+	void DetermineRequiredGlyphs(FontSizes fontsizes) override
+	{
+		this->missing_fontsizes = fontsizes;
+		this->missing_glyphs.clear();
+
+		if (fontsizes.Count() == 1) {
+			this->missing_glyphs.swap(this->fs_missing_glyphs[fontsizes.GetNthSetBit(0).value()]);
+		} else {
+			for (FontSize fs : fontsizes) {
+				this->missing_glyphs.insert(this->fs_missing_glyphs[fs].begin(), this->fs_missing_glyphs[fs].end());
+			}
+		}
+
+		this->required_glyphs = this->missing_glyphs;
+	}
+
+	TimeoutTimer<TimerWindow> search_timeout{std::chrono::milliseconds(250), [this]()
+	{
+		/* Test if a dropdown window is being shown. If so we don't want to reinit windows yet. */
+		if (FindWindowByClass(WindowClass::DropdownMenu) != nullptr) {
+			this->search_timeout.Reset();
+			return;
+		}
+
+		FontSizes changed_fontsizes{};
+		for (FontSize fs : FONTSIZES_ALL) {
+			auto &missing = this->fs_missing_glyphs[fs];
+			if (missing.empty()) continue;
+
+			DetermineRequiredGlyphs(fs);
+			if (FontProviderManager::FindFallbackFont({}, this)) {
+				changed_fontsizes.Set(fs);
+			} else {
+				Debug(Facility::Fontcache, Severity::Error, "Unable to find font for {} missing glyphs", missing.size());
+				this->fs_blocked_glyphs[fs].insert(missing.begin(), missing.end());
+			}
+			missing.clear();
+		}
+
+		if (!changed_fontsizes.Any()) return;
+
+		FontCache::LoadFontCaches(changed_fontsizes);
+		LoadStringWidthTable(changed_fontsizes);
+		UpdateAllVirtCoords();
+		ReInitAllWindows(true);
+	}};
+};
+
+static RuntimeMissingGlyphSearcher _missing_glyphs;
 
 /**
  * Helper for getting a ParagraphLayouter of the given type.
@@ -64,7 +137,10 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	 * whenever the font changes, and convert the wide characters into a format
 	 * usable by ParagraphLayout.
 	 */
-	for (char32_t c : Utf8View(str)) {
+	Utf8View view(str);
+	for (auto it = view.begin(); it != view.end(); /* nothing */) {
+		auto cur = it;
+		uint32_t c = *it++;
 		if (c == '\0' || c == '\n') {
 			/* Caller should already have filtered out these characters. */
 			NOT_REACHED();
@@ -79,16 +155,37 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 		} else {
 			/* Filter out non printable characters */
 			if (!IsPrintable(c)) continue;
-			/* Filter out text direction characters that shouldn't be drawn, and
-			 * will not be handled in the fallback case because they are mostly
-			 * needed for RTL languages which need more proper shaping support. */
-			if (!T::SUPPORTS_RTL && IsTextDirectionChar(c)) continue;
-			buff += T::AppendToBuffer(buff, buffer_last, c);
-			if (buff >= buffer_last) break;
-			continue;
+
+			if (IsTextDirectionChar(c)) {
+				/* Filter out text direction characters that shouldn't be drawn, and
+				 * will not be handled in the fallback case because they are mostly
+				 * needed for RTL languages which need more proper shaping support. */
+				if constexpr (!T::SUPPORTS_RTL) continue;
+
+				buff += T::AppendToBuffer(buff, buffer_last, c);
+				if (buff >= buffer_last) break;
+				continue;
+			}
+
+			FontIndex font_index = FontCache::GetFontIndexForCharacter(state.fontsize, c);
+
+			if (font_index == INVALID_FONT_INDEX) {
+				_missing_glyphs.Insert(state.fontsize, c);
+				font_index = FontCache::GetDefaultFontIndex(state.fontsize);
+			}
+
+			if (state.font_index == font_index) {
+				buff += T::AppendToBuffer(buff, buffer_last, c);
+				if (buff >= buffer_last) break;
+				continue;
+			}
+
+			/* This character goes in the next run so don't advance. */
+			state.font_index = font_index;
+			it = cur;
 		}
 
-		if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
+		if (buff - buff_begin > 0 && (font_mapping.empty() || font_mapping.back().first != buff - buff_begin)) {
 			font_mapping.emplace_back(buff - buff_begin, f);
 		}
 		f = state;
@@ -100,6 +197,14 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
 	if (font_mapping.empty() || font_mapping.back().first != buff - buff_begin) {
 		font_mapping.emplace_back(buff - buff_begin, f);
 	}
+
+	if constexpr (!std::is_same_v<T, FallbackParagraphLayoutFactory>) {
+		/* Don't layout if all runs use a built-in font and we're not using the fallback layouter. */
+		if (std::ranges::all_of(font_mapping, [](const auto &i) { return i.second.GetFontCache().IsBuiltInFont(); })) {
+			return;
+		}
+	}
+
 	line.layout = T::GetParagraphLayout(buff_begin, buff, font_mapping);
 	line.state_after = state;
 }
@@ -112,7 +217,7 @@ static inline void GetLayouter(Layouter::LineCacheItem &line, std::string_view s
  */
 Layouter::Layouter(std::string_view str, int maxw, FontSize fontsize) : string(str)
 {
-	FontState state(fontsize, TextColour::Invalid);
+	FontState state(fontsize, TextColour::Invalid, FontCache::GetDefaultFontIndex(fontsize));
 
 	while (true) {
 		auto line_length = str.find_first_of('\n');

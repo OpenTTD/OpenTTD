@@ -297,10 +297,10 @@ void SurveyConfiguration(nlohmann::json &survey)
  */
 void SurveyFont(nlohmann::json &survey)
 {
-	survey["small"] = FontCache::Get(FontSize::Small)->GetFontName();
-	survey["medium"] = FontCache::Get(FontSize::Normal)->GetFontName();
-	survey["large"] = FontCache::Get(FontSize::Large)->GetFontName();
-	survey["mono"] = FontCache::Get(FontSize::Monospace)->GetFontName();
+	survey["small"] = FontCache::GetDefaultFontCache(FontSize::Small)->GetFontName();
+	survey["medium"] = FontCache::GetDefaultFontCache(FontSize::Normal)->GetFontName();
+	survey["large"] = FontCache::GetDefaultFontCache(FontSize::Large)->GetFontName();
+	survey["mono"] = FontCache::GetDefaultFontCache(FontSize::Monospace)->GetFontName();
 }
 
 /**
