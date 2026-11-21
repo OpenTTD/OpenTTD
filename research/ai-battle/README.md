@@ -297,6 +297,10 @@ The first editions showed two failures. The battle now catches both by itself.
   found no flat terminus site and were dropped, and the bot then banked its money. A bounded
   levelling fallback (1 height step, 40k estimate, 60k kept) raised the default by about +32%
   geometric on three replayed seeds (A/B against the previous bot).
+- **Vehicles are added only to judged, earning routes (2026-11-21).** The invest loop re-added
+  to a route whose profit per vehicle counted only year-old vehicles, which once put 50 buses on
+  one route. It now keeps unjudged vehicles below the judged ones, and the waiting-cargo path
+  skips routes that lost money last year. Default about +7% geometric on four replayed seeds.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not

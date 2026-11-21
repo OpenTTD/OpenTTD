@@ -85,6 +85,11 @@ function PrismaticAI::InvestSurplus(b) {
 	local best = null, best_ppv = 0;
 	foreach (k, r in routes) {
 		if (r.judged == 0 || r.count >= ((r.type == AIVehicle.VT_AIR) ? b.invest_air_cap : b.invest_road_cap)) continue;
+		/* At most as many unjudged vehicles (under a year old) as judged ones: the profit per vehicle
+		 * counts only the judged, so it does not fall as vehicles are added, and without this GA
+		 * g276.brainSafe1 (OpenTTD seed 1878134858, slot 0) put 50 buses on one route at 1810 a year
+		 * each and sold 96 vehicles over the game as each new one lost money. */
+		if (r.count - r.judged >= r.judged) continue;
 		local ppv = r.profit / r.judged;
 		if (ppv * b.invest_ppv_div < AIEngine.GetPrice(AIVehicle.GetEngineType(r.sample))) continue;
 		if (ppv > best_ppv) { best_ppv = ppv; best = r; }
@@ -238,6 +243,11 @@ function PrismaticAI::ManageFleet(reserve) {
 			local monthly = max(1, cap * 30 / max(1, 2 * tiles * 1000 / (kmh * 36) + 4));
 			if (flow > 0 && r.count >= (flow + monthly - 1) / monthly + 1) continue;
 		}
+		/* Never a vehicle more on a route whose year-old vehicles lost money last year, whatever the
+		 * waiting cargo says. With air_full_load and a low air_add_waiting, GA g276.brainSafe1 (OpenTTD
+		 * seed 1878134858, slot 0) put 17 planes on 3 routes that lost 42.7k a year between them, and
+		 * ended last. */
+		if (!PrismaticAI.RouteEarns(k)) continue;
 		if (AICompany.GetBankBalance(AICompany.COMPANY_SELF) < reserve) return;
 		local depot = PrismaticAI.DepotFor(v);
 		if (depot == -1) continue;

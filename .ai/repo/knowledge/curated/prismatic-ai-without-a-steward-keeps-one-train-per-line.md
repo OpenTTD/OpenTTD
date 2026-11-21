@@ -391,6 +391,17 @@ on 260603278/s3, 6.40M to 15.13M on 446449271/s1 and 14.05M to 14.76M on 3713199
 geometric. g271.3 went 2.33M to 2.01M, 3.97M to 7.91M and 8.93M to 10.95M. On 260603278 a town
 refused three levelled sites (ERR_LOCAL_AUTHORITY_REFUSES), since levelling clears trees.
 
+Vehicle growth had two leaks of its own. `Invest` judged a route by the profit per vehicle of its
+year-old vehicles only, so the figure did not fall as vehicles were added. Replayed on seed
+1878134858 (slot 0), GA g276.brainSafe1 added 50 buses to one route at 1810 a year each and sold
+96 vehicles over the game. `Invest` now adds to a route only while it has fewer unjudged vehicles
+than judged ones. Separately, `ManageFleet` no longer adds to a route whose year-old vehicles
+lost money last year. In the arena that configuration had run 17 planes on 3 losing routes, but
+the local replay did not reproduce it, so this second guard is unvalidated. It did not change
+any replayed default. Against the levelling bot (20 years, same seed and slot), the default went
+13.75M to 14.28M on 1878134858/s0, 15.13M to 17.30M on 446449271/s1, 14.76M to 17.17M on
+371319927/s0 and 6.54M to 6.12M on 260603278/s3, about +7% geometric.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
