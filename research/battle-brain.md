@@ -160,6 +160,11 @@ double-track terminus, the bot now levels a sloped one instead of dropping the o
 20-year value moved 0.94× to 2.36× per seed (about +32% geometric), and the effect depends on the
 `own_lines` genes, so older editions are cut, not rebased.
 
+An hour later `ce3fcf5c29` (first edition `b7e14fbf`) fixed fleet-growth churn: Invest now keeps
+unjudged vehicles below judged ones on a route. The default moved 0.94× to 1.16× per seed, about +7%
+geometric. That spread is narrow, so rows since the `cd02f5e8` cut are rebased by 1/1.07
+(`BRAIN_BASELINE_SINCE=b7e14fbf`, `BRAIN_BASELINE_REBASE=1.07`) rather than cut again.
+
 ### Why trust-region parents need four rows
 
 In edition `eb9cae38` the safe pick `g241.brainSafe` finished last on seed 199435860. The four other
