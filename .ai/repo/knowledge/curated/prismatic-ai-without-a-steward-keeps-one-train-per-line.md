@@ -351,6 +351,15 @@ pool, because pairing is keyed by settings. g150.0 became the default that way (
 pairs, ratio 1.154, interval low end 1.046. It flies more routes on shallow levelling and builds
 fewer, better-funded road routes.
 
+The late fleet drop with idle cash belongs to genes, not to the code. From the g150.0 default's
+first edition (121f34cd) to 2026-11-21 04:40, the orchestrator raised 383 `fleet_drop` alerts on
+`PrismaticAI pre-g150`, the former defaults. It raised 4 on the default and at most 26 on any
+other variant. The same bot code ran with both gene sets. Edition ccb7a60f shows the shape
+(seed 371319927). pre-g150 sat at one plane and about 5k until 1967, grew to 55 vehicles, then
+fell to 28 with 640k idle. On the same seed GA g226.0 came second. The former defaults plan no
+lines of their own (`own_lines=0`) and spread 30 routes thin. g150.0 plans 18 own lines and
+keeps a reserve.
+
 # How to apply it
 
 - Do not read PrismaticAI's battle results as what the bot does when the panel steers it. The
