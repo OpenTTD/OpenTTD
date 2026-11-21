@@ -62,7 +62,7 @@ proposals until they were backfilled.
 | Features | each gene of the GA's space scaled to [0, 1]; a gene the setting does not name takes the midpoint and a 0 "named" flag, so the net can tell a default from a value |
 | Target | log of (the variant's value share of the winner / the default's on the same seed), clamped below at `$BRAIN_SHARE_FLOOR` (0.05) so that a bankruptcy (value 1, a ratio near 1e-7) scores as the worst outcome without dominating the squared loss; `brain.json` names it in `target` and counts `floored_rows`, and `predicted_share` is that ratio |
 | Model | 5 members, each 2 × 32 tanh with dropout 0.1, trained by Adam (lr 0.01, 400 steps) on its own bootstrap sample |
-| Search | 50,000 candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member: half uniform over the space, half local (one of the 5 best measured settings, with at least 2 rows each, with 1 to 3 genes moved) |
+| Search | 50,000 candidates on the GA's grid (min, max, step per gene), scored in one batched EXLA call per member: half uniform over the space, half local (one of the 5 best measured settings, with at least `$BRAIN_PARENT_MIN_ROWS` (4) rows each, with 1 to 3 genes moved) |
 | Pick | 8 proposals, alternating `safe` (best lower confidence bound, mean − κ·spread) and `explore` (best upper confidence bound, mean + κ·spread, among candidates whose lower bound is at least `$BRAIN_EXPLORE_FLOOR` × the default, 0.9 by default), κ = 1, each with its kind, predicted share and spread |
 
 `brain.json` (schema `battle-brain/v1`) records the data it had (`rows`, `distinct_settings`) and the
@@ -154,6 +154,14 @@ On 2026-11-20 the GA's `g150.0` became the default (`962699034c`, geometric mean
 CI lower bound 1.046), first edition `121f34cd`. That change touches only settings, so older rows
 since the cut are rebased by 1/1.154 (`BRAIN_BASELINE_SINCE=121f34cd`, `BRAIN_BASELINE_REBASE=1.154`)
 rather than cut.
+
+### Why trust-region parents need four rows
+
+In edition `eb9cae38` the safe pick `g241.brainSafe` finished last on seed 199435860. The four other
+PrismaticAI configurations on that seed, all from the same start slot, came second. Its genes sat next
+to `g227.0`, which went bankrupt earlier (`own_lines=24`, `own_fail_pause=0`, `air_level_max=5`). A
+parent with only two rows can rank high on one lucky slot, and the trust region then centres on it. Parents
+now need at least four rows.
 
 ### Start slots and pairing
 

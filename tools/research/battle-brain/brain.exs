@@ -104,8 +104,9 @@ defmodule Brain do
     {train_us, members} = :timer.tc(fn -> for s <- 1..@members, do: train(x, y, s) end)
     model = model(elem(Nx.shape(x), 1))
     {_init, predict} = Axon.build(model, compiler: EXLA)
-    # Parents: the best measured settings by their mean paired share (at least 2 rows each).
-    parents = rows |> Enum.group_by(& &1.settings) |> Enum.filter(fn {_, rs} -> length(rs) >= 2 end)
+    # Parents: the best measured settings by their mean paired share, each with at least
+    # $BRAIN_PARENT_MIN_ROWS (4) rows: with 2, one lucky start slot could make a parent.
+    parents = rows |> Enum.group_by(& &1.settings) |> Enum.filter(fn {_, rs} -> length(rs) >= String.to_integer(System.get_env("BRAIN_PARENT_MIN_ROWS", "4")) end)
               |> Enum.map(fn {st, rs} -> {st, Enum.sum(Enum.map(rs, &:math.log(max(&1.share, floor_share)))) / length(rs)} end)
               |> Enum.sort_by(&elem(&1, 1), :desc) |> Enum.take(5) |> Enum.map(&parse_settings(elem(&1, 0)))
     n_local = if parents == [], do: 0, else: div(@candidates, 2)
