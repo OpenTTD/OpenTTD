@@ -138,8 +138,9 @@ public:
 	};
 
 	/**
-	 * Check if this tile is buildable, i.e. no things on it that needs
-	 *  demolishing.
+	 * Check if this tile can be built on. A tile is considered buildable if it's clear,
+	 * has trees or is a road owned either by a town or the current company (as stations can be built on them).
+	 *
 	 * @param tile The tile to check on.
 	 * @pre ScriptMap::IsValidTile(tile).
 	 * @return True if it is buildable, false if not.
