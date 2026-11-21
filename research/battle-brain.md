@@ -155,6 +155,16 @@ CI lower bound 1.046), first edition `121f34cd`. That change touches only settin
 since the cut are rebased by 1/1.154 (`BRAIN_BASELINE_SINCE=121f34cd`, `BRAIN_BASELINE_REBASE=1.154`)
 rather than cut.
 
+### Start slots and pairing
+
+The start slot alone can swing a configuration's 20-year value about 4× on one map (seed 371319927:
+g226.0 scored 11.8M from slot 0 and 2.9M from slot 2). Until `d60734cf23` (first edition `569322cd`) the
+lineup rotated the slot with every match, so the configurations sharing a seed each started elsewhere.
+Pairs from before then are noisier but not biased: each member sat a fixed offset from the default,
+and the absolute slot cycled across seeds. From `569322cd` on, every PrismaticAI configuration on a seed
+starts from the same slot, so the brain's join on (edition, seed) compares like with like. No cut was
+made; the older rows only add noise, which the ensemble's spread and the bootstrap CI already carry.
+
 ### Why a safe pick comes first
 
 Until 2026-11-19 the brain proposed by UCB only, so both of the GA's brain offspring were
