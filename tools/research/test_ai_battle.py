@@ -96,6 +96,17 @@ class MatchContract(unittest.TestCase):
             seen |= {k for k in lu if k.startswith("P")}
         self.assertEqual(seen, {"P1", "P2"})
 
+    def test_every_member_of_a_group_starts_from_the_same_slot_on_one_seed(self):
+        cs = [{"key": "P1", "group": "P"}, {"key": "P2", "group": "P"}, {"key": "P3", "group": "P"},
+              {"key": "A"}, {"key": "B"}]
+        slots = {}
+        for n in range(12):
+            lu = [c["key"] for c in battle.lineup_for(cs, n, 3)]
+            p = next(i for i, k in enumerate(lu) if k.startswith("P"))
+            slots.setdefault(n // 3, set()).add(p)
+        self.assertTrue(all(len(v) == 1 for v in slots.values()))
+        self.assertGreater(len({next(iter(v)) for v in slots.values()}), 1)  # still rotates across seeds
+
     def test_reap_keeps_the_current_edition_and_finished_matches(self):
         with tempfile.TemporaryDirectory() as tmp:
             for ed, mid, finished in (("cur", "m-0001", False), ("old", "m-0001", False), ("old", "m-0002", True)):

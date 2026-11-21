@@ -571,17 +571,20 @@ def cmd_fetch(cfg: dict) -> None:
 
 # -------------------------------------------------------------------------------------- matches
 
-def lineup_for(contestants: list[dict], n: int) -> list[dict]:
+def lineup_for(contestants: list[dict], n: int, block: int = 1) -> list[dict]:
     """Match n's lineup. Contestants sharing a `group` (the PrismaticAI configurations) take turns,
     one per match: two copies of one bot on one map share its best airport towns and industries
-    and starve each other. Everyone else plays every match. The start order rotates."""
+    and starve each other. Everyone else plays every match. The start order rotates once per
+    `block` matches, the matches that share one seed. So every member of a group starts from the
+    same company slot on a seed, and a paired comparison does not measure the slot. On seed
+    371319927 the same genes scored 11.8M from slot 0 and 2.9M from slot 2."""
     groups: dict[str, list[dict]] = {}
     for c in contestants:
         if c.get("group"):
             groups.setdefault(c["group"], []).append(c)
     picked = {g: members[n % len(members)]["key"] for g, members in groups.items()}
     chosen = [c for c in contestants if not c.get("group") or picked[c["group"]] == c["key"]]
-    rot = n % len(chosen)
+    rot = (n // max(1, block)) % len(chosen)
     return chosen[rot:] + chosen[:rot]
 
 
@@ -983,14 +986,14 @@ class Orchestrator:
         if original:
             seed, lineup = original["seed"], original["lineup"]
         else:
-            lineup = lineup_for(self.contestants, self.counter)
             # Common random numbers: the members of a group take turns on the SAME seed, so every
-            # variant meets the same maps (one seed per round of the group).
+            # variant meets the same maps (one seed per round of the group), from the same slot.
             sizes = {}
             for c in self.contestants:
                 if c.get("group"):
                     sizes[c["group"]] = sizes.get(c["group"], 0) + 1
             block = max(sizes.values(), default=1)
+            lineup = lineup_for(self.contestants, self.counter, block)
             # The edition is part of the seed: every GA generation meets new maps instead of being
             # judged (and tuned) on the same handful of seeds again and again.
             seed = int(hashlib.sha256(f"{self.cfg['seed']}:{self.digest}:{self.counter // block}".encode())

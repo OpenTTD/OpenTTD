@@ -22,30 +22,30 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261121T042556-ccb7a60f.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261121T042556-ccb7a60f`](../results/battle-20261121T042556-ccb7a60f.md) (0/1 replays identical).
+<!-- derived from research/results/battle-20261121T043633-2befd3c8.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261121T043633-2befd3c8`](../results/battle-20261121T043633-2befd3c8.md) (1/1 replays identical).
 
-- Edition `ccb7a60f8483cbbd`: PrismaticAI and referee at `962699034c20d90baeb9f617789ea6558cc6ff52`, base set `opengfx-8.0.tar`
+- Edition `2befd3c8b0306540`: PrismaticAI and referee at `962699034c20d90baeb9f617789ea6558cc6ff52`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 47 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 1 identical to their original on another arena
+- 40 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 1 of 1 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 47 | 47 | 188 | 4.0 | 1.0 | 97.2 M | 0 | 0 |
-| 2 | PrismaticAI GA g226.0 | 8 | 0 | 23 | 2.875 | 2.12 | 14.6 M | 0 | 2 |
-| 3 | PrismaticAI | 7 | 0 | 20 | 2.857 | 2.14 | 15.5 M | 0 | 0 |
-| 4 | PrismaticAI GA g226.brainExplore | 7 | 0 | 20 | 2.857 | 2.14 | 14.2 M | 0 | 0 |
-| 5 | PrismaticAI GA g226.brainSafe | 9 | 0 | 24 | 2.667 | 2.33 | 11.9 M | 0 | 1 |
-| 6 | PrismaticAI GA g226.3 | 7 | 0 | 18 | 2.571 | 2.43 | 12.0 M | 0 | 2 |
-| 7 | PrismaticAI pre-g150 | 9 | 0 | 23 | 2.556 | 2.44 | 12.1 M | 0 | 6 |
-| 8 | AdmiralAI | 47 | 0 | 101 | 2.149 | 2.85 | 7.2 M | 59 | 2 |
-| 9 | LuDiAI AfterFix | 47 | 0 | 43 | 0.915 | 4.09 | 1.8 M | 0 | 1 |
-| 10 | CivilAI | 47 | 0 | 10 | 0.213 | 4.79 | 843.1 k | 0 | 8 |
+| 1 | AAAHogEx | 40 | 40 | 160 | 4.0 | 1.0 | 94.7 M | 0 | 0 |
+| 2 | PrismaticAI pre-g150 | 7 | 0 | 20 | 2.857 | 2.14 | 14.4 M | 0 | 5 |
+| 3 | PrismaticAI GA g227.brainSafe | 7 | 0 | 20 | 2.857 | 2.14 | 9.3 M | 0 | 2 |
+| 4 | PrismaticAI GA g227.brainExplore | 7 | 0 | 19 | 2.714 | 2.29 | 10.5 M | 0 | 0 |
+| 5 | PrismaticAI | 6 | 0 | 16 | 2.667 | 2.33 | 13.6 M | 0 | 0 |
+| 6 | PrismaticAI GA g227.3 | 6 | 0 | 16 | 2.667 | 2.33 | 9.9 M | 0 | 0 |
+| 7 | PrismaticAI GA g227.0 | 7 | 0 | 16 | 2.286 | 2.71 | 11.3 M | 0 | 2 |
+| 8 | AdmiralAI | 40 | 0 | 87 | 2.175 | 2.83 | 6.5 M | 44 | 1 |
+| 9 | LuDiAI AfterFix | 40 | 0 | 40 | 1.0 | 4.0 | 1.9 M | 0 | 4 |
+| 10 | CivilAI | 40 | 0 | 6 | 0.15 | 4.85 | 705.8 k | 0 | 10 |
 
 | Seed | Original | Replay | Arenas | Identical |
 |---|---|---|---|---|
-| 543933906 | m-0010 | m-0048 | imac / mbp | NO |
+| 1955948131 | m-0017 | m-0048 | mbp2 / mbp | yes |
 <!-- battle:end -->
 
 ## How it fits together
@@ -286,6 +286,13 @@ The first editions showed two failures. The battle now catches both by itself.
   trial g185.0`** it fell to 1.053 at 38 pairs (22 wins, low end 0.96). That is regression to the
   mean, not a gain the interval rule could confirm, so the trial ended. A strong start on a dozen
   pairs is not evidence on its own.
+- **One start slot per seed (2026-11-21).** The start order used to rotate with every match, so
+  the PrismaticAI configurations that share a seed each started from a different company slot.
+  On seed 371319927 the same genes scored 11.8M from slot 0 and 2.9M from slot 2. The order now
+  rotates once per seed, so every configuration on a seed starts from the same slot, and slots
+  still rotate across seeds. Earlier pairs are not biased, since every slot was equally likely for
+  both sides of a pair across seeds. They are noisier, and the bootstrap interval already
+  reflects that noise.
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets
   new maps. Before, every generation was judged, and tuned, on the same handful of seeds.
 - **Promotion, detected automatically.** The orchestrator pairs every configuration (its settings, not
