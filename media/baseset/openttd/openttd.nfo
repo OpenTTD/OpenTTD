@@ -92,6 +92,7 @@
 #include "roadstops.nfo"
 #include "aqueduct.nfo"
 #include "autorail.nfo"
+#include "autoroad.nfo"
 #include "openttdgui.nfo"
 #include "airport_preview.nfo"
 #include "chars.nfo"
