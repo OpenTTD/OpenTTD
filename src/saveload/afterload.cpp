@@ -73,7 +73,6 @@
 #include "../safeguards.h"
 
 extern Company *DoStartupNewCompany(bool is_ai, CompanyID company = CompanyID::Invalid());
-extern void ClearOldOrders();
 
 /**
  * Makes a tile canal or water depending on the surroundings.
@@ -821,7 +820,8 @@ bool AfterLoadGame()
 	AfterLoadVehiclesPhase1(true);
 
 	/* Old orders are no longer needed. */
-	ClearOldOrders();
+	_old_order_saveload_pool.Clear();
+	_old_engine_renew_saveload_pool.Clear();
 
 	/* make sure there is a town in the game */
 	if (_game_mode == GameMode::Normal && Town::GetNumItems() == 0) {
@@ -1036,7 +1036,6 @@ bool AfterLoadGame()
 	 *  of course, we do need to initialize them for older savegames. */
 	if (IsSavegameVersionBefore(SaveLoadVersion::EngineRenew)) {
 		for (Company *c : Company::Iterate()) {
-			c->engine_renew_list            = nullptr;
 			c->settings.engine_renew        = false;
 			c->settings.engine_renew_months = 6;
 			c->settings.engine_renew_money  = 100000;

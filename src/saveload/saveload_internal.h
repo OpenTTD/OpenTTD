@@ -10,9 +10,11 @@
 #ifndef SAVELOAD_INTERNAL_H
 #define SAVELOAD_INTERNAL_H
 
+#include "../autoreplace_type.h"
 #include "../order_base.h"
 #include "../engine_type.h"
 #include "saveload.h"
+#include "saveload_oldpool.h"
 
 void InitializeOldNames();
 StringID RemapOldStringID(StringID s);
@@ -56,5 +58,13 @@ extern uint32_t _ttdp_version;
 CompanyManagerFace ConvertFromOldCompanyManagerFace(uint32_t face);
 
 Order UnpackOldOrder(uint16_t packed);
+
+/** Type for conversion of old order pool. */
+using OldOrderPool = OldSaveLoadPool<Order>;
+extern OldOrderPool _old_order_saveload_pool;
+
+/** Type for conversion of old engine renew pool. */
+using OldEngineRenewPool = OldSaveLoadPool<OldEngineRenew>;
+extern OldEngineRenewPool _old_engine_renew_saveload_pool;
 
 #endif /* SAVELOAD_INTERNAL_H */

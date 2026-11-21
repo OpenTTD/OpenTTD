@@ -16,6 +16,7 @@
 #include "viewport_func.h"
 #include "news_func.h"
 #include "command_func.h"
+#include "company_base.h"
 #include "company_func.h"
 #include "train.h"
 #include "aircraft.h"
@@ -245,8 +246,9 @@ bool Vehicle::NeedsServicing() const
 	if (needed_money > GetAvailableMoney(c->index)) return false;
 
 	for (const Vehicle *v = this; v != nullptr; v = (v->type == VehicleType::Train) ? Train::From(v)->GetNextUnit() : nullptr) {
-		bool replace_when_old = false;
-		EngineID new_engine = EngineReplacementForCompany(c, v->engine_type, v->group_id, &replace_when_old);
+		const EngineRenew *er = GetEngineRenew(v->owner, v->group_id, v->engine_type, true);
+		EngineID new_engine = er == nullptr ? EngineID::Invalid() : er->to;
+		bool replace_when_old = er != nullptr && er->replace_when_old;
 
 		/* Check engine availability */
 		if (new_engine == EngineID::Invalid() || !Engine::Get(new_engine)->company_avail.Test(v->owner)) continue;
@@ -1477,7 +1479,7 @@ void AgeVehicle(Vehicle *v)
 	/* Don't warn if a renew is active */
 	if (c->settings.engine_renew && v->GetEngine()->company_avail.Any()) return;
 	/* Don't warn if a replacement is active */
-	if (EngineHasReplacementForCompany(c, v->engine_type, v->group_id)) return;
+	if (EngineHasReplacement(v->owner, v->group_id, v->engine_type, true)) return;
 
 	StringID str;
 	if (age == TimerGameCalendar::DateAtStartOfYear(TimerGameCalendar::Year{-1})) {

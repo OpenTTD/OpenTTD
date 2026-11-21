@@ -9,12 +9,12 @@
 
 #include "stdafx.h"
 #include "command_func.h"
+#include "company_base.h"
+#include "group.h"
 #include "train.h"
 #include "vehiclelist.h"
 #include "vehicle_func.h"
 #include "vehicle_gui.h"
-#include "autoreplace_base.h"
-#include "autoreplace_func.h"
 #include "string_func.h"
 #include "company_func.h"
 #include "core/pool_func.hpp"
@@ -237,6 +237,29 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 }
 
 /**
+ * Update group autoreplace status flags for a group.
+ * @param erl The engine renew list for the group.
+ * @param company The company index.
+ * @param group The group index.
+ */
+static void UpdateAutoreplaceStatus(const EngineRenewList &erl, CompanyID company, GroupID group)
+{
+	for (const EngineRenew &er : erl) {
+		if (er.from == er.to) continue;
+
+		const Engine *e = Engine::Get(er.from);
+		GroupStatistics &stats = GroupStatistics::Get(company, group, e->type);
+
+		if (!stats.autoreplace_defined) {
+			stats.autoreplace_defined = true;
+			stats.autoreplace_finished = true;
+		}
+
+		if (GetGroupNumEngines(company, group, er.from) > 0) stats.autoreplace_finished = false;
+	}
+}
+
+/**
  * Update autoreplace_defined and autoreplace_finished of all statistics of a company.
  * @param company Company to update statistics for.
  */
@@ -253,17 +276,11 @@ uint16_t GroupStatistics::GetNumEngines(EngineID engine) const
 	for (Group *g : Group::Iterate()) {
 		if (g->owner != company) continue;
 		g->statistics.ClearAutoreplace();
+		UpdateAutoreplaceStatus(g->engine_renew_list, g->owner, g->index);
 	}
 
-	for (EngineRenewList erl = c->engine_renew_list; erl != nullptr; erl = erl->next) {
-		const Engine *e = Engine::Get(erl->from);
-		GroupStatistics &stats = GroupStatistics::Get(company, erl->group_id, e->type);
-		if (!stats.autoreplace_defined) {
-			stats.autoreplace_defined = true;
-			stats.autoreplace_finished = true;
-		}
-		if (GetGroupNumEngines(company, erl->group_id, erl->from) > 0) stats.autoreplace_finished = false;
-	}
+	UpdateAutoreplaceStatus(c->all_engine_renew_list, company, ALL_GROUP);
+	UpdateAutoreplaceStatus(c->ungrouped_engine_renew_list, company, DEFAULT_GROUP);
 }
 
 /**
@@ -413,12 +430,6 @@ CommandCost CmdDeleteGroup(DoCommandFlags flags, GroupID group_id)
 
 		if (g->owner < MAX_COMPANIES) {
 			Company *c = Company::Get(g->owner);
-
-			/* If we set an autoreplace for the group we delete, remove it. */
-			for (const EngineRenew *er : EngineRenew::Iterate()) {
-				if (er->group_id == g->index) RemoveEngineReplacementForCompany(c, er->from, g->index, flags);
-			}
-
 			c->freegroups.ReleaseID(g->number);
 		}
 

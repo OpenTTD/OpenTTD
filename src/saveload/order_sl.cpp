@@ -10,9 +10,9 @@
 #include "../stdafx.h"
 
 #include "saveload.h"
+#include "saveload_internal.h"
 #include "compat/order_sl_compat.h"
 
-#include "saveload_internal.h"
 #include "../order_backup.h"
 #include "../settings_type.h"
 #include "../vehicle_base.h"
@@ -107,53 +107,20 @@ Order UnpackOldOrder(uint16_t packed)
 }
 
 /** Temporary storage for conversion from old order pool. */
-static std::vector<OldOrderSaveLoadItem> _old_order_saveload_pool;
-
-/**
- * Clear all old orders.
- */
-void ClearOldOrders()
-{
-	_old_order_saveload_pool.clear();
-	_old_order_saveload_pool.shrink_to_fit();
-}
-
-/**
- * Get a pointer to an old order with the given reference index.
- * @param ref_index Reference index (one-based) to get.
- * @return Pointer to old order, or nullptr if not present.
- */
-OldOrderSaveLoadItem *GetOldOrder(size_t ref_index)
-{
-	if (ref_index == 0) return nullptr;
-	assert(ref_index <= _old_order_saveload_pool.size());
-	return &_old_order_saveload_pool[ref_index - 1];
-}
-
-/**
- * Allocate an old order with the given pool index.
- * @param pool_index Pool index (zero-based) to allocate.
- * @return Reference to allocated old order.
- */
-OldOrderSaveLoadItem &AllocateOldOrder(size_t pool_index)
-{
-	assert(pool_index < UINT32_MAX);
-	if (pool_index >= _old_order_saveload_pool.size()) _old_order_saveload_pool.resize(pool_index + 1);
-	return _old_order_saveload_pool[pool_index];
-}
+OldOrderPool _old_order_saveload_pool;
 
 SaveLoadTable GetOrderDescription()
 {
 	static const SaveLoad _order_desc[] = {
-		SaveLoad::Variable<VarFileType::U8>("type", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.type)),
-		SaveLoad::Variable<VarFileType::U8>("flags", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.flags)),
-		SaveLoad::Variable<VarFileType::U16>("dest", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.dest)),
-		SaveLoad::Variable<VarFileType::U16>("next", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, next), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
-		SaveLoad::Variable<VarFileType::U32>("next", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, next), SaveLoadVersion::MoreCargoPackets),
-		SaveLoad::Variable<VarFileType::U8>("refit_cargo", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.refit_cargo), SaveLoadVersion::RefitOrders),
-		SaveLoad::Variable<VarFileType::U16>("wait_time", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.wait_time), SaveLoadVersion::Timetables),
-		SaveLoad::Variable<VarFileType::U16>("travel_time", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.travel_time), SaveLoadVersion::Timetables),
-		SaveLoad::Variable<VarFileType::U16>("max_speed", SLE_OBJECT_ADDRESS(OldOrderSaveLoadItem, order.max_speed), SaveLoadVersion::OrderMaxSpeed),
+		SaveLoad::Variable<VarFileType::U8>("type", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.type)),
+		SaveLoad::Variable<VarFileType::U8>("flags", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.flags)),
+		SaveLoad::Variable<VarFileType::U16>("dest", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.dest)),
+		SaveLoad::Variable<VarFileType::U16>("next", SLE_OBJECT_ADDRESS(OldOrderPool::Item, next), SaveLoadVersion::MinVersion, SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("next", SLE_OBJECT_ADDRESS(OldOrderPool::Item, next), SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U8>("refit_cargo", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.refit_cargo), SaveLoadVersion::RefitOrders),
+		SaveLoad::Variable<VarFileType::U16>("wait_time", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.wait_time), SaveLoadVersion::Timetables),
+		SaveLoad::Variable<VarFileType::U16>("travel_time", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.travel_time), SaveLoadVersion::Timetables),
+		SaveLoad::Variable<VarFileType::U16>("max_speed", SLE_OBJECT_ADDRESS(OldOrderPool::Item, value.max_speed), SaveLoadVersion::OrderMaxSpeed),
 	};
 
 	return _order_desc;
@@ -178,8 +145,8 @@ struct ORDRChunkHandler : ChunkHandler {
 				SlCopy<VarFileType::U16>(orders);
 
 				for (size_t i = 0; i < len; ++i) {
-					auto &item = AllocateOldOrder(i);
-					item.order.AssignOrder(UnpackVersion4Order(orders[i]));
+					auto &item = _old_order_saveload_pool.Allocate(i);
+					item.value.AssignOrder(UnpackVersion4Order(orders[i]));
 				}
 			} else if (IsSavegameVersionBefore(SaveLoadVersion::BigMap, 2)) {
 				len /= sizeof(uint32_t);
@@ -188,16 +155,16 @@ struct ORDRChunkHandler : ChunkHandler {
 				SlCopy<VarFileType::U32>(orders);
 
 				for (size_t i = 0; i < len; ++i) {
-					auto &item = AllocateOldOrder(i);
-					item.order = Order(GB(orders[i], 0, 8), GB(orders[i], 8, 8), GB(orders[i], 16, 16));
+					auto &item = _old_order_saveload_pool.Allocate(i);
+					item.value = Order(GB(orders[i], 0, 8), GB(orders[i], 8, 8), GB(orders[i], 16, 16));
 				}
 			}
 
 			/* Update all the next pointer. The orders were built like this:
 			 * While the order is valid, the previous order will get its next pointer set */
-			for (uint32_t num = 1; const OldOrderSaveLoadItem &item : _old_order_saveload_pool) {
-				if (!item.order.IsType(OT_NOTHING) && num > 1) {
-					OldOrderSaveLoadItem *prev = GetOldOrder(num - 1);
+			for (uint32_t num = 1; const auto &item : _old_order_saveload_pool.items) {
+				if (!item.value.IsType(OT_NOTHING) && num > 1) {
+					auto *prev = _old_order_saveload_pool.Get(num - 1);
 					if (prev != nullptr) prev->next = num;
 				}
 				++num;
@@ -208,7 +175,7 @@ struct ORDRChunkHandler : ChunkHandler {
 			int index;
 
 			while ((index = SlIterateArray()) != -1) {
-				auto &item = AllocateOldOrder(index);
+				auto &item = _old_order_saveload_pool.Allocate(index);
 				SlObject(&item, slt);
 			}
 		}
@@ -284,11 +251,7 @@ struct ORDLChunkHandler : ChunkHandler {
 			SlObject(list, GetOrderListDescription());
 
 			if (migrate_orders) {
-				std::vector<Order> orders;
-				for (OldOrderSaveLoadItem *old_order = GetOldOrder(list->old_order_index); old_order != nullptr; old_order = GetOldOrder(old_order->next)) {
-					orders.push_back(std::move(old_order->order));
-				}
-				list->orders = std::move(orders);
+				list->orders = _old_order_saveload_pool.TransformToVector(list->old_order_index);
 			}
 		}
 	}
@@ -360,11 +323,7 @@ struct BKORChunkHandler : ChunkHandler {
 			SlObject(ob, GetOrderBackupDescription());
 
 			if (migrate_orders) {
-				std::vector<Order> orders;
-				for (OldOrderSaveLoadItem *old_order = GetOldOrder(ob->old_order_index); old_order != nullptr; old_order = GetOldOrder(old_order->next)) {
-					orders.push_back(std::move(old_order->order));
-				}
-				ob->orders = std::move(orders);
+				ob->orders = _old_order_saveload_pool.TransformToVector(ob->old_order_index);
 			}
 		}
 	}

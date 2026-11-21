@@ -11,9 +11,9 @@
 
 #include "saveload.h"
 #include "saveload_error.hpp"
+#include "saveload_internal.h"
 #include "compat/company_sl_compat.h"
 
-#include "../autoreplace_base.h"
 #include "../company_func.h"
 #include "../company_manager_face.h"
 #include "../fios.h"
@@ -316,7 +316,8 @@ class SlCompanySettings : public DefaultSaveLoadHandler<SlCompanySettings, Compa
 public:
 	static inline const SaveLoad description[] = {
 		/* Engine renewal settings */
-		SaveLoad::Reference<SLRefType::EngineRenew>("engine_renew_list", SLE_OBJECT_ADDRESS(CompanyProperties, engine_renew_list), SaveLoadVersion::EngineRenewPool),
+		SaveLoad::Variable<VarFileType::U16>("engine_renew_list", SLE_OBJECT_ADDRESS(CompanyProperties, old_engine_renew_index), SaveLoadVersion::EngineRenewPool, SaveLoadVersion::MoreCargoPackets),
+		SaveLoad::Variable<VarFileType::U32>("engine_renew_list", SLE_OBJECT_ADDRESS(CompanyProperties, old_engine_renew_index), SaveLoadVersion::MoreCargoPackets, SaveLoadVersion::EngineRenewsOwnership),
 		SaveLoad::Variable<VarFileType::Bool>("settings.engine_renew", SLE_OBJECT_ADDRESS(CompanyProperties, settings.engine_renew), SaveLoadVersion::EngineRenew),
 		SaveLoad::Variable<VarFileType::I16>("settings.engine_renew_months", SLE_OBJECT_ADDRESS(CompanyProperties, settings.engine_renew_months), SaveLoadVersion::EngineRenew),
 		SaveLoad::Variable<VarFileType::U32>("settings.engine_renew_money", SLE_OBJECT_ADDRESS(CompanyProperties, settings.engine_renew_money), SaveLoadVersion::EngineRenew),
@@ -344,6 +345,17 @@ public:
 	void FixPointers(CompanyProperties *c) const override
 	{
 		SlObject(c, this->GetDescription());
+
+		if (IsSavegameVersionBefore(SaveLoadVersion::EngineRenewsOwnership)) {
+			/* Migrate engine renews for this company. */
+			_old_engine_renew_saveload_pool.TransformItems(c->old_engine_renew_index, [&c](const auto &item) {
+				if (item.group_id == ALL_GROUP) c->all_engine_renew_list.emplace_back(item);
+				if (item.group_id == DEFAULT_GROUP) c->ungrouped_engine_renew_list.emplace_back(item);
+			});
+			/* Sort by from-engine as lookups use binary-search. */
+			std::ranges::sort(c->all_engine_renew_list, std::less{}, &EngineRenew::from);
+			std::ranges::sort(c->ungrouped_engine_renew_list, std::less{}, &EngineRenew::from);
+		}
 	}
 
 	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
@@ -474,6 +486,33 @@ public:
 	void LoadCheck(CompanyProperties *c) const override { this->Load(c); }
 };
 
+/** Saveload handler for company engine renew entries. */
+class SlCompanyEngineRenews : public VectorSaveLoadHandler<SlCompanyEngineRenews, CompanyProperties, EngineRenew> {
+public:
+	/** Saveload description for handler. Definition common with \c SlGroupEngineRenews */
+	static inline const SaveLoad description[] = {
+		SaveLoad::Variable<VarFileType::U16>("old_engine", SLE_OBJECT_ADDRESS(EngineRenew, from)),
+		SaveLoad::Variable<VarFileType::U16>("new_engine", SLE_OBJECT_ADDRESS(EngineRenew, to)),
+		SaveLoad::Variable<VarFileType::Bool>("replace_when_old", SLE_OBJECT_ADDRESS(EngineRenew, replace_when_old)),
+	};
+	/** Compatibility saveload description for handler. */
+	static inline const SaveLoadCompatTable compat_description = {};
+
+	void LoadCheck(CompanyProperties *cp) const override { this->Load(cp); }
+};
+
+/** Saveload handler for company engine renew "all" entries. */
+class SlCompanyEngineRenewsAll : public SlCompanyEngineRenews {
+public:
+	std::vector<EngineRenew> &GetVector(CompanyProperties *cp) const override { return cp->all_engine_renew_list; };
+};
+
+/** Saveload handler for company engine renew "ungrouped" entries. */
+class SlCompanyEngineRenewsUngrouped : public SlCompanyEngineRenews {
+public:
+	std::vector<EngineRenew> &GetVector(CompanyProperties *cp) const override { return cp->ungrouped_engine_renew_list; };
+};
+
 class SlAllowListData : public VectorSaveLoadHandler<SlAllowListData, CompanyProperties, std::string> {
 public:
 	struct KeyWrapper {
@@ -550,6 +589,8 @@ static const SaveLoad _company_desc[] = {
 	SaveLoad::Struct<SlCompanyEconomy>("cur_economy"),
 	SaveLoad::StructList<SlCompanyOldEconomy>("old_economy"),
 	SaveLoad::StructList<SlCompanyLiveries>("liveries", SaveLoadVersion::Liveries),
+	SaveLoad::StructList<SlCompanyEngineRenewsAll>("all_engine_renew_list", SaveLoadVersion::EngineRenewsOwnership),
+	SaveLoad::StructList<SlCompanyEngineRenewsUngrouped>("ungrouped_engine_renew_list", SaveLoadVersion::EngineRenewsOwnership),
 };
 
 struct PLYRChunkHandler : ChunkHandler {

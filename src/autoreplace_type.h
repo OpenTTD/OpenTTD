@@ -10,11 +10,28 @@
 #ifndef AUTOREPLACE_TYPE_H
 #define AUTOREPLACE_TYPE_H
 
-struct EngineRenew;
+#include "engine_type.h"
+#include "group_type.h"
+
+/**
+ * Information about engine autorenews and autoreplacements.
+ */
+struct EngineRenew {
+	EngineID from = EngineID::Invalid(); ///< Engine to replace from.
+	EngineID to = EngineID::Invalid(); ///< Engine to replace to.
+	bool replace_when_old = false; ///< Do replacement only when vehicle is old.
+};
+
+/**
+ * EngineRenew with group for savegame conversion.
+ */
+struct OldEngineRenew : EngineRenew {
+	GroupID group_id; ///< Group of replacement.
+};
 
 /**
  * A list to group EngineRenew directives together (such as per-company).
  */
-typedef EngineRenew *EngineRenewList;
+using EngineRenewList = std::vector<EngineRenew>;
 
 #endif /* AUTOREPLACE_TYPE_H */

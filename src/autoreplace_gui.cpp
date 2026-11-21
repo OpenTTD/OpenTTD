@@ -15,7 +15,9 @@
 #include "strings_func.h"
 #include "window_func.h"
 #include "autoreplace_func.h"
+#include "company_base.h"
 #include "company_func.h"
+#include "group.h"
 #include "engine_base.h"
 #include "window_gui.h"
 #include "engine_gui.h"
@@ -151,7 +153,7 @@ class ReplaceVehicleWindow : public Window {
 				const uint num_engines = GetGroupNumEngines(_local_company, this->sel_group, eid);
 
 				/* Skip drawing the engines we don't have any of and haven't set for replacement */
-				if (num_engines == 0 && EngineReplacementForCompany(Company::Get(_local_company), eid, this->sel_group) == EngineID::Invalid()) continue;
+				if (num_engines == 0 && GetEngineRenew(_local_company, this->sel_group, eid, false) == nullptr) continue;
 			} else {
 				if (!CheckAutoreplaceValidity(this->sel_engine[0], eid, _local_company)) continue;
 			}
@@ -217,8 +219,8 @@ class ReplaceVehicleWindow : public Window {
 			} else {
 				if (this->reset_sel_engine && this->sel_engine[0] != EngineID::Invalid()) {
 					/* Select the current replacement for sel_engine[0]. */
-					const Company *c = Company::Get(_local_company);
-					this->sel_engine[1] = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group);
+					const EngineRenew *er = GetEngineRenew(_local_company, this->sel_group, this->sel_engine[0], false);
+					this->sel_engine[1] = er == nullptr ? EngineID::Invalid() : er->to;
 				}
 				/* Regenerate the list on the right. Note: This resets sel_engine[1] to EngineID::Invalid(), if it is no longer available. */
 				this->GenerateReplaceVehList(false);
@@ -434,15 +436,13 @@ public:
 				break;
 
 			case WID_RV_INFO_TAB: {
-				const Company *c = Company::Get(_local_company);
 				std::string str;
 				if (this->sel_engine[0] != EngineID::Invalid()) {
-					if (!EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group)) {
+					const EngineRenew *er = GetEngineRenew(_local_company, this->sel_group, this->sel_engine[0], false);
+					if (er == nullptr) {
 						str = GetString(STR_REPLACE_NOT_REPLACING);
 					} else {
-						bool when_old = false;
-						EngineID e = EngineReplacementForCompany(c, this->sel_engine[0], this->sel_group, &when_old);
-						str = GetString(when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME, PackEngineNameDParam(e, EngineNameContext::PurchaseList));
+						str = GetString(er->replace_when_old ? STR_REPLACE_REPLACING_WHEN_OLD : STR_ENGINE_NAME, PackEngineNameDParam(er->to, EngineNameContext::PurchaseList));
 					}
 				} else {
 					str = GetString(STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED);
@@ -467,18 +467,16 @@ public:
 	{
 		if (this->engines[0].NeedRebuild() || this->engines[1].NeedRebuild()) this->GenerateLists();
 
-		Company *c = Company::Get(_local_company);
-
 		/* Disable the "Start Replacing" button if:
 		 *    Either engines list is empty
 		 * or The selected replacement engine has a replacement (to prevent loops). */
 		this->SetWidgetDisabledState(WID_RV_START_REPLACE,
-				this->sel_engine[0] == EngineID::Invalid() || this->sel_engine[1] == EngineID::Invalid() || EngineReplacementForCompany(c, this->sel_engine[1], this->sel_group) != EngineID::Invalid());
+				this->sel_engine[0] == EngineID::Invalid() || this->sel_engine[1] == EngineID::Invalid() || EngineHasReplacement(_local_company, this->sel_group, this->sel_engine[1], true));
 
 		/* Disable the "Stop Replacing" button if:
 		 *   The left engines list (existing vehicle) is empty
 		 *   or The selected vehicle has no replacement set up */
-		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE, this->sel_engine[0] == EngineID::Invalid() || !EngineHasReplacementForCompany(c, this->sel_engine[0], this->sel_group));
+		this->SetWidgetDisabledState(WID_RV_STOP_REPLACE, this->sel_engine[0] == EngineID::Invalid() || !EngineHasReplacement(_local_company, this->sel_group, this->sel_engine[0], false));
 
 		this->DrawWidgets();
 
@@ -565,7 +563,7 @@ public:
 					this->HandleButtonClick(WID_RV_START_REPLACE);
 					ReplaceClick_StartReplace(false);
 				} else {
-					bool replacement_when_old = EngineHasReplacementWhenOldForCompany(Company::Get(_local_company), this->sel_engine[0], this->sel_group);
+					bool replacement_when_old = EngineHasReplacementWhenOld(_local_company, this->sel_group, this->sel_engine[0], false);
 					ShowDropDownMenu(this, _start_replace_dropdown, replacement_when_old ? 1 : 0, WID_RV_START_REPLACE, !this->replace_engines ? 1 << 1 : 0, 0);
 				}
 				break;

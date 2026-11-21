@@ -12,7 +12,6 @@
 
 #include "saveload_type.h"
 #include "../core/label_type.hpp"
-#include "../autoreplace_base.h"
 #include "../cargopacket.h"
 #include "../linkgraph/linkgraph.h"
 #include "../linkgraph/linkgraphjob.h"
@@ -424,6 +423,7 @@ enum class SaveLoadVersion : uint16_t {
 	DepotsUnderBridges, ///< Saveload version: 366, GitHub pull request: 15836\n Allow depots under bridges.
 	LabelOrientationUnification, ///< Saveload version: 367, GitHub pull request: 15888\n Unify the orientation in which labels are written.
 	DoubleEndedShips, ///< Saveload version: 368, GitHub pull request: 16002\n Double-ended (NewGRF-only) ships can reverse without turning.
+	EngineRenewsOwnership, ///< Saveload version: 369, GitHub pull request: 16186\n Engine renews are now owned by company or group instead of a pool.
 
 	MaxVersion, ///< Highest possible saveload version.
 };
@@ -624,7 +624,6 @@ enum class SLRefType : uint8_t {
 	Town = 3, ///< Load/save a reference to a town.
 	OldVehicle = 4, ///< Load/save an old-style reference to a vehicle (for pre-4.4 savegames).
 	RoadStop = 5, ///< Load/save a reference to a bus/truck stop.
-	EngineRenew = 6, ///< Load/save a reference to an engine renewal (autoreplace).
 	CargoPacket = 7, ///< Load/save a reference to a cargo packet.
 	OrderList = 8, ///< Load/save a reference to an orderlist.
 	Storage = 9, ///< Load/save a reference to a persistent storage.
@@ -883,7 +882,6 @@ struct SaveLoad {
 			case SLRefType::Station: return std::is_base_of_v<BaseStation, T>;
 			case SLRefType::Town: return std::is_same_v<Town, T>;
 			case SLRefType::RoadStop: return std::is_same_v<RoadStop, T>;
-			case SLRefType::EngineRenew: return std::is_same_v<EngineRenew, T>;
 			case SLRefType::CargoPacket: return std::is_same_v<CargoPacket, T>;
 			case SLRefType::OrderList: return std::is_same_v<OrderList, T>;
 			case SLRefType::Storage: return std::is_same_v<PersistentStorage, T>;

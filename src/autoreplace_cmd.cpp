@@ -8,6 +8,7 @@
 /** @file autoreplace_cmd.cpp Deals with autoreplace execution but not the setup. */
 
 #include "stdafx.h"
+#include "company_base.h"
 #include "company_func.h"
 #include "train.h"
 #include "command_func.h"
@@ -291,8 +292,10 @@ static CommandCost GetNewEngineType(const Vehicle *v, const Company *c, bool alw
 		return CommandCost();
 	}
 
-	bool replace_when_old;
-	e = EngineReplacementForCompany(c, v->engine_type, v->group_id, &replace_when_old);
+	const EngineRenew *er = GetEngineRenew(c->index, v->group_id, v->engine_type, true);
+	e = er == nullptr ? EngineID::Invalid() : er->to;
+	bool replace_when_old = er != nullptr && er->replace_when_old;
+
 	if (!always_replace && replace_when_old && !v->NeedsAutorenewing(c, false)) e = EngineID::Invalid();
 
 	/* Autoreplace, if engine is available */
@@ -848,9 +851,9 @@ CommandCost CmdSetAutoReplace(DoCommandFlags flags, GroupID id_g, EngineID old_e
 		if (!Engine::IsValidID(new_engine_type)) return CMD_ERROR;
 		if (!CheckAutoreplaceValidity(old_engine_type, new_engine_type, _current_company)) return CMD_ERROR;
 
-		cost = AddEngineReplacementForCompany(c, old_engine_type, new_engine_type, id_g, when_old, flags);
+		cost = AddEngineReplacement(flags, c->index, id_g, old_engine_type, new_engine_type, when_old);
 	} else {
-		cost = RemoveEngineReplacementForCompany(c, old_engine_type, id_g, flags);
+		cost = RemoveEngineReplacement(flags, c->index, id_g, old_engine_type);
 	}
 
 	if (flags.Test(DoCommandFlag::Execute)) {
