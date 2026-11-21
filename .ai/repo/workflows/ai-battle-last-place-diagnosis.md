@@ -16,9 +16,15 @@ battle record cannot show why it happened, but a replay can. This is the order o
      with `battle.Host(spec, remote_root).try_sh(...)`; hosts come from `battle.load_hosts`.
    - The genes are the contestant's `settings` in `~/ttd-battle/tuning/state.json`.
    - The slot matters: one gene set has scored 4x more from one slot than from another.
-3. **Replay with the bot's log.** Run `battle.py ablate --seed S --years 20 --slot N
-   --log-dir DIR --variant name=<settings> --allow-dirty`. It uses the working-tree bot. Check
-   that the value matches the arena roughly before trusting the log.
+   - The whole field matters too. `ablate`'s default field is `AAAHogEx,AdmiralAI`, while the
+     arena plays four opponents in a drawn order. g279.3 on seed 853334149 scored 0.66M in the
+     arena and 5.37M in a replay against the default field.
+3. **Replay with the bot's log.** Run `battle.py ablate --seed S --years 20 --lineup
+   <match>/home/Documents/OpenTTD/scripts/game_start.scr --variant default= --log-dir DIR
+   --allow-dirty`. `--lineup` sets the field and slot from the match and adds its settings as
+   variant `arena`. It uses the working-tree bot. Compare the replay's yearly `REF Q` lines for the
+   company with those in the match's own `match.log`: a replay that parts from the arena in the
+   first year is a different game, and its log explains nothing.
 4. **Read the log for the leak, not the symptom.**
    - Tally the bot's messages (`grep PrismaticAI | sed 's/[0-9]+/N/g' | sort | uniq -c`).
    - Follow the company's `REF Q` lines for money, vehicles and stations per year.
@@ -35,8 +41,8 @@ battle record cannot show why it happened, but a replay can. This is the order o
    - Write a copy of `battle.json` whose `prismatic.path` is that absolute directory, and pass
      it to `ablate --config <copy>`. In zsh, write the flag and path literally: a `$var` holding
      both is passed as one word.
-   - Run the default and the failing genes on the failing seed and on at least two reference
-     seeds, each in its own slot.
+   - Run the default and the failing genes on the failing seed with its `--lineup`, and on at
+     least two reference seeds, each in its own slot and full field.
    - Compare the geometric mean of the default's value per seed. Report each seed, including
      the ones that got worse.
 7. **Gate.** `battle.py fitness --allow-dirty` must pass, which is the rule for changes to

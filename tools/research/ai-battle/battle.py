@@ -611,6 +611,22 @@ def start_script_text(lineup: list[dict]) -> str:
                      for c in lineup) + "\n"
 
 
+def parse_start_script(text: str) -> tuple[list[str], int, str]:
+    """Read a match's game_start.scr back into (opponents in start order, PrismaticAI's slot, its
+    settings), so an ablate replays the arena's exact lineup: who starts first gets the first sites,
+    and a replay against another field is a different game."""
+    field, slot, settings = [], 0, ""
+    for line in text.splitlines():
+        m = re.match(r'\s*start_ai\s+"([^"]+)"\s*(\S*)', line)
+        if not m:
+            continue
+        if m.group(1) == "PrismaticAI":
+            slot, settings = len(field), m.group(2)
+        else:
+            field.append(m.group(1))
+    return field, slot, settings
+
+
 def match_dir(root: str, m: dict) -> str:
     """Match ids restart in every edition, so the directory is per edition."""
     return f"{root}/matches/{m['edition']}/{m['id']}"
@@ -1819,6 +1835,9 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--write", action="store_true", help="ablate: record under research/results/")
     ap.add_argument("--slot", type=int, default=0,
                     help="ablate: PrismaticAI's place in the start order (its company id), as in the arena")
+    ap.add_argument("--lineup", type=Path,
+                    help="ablate: a match's game_start.scr; sets --field and --slot from it and adds "
+                         "its PrismaticAI settings as variant 'arena'")
     ap.add_argument("--log-dir", help="ablate: keep each variant's full log (script debug level 4) here")
     ap.add_argument("--edition", help="report: a past edition (its arena bundle must still be the "
                                       "prepared one, for its provenance)")
@@ -1848,7 +1867,12 @@ def main(argv: list[str] | None = None) -> int:
     elif a.command == "reap":
         Orchestrator(cfg).reap()
     elif a.command == "ablate":
-        return cmd_ablate(cfg, a.seed, a.years, a.variant, a.field.split(","), a.write, a.log_dir, a.slot)
+        field, slot, variants = a.field.split(","), a.slot, list(a.variant)
+        if a.lineup:
+            field, slot, settings = parse_start_script(a.lineup.read_text())
+            if not any(v.partition("=")[0] == "arena" for v in variants):
+                variants.append(f"arena={settings}")
+        return cmd_ablate(cfg, a.seed, a.years, variants, field, a.write, a.log_dir, slot)
     return 0
 
 

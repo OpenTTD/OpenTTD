@@ -77,6 +77,12 @@ class MatchContract(unittest.TestCase):
                                          {"ai": "PrismaticAI", "settings": "a=1,b=2"}])
         self.assertEqual(text, 'start_ai "LuDiAI AfterFix"\nstart_ai "PrismaticAI" a=1,b=2\n')
 
+    def test_a_start_script_reads_back_into_the_lineup_an_ablate_replays(self):
+        lineup = [{"ai": "AdmiralAI"}, {"ai": "PrismaticAI", "settings": "a=1,b=2"},
+                  {"ai": "LuDiAI AfterFix"}]
+        field, slot, settings = battle.parse_start_script(battle.start_script_text(lineup))
+        self.assertEqual((field, slot, settings), (["AdmiralAI", "LuDiAI AfterFix"], 1, "a=1,b=2"))
+
     def test_launch_uses_an_edition_directory_and_refuses_a_leftover(self):
         host = battle.Host({"name": "h", "ssh": None}, "$HOME/ttd-battle")
         m = {"id": "m-0001", "edition": "abc", "lineup": [{"ai": "A"}], "ticks": 7, "seed": 3}
