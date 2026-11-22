@@ -44,6 +44,12 @@
 //!   prismatic_bb_get(frame, key)  prismatic_bb_put(frame, key, map)  prismatic_bb_query(frame, limit)
 //!                                               Prismatic's blackboard (its blackboard.* MCP tools); every
 //!                                               failure is an error whose text begins "prismatic: <kind>"
+//!   mesh_records()  mesh_records(filters)  -> map  the Majordomus mesh's typed coordination records
+//!                                               (mesh_records.rs; $MAJORDOMUS_URL, loopback), filtered by
+//!                                               record, task, kind, author, path, live
+//!   mesh_record_write(record)          -> map   write or revise a record ({key, revision, ...}); the session
+//!                                               is the record's, else $MAJORDOMUS_SESSION; every failure is
+//!                                               an error whose text begins "mesh: <kind>"
 //!   env(name)
 //!   sleep(ms)   to_json(value)
 //!   tools()  commands()  help()          the derived functions below, by name
@@ -60,6 +66,7 @@ mod algoglyph;
 mod board;
 mod graph;
 mod plan;
+mod mesh_records;
 mod prismatic;
 
 use rhai::{Dynamic, Engine, EvalAltResult, Map};
@@ -338,6 +345,8 @@ fn engine(panel: Panel) -> Engine {
     e.register_fn("shared_keys", move |prefix: &str| -> R<Dynamic> { keys(prefix) });
     // Prismatic over loopback HTTP (src/prismatic.rs, I0092).
     prismatic::register(&mut e);
+    // The Majordomus mesh's typed records over loopback HTTP (src/mesh_records.rs, I4665).
+    mesh_records::register(&mut e);
     e.register_fn("loopback_get", loopback_get);
     e.register_fn("env", |name: &str| -> String { std::env::var(name).unwrap_or_default() });
     e.register_fn("sleep", |ms: i64| std::thread::sleep(Duration::from_millis(ms.max(0) as u64)));

@@ -111,6 +111,38 @@ What it is not: durable (a restarted panel starts empty; the store keeps the his
 between panels (each panel has its own), or authenticated (`writer` is what the script declares,
 `$MCP_RHAI_WRITER` or `rhai`). Coordination between agent sessions stays on the Majordomus mesh.
 
+## Rhai and the Majordomus mesh's typed records
+
+`mesh_records()`, `mesh_records(filters)` and `mesh_record_write(record)` (src/mesh_records.rs) read
+and write the typed coordination records of the Majordomus mesh journal (prismatic-majordomus
+I4665, PR #3101, Majordomus 1.2.0): observation, hypothesis, plan, decision, blocker, handoff and
+outcome, the one blackboard agents coordinate through (the owner's answer of 2026-11-20,
+research/agent-loop.md). The panel keeps no record of its own.
+
+- The address is `$MAJORDOMUS_URL`, this checkout's server as `majordomus serve ensure` prints it,
+  and must be loopback; unset is an error, never a guess.
+- A write names its session (the record's `session`, else `$MAJORDOMUS_SESSION`). Majordomus admits
+  it only inside that session's live claims and records the journal's `<stream>/<session>` as the
+  author.
+- Filters are `record`, `task`, `kind`, `author`, `path` (strings) and `live` (a boolean); anything
+  else is refused before a request is made. Where the server runs no mesh the answer is
+  `active: false` with its reason.
+- A malformed record never leaves the process: a kind outside the set, an empty task or title, a
+  revision without the record it revises, a handoff without `objective`, `current_state`,
+  `evidence` (at least one), `blockers` (a list) and `next_action`.
+
+| Text begins | Meaning |
+|---|---|
+| `mesh: configuration` | `$MAJORDOMUS_URL` unset or off loopback, no session, a malformed record or filter |
+| `mesh: unreachable` | nothing answered, the connection broke or timed out |
+| `mesh: refused (<status> <code>)` | Majordomus refused, its message naming why: `out_of_scope`, `not_own`, `stale_revision`, `invalid_input`, `idempotency_conflict` |
+| `mesh: invalid answer` | Majordomus answered, but not the documented shape |
+
+Validation: `cargo test --release --bin mcp-rhai mesh_records` 7/7 against a loopback fixture of the
+HTTP API (filters encoded, an inactive mesh passed through, sessions named, refusals carried with
+their code, malformed input never sent). Against a live Majordomus: NOT RUN; this machine's
+`majordomus` is 1.0.2 and v1.2.0 is being released (research/agent-loop.md, Owner answers).
+
 ## Rhai and Prismatic
 
 `prismatic_decision()`, `prismatic_tools()`, `prismatic_exec(tool, args)`, `prismatic_bb_get`,
