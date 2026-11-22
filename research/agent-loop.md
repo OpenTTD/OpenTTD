@@ -147,3 +147,10 @@ Each closes one row above without a new tracking record:
   lander is running on this machine now, and the queue file it was added to (~/dev/.e7-land-queue)
   last landed something on Oct 22. How should #3101 land?" Answer: "Merge it now (Recommended)".
   Merged at 2026-11-22T04:23:11Z as `d02c59d447c`, pinned to the head CI judged.
+- 2026-11-22, session `2845686e-0ccb-4c11-a008-3c46a644c866`. Question: "prismatic-majordomus
+  master is d02c59d447c (#3101, typed mesh records, declares 1.2.0); latest release is v1.1.0. The
+  landing seat says cutting a tag is not covered by your earlier answers and won't run the release
+  path itself; for 1.1.0 you told a session "převezmi seaty a vydej". Who should release v1.2.0 once
+  validate on d02c59d is green?" Answer: "This session releases it (Recommended)": this session takes
+  the release seat for v1.2.0 only, through that repository's release path, and tells its landing
+  seat when the tag-to-record window opens and closes.
