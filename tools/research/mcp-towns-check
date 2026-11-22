@@ -1,0 +1,75 @@
+#!/usr/bin/env node
+// RESEARCH-ONLY. The Towns page checked in a real browser (research/mechanisms/town-authority.md):
+// /towns renders the derived town-authority model (likes and dislikes, gates with the removal
+// thresholds by tolerance, town actions, links with the growth table, relations), each section a
+// table whose rules show a source path:line, with as many town actions as GET /api/town/model has;
+// the live card shows either the towns of GET /api/town/live (each with a band or "unknown" and its
+// advice) or, with no game, the route's reason; a company in the address is kept by the selector;
+// the console stays free of errors. Drives the installed Chrome through playwright-core (a dev
+// dependency of tools/research/mcp-panel: npm ci there), so nothing downloads a browser.
+//
+// e2e-covers: panel /towns
+//
+// Usage: tools/research/mcp-towns-check http://127.0.0.1:<panel-port>   (exit 0 PASS, 1 FAIL)
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const here = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(path.join(here, 'mcp-panel', 'package.json'));
+const { chromium } = require('playwright-core');
+const CHROME = process.env.CHROME || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+const base = (process.argv[2] || '').replace(/\/$/, '');
+if (!base) { console.error('usage: mcp-towns-check <panel-url>'); process.exit(2); }
+const checks = [];
+const check = (name, ok, detail = '') => { checks.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` (${detail})` : ''}`); };
+
+const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+try {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1200 } });
+  const errors = [];
+  page.on('console', (m) => { if (m.type() === 'error' && !/404/.test(m.text())) errors.push(m.text()); });
+  page.on('pageerror', (e) => errors.push(e.message));
+
+  const res = await page.goto(`${base}/towns`);
+  check('/towns answers 200 with its server-side title', res && res.status() === 200 && /Towns/.test(await page.title()), await page.title());
+  const drawn = await page.waitForFunction(() => ['likes', 'gates', 'actions', 'links', 'relations', 'live']
+    .every((id) => document.querySelector(`#${id} table`)), null, { timeout: 30000 }).then(() => true).catch(() => false);
+  check('every section draws its table within 30 s', drawn);
+  const facts = await page.evaluate(async () => {
+    const model = await (await fetch('/api/town/model')).json();
+    const live = await (await fetch('/api/town/live')).json();
+    const text = (id) => document.getElementById(id).innerText;
+    return {
+      actions: model.actions.length, actionRows: document.querySelectorAll('#actions tbody tr').length,
+      sources: ['likes', 'gates', 'actions', 'links', 'relations'].map((id) => /src\/[\w/.]+:\d+/.test(text(id))),
+      tolerances: text('gates'), growth: text('links'), live, liveText: text('live'),
+      liveRows: document.querySelectorAll('#live tbody tr').length,
+      nav: [...document.querySelectorAll('aside a[href="/towns"]')].length,
+    };
+  });
+  check('as many town action rows as the model has', facts.actions > 0 && facts.actions === facts.actionRows, `${facts.actionRows}/${facts.actions}`);
+  check('every model section shows sources as path:line', facts.sources.every(Boolean), facts.sources.join(' '));
+  check('the gates show the removal thresholds by tolerance', /lenient/i.test(facts.tolerances) && /permissive/i.test(facts.tolerances));
+  check('the links show the growth table', /5\+/.test(facts.growth));
+  if (facts.live.reason) {
+    check('without a game the live card gives the route\'s reason', facts.liveText.includes(facts.live.reason), facts.live.reason);
+  } else {
+    check('the live card lists every town of /api/town/live', facts.liveRows === facts.live.towns.length && facts.live.towns.length > 0,
+      `${facts.liveRows}/${facts.live.towns.length}`);
+    const first = facts.live.towns[0];
+    check('a town shows its band or "unknown", and its advice', facts.liveText.includes(first.name)
+      && (first.rating == null ? /unknown/.test(facts.liveText) : facts.liveText.includes(String(first.rating))));
+  }
+  check('the sidebar links the page', facts.nav > 0);
+
+  await page.goto(`${base}/towns?company=0`);
+  await page.waitForSelector('#t-company', { timeout: 30000 }).catch(() => {});
+  const kept = await page.evaluate(() => [location.search, document.getElementById('t-company')?.value]);
+  check('a company in the address is kept', kept[0].includes('company=0'), kept.join(' '));
+  check('the console has no errors', errors.length === 0, errors.slice(0, 3).join(' | '));
+} finally {
+  await browser.close();
+}
+process.exit(checks.every(Boolean) ? 0 : 1);

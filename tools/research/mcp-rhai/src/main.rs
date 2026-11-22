@@ -873,4 +873,49 @@ mod tests {
             assert_eq!(got["samples"], c["samples"], "case {c}");
         }
     }
+
+    fn town(script: &str) -> Vec<String> {
+        let out: rhai::Array = lib_engine().eval(&format!("import \"town_lib\" as tl;\n{script}")).unwrap();
+        out.iter().map(|x| x.to_string()).collect()
+    }
+
+    /// The town model's numbers come from the engine (town_model.rhai, generated): the new-station
+    /// threshold, the bands an AI sees and the removal thresholds by tolerance.
+    #[test]
+    fn town_rules_read_the_engine_thresholds() {
+        let v = town(r#"
+            [tl::allows_station(-200), tl::allows_station(-199), tl::band_of(-200).name, tl::band_from_enum(0).lowest,
+             tl::allows_removal(63, "RoadRemove", "tolerant"), tl::allows_removal(64, "RoadRemove", "neutral"),
+             tl::allows_removal(-1000, "TunnelBridgeRemove", "permissive")]
+        "#);
+        assert_eq!(v, vec!["false", "true", "TOWN_RATING_VERY_POOR", "500", "false", "true", "true"]);
+    }
+
+    /// A change stops at its limit and never crosses it (ChangeTownRating); a month recovers a low
+    /// rating by 5 up to 200 and adds 12 per active and -15 per idle station; trees are +7 up to 220.
+    #[test]
+    fn town_rating_moves_like_the_engine() {
+        let v = town(r#"
+            [tl::changed(230, 7, 220), tl::changed(100, 7, 220), tl::after_clearing_trees(500, 20),
+             tl::after_month(-300, 1, 0), tl::after_month(500, 0, 2), tl::trees_to_get_above(-300, -200),
+             tl::trees_to_get_above(100, 300), tl::months_until_above(-300, -200, 0, 0, 120),
+             tl::months_until_above(-300, -200, 0, 2, 120)]
+        "#);
+        assert_eq!(v, vec!["230", "107", "-200", "-283", "470", "15", "-1", "21", "-1"]);
+    }
+
+    /// Advice for a town that refuses stations names the remedies with their rules, and the likes
+    /// and dislikes come from the model's effects.
+    #[test]
+    fn town_advice_explains_a_refusal() {
+        let v = town(r#"
+            let a = tl::advice(#{ rating: -260, active_stations: 0, idle_stations: 1 }, "lenient");
+            let whats = []; for x in a { whats.push(x.what); }
+            let ld = tl::likes_and_dislikes();
+            [whats[0], whats[1], a[0].source, ld.likes.len() > 3, ld.dislikes.len() > 3,
+             tl::advice(#{ rating: 900 }, "permissive")[0].what]
+        "#);
+        assert_eq!(v, vec!["plant 9 tree tiles near the town", "serve or remove the idle stations",
+                           "src/tree_cmd.cpp CmdPlantTree", "true", "true", "build freely"]);
+    }
 }

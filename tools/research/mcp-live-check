@@ -164,6 +164,13 @@ check "resources/read returns live state: game_tick advances (${t1:-?} -> ${t2:-
 paused0="$(state_field "${out2#* }" paused)"
 check "the game starts unpaused (paused=${paused0:-?})" "$([[ "$paused0" == False ]] && echo 1 || echo 0)"
 
+# The town-authority fields (research/mechanisms/town-authority.md): growth, noise and, per company,
+# rating and active/idle stations. A fresh server has no company, so the list may be empty.
+outt="$(rpc "$TOKEN" '{"jsonrpc":"2.0","id":4,"method":"resources/read","params":{"uri":"openttd://towns"}}')"
+town_keys="$(json_get "${outt#* }" "sorted(k for k in json.loads(d['result']['contents'][0]['text'])['data']['towns'][0] if k in ('companies','growth_rate','max_noise','exclusivity','exclusive_months'))")"
+check "openttd://towns carries the town-authority fields (${town_keys:-none})" \
+  "$([[ "$town_keys" == '["companies", "exclusive_months", "exclusivity", "growth_rate", "max_noise"]' ]] && echo 1 || echo 0)"
+
 PAUSE='{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"openttd.game.set_pause","arguments":{"pause":true}}}'
 out="$(rpc "$TOKEN" "$PAUSE")"
 status="$(tool_field "${out#* }" status)"; approval="$(tool_field "${out#* }" approval_id)"

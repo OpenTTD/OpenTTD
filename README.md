@@ -328,6 +328,7 @@ decides when a measurement may change a default.
 | [The panel's bus carries game, company, decision, console, news, panel and plan events from one declared table; the hub's own audit and derived game events go to the hub's bus and store](.ai/repo/knowledge/curated/the-panel-bus-carries-these-event-kinds.md) | Before subscribing to a panel's or the hub's bus, its ZeroMQ socket or its DuckDB store (ADR 0033), or before a decision reads recorded history (ADR 0034): which event kinds exist (the table src/panel_events.rs declares, GET /api/bus kinds of each), who publishes each, what each carries, how often, what the plan. events carry, where the hub's events are stored, and what is not on any bus at all. |
 | [The planner predicts more profit per vehicle than the running lines earn](.ai/repo/knowledge/curated/the-planner-overpredicts-what-a-line-earns.md) | Before trusting a plan's monthly_profit or score, or when choosing params for a new plan; read the game's own calibration first. |
 | [The main toolbar's click and menu tables and its tooltips are indexed by widget id, so a new WID_TN value must be added at the same position everywhere](.ai/repo/knowledge/curated/toolbar-dispatch-tables-are-indexed-by-widget-id.md) | When adding, removing or reordering a main or scenario-editor toolbar button. |
+| [Town-authority rules (ratings, gates, actions) are derived from src/ into one model; read it, do not copy numbers](.ai/repo/knowledge/curated/town-authority-rules-are-derived-from-the-engine.md) | Before writing bot, script or panel logic about town ratings: where the derived model is, what it holds, and the rules a company most often trips over. |
 | [On 2026-11-15 the fork moved from 317 commits behind upstream to a linear series on top of it](.ai/repo/knowledge/curated/upstream-rebase-2026-11-15.md) | When the next upstream sync needs a baseline, or when a hash from before 2026-11-15 does not resolve. |
 <!-- surfaces:end docs-index -->
 
@@ -520,13 +521,13 @@ from the code. The right-hand column says what was counted.
 | **22** | [live MCP resources (`openttd://…`): map, towns, stations, vehicles, companies, …](research/prismatic-mcp/07-resource-catalog.md) | `^\s*\{"openttd://` in `src/prismatic_mcp/prismatic_mcp_server.cpp` |
 | **27** | [unit test cases for the MCP server (Catch2, `[prismatic_mcp]`)](research/prismatic-mcp/09-testing.md) | `^TEST_CASE\(` in `src/tests/test_prismatic_mcp.cpp` |
 | **71** | [recorded bot-vs-bot duels, each with its JSON and its write-up](tools/research/mcp-duel) | tracked files `research/results/duel-*.json` |
-| **39** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
+| **40** | [research tools and checks (`tools/research/*`, shell and Python)](research/tooling.md) | tracked files `tools/research/*` |
 | **11** | [Rust programs: panel, hub, planner, Rhai runner, coverage, …](research/mcp-control.md) | tracked files `tools/research/mcp-rhai/src/bin/*.rs` |
-| **14** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
+| **16** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **93** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
-| **88** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **841** | published documents on the site and the wiki | published documents under `/` |
+| **89** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
+| **844** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
