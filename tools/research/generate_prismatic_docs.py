@@ -13,20 +13,55 @@ catalog no longer generates any page template of its own.
 tools/check-prismatic-docs.sh runs this and fails the gate if the working tree
 disagrees with what the catalog would generate (see tools/gate.sh 'change').
 
+The catalog's doc_index must name exactly the documents present in research/prismatic-mcp/:
+every Markdown and JSON file directly in that directory (tracked, or untracked and not
+ignored, as git lists them), except the catalog itself. A document missing from the index, or
+an index entry naming no document, is refused with exit 1 before anything is written, naming
+each path. Only the title and kind of a new document are written by hand.
+
 Usage: tools/research/generate_prismatic_docs.py    (no arguments: it rewrites both blocks;
 -h/--help prints this and writes nothing, any other argument is refused with exit 2)
 """
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CATALOG_PATH = ROOT / "research/prismatic-mcp/contributor-catalog.json"
+INDEXED_DIR = "research/prismatic-mcp/"
+INDEXED_SUFFIXES = (".md", ".json")
 
 
 def load_catalog():
     return json.loads(CATALOG_PATH.read_text())
+
+
+def present_documents():
+    """The documents doc_index must name, as git lists them: tracked, or untracked and not
+    ignored, directly in INDEXED_DIR, Markdown or JSON, the catalog itself excluded."""
+    out = subprocess.run(
+        ["git", "-C", str(ROOT), "ls-files", "--cached", "--others", "--exclude-standard",
+         "--", INDEXED_DIR],
+        capture_output=True, text=True, check=True,
+    ).stdout.splitlines()
+    catalog = CATALOG_PATH.relative_to(ROOT).as_posix()
+    return {
+        p for p in out
+        if "/" not in p[len(INDEXED_DIR):] and p.endswith(INDEXED_SUFFIXES) and p != catalog
+        and (ROOT / p).is_file()
+    }
+
+
+def index_drift(cat):
+    """Disagreements between doc_index and the documents present, one line each."""
+    indexed = [e["path"] for e in cat["doc_index"]]
+    present = present_documents()
+    problems = [f"not in doc_index: {p}" for p in sorted(present - set(indexed))]
+    problems += [f"in doc_index, no such document: {p}" for p in sorted(set(indexed) - present)]
+    problems += [f"in doc_index twice: {p}" for p in sorted({p for p in indexed if indexed.count(p) > 1})]
+    return problems
 
 
 def replace_marked_block(path: Path, marker: str, new_inner: str) -> None:
@@ -100,6 +135,16 @@ def main():
         sys.stderr.write(f"generate_prismatic_docs.py: takes no arguments, got {' '.join(args)}\n")
         return 2
     cat = load_catalog()
+    problems = index_drift(cat)
+    if problems:
+        sys.stderr.write(
+            f"generate_prismatic_docs.py: {CATALOG_PATH.relative_to(ROOT)} doc_index does not "
+            f"match the documents in {INDEXED_DIR}; nothing was written:\n"
+            + "".join(f"  {p}\n" for p in problems)
+            + "Add each missing document with its title and kind, or remove the entry that "
+            "names no document.\n"
+        )
+        return 1
 
     readme_path = ROOT / "README.md"
     prismatic_readme_path = ROOT / "research/prismatic-mcp/README.md"

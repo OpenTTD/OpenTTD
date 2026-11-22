@@ -899,8 +899,10 @@ count, so the same rows can be read again from the file once the panel has stopp
 published as `plan.duel` through `POST /api/bus/publish` and so stored: `{decision: "duel.verdict",
 version, inputs, choice: {seed, months, held_start_tick, a, b, rival_spread, winner}}`.
 `rival_spread` is the spread (max - min) / min of the rival's final value over the recorded duels of
-the same seed, length, opponent and start (held or not), this one included: the yardstick ADR 0034
-point 6 reads a pair against. The record keeps what the publish answered (`verdict_event`: its
+the same seed, length, opponent, start (held or not) and rival settings, this one included: the
+yardstick ADR 0034 point 6 reads a pair against. The rival's settings are B's live settings, read
+from `GET /api/bots` before the first month and kept in the record as `rival`; a record without
+them (every record before 2026-11-19) groups only with others without them. The record keeps what the publish answered (`verdict_event`: its
 `seq` and whether it was found in the store).
 
 Without a store (a panel without `GET /api/bus`, `store: off`, or a store that stops answering)

@@ -118,6 +118,7 @@ class FakePanel(http.server.HTTPServer):
         self.break_store_at = None  # store answers 503 from this clock read on
         self.sql = []
         self.published = []
+        self.bots = None           # GET /api/bots answer; None: the route does not exist (404)
 
     def date(self):
         m = self.clock_reads // 2
@@ -147,6 +148,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
             date, _ = s.date()
             s.clock_reads += 1
             return self.answer(200, {"game_date": date})
+        if url.path == "/api/bots":
+            return self.answer(404, {"error": "no route"}) if s.bots is None else self.answer(200, s.bots)
         if url.path == "/api/events":
             kinds = q.get("kinds", [""])[0].split(",")
             limit = int(q.get("limit", ["5000"])[0])
@@ -384,6 +387,26 @@ class Fallback(Served):
         self.assertIn("No store: GET /api/bus answered 404", md)
         self.assertIn("(the newest 5000 bus events, cut there)", md)
 
+    def test_the_record_holds_the_rivals_live_settings(self):
+        setting = lambda n, v: {"name": n, "value": v, "default": v}
+        self.panel.bots = {"running": [
+            {"ai": "PrismaticAI", "id": 0, "settings": [setting("autopilot", 1), setting("own_lines", 8)]},
+            {"ai": "PrismaticAI", "id": 1, "settings": [setting("autopilot", 0), setting("max_routes", 4)]}]}
+        out = self.run_duel(months=1)
+        rec = out["record"]
+        self.assertEqual(rec["rival"]["settings"], {"autopilot": 0, "max_routes": 4}, "company id 1, not the planned bot")
+        self.assertEqual(rec["rival"]["ai"], "PrismaticAI")
+        self.assertEqual(rec["rival_spread"]["rival_settings"], "recorded")
+        md = duel.markdown(rec, out["b_name"])
+        self.assertIn("start and rival settings", md)
+        self.assertIn("B ran PrismaticAI with 2 settings, autopilot=0", md)
+
+    def test_without_the_bots_route_the_rival_is_not_recorded(self):
+        out = self.run_duel(months=1)
+        self.assertIsNone(out["record"]["rival"])
+        self.assertEqual(out["record"]["rival_spread"]["rival_settings"], "not recorded")
+        self.assertIn("(B's settings not recorded)", duel.markdown(out["record"], out["b_name"]))
+
     def test_a_store_that_is_off_is_named(self):
         self.panel.bus = {"instance": "panel-t", "store": "off"}
         rec = self.run_duel(months=1)["record"]
@@ -455,6 +478,25 @@ class Verdict(unittest.TestCase):
             self.assertEqual((out["runs"], out["min"], out["max"], out["spread"]), (3, 9000, 9852, round(852 / 9000, 4)))
             alone = duel.rival_spread(results, 31337, 6, "AdmiralAI", True, 100, "duel-now")
             self.assertEqual((alone["runs"], alone["spread"]), (1, None))
+
+    def test_rival_spread_groups_by_the_rivals_settings(self):
+        with tempfile.TemporaryDirectory() as d:
+            results = Path(d)
+            rec = lambda b, **k: {"seed": 31337, "months": 6, "opponent": "PrismaticAI", "held_start_tick": 1,
+                                  "final": {"1": {"value": 1}, "2": {"value": b}}, **k}
+            auto, buses = {"autopilot": 1, "max_routes": 4}, {"autopilot": 0, "max_routes": 4}
+            files = {"duel-1-seed31337": rec(9000),                                    # B's settings not recorded
+                     "duel-2-seed31337": rec(450000, rival={"ai": "PrismaticAI", "settings": auto}),
+                     "duel-3-seed31337": rec(9500, rival={"ai": "PrismaticAI", "settings": buses})}
+            for n, r in files.items():
+                (results / f"{n}.json").write_text(json.dumps(r))
+            out = duel.rival_spread(results, 31337, 6, "PrismaticAI", True, 9852, "duel-now", buses)
+            self.assertEqual(out["records"], ["duel-3-seed31337", "duel-now"])
+            self.assertEqual(out["rival_settings"], "recorded")
+            out = duel.rival_spread(results, 31337, 6, "PrismaticAI", True, 440000, "duel-now", auto)
+            self.assertEqual(out["records"], ["duel-2-seed31337", "duel-now"])
+            legacy = duel.rival_spread(results, 31337, 6, "PrismaticAI", True, 9852, "duel-now")
+            self.assertEqual((legacy["records"], legacy["rival_settings"]), (["duel-1-seed31337", "duel-now"], "not recorded"))
 
     def test_readme_scoreboard_reads_the_new_record(self):
         loader = importlib.machinery.SourceFileLoader("readme_scoreboard", str(HERE / "readme-scoreboard"))

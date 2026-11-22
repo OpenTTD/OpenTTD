@@ -39,8 +39,11 @@ flowchart TB
   by paged queries, and the record names the store file, instance, run and every query. Without a
   store it falls back to the panel's bounded HTTP lists and says why (`fallback`).
 - **Rival spread.** Each verdict carries `rival_spread`: the spread of the unplanned rival's final
-  value over recorded duels of the same seed, length, opponent and start. A planned difference
-  smaller than it says nothing.
+  value over recorded duels of the same seed, length, opponent, start and rival settings. A planned
+  difference smaller than it says nothing. The record keeps B's live settings (`rival`, from
+  `GET /api/bots`), because the opponent's name does not say which rival ran: since `df1e05e7d8`
+  `PrismaticAI` with its defaults grows on autopilot. A record without them groups only with others
+  without them.
 - **From the panel.** `POST /api/duel` starts one in the background (one at a time),
   `GET /api/results` and `GET /api/result?name=` read the records, and the Duels page `/results`
   shows them. `GET /api/scoreboard` and `POST /api/scoreboard` read and regenerate the README
