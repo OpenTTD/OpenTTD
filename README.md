@@ -207,7 +207,7 @@ generated from the recorded runs in [`research/results/`](research/results/) by
 
 > **Best run: 6,026,776 vs 4,971,339** company value, planned bot vs the same bot unplanned, one game, one map (seed 4242, 120 months) — [evidence](research/results/duel-20261119T124719-seed4242.md). The planned bot won **68 of 80** recorded duels.
 >
-> That tally counts separate experiments, not one: the records run 6 to 120 months, 31 of them from a held start, with bot revisions and settings that changed between runs (each row's label names its change). In 69 of 80 the rival ran no train: it was the bot without a plan as it then was, which built buses; since df1e05e7d8 a default rival grows on autopilot, and the bus-only rival is started with autopilot=0 ([audit](research/duel-evidence-audit.md)). Company value counts money minus loan, vehicles at 1.5 times their value and stations per facility at a flat price; track, roads and depots count for nothing.
+> That tally counts separate experiments, not one: the records run 6 to 120 months, 31 of them from a held start, with bot revisions and settings that changed between runs (each row's label names its change). In 69 of 80 the rival ran no train. Which rival each record ran against, and what company value counts and leaves out, is in the [duel evidence audit](research/duel-evidence-audit.md).
 
 ```mermaid
 ---

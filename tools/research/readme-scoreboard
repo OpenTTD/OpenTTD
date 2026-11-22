@@ -76,7 +76,8 @@ def mix(runs):
     """What the tally of all records mixes, derived from them: run lengths, held starts, and how
     often the rival ran a train. Every record's own label names its bot revision or setting."""
     months = sorted({r["months"] for r in runs if isinstance(r["months"], int)})
-    return {"months_min": months[0], "months_max": months[-1], "held_start": sum(r["held"] for r in runs),
+    return {"months_min": months[0] if months else None, "months_max": months[-1] if months else None,
+            "held_start": sum(r["held"] for r in runs),
             "rival_without_rail": sum(not r["b_rail"] for r in runs)}
 
 
@@ -101,12 +102,9 @@ def render(runs):
         f"> That tally counts separate experiments, not one: the records run {m['months_min']} to "
         f"{m['months_max']} months, {m['held_start']} of them from a held start, with bot revisions "
         f"and settings that changed between runs (each row's label names its change). In "
-        f"{m['rival_without_rail']} of {len(runs)} the rival ran no train: it was the bot without a "
-        "plan as it then was, which built buses; since df1e05e7d8 a default rival grows on autopilot, "
-        "and the bus-only rival is started with autopilot=0 "
-        "([audit](research/duel-evidence-audit.md)). Company value counts money minus loan, vehicles at "
-        "1.5 times their value and stations per facility at a flat price; track, roads and depots "
-        "count for nothing.",
+        f"{m['rival_without_rail']} of {len(runs)} the rival ran no train. Which rival each record ran "
+        "against, and what company value counts and leaves out, is in the "
+        "[duel evidence audit](research/duel-evidence-audit.md).",
         "",
         "```mermaid",
         "---",
