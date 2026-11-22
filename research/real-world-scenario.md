@@ -276,7 +276,7 @@ generated config silently dropped the heightmap rotation and the town count, and
 without a byte-order mark garbled every non-ASCII name. Both are fixed and covered (the config is
 grouped by section, the GameScript starts with a UTF-8 BOM and a test checks it).
 
-## Decision: closed with three items NOT RUN
+## Decision: closed with three items NOT RUN, all three run since
 
 Asked in session b841bd49 (AskUserQuestion, 2026-11-20): "Disk has 16 GiB free, below the shared
 35 GiB floor. Every remaining step of the real-world slice needs a new build: gate.sh change, the
@@ -293,9 +293,61 @@ So the slice closes with these NOT RUN, each because it needs a build the disk f
 - The schema check of the snapshot by an external validator (`uvx jsonschema` was refused earlier);
   the snapshot is checked by the crate's own tests only.
 
-Run them, in this order, once the disk allows: `tools/research/real-world/rw-scenario acquire --live
---query "<place>" --out build-real-world/<place>.snapshot.json`, then `compile` and `load-check` as
-under Commands, then `tools/gate.sh change`.
+Two of the three were run afterwards, on 2026-11-22, when the owner asked in session b841bd49 to
+finish everything ("ano, vse dotahni / porad se s ostatnimi llms/ais/nodes/peers"). This Mac was
+still under the floor, so they ran on lundra, a tailnet build host. The run used Linux Mint 22.3
+with GCC and CMake there, and a detached worktree of its own under `~/ow07`, outside lundra's
+checkout. The third, the external schema validator, ran the same day (below).
+
+The build was dedicated (`-DOPTION_DEDICATED=ON`), because lundra has no SDL3 or Allegro, so the
+GUI was not compiled. The liblzma headers came from `apt-get download liblzma-dev`, unpacked in user
+space, with no package installed, so the regression saves load. A research build of the slice state
+then ran these checks:
+
+- **`tools/gate.sh change` and `tools/gate.sh research`: PASS (exit 0).** The tree under test was
+  2e7c376c64^ with the slice (2e7c376c64, e93942533b, 87f6a84251) as an uncommitted change, plus
+  the gate's base-set probe fix (a2721e5f9c), plus the load-check fix below. ctest passed 98/98
+  including `regression_*`, the research ctest passed 123/123, `[prismatic_mcp]` passed 796
+  assertions, the crate's tests passed and the Brno replay matched.
+- **A live second place: PASS. No core code or rule was changed for it.**
+  - `resolve --live --query "Olomouc, Czech Republic"` found 3 candidates and chose the settlement
+    `osm:relation/437057`. The two administrative districts of the same name were listed, not
+    chosen.
+  - `acquire --live` wrote 275 features. It sent 3 range requests to the GLO-30 bucket and 1 to
+    Overpass; Nominatim was answered from the cache.
+  - `compile` built a 256x256 map at 75.742 m per tile with 14 towns (DERIVED) and 13 industries
+    (7 DERIVED, 1 INFERRED, 5 HYPOTHETICAL). It made 21 landmark signs and 32 edges (12 INFERRED,
+    20 HYPOTHETICAL) over 6 chains, with no isolated node.
+  - `replay` matched the hashes.
+  - `load-check --seed 31337 --baseset ~/.local/share/openttd/baseset` exited 0:
+    - towns 14/14, industries 13/13 and signs 21/21 were placed, and 27/27 carry their note;
+    - the reload was unchanged and the GameScript resumed;
+    - the one town the engine adds was renamed and labelled ("Generated town 0");
+    - three entities moved more than 8 tiles from their anchor: `town:osm:node/1599306066` (14),
+      the factory stand-in at `way/152803381` (12) and the forest `relation/21438978` (24);
+    - two factory stand-ins left their mapped site.
+
+Running it found two defects, both fixed:
+
+- `tools/gate.sh` piped `tar -tf` into `grep -q` under pipefail. On GNU tar that sometimes
+  reported a present OpenGFX tar as missing, so the regression cases were skipped. It was fixed in
+  a2721e5f9c.
+- `load-check` put the GameScript and base set only where macOS looks. With `-c` the config file's
+  directory is the personal directory on every platform, so both now go there as well. That fix was
+  not re-run on macOS.
+
+**External schema validation: PASS (2026-11-22).** Ajv 8.20.0 checked the files against
+`tools/research/schema/real-world-scenario.v1.schema.json` (draft 2020-12, `strict: false`, all
+errors). Ajv is independent of the crate's own checks; it came from a copy already installed on this
+Mac, so nothing was downloaded.
+
+- Valid: the committed `fixtures/brno/snapshot.json`, and the Brno scenario the panel compiled in
+  process (`GET /api/realworld/scenario?name=brno` on :8800, field `scenario`).
+- Two negative controls were refused, as they should be: the snapshot with its first source's
+  `license` removed, and the scenario with an entity's `evidence` set to `VERIFIED`.
+- `fixtures/springfield/nominatim.json` is a raw Nominatim response used by the resolver tests, not
+  a snapshot, and the schema rightly refuses it.
+- The live Olomouc snapshot was not kept after the lundra run, so it was not validated externally.
 
 ## Validation
 

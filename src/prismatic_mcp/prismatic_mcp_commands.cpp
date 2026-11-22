@@ -20,6 +20,7 @@
 
 #include "prismatic_mcp_commands.h"
 #include "prismatic_mcp_params.hpp"
+#include "prismatic_mcp_text.h"
 
 #include "../core/backup_type.hpp"
 #include "../command_func.h"
@@ -319,10 +320,10 @@ std::string ErrorText(const CommandCost &cost)
 {
 	CommandCost c = cost;
 	try {
-		if (!c.GetEncodedMessage().empty()) return c.GetEncodedMessage().GetDecodedString();
+		if (!c.GetEncodedMessage().empty()) return PlainText(c.GetEncodedMessage().GetDecodedString());
 		StringID id = c.GetErrorMessage();
 		if (id == INVALID_STRING_ID) return "the command failed without an error message (CMD_ERROR: invalid parameters)";
-		return GetString(id);
+		return PlainText(GetString(id));
 	} catch (const std::exception &) {
 		return fmt::format("string #{}", c.GetErrorMessage());
 	}

@@ -18,6 +18,7 @@
 #ifdef OTTD_PRISMATIC_MCP_SERVER
 
 #include "prismatic_mcp_view.h"
+#include "prismatic_mcp_text.h"
 
 #include "../map_func.h"
 #include "../network/network.h"
@@ -404,7 +405,7 @@ std::optional<json> Call(const std::string &name, const json &args)
 			if (list.size() >= limit) break;
 			auto ymd = TimerGameCalendar::ConvertDateToYMD(ni.date);
 			auto t = static_cast<size_t>(ni.type), st = static_cast<size_t>(ni.style);
-			list.push_back({{"text", ni.headline.GetDecodedString()},
+			list.push_back({{"text", PlainText(ni.headline.GetDecodedString())},
 				{"type", t < std::size(TYPES) ? json(TYPES[t]) : json(t)},
 				{"style", st < std::size(STYLES) ? json(STYLES[st]) : json(st)},
 				{"date", fmt::format("{:04}-{:02}-{:02}", ymd.year.base(), ymd.month + 1, ymd.day)}});
