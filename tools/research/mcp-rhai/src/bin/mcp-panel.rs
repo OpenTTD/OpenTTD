@@ -59,6 +59,8 @@ mod evidence;
 mod panel_realworld;
 #[path = "../panel_store.rs"]
 mod panel_store;
+#[path = "../panel_town.rs"]
+mod panel_town;
 
 static STOP: AtomicBool = AtomicBool::new(false);
 

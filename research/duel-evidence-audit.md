@@ -168,6 +168,15 @@ value leaves out track, roads and depots, and the records hold no construction s
   stay in the records as written.
 - **B's configuration was not in the record.** The bot's start line lists only part of its settings
   (no `autopilot`, no `own_lines`). The autopilot set read both companies from `/api/bots` by hand.
+- **Which earlier verdicts read a mixed spread** (checked 2026-11-22 against each verdict's records).
+  The I0087 pairs (`4b43f4873f`, `71cd3f1ed9`, `6615cb7f60`) and the rail-geometry pairs
+  (`3eebf84a32`) read spreads over records that all predate `df1e05e7d8`, with a rival that ran no
+  train: not mixed, and they stand. The 8 records of `d048525e57` (air_add_waiting and
+  catchment_stops, 120 months, 2026-11-19) all ran the autopilot rival, but each one's stored
+  `rival_spread` also takes in 4 earlier bus-only records: 73.75 to 393.32, invalid. That verdict did
+  not use them: it measured the rival between identical arms within its own pairs (21.6%, 6.3%,
+  20.0%), so "inconclusive" stands. Only those 8 stored fields mislead; the records are kept as
+  written.
 - **A worktree's first duel can stall before the panel starts.** `mcp-e2e` asks `majordomus context
   --json` for its supervision record. In this worktree that call did not return in 9 minutes, and
   `mcp-duel` gave up (exit 1). Setting `PRISMATIC_MCP_SUPERVISOR` beforehand skips it.

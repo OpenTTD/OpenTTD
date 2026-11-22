@@ -33,7 +33,9 @@ Usage: $SELF <smoke|change|research|full> [options]
             generated Prismatic MCP contributor docs are not stale
             (tools/check-prismatic-docs.sh), that every AI-battle record is
             reproducible and its leaderboard derived (tools/research/
-            ai-battle/battle.py check), and that every published surface
+            ai-battle/battle.py check), that the town-authority model and
+            its outputs are what src/ derives (tools/research/town-model/
+            derive.py --check), and that every published surface
             agrees with the repository: Markdown regions current, every
             relative link and anchor resolving (tools/surfaces/surfaces check),
             and every file and symbol the .ai/ records cite still exists
@@ -305,6 +307,8 @@ cmd_change() {
   tools/research/readme-scoreboard --check
   echo "==> tools/research/ai-battle/battle.py check (rule project.battle-records-are-reproducible)"
   python3 -B tools/research/ai-battle/battle.py check
+  echo "==> tools/research/town-model/derive.py --check (the town-authority model is what src/ derives)"
+  python3 -B tools/research/town-model/derive.py --check
   if compgen -G 'research/results/postmortem-*.json' > /dev/null; then
     echo "==> battle-postmortem check (research/battle-postmortem.md: every post-mortem .md is what its .json derives)"
     # RUSTFLAGS replaces a target's rustflags from a global cargo config; a `-C lto` there breaks

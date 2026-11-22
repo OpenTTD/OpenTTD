@@ -29,6 +29,7 @@
     { key: 'results', href: '/results', label: 'Duels', title: 'Duels', icon: 'M7 4h10v4a5 5 0 0 1-10 0zM5 5H3v2a4 4 0 0 0 4 4m12-6h2v2a4 4 0 0 1-4 4m-5 2v4m-4 3h8' },
     { key: 'data', href: '/data', label: 'Data: query the event store', title: 'Data', icon: 'M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zm0 0v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3' },
     { key: 'scripts', href: '/scripts', label: 'Scripts: Rhai editor and services', title: 'Scripts', icon: 'M8 9l-3 3 3 3m8-6 3 3-3 3M14 5l-4 14' },
+    { key: 'towns', href: '/towns', label: 'Towns: authority model and advice', title: 'Towns', icon: 'M3 21h18M5 21V10l4-3 4 3v11m4 0V6l3-2 3 2v15' },
     { key: 'realworld', href: '/realworld', label: 'Real world: places as maps', title: 'Real world', icon: 'M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zm0-9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z' },
     { key: 'docs', href: '/docs', label: 'API (OpenAPI, Swagger UI)', title: 'API', icon: 'M10 20l4-16M6 16l-4-4 4-4m12 0 4 4-4 4' },
   ];

@@ -1,0 +1,1318 @@
+{
+ "schema": "town-model/v1",
+ "generated_by": "tools/research/town-model/derive.py",
+ "source_rev": "81f5749da8c7",
+ "sources": {
+  "src/economy.cpp": "bae43025672754e5f814fd68fc2a7338c99831fa",
+  "src/road_cmd.cpp": "e640b4c83d479d2de8af234c1af498c6f61a37e3",
+  "src/script/api/script_town.cpp": "691a628c6cf84f05e308bcfb64f8b0cb86306bc6",
+  "src/script/api/script_town.hpp": "29f54cb60e70806fbfc43c8f46c022c15627a12b",
+  "src/station_cmd.cpp": "dcb1a29b434a62deb6493bdd0536c05cdb420f78",
+  "src/town.h": "7195df0c8380362477741b92a105b8cd6c9e4026",
+  "src/town_cmd.cpp": "52be1ebf8ba17814b717d59228729c16d15245d3",
+  "src/town_type.h": "0025d61c99be7b15c8de236123232e8bc8b103cf",
+  "src/tree_cmd.cpp": "7c1de240da3c6a4ad3bb1eda82c2f1a5ee74f4a7",
+  "src/tunnelbridge_cmd.cpp": "5412400f41810607ee33294bc068a333ac292b96",
+  "src/water_cmd.cpp": "8e6849a4d5ec6cf054ef19e789995cc85e9a47df"
+ },
+ "constants": {
+  "RATING_MINIMUM": {
+   "value": -1000,
+   "expr": "-1000",
+   "doc": "",
+   "source": "src/town_type.h:32"
+  },
+  "RATING_APPALLING": {
+   "value": -400,
+   "expr": "-400",
+   "doc": "",
+   "source": "src/town_type.h:33"
+  },
+  "RATING_VERYPOOR": {
+   "value": -200,
+   "expr": "-200",
+   "doc": "",
+   "source": "src/town_type.h:34"
+  },
+  "RATING_POOR": {
+   "value": 0,
+   "expr": "0",
+   "doc": "",
+   "source": "src/town_type.h:35"
+  },
+  "RATING_MEDIOCRE": {
+   "value": 200,
+   "expr": "200",
+   "doc": "",
+   "source": "src/town_type.h:36"
+  },
+  "RATING_GOOD": {
+   "value": 400,
+   "expr": "400",
+   "doc": "",
+   "source": "src/town_type.h:37"
+  },
+  "RATING_VERYGOOD": {
+   "value": 600,
+   "expr": "600",
+   "doc": "",
+   "source": "src/town_type.h:38"
+  },
+  "RATING_EXCELLENT": {
+   "value": 800,
+   "expr": "800",
+   "doc": "",
+   "source": "src/town_type.h:39"
+  },
+  "RATING_OUTSTANDING": {
+   "value": 1000,
+   "expr": "1000",
+   "doc": "OUTSTANDING",
+   "source": "src/town_type.h:40"
+  },
+  "RATING_MAXIMUM": {
+   "value": 1000,
+   "expr": "RATING_OUTSTANDING",
+   "doc": "",
+   "source": "src/town_type.h:42"
+  },
+  "RATING_INITIAL": {
+   "value": 500,
+   "expr": "500",
+   "doc": "initial rating",
+   "source": "src/town_type.h:44"
+  },
+  "RATING_TREE_DOWN_STEP": {
+   "value": -35,
+   "expr": "-35",
+   "doc": "",
+   "source": "src/town_type.h:47"
+  },
+  "RATING_TREE_MINIMUM": {
+   "value": -1000,
+   "expr": "RATING_MINIMUM",
+   "doc": "",
+   "source": "src/town_type.h:48"
+  },
+  "RATING_TREE_UP_STEP": {
+   "value": 7,
+   "expr": "7",
+   "doc": "",
+   "source": "src/town_type.h:49"
+  },
+  "RATING_TREE_MAXIMUM": {
+   "value": 220,
+   "expr": "220",
+   "doc": "",
+   "source": "src/town_type.h:50"
+  },
+  "RATING_GROWTH_UP_STEP": {
+   "value": 5,
+   "expr": "5",
+   "doc": "when a town grows, all companies have rating increased a bit ...",
+   "source": "src/town_type.h:52"
+  },
+  "RATING_GROWTH_MAXIMUM": {
+   "value": 200,
+   "expr": "RATING_MEDIOCRE",
+   "doc": "... up to RATING_MEDIOCRE",
+   "source": "src/town_type.h:53"
+  },
+  "RATING_STATION_UP_STEP": {
+   "value": 12,
+   "expr": "12",
+   "doc": "when a town grows, company gains reputation for all well serviced stations ...",
+   "source": "src/town_type.h:54"
+  },
+  "RATING_STATION_DOWN_STEP": {
+   "value": -15,
+   "expr": "-15",
+   "doc": "... but loses for badly serviced stations",
+   "source": "src/town_type.h:55"
+  },
+  "RATING_TUNNEL_BRIDGE_UP_STEP": {
+   "value": 50,
+   "expr": "50",
+   "doc": "rating increase for improving a town-owned bridge",
+   "source": "src/town_type.h:57"
+  },
+  "RATING_TUNNEL_BRIDGE_DOWN_STEP": {
+   "value": -250,
+   "expr": "-250",
+   "doc": "penalty for removing town owned tunnel or bridge",
+   "source": "src/town_type.h:58"
+  },
+  "RATING_TUNNEL_BRIDGE_MINIMUM": {
+   "value": 0,
+   "expr": "0",
+   "doc": "minimum rating after removing tunnel or bridge",
+   "source": "src/town_type.h:59"
+  },
+  "RATING_TUNNEL_BRIDGE_NEEDED_LENIENT": {
+   "value": 144,
+   "expr": "144",
+   "doc": "rating needed, \"Lenient\" difficulty settings",
+   "source": "src/town_type.h:60"
+  },
+  "RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL": {
+   "value": 208,
+   "expr": "208",
+   "doc": "\"Neutral\"",
+   "source": "src/town_type.h:61"
+  },
+  "RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE": {
+   "value": 400,
+   "expr": "400",
+   "doc": "\"Hostile\"",
+   "source": "src/town_type.h:62"
+  },
+  "RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE": {
+   "value": -1000,
+   "expr": "RATING_MINIMUM",
+   "doc": "\"Permissive\" (local authority disabled)",
+   "source": "src/town_type.h:63"
+  },
+  "RATING_ROAD_DOWN_STEP_INNER": {
+   "value": -50,
+   "expr": "-50",
+   "doc": "removing a roadpiece in the middle",
+   "source": "src/town_type.h:65"
+  },
+  "RATING_ROAD_DOWN_STEP_EDGE": {
+   "value": -18,
+   "expr": "-18",
+   "doc": "removing a roadpiece at the edge",
+   "source": "src/town_type.h:66"
+  },
+  "RATING_ROAD_MINIMUM": {
+   "value": -100,
+   "expr": "-100",
+   "doc": "minimum rating after removing town owned road",
+   "source": "src/town_type.h:67"
+  },
+  "RATING_ROAD_NEEDED_LENIENT": {
+   "value": 16,
+   "expr": "16",
+   "doc": "rating needed, \"Lenient\" difficulty settings",
+   "source": "src/town_type.h:68"
+  },
+  "RATING_ROAD_NEEDED_NEUTRAL": {
+   "value": 64,
+   "expr": "64",
+   "doc": "\"Neutral\"",
+   "source": "src/town_type.h:69"
+  },
+  "RATING_ROAD_NEEDED_HOSTILE": {
+   "value": 112,
+   "expr": "112",
+   "doc": "\"Hostile\"",
+   "source": "src/town_type.h:70"
+  },
+  "RATING_ROAD_NEEDED_PERMISSIVE": {
+   "value": -1000,
+   "expr": "RATING_MINIMUM",
+   "doc": "\"Permissive\" (local authority disabled)",
+   "source": "src/town_type.h:71"
+  },
+  "RATING_HOUSE_MINIMUM": {
+   "value": -1000,
+   "expr": "RATING_MINIMUM",
+   "doc": "",
+   "source": "src/town_type.h:73"
+  },
+  "RATING_BRIBE_UP_STEP": {
+   "value": 200,
+   "expr": "200",
+   "doc": "",
+   "source": "src/town_type.h:75"
+  },
+  "RATING_BRIBE_MAXIMUM": {
+   "value": 800,
+   "expr": "800",
+   "doc": "",
+   "source": "src/town_type.h:76"
+  },
+  "RATING_BRIBE_DOWN_TO": {
+   "value": -50,
+   "expr": "-50",
+   "doc": "XXX SHOULD BE SOMETHING LOWER?",
+   "source": "src/town_type.h:77"
+  },
+  "RATING_WATER_RIVER_DOWN_STEP": {
+   "value": -200,
+   "expr": "-200",
+   "doc": "removing a river tile",
+   "source": "src/town_type.h:79"
+  },
+  "RATING_WATER_MINIMUM": {
+   "value": -1000,
+   "expr": "RATING_MINIMUM",
+   "doc": "minimum rating after removing water features near town",
+   "source": "src/town_type.h:80"
+  }
+ },
+ "bands": [
+  {
+   "name": "TOWN_RATING_NONE",
+   "enum": 0,
+   "lowest": 500,
+   "highest": 500,
+   "note": "no rating yet (have_ratings unset): the stored value is RATING_INITIAL",
+   "source": "src/script/api/script_town.cpp:333"
+  },
+  {
+   "name": "TOWN_RATING_APPALLING",
+   "lowest": -1000,
+   "highest": -400,
+   "source": "src/script/api/script_town.cpp:334",
+   "enum": 1
+  },
+  {
+   "name": "TOWN_RATING_VERY_POOR",
+   "lowest": -399,
+   "highest": -200,
+   "source": "src/script/api/script_town.cpp:336",
+   "enum": 2
+  },
+  {
+   "name": "TOWN_RATING_POOR",
+   "lowest": -199,
+   "highest": 0,
+   "source": "src/script/api/script_town.cpp:338",
+   "enum": 3
+  },
+  {
+   "name": "TOWN_RATING_MEDIOCRE",
+   "lowest": 1,
+   "highest": 200,
+   "source": "src/script/api/script_town.cpp:340",
+   "enum": 4
+  },
+  {
+   "name": "TOWN_RATING_GOOD",
+   "lowest": 201,
+   "highest": 400,
+   "source": "src/script/api/script_town.cpp:342",
+   "enum": 5
+  },
+  {
+   "name": "TOWN_RATING_VERY_GOOD",
+   "lowest": 401,
+   "highest": 600,
+   "source": "src/script/api/script_town.cpp:344",
+   "enum": 6
+  },
+  {
+   "name": "TOWN_RATING_EXCELLENT",
+   "lowest": 601,
+   "highest": 800,
+   "source": "src/script/api/script_town.cpp:346",
+   "enum": 7
+  },
+  {
+   "name": "TOWN_RATING_OUTSTANDING",
+   "lowest": 801,
+   "highest": 1000,
+   "source": "src/script/api/script_town.cpp:349",
+   "enum": 8
+  }
+ ],
+ "effects": [
+  {
+   "kind": "set",
+   "function": "ChangeOwnershipOfCompanyItems",
+   "trigger": "Change the ownership of all the items of a company.",
+   "hint": "Reset the ratings for the old owner",
+   "delta_expr": "RATING_INITIAL",
+   "delta": null,
+   "to": 500,
+   "limit_expr": null,
+   "limit": null,
+   "source": "src/economy.cpp:385"
+  },
+  {
+   "kind": "change",
+   "function": "CheckAllowRemoveRoad",
+   "trigger": "Is it allowed to remove the given road bits from the given tile?",
+   "hint": "",
+   "delta_expr": "rating_decrease",
+   "delta": null,
+   "to": null,
+   "limit_expr": "RATING_ROAD_MINIMUM",
+   "limit": -100,
+   "source": "src/road_cmd.cpp:304",
+   "delta_candidates": [
+    {
+     "expr": "RATING_ROAD_DOWN_STEP_EDGE",
+     "value": -18
+    },
+    {
+     "expr": "RATING_ROAD_DOWN_STEP_INNER",
+     "value": -50
+    }
+   ]
+  },
+  {
+   "kind": "change",
+   "function": "ClearTile_Town",
+   "trigger": "A town tile is cleared (ClearTileProc).",
+   "hint": "",
+   "delta_expr": "-rating",
+   "delta": null,
+   "to": null,
+   "limit_expr": "RATING_HOUSE_MINIMUM",
+   "limit": -1000,
+   "source": "src/town_cmd.cpp:714",
+   "delta_candidates": [
+    {
+     "expr": "hs->remove_rating_decrease",
+     "value": null,
+     "note": "per house type (NewGRF property)"
+    }
+   ]
+  },
+  {
+   "kind": "initial",
+   "function": "DoCreateTown",
+   "trigger": "Actually create a town.",
+   "hint": "",
+   "delta_expr": "RATING_INITIAL",
+   "delta": null,
+   "to": 500,
+   "limit_expr": null,
+   "limit": null,
+   "source": "src/town_cmd.cpp:2042"
+  },
+  {
+   "kind": "set",
+   "function": "TownActionBribe",
+   "trigger": "Perform the \"bribe\" town action.",
+   "hint": "",
+   "delta_expr": "RATING_BRIBE_DOWN_TO",
+   "delta": null,
+   "to": -50,
+   "limit_expr": null,
+   "limit": null,
+   "source": "src/town_cmd.cpp:3694"
+  },
+  {
+   "kind": "change",
+   "function": "TownActionBribe",
+   "trigger": "Perform the \"bribe\" town action.",
+   "hint": "",
+   "delta_expr": "RATING_BRIBE_UP_STEP",
+   "delta": 200,
+   "to": null,
+   "limit_expr": "RATING_BRIBE_MAXIMUM",
+   "limit": 800,
+   "source": "src/town_cmd.cpp:3698"
+  },
+  {
+   "kind": "add",
+   "function": "UpdateTownRating",
+   "trigger": "Monthly callback to update town and station ratings.",
+   "hint": "",
+   "delta_expr": "RATING_GROWTH_UP_STEP",
+   "delta": 5,
+   "to": null,
+   "limit_expr": "RATING_GROWTH_MAXIMUM",
+   "limit": 200,
+   "source": "src/town_cmd.cpp:3826"
+  },
+  {
+   "kind": "add",
+   "function": "UpdateTownRating",
+   "trigger": "Monthly callback to update town and station ratings.",
+   "hint": "",
+   "delta_expr": "RATING_STATION_UP_STEP",
+   "delta": 12,
+   "to": null,
+   "limit_expr": null,
+   "limit": null,
+   "source": "src/town_cmd.cpp:3833"
+  },
+  {
+   "kind": "add",
+   "function": "UpdateTownRating",
+   "trigger": "Monthly callback to update town and station ratings.",
+   "hint": "",
+   "delta_expr": "RATING_STATION_DOWN_STEP",
+   "delta": -15,
+   "to": null,
+   "limit_expr": null,
+   "limit": null,
+   "source": "src/town_cmd.cpp:3838"
+  },
+  {
+   "kind": "change",
+   "function": "CmdPlantTree",
+   "trigger": "Plant a tree.",
+   "hint": "",
+   "delta_expr": "RATING_TREE_UP_STEP",
+   "delta": 7,
+   "to": null,
+   "limit_expr": "RATING_TREE_MAXIMUM",
+   "limit": 220,
+   "source": "src/tree_cmd.cpp:610"
+  },
+  {
+   "kind": "change",
+   "function": "ClearTile_Trees",
+   "trigger": "A trees tile is cleared (ClearTileProc).",
+   "hint": "",
+   "delta_expr": "RATING_TREE_DOWN_STEP",
+   "delta": -35,
+   "to": null,
+   "limit_expr": "RATING_TREE_MINIMUM",
+   "limit": -1000,
+   "source": "src/tree_cmd.cpp:737"
+  },
+  {
+   "kind": "change",
+   "function": "CmdBuildBridge",
+   "trigger": "Build a Bridge",
+   "hint": "",
+   "delta_expr": "RATING_TUNNEL_BRIDGE_UP_STEP",
+   "delta": 50,
+   "to": null,
+   "limit_expr": "RATING_MAXIMUM",
+   "limit": 1000,
+   "source": "src/tunnelbridge_cmd.cpp:440"
+  },
+  {
+   "kind": "change",
+   "function": "DoClearTunnel",
+   "trigger": "Remove a tunnel from the game, update town rating, etc.",
+   "hint": "",
+   "delta_expr": "RATING_TUNNEL_BRIDGE_DOWN_STEP",
+   "delta": -250,
+   "to": null,
+   "limit_expr": "RATING_TUNNEL_BRIDGE_MINIMUM",
+   "limit": 0,
+   "source": "src/tunnelbridge_cmd.cpp:887"
+  },
+  {
+   "kind": "change",
+   "function": "DoClearBridge",
+   "trigger": "Remove a bridge from the game, update town rating, etc.",
+   "hint": "",
+   "delta_expr": "RATING_TUNNEL_BRIDGE_DOWN_STEP",
+   "delta": -250,
+   "to": null,
+   "limit_expr": "RATING_TUNNEL_BRIDGE_MINIMUM",
+   "limit": 0,
+   "source": "src/tunnelbridge_cmd.cpp:968"
+  },
+  {
+   "kind": "change",
+   "function": "ClearTile_Water",
+   "trigger": "A water tile is cleared (ClearTileProc).",
+   "hint": "",
+   "delta_expr": "RATING_WATER_RIVER_DOWN_STEP",
+   "delta": -200,
+   "to": null,
+   "limit_expr": "RATING_WATER_MINIMUM",
+   "limit": -1000,
+   "source": "src/water_cmd.cpp:620"
+  }
+ ],
+ "gates": [
+  {
+   "function": "TownActionBribe",
+   "guards": "Perform the \"bribe\" town action.",
+   "hint": "",
+   "op": ">",
+   "threshold_expr": "RATING_BRIBE_DOWN_TO",
+   "threshold": -50,
+   "source": "src/town_cmd.cpp:3693"
+  },
+  {
+   "function": "GetMaskOfTownActions",
+   "guards": "Get a list of available town authority actions.",
+   "hint": "Company can bribe if another company has exclusive transport rights,",
+   "op": ">=",
+   "threshold_expr": "RATING_BRIBE_MAXIMUM",
+   "threshold": 800,
+   "source": "src/town_cmd.cpp:3747"
+  },
+  {
+   "function": "UpdateTownRating",
+   "guards": "Monthly callback to update town and station ratings.",
+   "hint": "Increase company ratings if they're low",
+   "op": "<",
+   "threshold_expr": "RATING_GROWTH_MAXIMUM",
+   "threshold": 200,
+   "source": "src/town_cmd.cpp:3825"
+  },
+  {
+   "function": "CheckIfAuthorityAllowsNewStation",
+   "guards": "Checks whether the local authority allows construction of a new station (rail, road, airport, dock) on the given tile",
+   "hint": "",
+   "op": ">",
+   "threshold_expr": "RATING_VERYPOOR",
+   "threshold": -200,
+   "source": "src/town_cmd.cpp:3985"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "RoadRemove at tolerance Lenient",
+   "op": ">=",
+   "threshold_expr": "RATING_ROAD_NEEDED_LENIENT",
+   "threshold": 16,
+   "check": "RoadRemove",
+   "tolerance": "lenient",
+   "source": "src/town_cmd.cpp:4143"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "TunnelBridgeRemove at tolerance Lenient",
+   "op": ">=",
+   "threshold_expr": "RATING_TUNNEL_BRIDGE_NEEDED_LENIENT",
+   "threshold": 144,
+   "check": "TunnelBridgeRemove",
+   "tolerance": "lenient",
+   "source": "src/town_cmd.cpp:4143"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "RoadRemove at tolerance Neutral",
+   "op": ">=",
+   "threshold_expr": "RATING_ROAD_NEEDED_NEUTRAL",
+   "threshold": 64,
+   "check": "RoadRemove",
+   "tolerance": "neutral",
+   "source": "src/town_cmd.cpp:4144"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "TunnelBridgeRemove at tolerance Neutral",
+   "op": ">=",
+   "threshold_expr": "RATING_TUNNEL_BRIDGE_NEEDED_NEUTRAL",
+   "threshold": 208,
+   "check": "TunnelBridgeRemove",
+   "tolerance": "neutral",
+   "source": "src/town_cmd.cpp:4144"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "RoadRemove at tolerance Hostile",
+   "op": ">=",
+   "threshold_expr": "RATING_ROAD_NEEDED_HOSTILE",
+   "threshold": 112,
+   "check": "RoadRemove",
+   "tolerance": "hostile",
+   "source": "src/town_cmd.cpp:4145"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "TunnelBridgeRemove at tolerance Hostile",
+   "op": ">=",
+   "threshold_expr": "RATING_TUNNEL_BRIDGE_NEEDED_HOSTILE",
+   "threshold": 400,
+   "check": "TunnelBridgeRemove",
+   "tolerance": "hostile",
+   "source": "src/town_cmd.cpp:4145"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "RoadRemove at tolerance Permissive",
+   "op": ">=",
+   "threshold_expr": "RATING_ROAD_NEEDED_PERMISSIVE",
+   "threshold": -1000,
+   "check": "RoadRemove",
+   "tolerance": "permissive",
+   "source": "src/town_cmd.cpp:4146"
+  },
+  {
+   "function": "CheckforTownRating",
+   "guards": "Does the town authority allow the (destructive) action of the current company?",
+   "hint": "TunnelBridgeRemove at tolerance Permissive",
+   "op": ">=",
+   "threshold_expr": "RATING_TUNNEL_BRIDGE_NEEDED_PERMISSIVE",
+   "threshold": -1000,
+   "check": "TunnelBridgeRemove",
+   "tolerance": "permissive",
+   "source": "src/town_cmd.cpp:4146"
+  },
+  {
+   "function": "ClearTile_Town",
+   "guards": "A town tile is cleared (ClearTileProc).",
+   "hint": "a house is removable while the company's rating is at least the house's remove_rating_decrease (NewGRF house property), which is also what the removal costs",
+   "op": ">=",
+   "threshold_expr": "hs->remove_rating_decrease",
+   "threshold": null,
+   "source": "src/town_cmd.cpp:698"
+  }
+ ],
+ "tolerance": {
+  "TOWN_COUNCIL_LENIENT": {
+   "value": 0,
+   "source": "src/town.h:264"
+  },
+  "TOWN_COUNCIL_TOLERANT": {
+   "value": 1,
+   "source": "src/town.h:265"
+  },
+  "TOWN_COUNCIL_HOSTILE": {
+   "value": 2,
+   "source": "src/town.h:266"
+  },
+  "TOWN_COUNCIL_PERMISSIVE": {
+   "value": 3,
+   "source": "src/town.h:267"
+  }
+ },
+ "actions": [
+  {
+   "name": "AdvertiseSmall",
+   "doc": "Small advertising campaign.",
+   "source": "src/town.h:298",
+   "cost_factor": 2,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionAdvertiseSmall",
+   "brief": "Perform the \"small advertising campaign\" town action.",
+   "effects": [
+    {
+     "field": "station_rating_around",
+     "value": 64,
+     "radius": 10,
+     "note": "raises the company's cargo ratings at stations within the radius to at least this (0-255)",
+     "source": "src/town_cmd.cpp:3472"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3469"
+  },
+  {
+   "name": "AdvertiseMedium",
+   "doc": "Medium advertising campaign.",
+   "source": "src/town.h:299",
+   "cost_factor": 4,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionAdvertiseMedium",
+   "brief": "Perform the \"medium advertising campaign\" town action.",
+   "effects": [
+    {
+     "field": "station_rating_around",
+     "value": 112,
+     "radius": 15,
+     "note": "raises the company's cargo ratings at stations within the radius to at least this (0-255)",
+     "source": "src/town_cmd.cpp:3486"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3483"
+  },
+  {
+   "name": "AdvertiseLarge",
+   "doc": "Large advertising campaign.",
+   "source": "src/town.h:300",
+   "cost_factor": 9,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionAdvertiseLarge",
+   "brief": "Perform the \"large advertising campaign\" town action.",
+   "effects": [
+    {
+     "field": "station_rating_around",
+     "value": 160,
+     "radius": 20,
+     "note": "raises the company's cargo ratings at stations within the radius to at least this (0-255)",
+     "source": "src/town_cmd.cpp:3500"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3497"
+  },
+  {
+   "name": "RoadRebuild",
+   "doc": "Rebuild the roads.",
+   "source": "src/town.h:301",
+   "cost_factor": 35,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionRoadRebuild",
+   "brief": "Perform the \"local road reconstruction\" town action.",
+   "effects": [
+    {
+     "field": "requires_setting",
+     "value": "economy.fund_roads",
+     "source": "src/town_cmd.cpp:3514"
+    },
+    {
+     "field": "road_build_months",
+     "value": "6",
+     "source": "src/town_cmd.cpp:3517"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3511"
+  },
+  {
+   "name": "BuildStatue",
+   "doc": "Build a statue.",
+   "source": "src/town.h:302",
+   "cost_factor": 48,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionBuildStatue",
+   "brief": "Perform a 9x9 tiles circular search from the center of the town in order to find a free tile to place a statue",
+   "effects": [
+    {
+     "field": "statues",
+     "value": "company",
+     "note": "the company is added to this set of the town",
+     "source": "src/town_cmd.cpp:3595"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3548"
+  },
+  {
+   "name": "FundBuildings",
+   "doc": "Fund new buildings.",
+   "source": "src/town.h:303",
+   "cost_factor": 53,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionFundBuildings",
+   "brief": "Perform the \"fund new buildings\" town action.",
+   "effects": [
+    {
+     "field": "requires_setting",
+     "value": "economy.fund_buildings",
+     "source": "src/town_cmd.cpp:3610"
+    },
+    {
+     "field": "fund_buildings_months",
+     "value": "3",
+     "source": "src/town_cmd.cpp:3614"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3607"
+  },
+  {
+   "name": "BuyRights",
+   "doc": "Buy exclusive transport rights.",
+   "source": "src/town.h:304",
+   "cost_factor": 117,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionBuyRights",
+   "brief": "Perform the \"buy exclusive transport rights\" town action.",
+   "effects": [
+    {
+     "field": "requires_setting",
+     "value": "economy.exclusive_rights",
+     "source": "src/town_cmd.cpp:3643"
+    },
+    {
+     "field": "exclusive_counter",
+     "value": "12",
+     "source": "src/town_cmd.cpp:3647"
+    },
+    {
+     "field": "exclusivity",
+     "value": "_current_company",
+     "source": "src/town_cmd.cpp:3648"
+    },
+    {
+     "field": "station_rating_around",
+     "value": 130,
+     "radius": 17,
+     "note": "raises the company's cargo ratings at stations within the radius to at least this (0-255)",
+     "source": "src/town_cmd.cpp:3650"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3640"
+  },
+  {
+   "name": "Bribe",
+   "doc": "Try to bribe the council.",
+   "source": "src/town.h:305",
+   "cost_factor": 175,
+   "cost": "price.town_action * cost_factor >> 8 (town_cmd.cpp TownActionCost)",
+   "proc": "TownActionBribe",
+   "brief": "Perform the \"bribe\" town action.",
+   "effects": [
+    {
+     "field": "chance",
+     "value": "1/14",
+     "source": "src/town_cmd.cpp:3674"
+    },
+    {
+     "field": "unwanted",
+     "value": "6",
+     "source": "src/town_cmd.cpp:3676"
+    },
+    {
+     "field": "ratings",
+     "value": "RATING_BRIBE_DOWN_TO",
+     "source": "src/town_cmd.cpp:3694"
+    },
+    {
+     "field": "rating",
+     "delta": 200,
+     "limit": 800,
+     "source": "src/town_cmd.cpp:3698"
+    },
+    {
+     "field": "exclusivity",
+     "value": "CompanyID::Invalid()",
+     "source": "src/town_cmd.cpp:3700"
+    },
+    {
+     "field": "exclusive_counter",
+     "value": "0",
+     "source": "src/town_cmd.cpp:3701"
+    }
+   ],
+   "proc_source": "src/town_cmd.cpp:3671"
+  }
+ ],
+ "links": [
+  {
+   "id": "airport_noise",
+   "effect": "with station_noise_level on, an airport is refused when the nearest town's noise would exceed its MaxTownNoise",
+   "setting": "economy.station_noise_level",
+   "source": "src/station_cmd.cpp:2667"
+  },
+  {
+   "id": "statue_cargo_rating",
+   "effect": "+26 cargo rating (of 255) at every station of the company in a town with its statue",
+   "value": 26,
+   "source": "src/station_cmd.cpp:4060"
+  },
+  {
+   "id": "exclusivity_blocks_others",
+   "effect": "while a town's exclusive rights run, other companies' stations in it receive no cargo",
+   "source": "src/station_cmd.cpp:4577"
+  },
+  {
+   "id": "station_service_monthly",
+   "effect": "each month, every company station near the town that loaded or unloaded within 20 rating periods raises the rating by RATING_STATION_UP_STEP, every other one lowers it by RATING_STATION_DOWN_STEP",
+   "periods": 20,
+   "source": "src/town_cmd.cpp:3831"
+  },
+  {
+   "id": "active_stations_counted",
+   "effect": "a company station near the town that loaded or unloaded within 20 rating periods counts as active for the town's growth rate",
+   "periods": 20,
+   "source": "src/town_cmd.cpp:3878"
+  },
+  {
+   "id": "growth_by_active_stations",
+   "effect": "town ticks between growth steps by the number of active stations (0..5+); fewer is faster; funded buildings use the first row",
+   "funded": [
+    120,
+    120,
+    120,
+    100,
+    80,
+    60
+   ],
+   "funded_doc": "Fund new buildings has been activated",
+   "normal": [
+    320,
+    420,
+    300,
+    220,
+    160,
+    100
+   ],
+   "normal_doc": "Normal values",
+   "source": "src/town_cmd.cpp:3898"
+  },
+  {
+   "id": "terraform_clears_trees",
+   "effect": "terraforming a tree tile clears it (LandscapeClear), which costs the tree-removal rating",
+   "source": "src/tree_cmd.cpp:1040"
+  }
+ ],
+ "settings": {
+  "difficulty.town_council_tolerance": {
+   "default": "0",
+   "min": "0",
+   "max": "3",
+   "source": "src/table/settings/difficulty_settings.ini:290"
+  },
+  "economy.station_noise_level": {
+   "default": "false",
+   "min": null,
+   "max": null,
+   "source": "src/table/settings/economy_settings.ini:122"
+  },
+  "economy.bribe": {
+   "default": "true",
+   "min": null,
+   "max": null,
+   "source": "src/table/settings/economy_settings.ini:152"
+  },
+  "economy.exclusive_rights": {
+   "default": "true",
+   "min": null,
+   "max": null,
+   "source": "src/table/settings/economy_settings.ini:161"
+  },
+  "economy.fund_buildings": {
+   "default": "true",
+   "min": null,
+   "max": null,
+   "source": "src/table/settings/economy_settings.ini:171"
+  },
+  "economy.fund_roads": {
+   "default": "true",
+   "min": null,
+   "max": null,
+   "source": "src/table/settings/economy_settings.ini:180"
+  },
+  "economy.dist_local_authority": {
+   "default": "20",
+   "min": "5",
+   "max": "60",
+   "source": "src/table/settings/economy_settings.ini:277"
+  }
+ },
+ "relations": [
+  {
+   "from": "event:CheckAllowRemoveRoad",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "rating_decrease (stops at -100)",
+   "source": "src/road_cmd.cpp:304"
+  },
+  {
+   "from": "event:ClearTile_Town",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "-rating (stops at -1000)",
+   "source": "src/town_cmd.cpp:714"
+  },
+  {
+   "from": "event:TownActionBribe",
+   "to": "rating",
+   "kind": "raises",
+   "label": "+200 (stops at 800)",
+   "source": "src/town_cmd.cpp:3698"
+  },
+  {
+   "from": "event:UpdateTownRating",
+   "to": "rating",
+   "kind": "raises",
+   "label": "+5 (stops at 200)",
+   "source": "src/town_cmd.cpp:3826"
+  },
+  {
+   "from": "event:UpdateTownRating",
+   "to": "rating",
+   "kind": "raises",
+   "label": "+12",
+   "source": "src/town_cmd.cpp:3833"
+  },
+  {
+   "from": "event:UpdateTownRating",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "-15",
+   "source": "src/town_cmd.cpp:3838"
+  },
+  {
+   "from": "event:CmdPlantTree",
+   "to": "rating",
+   "kind": "raises",
+   "label": "+7 (stops at 220)",
+   "source": "src/tree_cmd.cpp:610"
+  },
+  {
+   "from": "event:ClearTile_Trees",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "-35 (stops at -1000)",
+   "source": "src/tree_cmd.cpp:737"
+  },
+  {
+   "from": "event:CmdBuildBridge",
+   "to": "rating",
+   "kind": "raises",
+   "label": "+50 (stops at 1000)",
+   "source": "src/tunnelbridge_cmd.cpp:440"
+  },
+  {
+   "from": "event:DoClearTunnel",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "-250 (stops at 0)",
+   "source": "src/tunnelbridge_cmd.cpp:887"
+  },
+  {
+   "from": "event:DoClearBridge",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "-250 (stops at 0)",
+   "source": "src/tunnelbridge_cmd.cpp:968"
+  },
+  {
+   "from": "event:ClearTile_Water",
+   "to": "rating",
+   "kind": "lowers",
+   "label": "-200 (stops at -1000)",
+   "source": "src/water_cmd.cpp:620"
+  },
+  {
+   "from": "rating",
+   "to": "gate:TownActionBribe",
+   "kind": "allows",
+   "label": "rating > -50",
+   "source": "src/town_cmd.cpp:3693"
+  },
+  {
+   "from": "rating",
+   "to": "gate:GetMaskOfTownActions",
+   "kind": "allows",
+   "label": "rating >= 800",
+   "source": "src/town_cmd.cpp:3747"
+  },
+  {
+   "from": "rating",
+   "to": "gate:UpdateTownRating",
+   "kind": "allows",
+   "label": "refused when rating < 200",
+   "source": "src/town_cmd.cpp:3825"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckIfAuthorityAllowsNewStation",
+   "kind": "allows",
+   "label": "rating > -200",
+   "source": "src/town_cmd.cpp:3985"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:RoadRemove:lenient",
+   "kind": "allows",
+   "label": "rating >= 16",
+   "source": "src/town_cmd.cpp:4143"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:TunnelBridgeRemove:lenient",
+   "kind": "allows",
+   "label": "rating >= 144",
+   "source": "src/town_cmd.cpp:4143"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:RoadRemove:neutral",
+   "kind": "allows",
+   "label": "rating >= 64",
+   "source": "src/town_cmd.cpp:4144"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:TunnelBridgeRemove:neutral",
+   "kind": "allows",
+   "label": "rating >= 208",
+   "source": "src/town_cmd.cpp:4144"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:RoadRemove:hostile",
+   "kind": "allows",
+   "label": "rating >= 112",
+   "source": "src/town_cmd.cpp:4145"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:TunnelBridgeRemove:hostile",
+   "kind": "allows",
+   "label": "rating >= 400",
+   "source": "src/town_cmd.cpp:4145"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:RoadRemove:permissive",
+   "kind": "allows",
+   "label": "rating >= -1000",
+   "source": "src/town_cmd.cpp:4146"
+  },
+  {
+   "from": "rating",
+   "to": "gate:CheckforTownRating:TunnelBridgeRemove:permissive",
+   "kind": "allows",
+   "label": "rating >= -1000",
+   "source": "src/town_cmd.cpp:4146"
+  },
+  {
+   "from": "rating",
+   "to": "gate:ClearTile_Town",
+   "kind": "allows",
+   "label": "rating >= hs->remove_rating_decrease",
+   "source": "src/town_cmd.cpp:698"
+  },
+  {
+   "from": "action:AdvertiseSmall",
+   "to": "station_cargo_rating",
+   "kind": "raises",
+   "label": "to 64 within 10 tiles",
+   "source": "src/town_cmd.cpp:3472"
+  },
+  {
+   "from": "action:AdvertiseMedium",
+   "to": "station_cargo_rating",
+   "kind": "raises",
+   "label": "to 112 within 15 tiles",
+   "source": "src/town_cmd.cpp:3486"
+  },
+  {
+   "from": "action:AdvertiseLarge",
+   "to": "station_cargo_rating",
+   "kind": "raises",
+   "label": "to 160 within 20 tiles",
+   "source": "src/town_cmd.cpp:3500"
+  },
+  {
+   "from": "setting:economy.fund_roads",
+   "to": "action:RoadRebuild",
+   "kind": "enables",
+   "label": "must be on",
+   "source": "src/town_cmd.cpp:3514"
+  },
+  {
+   "from": "action:RoadRebuild",
+   "to": "town:road_build_months",
+   "kind": "sets",
+   "label": "6",
+   "source": "src/town_cmd.cpp:3517"
+  },
+  {
+   "from": "action:BuildStatue",
+   "to": "town:statues",
+   "kind": "sets",
+   "label": "company",
+   "source": "src/town_cmd.cpp:3595"
+  },
+  {
+   "from": "setting:economy.fund_buildings",
+   "to": "action:FundBuildings",
+   "kind": "enables",
+   "label": "must be on",
+   "source": "src/town_cmd.cpp:3610"
+  },
+  {
+   "from": "action:FundBuildings",
+   "to": "town:fund_buildings_months",
+   "kind": "sets",
+   "label": "3",
+   "source": "src/town_cmd.cpp:3614"
+  },
+  {
+   "from": "setting:economy.exclusive_rights",
+   "to": "action:BuyRights",
+   "kind": "enables",
+   "label": "must be on",
+   "source": "src/town_cmd.cpp:3643"
+  },
+  {
+   "from": "action:BuyRights",
+   "to": "town:exclusive_counter",
+   "kind": "sets",
+   "label": "12",
+   "source": "src/town_cmd.cpp:3647"
+  },
+  {
+   "from": "action:BuyRights",
+   "to": "town:exclusivity",
+   "kind": "sets",
+   "label": "_current_company",
+   "source": "src/town_cmd.cpp:3648"
+  },
+  {
+   "from": "action:BuyRights",
+   "to": "station_cargo_rating",
+   "kind": "raises",
+   "label": "to 130 within 17 tiles",
+   "source": "src/town_cmd.cpp:3650"
+  },
+  {
+   "from": "action:Bribe",
+   "to": "town:unwanted",
+   "kind": "sets",
+   "label": "6",
+   "source": "src/town_cmd.cpp:3676"
+  },
+  {
+   "from": "action:Bribe",
+   "to": "town:ratings",
+   "kind": "sets",
+   "label": "RATING_BRIBE_DOWN_TO",
+   "source": "src/town_cmd.cpp:3694"
+  },
+  {
+   "from": "action:Bribe",
+   "to": "rating",
+   "kind": "raises",
+   "label": "+200 (stops at 800)",
+   "source": "src/town_cmd.cpp:3698"
+  },
+  {
+   "from": "action:Bribe",
+   "to": "town:exclusivity",
+   "kind": "sets",
+   "label": "CompanyID::Invalid()",
+   "source": "src/town_cmd.cpp:3700"
+  },
+  {
+   "from": "action:Bribe",
+   "to": "town:exclusive_counter",
+   "kind": "sets",
+   "label": "0",
+   "source": "src/town_cmd.cpp:3701"
+  },
+  {
+   "from": "rule:airport_noise",
+   "to": "rating",
+   "kind": "links",
+   "label": "with station_noise_level on, an airport is refused when the nearest town's noise would exceed its MaxTownNoise",
+   "source": "src/station_cmd.cpp:2667"
+  },
+  {
+   "from": "rule:statue_cargo_rating",
+   "to": "station_cargo_rating",
+   "kind": "links",
+   "label": "+26 cargo rating (of 255) at every station of the company in a town with its statue",
+   "source": "src/station_cmd.cpp:4060"
+  },
+  {
+   "from": "rule:exclusivity_blocks_others",
+   "to": "station_cargo_rating",
+   "kind": "links",
+   "label": "while a town's exclusive rights run, other companies' stations in it receive no cargo",
+   "source": "src/station_cmd.cpp:4577"
+  },
+  {
+   "from": "rule:station_service_monthly",
+   "to": "rating",
+   "kind": "links",
+   "label": "each month, every company station near the town that loaded or unloaded within 20 rating periods raises the rating by RATING_STATION_UP_STEP, every other one lowers it by RATING_STATION_DOWN_STEP",
+   "source": "src/town_cmd.cpp:3831"
+  },
+  {
+   "from": "rule:active_stations_counted",
+   "to": "rating",
+   "kind": "links",
+   "label": "a company station near the town that loaded or unloaded within 20 rating periods counts as active for the town's growth rate",
+   "source": "src/town_cmd.cpp:3878"
+  },
+  {
+   "from": "rule:growth_by_active_stations",
+   "to": "rating",
+   "kind": "links",
+   "label": "town ticks between growth steps by the number of active stations (0..5+); fewer is faster; funded buildings use the first row",
+   "source": "src/town_cmd.cpp:3898"
+  },
+  {
+   "from": "rule:terraform_clears_trees",
+   "to": "rating",
+   "kind": "links",
+   "label": "terraforming a tree tile clears it (LandscapeClear), which costs the tree-removal rating",
+   "source": "src/tree_cmd.cpp:1040"
+  }
+ ]
+}

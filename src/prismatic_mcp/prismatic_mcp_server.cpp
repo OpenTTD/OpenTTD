@@ -49,6 +49,7 @@
 #include "../table/strings.h"
 #include "../vehicle_base.h"
 #include "../town.h"
+#include "../station_base.h"
 #include "../map_func.h"
 #include "../timer/timer_game_calendar.h"
 #include "../timer/timer_game_tick.h"
@@ -332,7 +333,7 @@ const auto RESOURCES = std::to_array<ResourceEntry>({
 	{"openttd://commands", "Commands", "Every game command, derived from the command table: category, flags, parameter schemas", &ResourceCommands},
 	{"openttd://ai", "AIs", "Every company's AI with its settings as declared by its info.nut and their live values; the AIs that can be started", &ResourceAi},
 	{"openttd://decisions", "Decisions", "Provenance trace: decision -> approval -> command -> observed verdict", &ResourceDecisions},
-	{"openttd://towns", "Towns", "Every town: id, name, tile, x/y, population (scroll_to a town by id)", &ResourceTowns},
+	{"openttd://towns", "Towns", "Every town: id, name, tile, x/y, population, growth, exclusivity, noise, and per company its exact rating, statue, months unwanted and active/idle stations near the town (scroll_to a town by id; research/mechanisms/town-authority.md)", &ResourceTowns},
 	{"openttd://map", "Map", "The whole map: tile types, heights and owners, one string per row, encoding included", &ResourceMap},
 	{"openttd://stations", "Stations", "Every station: id, name, tile, x/y, owner, facilities, town", &ResourceStations},
 	{"openttd://vehicles", "Vehicles", "Every primary vehicle: id, type, owner, engine, tile, state, cargo, profits, orders", &ResourceVehicles},
@@ -450,14 +451,41 @@ json ResourceCoverage()
 	return env;
 }
 
-/** Every town, so a controller can find where a bot builds and scroll the view there. */
+/**
+ * Every town, so a controller can find where a bot builds and scroll the view there, with what its
+ * local authority thinks of each company (RESEARCH-ONLY; research/mechanisms/town-authority.md).
+ * Per company: the exact rating (an AI sees only its band), months unwanted after a failed bribe,
+ * and its stations near the town split into active and idle the way UpdateTownRating and
+ * CountActiveStations (town_cmd.cpp) split them: within the town-edge zone radius, active when it
+ * loaded or unloaded within 20 rating periods. That 20 mirrors town_cmd.cpp; the town model
+ * (tools/research/town-model/town_model.json, link station_service_monthly) records its source.
+ */
 json ResourceTowns()
 {
 	json env = MakeEnvelope();
 	json list = json::array();
 	for (const Town *t : Town::Iterate()) {
-		list.push_back({{"id", t->index.base()}, {"name", t->GetCachedName()}, {"tile", t->xy.base()},
-			{"x", TileX(t->xy)}, {"y", TileY(t->xy)}, {"population", t->cache.population}});
+		json companies = json::array();
+		for (const Company *c : Company::Iterate()) {
+			int active = 0, idle = 0;
+			uint32_t r2 = t->cache.squared_town_zone_radius[to_underlying(HouseZone::TownEdge)];
+			for (const Station *st : Station::Iterate()) {
+				if (st->owner != c->index || DistanceSquare(st->xy, t->xy) > r2) continue;
+				if (st->time_since_load <= 20 || st->time_since_unload <= 20) active++; else idle++;
+			}
+			json e = {{"company", c->index.base()}, {"rating", t->ratings[c->index]},
+				{"has_rating", t->have_ratings.Test(c->index)}, {"unwanted_months", t->unwanted[c->index]},
+				{"statue", t->statues.Test(c->index)}, {"active_stations", active}, {"idle_stations", idle}};
+			companies.push_back(std::move(e));
+		}
+		json town = {{"id", t->index.base()}, {"name", t->GetCachedName()}, {"tile", t->xy.base()},
+			{"x", TileX(t->xy)}, {"y", TileY(t->xy)}, {"population", t->cache.population},
+			{"houses", t->cache.num_houses}, {"growth_rate", t->growth_rate}, {"grow_counter", t->grow_counter},
+			{"fund_buildings_months", t->fund_buildings_months}, {"road_build_months", t->road_build_months},
+			{"exclusive_months", t->exclusive_counter}, {"noise_reached", t->noise_reached},
+			{"max_noise", t->MaxTownNoise()}, {"companies", std::move(companies)}};
+		town["exclusivity"] = t->exclusivity == CompanyID::Invalid() ? json(nullptr) : json(t->exclusivity.base());
+		list.push_back(std::move(town));
 	}
 	env["data"] = json{{"towns", std::move(list)}};
 	return env;
