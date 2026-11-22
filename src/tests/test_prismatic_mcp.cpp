@@ -711,7 +711,7 @@ TEST_CASE("PrismaticMCP: game text reaches MCP clients as plain text")
 	CHECK(PlainText(headline) == "New coal mine under construction near Brno");
 	CHECK(PlainText("  plain   text\t") == "plain text");
 	CHECK(PlainText("") == "");
-	CHECK(PlainText("Žabovřesky") == "Žabovřesky");
+	CHECK(PlainText("\xC5\xBD" "abov" "\xC5\x99" "esky") == "\xC5\xBD" "abov" "\xC5\x99" "esky"); /* "Zabovresky" with its UTF-8 diacritics */
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */

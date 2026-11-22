@@ -27,7 +27,7 @@
 namespace PrismaticMCP::detail {
 
 /** FNV-1a 64-bit over `tool + "|" + canonical_args`, rendered as 16 hex chars.
- * Deterministic; identical input → identical digest; any difference → different digest. */
+ * Deterministic; identical input -> identical digest; any difference -> different digest. */
 inline std::string ArgDigestHex(std::string_view tool, std::string_view canonical_args)
 {
 	uint64_t h = 1469598103934665603ull;

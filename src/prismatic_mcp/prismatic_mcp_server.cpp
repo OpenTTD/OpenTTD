@@ -78,7 +78,7 @@ using json = nlohmann::json;
 
 namespace {
 
-/* ---- HTTP/transport limits (mission §11.6, conservative defaults) ---------- */
+/* ---- HTTP/transport limits (mission section 11.6, conservative defaults) ---------- */
 constexpr size_t MAX_REQUEST_BODY = 1u << 20;   ///< 1 MiB request body cap.
 constexpr size_t MAX_HEADER_BYTES = 32u << 10;  ///< 32 KiB header section cap.
 constexpr size_t MAX_CONNECTIONS = 16;          ///< Simultaneous TCP connections.
@@ -137,7 +137,7 @@ std::string_view TrimOWS(std::string_view s)
 
 /* ---- live game-state serializers (main thread only) ----------------------- */
 
-/** The common response envelope (mission §15), stamped with the live snapshot. */
+/** The common response envelope (mission section 15), stamped with the live snapshot. */
 json MakeEnvelope()
 {
 	json env;
@@ -674,7 +674,7 @@ bool ClientMayPost(Commands cmd, std::string &err)
 	return true;
 }
 
-/** Non-mutating validation of a typed action + args (mission §10/§11). */
+/** Non-mutating validation of a typed action + args (mission section 10/section 11). */
 json ValidateAction(std::string_view type, const json &args, json &errors)
 {
 	json result;
@@ -1199,7 +1199,7 @@ std::string HandleHttpRequest(std::string_view raw, size_t header_end, size_t co
 		pos = nl + 2;
 	}
 
-	/* Loopback-only + Origin policy: reject any browser Origin (mission §12). */
+	/* Loopback-only + Origin policy: reject any browser Origin (mission section 12). */
 	if (!origin.empty()) {
 		_mcp.requests_denied++;
 		return HttpResponse(403, "Forbidden", R"({"error":"Origin header not allowed for loopback MCP endpoint"})");

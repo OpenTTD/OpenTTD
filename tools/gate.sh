@@ -144,8 +144,29 @@ baseset_available() {
 # $EXIT_PARTIAL when the regression cases had to be left out for want of a base graphics set
 # and everything else passed. Callers run it as `run_ctest dir || status=$?`, which disables
 # set -e inside it, so every ctest status is taken explicitly here.
+# The regression cases load LZMA-compressed savegames (regression/*/test.sav start with "OTTX"), so
+# a build configured without liblzma (link_package LIBLZMA is only ENCOURAGED) runs them to empty
+# output and reports four bogus diffs; such a build leaves them out as NOT RUN instead (lundra,
+# 2026-11-22, a Linux host without liblzma-dev).
+lzma_built_in() {
+  local cache="$1/CMakeCache.txt"
+  [[ -f "$cache" ]] || return 0
+  # FindLibLZMA probes the library's functions only once it found headers and library.
+  grep -qE '^LIBLZMA_INCLUDE_DIR:[A-Z]+=' "$cache" && ! grep -qE '^LIBLZMA_INCLUDE_DIR:[A-Z]+=.*NOTFOUND' "$cache" \
+    && grep -qE '^LIBLZMA_HAS_AUTO_DECODER:INTERNAL=1' "$cache"
+}
+
 run_ctest() {
   local build_dir="$1" rc=0
+  if ! lzma_built_in "$build_dir"; then
+    echo "==> $build_dir was configured without liblzma: regression_* cannot load their savegames"
+    echo "==> ctest --test-dir $build_dir -j$JOBS --timeout 120 -E '^regression_'"
+    CTEST_OUTPUT_ON_FAILURE=1 ctest --test-dir "$build_dir" -j"$JOBS" --timeout 120 \
+      -E '^regression_' || rc=$?
+    echo "regression_*: NOT RUN -- configure with liblzma (its headers and library), then reconfigure $build_dir"
+    [[ "$rc" -eq 0 ]] || return 1
+    return "$EXIT_PARTIAL"
+  fi
   if baseset_available "$build_dir"; then
     echo "==> ctest --test-dir $build_dir -j$JOBS --timeout 120"
     CTEST_OUTPUT_ON_FAILURE=1 ctest --test-dir "$build_dir" -j"$JOBS" --timeout 120 || rc=$?
