@@ -1,5 +1,12 @@
 name: Commit checker
 
+# Upstream's commit checker, with the fork's one change: merge commits are not judged.
+# OpenTTD/OpenTTD-git-hooks check-commits.sh takes every commit of the pull request, merges included,
+# and judges a merge by its diff against its first parent, which is everything master brought in, and
+# by its message, which never has the keyword form. Every PR that merges master into its branch (the
+# fork's delivery, .ai/repo/workflows/delivery.md) then failed on commits it did not write. The same
+# hooks (check-diff.py, check-message.py) still judge every non-merge commit of the PR.
+
 on:
   pull_request:
 
@@ -21,5 +28,29 @@ jobs:
     - name: Get pull-request commits
       uses: OpenTTD/actions/checkout-pull-request@v7
 
+    - name: Checkout the commit hooks
+      uses: actions/checkout@v7
+      with:
+        repository: OpenTTD/OpenTTD-git-hooks
+        ref: main
+        path: .git-hooks
+
     - name: Check commits
-      uses: OpenTTD/OpenTTD-git-hooks@main
+      shell: bash
+      run: |
+        hooks=.git-hooks/hooks
+        echo "::add-matcher::.git-hooks/action/check-diff-matcher.json"
+        echo "::add-matcher::.git-hooks/action/check-message-matcher.json"
+        git log --oneline --no-merges HEAD^..HEAD^2
+        failure=0
+        msg=$(mktemp); diff=$(mktemp)
+        for h in $(git rev-list --no-merges HEAD^..HEAD^2); do
+          git log -1 --format='%n>>> %h >>> %s' "$h"
+          LC_ALL=C git diff "$h^..$h" > "$diff"
+          "$hooks/check-diff.py" "$diff" || failure=1
+          git cat-file commit "$h" | sed '1,/^$/d' > "$msg"
+          "$hooks/check-message.py" "$msg" server || failure=1
+        done
+        echo "::remove-matcher owner=check-diff::"
+        echo "::remove-matcher owner=check-message::"
+        exit "$failure"
