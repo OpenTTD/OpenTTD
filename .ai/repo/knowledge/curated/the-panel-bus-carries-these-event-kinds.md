@@ -84,6 +84,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `panel.rhai` | panel | `panel.rs:Game::event` | `{text}` | a Rhai script ran |
 | `panel.view` | panel | `panel.rs:Game::event` | `{text}` | a GUI client attached |
 | `panel.ai` | panel | `panel.rs:Game::event` | `{text}` | the bot's `planner:` lines, its start, the held start, calibration, Prismatic's directive |
+| `panel.mesh` | panel | `panel.rs:Game::event` | `{text}` | a plan.directive or plan.directive_outcome was mirrored to the Majordomus mesh as a typed record, or not (src/panel_mesh.rs; only with $MAJORDOMUS_URL and $MAJORDOMUS_SESSION) |
 | `panel.plan` | panel | `panel.rs:Game::event` | `{text}` | an action plan or an investment was decided |
 | `panel.intent` | panel | `panel.rs:Game::event` | `{text}` | a sentence was answered (`POST /api/intent`, `~ plan` in the console) |
 | `panel.duel` | panel | `panel_results.rs` | `{text}` | a duel started from the panel; the README scoreboard was regenerated |
@@ -97,7 +98,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`); `inputs.stored` is the fit it sent (its samples query or bus, rows, model, I0085) or the fallback |
 | `plan.directive_outcome` | panel | `panel.rs:watch, panel_decision.rs:on_decision` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a directive that waited (plan.directive outcome pending) has the game's verdict for every step, or waited an hour without one (`expired`); `inputs.live.directive_seq` names its plan.directive |
 | `plan.kernel` | external (`POST /api/bus/publish`) | `kernel_feed.rs:event (mcp-kernel-feed --publish)` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | an AlgoGlyph kernel answered a request fed from the store (I0086) |
-| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, rival, winner}`, read from the store (I0083) |
+| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083) |
 | `game.new_world` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's tick went back |
 | `game.month` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's month changed |
 | `game.paused` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's paused flag went on |
