@@ -42,6 +42,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -83,7 +84,7 @@ class Repo:
 
     @classmethod
     def load(cls, root: Path) -> "Repo":
-        out = git(root, "ls-files", "-z", "--cached", "--others", "--exclude-standard")
+        out = git(root, "ls-files", "-z", *tracked_sources())
         repo = cls(root=root)
         for name in out.split("\0"):
             if not name:
@@ -105,8 +106,24 @@ class Repo:
 
 
 def git(root: Path, *args: str) -> str:
+    env = dict(os.environ)
+    if env.get("GIT_INDEX_FILE"):
+        # git may export a relative index path; `-C root` would resolve it against root.
+        env["GIT_INDEX_FILE"] = os.path.abspath(env["GIT_INDEX_FILE"])
     return subprocess.run(["git", "-C", str(root), *args], check=True, capture_output=True,
-                          text=True).stdout
+                          text=True, env=env).stdout
+
+
+def tracked_sources() -> list[str]:
+    """What counts as a file: the index, plus new files git would not ignore.
+
+    Inside a git hook (git exports GIT_INDEX_FILE to pre-commit) the commit holds only the index,
+    so a file written but not added is left out, exactly as tools/surfaces/surfaces.py load_repo.
+    """
+    sources = ["--cached"]
+    if not os.environ.get("GIT_INDEX_FILE"):
+        sources += ["--others", "--exclude-standard"]
+    return sources
 
 
 def glob_regex(spec: str) -> re.Pattern[str]:
@@ -226,8 +243,7 @@ def problem_of(repo: Repo, ref: Ref) -> str | None:
 
 
 def records(repo: Repo, pathspecs: list[str]) -> list[str]:
-    out = git(repo.root, "ls-files", "-z", "--cached", "--others", "--exclude-standard", "--",
-              *pathspecs)
+    out = git(repo.root, "ls-files", "-z", *tracked_sources(), "--", *pathspecs)
     return sorted(p for p in out.split("\0") if p and p.endswith(".md"))
 
 

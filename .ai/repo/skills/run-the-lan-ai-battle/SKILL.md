@@ -41,7 +41,12 @@ to measure whether matches still replay identically across machines.
 3. **Edition.** Commit PrismaticAI and referee changes first, then run `battle.py prepare`. It
    refuses a dirty export. Use `--allow-dirty` only for a trial run: `check` refuses every record
    from such an edition.
-4. **Run.** `battle.py probe`, then `battle.py run` (in the background; logs to stdout). Open
+4. **Run.** Only on a current instruction from the owner: a tournament holds every arena machine,
+   and other sessions build on them (rule `project.long-runs-are-owned-bounded-and-stoppable`).
+   Announce it on the board with the orchestrator's machine and how to stop it. `battle.py probe`
+   shows each host's state and how many matches its floors admit. Then `battle.py run` (in the
+   background; logs to stdout). `~/ttd-battle/PAUSED` on a host or `~/ttd-battle/STOP` beside the
+   orchestrator stops new matches, and so does an owner's stop order. Open
    `http://127.0.0.1:8765/`. Watch the arenas, live matches, leaderboard, replays and event log.
    A replay that is not identical names its two builds: read both `host_version`s before
    concluding anything.

@@ -11,6 +11,8 @@ With no argument it rewrites the region; any other argument is refused (exit 2) 
 """
 
 import json
+import os
+import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -23,9 +25,35 @@ SEED, MONTHS = 31337, 36
 STYLE = ROOT / "tools" / "research" / "noirgfx" / "style.toml"  # NoirGFX palette
 
 
+def records():
+    """The duel records the next commit can hold, counted like tools/surfaces/surfaces.py load_repo.
+
+    What git tracks plus new files it would not ignore, so a rewrite and `--check` agree before and
+    after a `git add`; inside a git hook (git exports GIT_INDEX_FILE to pre-commit) only the index,
+    because a record written but never added would pass the hook, enter README.md and break CI,
+    whose checkout does not have it. Outside a git checkout of ROOT every record on disk counts.
+    """
+    env = dict(os.environ)
+    if env.get("GIT_INDEX_FILE"):  # pre-commit may export it relative to the hook's directory
+        env["GIT_INDEX_FILE"] = os.path.abspath(env["GIT_INDEX_FILE"])
+    sources = ["--cached"]
+    if not env.get("GIT_INDEX_FILE"):
+        sources += ["--others", "--exclude-standard"]
+    git = lambda *a: subprocess.run(["git", *a], cwd=RESULTS, env=env, check=True,
+                                    capture_output=True, text=True).stdout
+    try:
+        if Path(git("rev-parse", "--show-toplevel").strip()).resolve() != ROOT.resolve():
+            raise ValueError("not a checkout of ROOT")
+        listed = git("ls-files", "-z", *sources, "--", ".").split("\0")
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        return sorted(RESULTS.glob("duel-*.json"))
+    return sorted(RESULTS / p for p in listed
+                  if "/" not in p and Path(p).match("duel-*.json") and (RESULTS / p).exists())
+
+
 def load():
     runs = []
-    for path in sorted(RESULTS.glob("duel-*.json")):
+    for path in records():
         data = json.loads(path.read_text())
         final = data.get("final", {})
         if "1" not in final or "2" not in final:

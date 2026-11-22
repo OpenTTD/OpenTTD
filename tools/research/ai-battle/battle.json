@@ -10,6 +10,11 @@
   "offline_probe_every_s": 300,
   "stall_s": 600,
   "replay_every": 8,
+  "resource_floor": {
+    "max_load_per_core": 1.0,
+    "min_free_disk_gib": 35,
+    "max_swap_used_gib": 16
+  },
   "discover": {
     "local_name": "local",
     "identity": "~/.ssh/cluster_ed25519",

@@ -16,13 +16,34 @@ Commands:
   discover   find the SSH-reachable machines on the local /24 and write the local hosts file
   fetch      download the BaNaNaS contestants into the cache (throwaway loopback -D server)
   prepare    assemble the arena bundle: base set, AIs, PrismaticAI and referee at a clean commit
-  probe      show which hosts are usable now
-  run        schedule matches forever and serve the dashboard (SIGTERM / Ctrl-C stops)
+  probe      show which hosts are usable now (state, build, load, disk; paused and busy hosts)
+  run        schedule matches forever and serve the dashboard (SIGTERM / Ctrl-C stops; STOP holds it)
   status     print the current edition's leaderboard
   report     write research/results/battle-<utc>-<edition>.{json,md} and the README leaderboard
   check      validate every battle record and that the README leaderboard is derived (the gate)
   fitness    one short local match of the working tree's PrismaticAI against a reference AI; fails
              on a Squirrel error, an unfinished match or a collapsing fleet (the gate, on change)
+
+Guards (after an incident where `run` kept ~32 matches per host going for three days, drove targets
+to load 86 on 18 cores and 35 of 37 GB swap, and nobody on a target could tell whose they were):
+  PAUSED     an arena takes no new match while a file `<remote root>/PAUSED*` (default
+             $HOME/ttd-battle/PAUSED) exists on it; its first line is shown as the reason. Anyone
+             with a shell on the target can pause it: `echo "need the cores" > ~/ttd-battle/PAUSED`.
+             Running matches finish on their own (or kill them by <root>/matches/*/*/pid).
+  STOP       `run` starts no new match on any arena while `<local root>/STOP` (default
+             ~/ttd-battle/STOP) exists on the orchestrator's machine; it logs an event, keeps
+             reading the running matches and resumes when the file is gone.
+  floor      every probe also reads load average, CPU count, swap and free disk of the remote root
+             (one portable shell call). An arena whose load per core is above `max_load_per_core`
+             (1.0), whose free disk is under `min_free_disk_gib` (35) or whose used swap is above
+             `max_swap_used_gib` (16) is `busy` and takes no match; otherwise new matches are capped
+             so the load stays under the ceiling. Defaults: battle.json `resource_floor`; per host:
+             `resource_floor` in hosts.json. An unreadable figure never blocks; it is logged.
+  ownership  before the first match on an arena, `run` writes `<remote root>/ORCHESTRATOR` (host,
+             pid, start time, commit, how to stop it). Every match carries
+             TTD_BATTLE_ORCHESTRATOR=<host>:<pid> in its environment (`ps eww`), the wrapper's argv
+             names it (`ps` shows `ttd-battle[<host>:<pid>]`), and its match directory holds it in
+             a file `orchestrator`.
 
 Exit codes (Majordomus convention): 0 ok, 2 usage, 10 contract unmet, 11 drift, 12 missing.
 """
@@ -310,20 +331,207 @@ def load_hosts(cfg: dict) -> list[dict]:
     return [{"name": "local", "ssh": None, "slots": max(1, (os.cpu_count() or 2) // 3)}]
 
 
+# What an arena must have left before it takes a match (battle.json `resource_floor`, per host
+# `resource_floor` in hosts.json). The disk floor is the machine rule's 35 GiB.
+FLOOR_DEFAULTS = {"max_load_per_core": 1.0, "min_free_disk_gib": 35, "max_swap_used_gib": 16}
+GIB_KIB = 1024 * 1024
+
+
+def floor_limits(defaults: dict | None, spec: dict) -> dict:
+    """The resource floor of one host: built-in defaults < battle.json < the host's own entry."""
+    return {**FLOOR_DEFAULTS, **(defaults or {}), **(spec.get("resource_floor") or {})}
+
+
+def probe_script(binary: str, root: str) -> str:
+    """One shell call, POSIX sh on macOS and Linux, one tagged line per fact: the build, a pause
+    marker, CPU count, load average, swap (macOS sysctl / Linux /proc/meminfo) and free disk of the
+    remote root (its nearest existing parent before the first sync)."""
+    return (f'b={binary}; r={root}\n'
+            'if [ -x "$b" ]; then echo "VERSION $("$b" -h 2>&1 | head -1)"; else echo NO_BINARY; fi\n'
+            'for f in "$r"/PAUSED*; do if [ -f "$f" ]; then echo "PAUSED $f"; '
+            'echo "PAUSEDMSG $(head -1 "$f")"; break; fi; done\n'
+            'echo "NCPU $(sysctl -n hw.ncpu 2>/dev/null || nproc 2>/dev/null || '
+            'getconf _NPROCESSORS_ONLN 2>/dev/null)"\n'
+            'echo "LOAD $(cat /proc/loadavg 2>/dev/null || sysctl -n vm.loadavg 2>/dev/null || uptime)"\n'
+            'echo "SWAP $(sysctl -n vm.swapusage 2>/dev/null)"\n'
+            "grep -E '^(MemTotal|MemAvailable|SwapTotal|SwapFree):' /proc/meminfo 2>/dev/null "
+            "| sed 's/^/MEM /'\n"
+            'd="$r"; while [ ! -d "$d" ]; do d=$(dirname "$d"); done\n'
+            'echo "DISK $(df -Pk "$d" 2>/dev/null | tail -1)"\n'
+            'exit 0\n')
+
+
+UNIT_MIB = {"K": 1 / 1024, "M": 1, "G": 1024, "T": 1024 * 1024}
+DF_LINE = re.compile(r"(\d+)\s+(\d+)\s+(\d+)\s+(\d+)%\s+(\S.*)$")
+
+
+def parse_probe(text: str) -> dict:
+    """The facts of `probe_script`'s output. Tolerant: a figure it cannot read stays None (and never
+    blocks a host) and the line goes to `unparsed`, for the orchestrator to log."""
+    res = {"version": None, "no_binary": False, "pause_file": None, "paused": None, "ncpu": None,
+           "load": None, "disk_free_kib": None, "disk_mount": None, "swap_used_mib": None,
+           "swap_total_mib": None, "mem_avail_kib": None, "unparsed": []}
+    meminfo: dict[str, int] = {}
+    for line in text.splitlines():
+        tag, _, rest = line.partition(" ")
+        rest = rest.strip()
+        ok = True
+        if tag == "VERSION":
+            res["version"] = rest.replace("OpenTTD ", "")
+        elif tag == "NO_BINARY":
+            res["no_binary"] = True
+        elif tag == "PAUSED":
+            res["pause_file"] = rest
+        elif tag == "PAUSEDMSG":
+            res["paused"] = rest
+        elif tag == "NCPU":
+            ok = rest.isdigit() and int(rest) > 0
+            res["ncpu"] = int(rest) if ok else None
+        elif tag == "LOAD":
+            # /proc/loadavg "0.52 0.58 0.59 1/389 12345"; sysctl "{ 1.2 1.1 1.0 }"; uptime "...
+            # load average(s): 0.52, 0.58, 0.59" (some locales write 0,52).
+            m = re.search(r"load averages?:\s*(.*)", rest)
+            nums = re.findall(r"\d+(?:[.,]\d+)?", m.group(1) if m else rest)[:3]
+            ok = bool(nums)
+            res["load"] = [float(n.replace(",", ".")) for n in nums] if ok else None
+        elif tag == "SWAP":
+            if rest:   # macOS: "total = 2048.00M  used = 1024.50M  free = 1023.50M  (encrypted)"
+                t = re.search(r"total = ([\d.]+)([KMGT])", rest)
+                u = re.search(r"used = ([\d.]+)([KMGT])", rest)
+                ok = bool(t and u)
+                if ok:
+                    res["swap_total_mib"] = float(t.group(1)) * UNIT_MIB[t.group(2)]
+                    res["swap_used_mib"] = float(u.group(1)) * UNIT_MIB[u.group(2)]
+        elif tag == "MEM":   # Linux: "MemAvailable:   1234 kB"
+            m = re.match(r"(\w+):\s*(\d+)", rest)
+            ok = bool(m)
+            if ok:
+                meminfo[m.group(1)] = int(m.group(2))
+        elif tag == "DISK":
+            m = DF_LINE.search(rest)
+            ok = bool(m)
+            if ok:
+                res["disk_free_kib"], res["disk_mount"] = int(m.group(3)), m.group(5)
+        elif line.strip():
+            ok = False
+        if not ok:
+            res["unparsed"].append(line.strip()[:120])
+    if "MemAvailable" in meminfo:
+        res["mem_avail_kib"] = meminfo["MemAvailable"]
+    if "SwapTotal" in meminfo and "SwapFree" in meminfo:
+        res["swap_total_mib"] = meminfo["SwapTotal"] / 1024
+        res["swap_used_mib"] = (meminfo["SwapTotal"] - meminfo["SwapFree"]) / 1024
+    if res["pause_file"] and not res["paused"]:
+        res["paused"] = f"{res['pause_file']} present"
+    for key, tag in (("ncpu", "NCPU"), ("load", "LOAD"), ("disk_free_kib", "DISK")):
+        if res[key] is None and not any(u.startswith(tag) for u in res["unparsed"]):
+            res["unparsed"].append(f"no {tag} line")
+    return res
+
+
+def probe_state(res: dict, returncode: int, stderr: str, binary: str) -> tuple[str, str]:
+    """(state, detail) of a host from its parsed probe. A pause marker wins over everything but an
+    unreachable host: it is a human's order. Output without a build line is an error: a host whose
+    probe is not understood is not handed matches."""
+    if res["paused"]:
+        return "paused", res["paused"]
+    if res["no_binary"]:
+        return "no-binary", f"{binary} not found"
+    if returncode != 0:
+        return "error", stderr.strip()[-200:]
+    if res["version"] is None:
+        return "error", "probe output not understood: " + "; ".join(res["unparsed"])[:200]
+    return "online", resource_summary(res)
+
+
+def resource_summary(res: dict) -> str:
+    parts = []
+    if res.get("load") and res.get("ncpu"):
+        parts.append(f"load {max(res['load'][:2]):.1f}/{res['ncpu']} cores")
+    if res.get("disk_free_kib") is not None:
+        parts.append(f"disk {res['disk_free_kib'] / GIB_KIB:.1f} GiB free")
+    if res.get("swap_used_mib") is not None:
+        parts.append(f"swap {res['swap_used_mib'] / 1024:.1f} GiB used")
+    if res.get("mem_avail_kib") is not None:
+        parts.append(f"mem {res['mem_avail_kib'] / GIB_KIB:.1f} GiB available")
+    return ", ".join(parts)
+
+
+def floor_decision(load: float | None, ncpu: int | None, free_disk_kib: int | None, room: int,
+                   limits: dict, swap_used_mib: float | None = None) -> tuple[int, str]:
+    """How many new matches a host may take: (count, reason). `room` is its free slots. A figure
+    that is None (unreadable) never blocks. Blocked by free disk under the floor, used swap over its
+    ceiling, or load per core over its ceiling; otherwise capped so that one more match (one core,
+    OpenTTD runs single-threaded) per new match keeps the load at or under the ceiling. The reason
+    is empty when nothing but the slots limited the count."""
+    room = max(0, room)
+    floor_gib = limits.get("min_free_disk_gib")
+    if free_disk_kib is not None and floor_gib is not None and free_disk_kib < floor_gib * GIB_KIB:
+        return 0, f"free disk {free_disk_kib / GIB_KIB:.1f} GiB < floor {floor_gib} GiB"
+    swap_cap = limits.get("max_swap_used_gib")
+    if swap_used_mib is not None and swap_cap is not None and swap_used_mib > swap_cap * 1024:
+        return 0, f"swap {swap_used_mib / 1024:.1f} GiB used > ceiling {swap_cap} GiB"
+    ceiling = limits.get("max_load_per_core")
+    if load is None or not ncpu or ceiling is None:
+        return room, ""
+    per_core = load / ncpu
+    if per_core > ceiling:
+        return 0, f"load {load:.1f} on {ncpu} cores = {per_core:.2f}/core > ceiling {ceiling}"
+    headroom = max(0, math.floor(ceiling * ncpu - load + 1e-9))
+    if headroom < room:
+        return headroom, (f"load {load:.1f} on {ncpu} cores: room for {headroom} more under "
+                          f"{ceiling}/core")
+    return room, ""
+
+
+def stop_requested(root: Path) -> str | None:
+    """The orchestrator's STOP file: None when absent, else its first line (or a note that it exists)."""
+    f = root / "STOP"
+    if not f.is_file():
+        return None
+    try:
+        first = (f.read_text(errors="replace").splitlines() or [""])[0].strip()
+    except OSError:
+        first = ""
+    return first or f"{f} present"
+
+
+def owner_marker(hostname: str, pid: int) -> str:
+    """`<host>:<pid>` of the orchestrator, safe to put unquoted into a shell line and a process title."""
+    return f"{re.sub(r'[^A-Za-z0-9._-]', '_', hostname) or 'unknown'}:{pid}"
+
+
+def orchestrator_text(hostname: str, pid: int, started_at: str, commit: str, arena_rev: str,
+                      edition: str, root: str, local_root: str) -> str:
+    """The `<remote root>/ORCHESTRATOR` file: who runs the matches on this host and how to stop it."""
+    marker = owner_marker(hostname, pid)
+    return (f"# AIBattle (OpenTTD research fork, tools/research/ai-battle/battle.py run) schedules\n"
+            f"# matches onto this host. Matches carry TTD_BATTLE_ORCHESTRATOR={marker}.\n"
+            f"host={hostname}\npid={pid}\nstarted_at={started_at}\ncommit={commit}\n"
+            f"arena_rev={arena_rev}\nedition={edition}\nmarker=TTD_BATTLE_ORCHESTRATOR={marker}\n"
+            f"how_to_stop=echo '<reason>' > {root}/PAUSED on this host (no new match here; running "
+            f"ones finish, or kill them by {root}/matches/*/*/pid), or SIGTERM pid {pid} on host "
+            f"{hostname} (kill -TERM {pid}), or create {local_root}/STOP there (no new match "
+            f"anywhere)\n")
+
+
 class Host:
     """One arena machine; `ssh` is None for the machine this orchestrator runs on."""
 
-    def __init__(self, spec: dict, remote_root: str):
+    def __init__(self, spec: dict, remote_root: str, floor: dict | None = None):
         self.name = spec["name"]
         self.ssh = spec.get("ssh")
         self.ssh_args = [os.path.expanduser(a) for a in spec.get("ssh_args", [])]
         self.binary = spec.get("binary", DEFAULT_BINARY)
         self.slots = int(spec.get("slots", 1))
+        self.limits = floor_limits(floor, spec)
         self.root = remote_root
-        self.state = "unknown"   # online | offline | no-binary | error
+        self.state = "unknown"   # online | busy | paused | offline | no-binary | error
         self.detail = ""
         self.version = ""
+        self.res: dict = {}
         self.synced_digest = None
+        self.claimed = False     # <root>/ORCHESTRATOR written by this process
         self.next_probe = 0.0
 
     def sh(self, script: str, timeout: int = 60) -> subprocess.CompletedProcess:
@@ -341,20 +549,37 @@ class Host:
 
     def probe(self) -> None:
         try:
-            r = self.sh(f'b={self.binary}; if [ -x "$b" ]; then "$b" -h 2>&1 | head -1; '
-                        'else echo NO_BINARY; fi', timeout=15)
+            r = self.sh(probe_script(self.binary, self.root), timeout=15)
         except subprocess.TimeoutExpired:
             self.state, self.detail = "offline", "timeout"
             return
         if r.returncode == 255:
             self.state, self.detail = "offline", (r.stderr.strip().splitlines() or [""])[-1]
-        elif "NO_BINARY" in r.stdout:
-            self.state, self.detail = "no-binary", f"{self.binary} not found"
-        elif r.returncode != 0:
-            self.state, self.detail = "error", r.stderr.strip()[-200:]
-        else:
-            self.state, self.detail = "online", ""
-            self.version = r.stdout.strip().replace("OpenTTD ", "")
+            return
+        self.res = parse_probe(r.stdout)
+        self.state, self.detail = probe_state(self.res, r.returncode, r.stderr, self.binary)
+        if self.res["version"] is not None:
+            self.version = self.res["version"]
+
+    def admit(self, running: int) -> int:
+        """New matches this host may take now, from its last probe: its free slots, held to the
+        resource floor. A host the floor blocks becomes `busy`, with the figures as its detail."""
+        if self.state != "online":
+            return 0
+        load = self.res.get("load")
+        n, why = floor_decision(max(load[:2]) if load else None, self.res.get("ncpu"),
+                                self.res.get("disk_free_kib"), self.slots - running, self.limits,
+                                self.res.get("swap_used_mib"))
+        if why:
+            self.state, self.detail = ("busy" if n == 0 else "online"), why
+        return n
+
+    def claim(self, text: str) -> bool:
+        """Write <root>/ORCHESTRATOR (who schedules here, how to stop it). True when written."""
+        r = self.try_sh(f"mkdir -p {self.root} && cat > {self.root}/ORCHESTRATOR <<'EOS'\n{text}EOS\n",
+                        timeout=30)
+        self.claimed = r.returncode == 0
+        return self.claimed
 
     def sync_arena(self, cache: Path, digest: str) -> None:
         """Copy the arena bundle to <root>/arena on the host (skipped when it is the cache)."""
@@ -661,14 +886,21 @@ def reap_script(root: str, keep_edition: str) -> str:
             'done; echo "reaped $n"')
 
 
-def launch_script(host: Host, m: dict, mc: dict) -> str:
+def launch_script(host: Host, m: dict, mc: dict, owner: str = "") -> str:
+    """The shell that starts one match on its host. `owner` (`<host>:<pid>` of the orchestrator)
+    goes into the match's environment (TTD_BATTLE_ORCHESTRATOR, for `ps eww`), the wrapper's argv
+    (`ps` shows `ttd-battle[<owner>]`) and <match dir>/orchestrator: a match outlives its ssh session
+    and is reparented to init/launchd, so this is how a target's user finds whose it is."""
     root, mdir = host.root, match_dir(host.root, m)
     personal = f"{mdir}/home/Documents/OpenTTD"
+    owner = owner or "unknown"
     # A leftover directory would hand its old exit_code and log to this match: refuse it.
     return f"""set -e
+export TTD_BATTLE_ORCHESTRATOR={owner}
 test ! -e {mdir}
 mkdir -p {personal}/scripts
 cd {mdir}
+echo "$TTD_BATTLE_ORCHESTRATOR" > orchestrator
 for d in baseset ai game; do ln -sfn {root}/arena/$d {personal}/$d; done
 # Linux (XDG) reads the personal directory from ~/.local/share/openttd: point it at the same one.
 mkdir -p {mdir}/home/.local/share && ln -sfn {personal} {mdir}/home/.local/share/openttd
@@ -679,7 +911,7 @@ cat > battle.cfg <<'EOS'
 {battle_cfg_text(mc)}EOS
 nohup sh -c 'HOME={mdir}/home {host.binary} -c battle.cfg -x -v null:ticks={m['ticks']} \\
   -s null -m null -g -G {m['seed']} -d script=1 > match.log 2>&1 < /dev/null &
-  echo $! > pid; wait $!; echo $? > exit_code' > /dev/null 2>&1 < /dev/null &
+  echo $! > pid; wait $!; echo $? > exit_code' 'ttd-battle[{owner}]' > /dev/null 2>&1 < /dev/null &
 echo launched
 """
 
@@ -975,7 +1207,8 @@ class Orchestrator:
         (self.mdir.parent / "edition.json").write_text(json.dumps({"edition": self.digest, "rev": rev}) + "\n")
         self.rev = rev
         self.store = Store(cfg["results"] / "battle.sqlite")
-        self.hosts = [Host(h, cfg.get("remote_root", "$HOME/ttd-battle")) for h in load_hosts(cfg)]
+        self.hosts = [Host(h, cfg.get("remote_root", "$HOME/ttd-battle"), cfg.get("resource_floor"))
+                      for h in load_hosts(cfg)]
         self.contestants = [dict(c, key=contestant_key(c)) for c in cfg["contestants"]]
         self.matches: dict[str, dict] = {}
         for f in sorted(self.mdir.glob("*.json")):
@@ -994,6 +1227,15 @@ class Orchestrator:
         self.stop = threading.Event()
         self.events: list[dict] = []
         self.promoted: set[str] = set()
+        # Who this orchestrator is, on every host it touches (ORCHESTRATOR file, match environment).
+        self.hostname, self.pid = socket.gethostname(), os.getpid()
+        self.owner = owner_marker(self.hostname, self.pid)
+        self.started_at = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
+        try:
+            self.commit = git("rev-parse", "HEAD")
+        except (subprocess.CalledProcessError, OSError):
+            self.commit = "unknown"
+        self.held_by_stop: str | None = None
 
     def save(self, m: dict) -> None:
         tmp = self.mdir / f"{m['id']}.json.tmp"
@@ -1068,8 +1310,13 @@ class Orchestrator:
                 if h.slots != slots:
                     self.event(f"host {h.name}: slots {h.slots} -> {slots} from the hosts file")
                     h.slots = slots
+                limits = floor_limits(self.cfg.get("resource_floor"), spec)
+                if h.limits != limits:
+                    self.event(f"host {h.name}: resource floor {limits} from the hosts file")
+                    h.limits = limits
             else:
-                self.hosts.append(Host(spec, self.cfg.get("remote_root", "$HOME/ttd-battle")))
+                self.hosts.append(Host(spec, self.cfg.get("remote_root", "$HOME/ttd-battle"),
+                                       self.cfg.get("resource_floor")))
                 self.event(f"host {spec['name']}: added from the hosts file")
 
     def tuning_step(self) -> bool:
@@ -1111,17 +1358,42 @@ class Orchestrator:
             f"{v['label']} [{v['settings']}]" for v in state["variants"]) + "; restarting")
         return True
 
+    def stop_file_holds(self) -> bool:
+        """True while <local root>/STOP exists: no new match anywhere. Logs when it appears and goes."""
+        why = stop_requested(self.cfg["cache"])
+        if why is not None and self.held_by_stop is None:
+            self.event(f"STOP: {self.cfg['cache'] / 'STOP'} exists ({why}): no new match on any host; "
+                       "running matches finish and are still read")
+        elif why is None and self.held_by_stop is not None:
+            self.event(f"STOP: {self.cfg['cache'] / 'STOP'} removed: scheduling resumes")
+        self.held_by_stop = why
+        return why is not None
+
+    def orchestrator_file(self, host: Host) -> str:
+        return orchestrator_text(self.hostname, self.pid, self.started_at, self.commit, self.rev,
+                                 self.digest, host.root, str(self.cfg["cache"]))
+
     def schedule_pass(self) -> None:
         self.reload_hosts()
+        if self.stop_file_holds():
+            return
         for host in self.hosts:
             if time.time() < host.next_probe:
                 continue
             prev = host.state
             host.probe()
+            n = host.admit(len(self.running_on(host)))
             if host.state != prev:
                 self.event(f"host {host.name}: {prev} -> {host.state} {host.detail}".strip())
-            if host.state != "online":
+            unparsed = tuple(host.res.get("unparsed", [])) if host.state != "offline" else ()
+            if unparsed and unparsed != getattr(host, "unparsed_logged", ()):
+                self.event(f"host {host.name}: probe figures not understood, not blocking on them: "
+                           + "; ".join(unparsed)[:300])
+            host.unparsed_logged = unparsed
+            if host.state in ("offline", "no-binary", "error"):
                 host.next_probe = time.time() + self.cfg.get("offline_probe_every_s", 300)
+                continue
+            if n <= 0:   # paused, busy, or every slot taken: probed again next pass
                 continue
             try:
                 host.sync_arena(self.cfg["cache"], self.digest)
@@ -1129,9 +1401,18 @@ class Orchestrator:
                 host.state, host.detail = "error", str(exc)[:200]
                 self.event(f"host {host.name}: arena sync failed: {exc}")
                 continue
-            while len(self.running_on(host)) < host.slots and not self.stop.is_set():
+            if not host.claimed:
+                # A match nobody on the target can trace back to this process is not started.
+                if not host.claim(self.orchestrator_file(host)):
+                    host.state, host.detail = "error", f"cannot write {host.root}/ORCHESTRATOR"
+                    self.event(f"host {host.name}: {host.detail}; no match started there")
+                    continue
+                self.event(f"host {host.name}: wrote {host.root}/ORCHESTRATOR ({self.owner})")
+            for _ in range(n):
+                if self.stop.is_set() or self.stop_file_holds():
+                    break
                 m = self.new_match(host)
-                r = host.try_sh(launch_script(host, m, self.cfg["match"]))
+                r = host.try_sh(launch_script(host, m, self.cfg["match"], self.owner))
                 m["status"] = "running" if "launched" in r.stdout else "failed"
                 tag = f" (replay of {m['replica_of']})" if m["replica_of"] else ""
                 self.event(f"{m['id']} started on {host.name}{tag}, seed {m['seed']}"
@@ -1146,7 +1427,8 @@ class Orchestrator:
     # ---- observation
     def poll_host(self, host: Host) -> None:
         running = self.running_on(host)
-        if not running or host.state != "online":
+        # A paused or busy host takes no new match, but the ones it runs are still read to the end.
+        if not running or host.state not in ("online", "busy", "paused"):
             return
         parts = []
         for m in running:
@@ -1521,8 +1803,37 @@ def render_region(rec: dict | None) -> str:
             f"{body}\n{END}")
 
 
+def tracked_records(pattern: str = RECORD_GLOB, results: Path | None = None,
+                    root: Path | None = None) -> list[Path]:
+    """The records the next commit can hold, counted like tools/research/readme-scoreboard
+    records(): what git tracks plus new files it would not ignore, so a rewrite and `check` agree
+    before and after a `git add`; inside a git hook (git exports GIT_INDEX_FILE to pre-commit) only
+    the index, because a record written but never added would pass the hook, become the latest in
+    the README region and break CI, whose checkout does not have it. Outside a git checkout of the
+    repository every record on disk counts."""
+    results, root = results or RESULTS_DIR, root or REPO
+    env = dict(os.environ)
+    if env.get("GIT_INDEX_FILE"):  # pre-commit may export it relative to the hook's directory
+        env["GIT_INDEX_FILE"] = os.path.abspath(env["GIT_INDEX_FILE"])
+    sources = ["--cached"]
+    if not env.get("GIT_INDEX_FILE"):
+        sources += ["--others", "--exclude-standard"]
+
+    def run_git(*args: str) -> str:
+        return subprocess.run(["git", *args], cwd=results, env=env, check=True,
+                              capture_output=True, text=True).stdout
+    try:
+        if Path(run_git("rev-parse", "--show-toplevel").strip()).resolve() != root.resolve():
+            raise ValueError("not a checkout of the repository")
+        listed = run_git("ls-files", "-z", *sources, "--", ".").split("\0")
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        return sorted(results.glob(pattern))
+    return sorted(results / f for f in listed
+                  if f and "/" not in f and Path(f).match(pattern) and (results / f).exists())
+
+
 def latest_record() -> dict | None:
-    files = sorted(RESULTS_DIR.glob(RECORD_GLOB))
+    files = tracked_records()
     return json.loads(files[-1].read_text()) if files else None
 
 
@@ -1599,7 +1910,8 @@ def cmd_report(cfg: dict, check_only: bool, edition: str | None = None) -> int:
 
 def cmd_check() -> int:
     errs, drift = [], []
-    for f in sorted(RESULTS_DIR.glob(RECORD_GLOB)):
+    files = tracked_records()
+    for f in files:
         rec = json.loads(f.read_text())
         errs += validate_record(rec, f.name)
         md = f.with_suffix(".md")
@@ -1623,7 +1935,7 @@ def cmd_check() -> int:
         return 10
     if drift:
         return 11
-    n = len(list(RESULTS_DIR.glob(RECORD_GLOB)))
+    n = len(files)
     print(f"battle check: {n} record(s) valid, README leaderboard derived")
     return 0
 
@@ -1876,9 +2188,12 @@ def main(argv: list[str] | None = None) -> int:
         cmd_prepare(cfg, a.allow_dirty)
     elif a.command == "probe":
         for spec in load_hosts(cfg):
-            h = Host(spec, cfg.get("remote_root", "$HOME/ttd-battle"))
+            h = Host(spec, cfg.get("remote_root", "$HOME/ttd-battle"), cfg.get("resource_floor"))
             h.probe()
-            print(f"{h.name:10} {h.state:10} slots={h.slots} {h.version or h.detail}")
+            n = h.admit(0)
+            print(f"{h.name:10} {h.state:10} slots={h.slots} admits={n} {h.version} {h.detail}".rstrip())
+            if h.res.get("unparsed"):
+                print(f"{'':10} probe figures not understood: {'; '.join(h.res['unparsed'])}")
     elif a.command == "run":
         Orchestrator(cfg).run(a.port)
     elif a.command == "status":
