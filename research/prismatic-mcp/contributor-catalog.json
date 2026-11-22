@@ -1,5 +1,5 @@
 {
-  "$comment": "Single data source for generated contributor-facing docs (README.md Getting Started section, research/prismatic-mcp/README.md CTA, the Zola site CTA and JSON-LD). Do not hand-edit the generated blocks this drives -- edit this file and rerun tools/research/generate_prismatic_docs.py. Enforced by tools/check-prismatic-docs.sh via tools/gate.sh change.",
+  "$comment": "Single data source for generated contributor-facing docs (README.md Getting Started section, research/prismatic-mcp/README.md CTA; the site and wiki render those documents through tools/surfaces). Do not hand-edit the generated blocks this drives -- edit this file and rerun tools/research/generate_prismatic_docs.py. Enforced by tools/check-prismatic-docs.sh via tools/gate.sh change.",
   "schema_version": "1.0",
   "generator": "tools/research/generate_prismatic_docs.py",
   "project": {
@@ -153,6 +153,11 @@
       "kind": "matrix"
     },
     {
+      "path": "research/prismatic-mcp/owner-answers-event-bus.md",
+      "title": "The owner's answers on the event bus and the store, verbatim with session and time",
+      "kind": "record"
+    },
+    {
       "path": "research/prismatic-mcp/internal-surface-inventory.json",
       "title": "Machine-readable internal surface inventory",
       "kind": "data"
@@ -165,9 +170,9 @@
   ],
   "known_limitations": [
     "The native Control Center window is not implemented; the toolbar button and its menu are (I0072).",
-    "No autonomous multiplayer arena/lab exists; tools/research/mcp-duel runs a duel of two bots in one game.",
+    "Multi-AI play runs outside the MCP server's authorization model: tools/research/mcp-duel plays two bots in one game, the LAN AI battle (research/ai-battle/README.md, feature status draft) runs headless free-for-all matches through existing interfaces, and the live arena (research/live-arena.md) runs one watched game. None gives each player its own MCP client with a company-scoped authorization.",
     "Every mutation needs an operator approval in the console ('prismatic_mcp approve <id>'). A command tool takes a company actor, but there is no per-client company-scoped authorization and no action budget.",
     "Saving a game is not an action type: it is not a game command, so it is not in the catalogue.",
-    "This catalog itself has no automated freshness check against the actual doc_index file list beyond what tools/check-prismatic-docs.sh diffs -- new docs must be added here by hand."
+    "The doc index is checked against the documents in research/prismatic-mcp/ (Markdown and JSON, as git lists them): the generator refuses to run, and tools/check-prismatic-docs.sh fails, while one is missing or an entry names no document. A new document's title and kind are still written here by hand."
   ]
 }

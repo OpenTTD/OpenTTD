@@ -6,6 +6,16 @@
 # `companies` command; after N months the one with the higher company value wins. The record goes to
 # research/results/duel-<time>-seed<N>.{json,md} with both bots' logs.
 #
+# Company B runs its own defaults at the revision that runs. Since df1e05e7d8 PrismaticAI's default is
+# autopilot=1: without a plan it grows on its own (in-bot steward, own freight lines). A default duel
+# since then measures the plan against that autopilot. Every record before it measured the plan
+# against the bot without a plan as it was, which built buses and no rail. To start that former rival
+# again, give its settings after the name (start_ai takes them): --opponent 'PrismaticAI autopilot=0'.
+# B's live settings are read from GET /api/bots before the first month and kept as `rival`; the
+# rival's spread groups records by them, so the autopilot and the former rival are never mixed.
+# The AI is loaded from the game's personal ai/ folder, which tools/research/prismatic-ai/install links
+# to a live checkout; a run that must not change under it uses a copy (research/duel-evidence-audit.md).
+#
 # What the record holds is read from the panel's DuckDB store (ADR 0033, ADR 0034, issue I0083) by
 # query on /api/db/query, paged so that no read is cut: the plan from the run's plan.* events (and its
 # `planner:` sentences for reading), the AI logs from its ai.log rows, the months from its samples
@@ -383,10 +393,32 @@ def was_held(rec):
     return any(isinstance(p, str) and "game unpaused at tick" in p for p in rec.get("plan") or [])
 
 
-def rival_spread(results, seed, months, opponent, held, b_value, name):
-    """The spread of the rival's final value (B, the same bot in every arm) over the recorded duels of
-    this seed, length, opponent and start (held or not), this one included: (max - min) / min. ADR 0034
-    point 6 reads a pair against it; null with fewer than two runs."""
+def rival_config(panel):
+    """Company B's AI and live settings ({name: value}) from GET /api/bots, where company id 1 is the
+    console's #2; None when the panel cannot say (an older panel, B not running yet). The opponent's
+    name alone does not say which rival ran: since df1e05e7d8 `PrismaticAI` with its defaults grows
+    on autopilot, where every earlier record's B built buses."""
+    try:
+        running = panel.get("/api/bots").get("running") or []
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError, AttributeError):
+        return None
+    for r in running:
+        if r.get("id") == 1 and isinstance(r.get("settings"), list):
+            return {"ai": r.get("ai"), "settings": {s["name"]: s.get("value") for s in r["settings"] if "name" in s},
+                    "from": "GET /api/bots, company id 1, before the first month"}
+    return None
+
+
+def rival_settings(rec):
+    return (rec.get("rival") or {}).get("settings")
+
+
+def rival_spread(results, seed, months, opponent, held, b_value, name, settings=None):
+    """The spread of the rival's final value (B) over the recorded duels of this seed, length,
+    opponent, start (held or not) and rival settings, this one included: (max - min) / min. ADR 0034
+    point 6 reads a pair against it; null with fewer than two runs. A run whose rival settings are
+    known groups only with records that hold the same settings; a run without them only with records
+    without them, as before."""
     runs = []
     for path in (sorted(results.glob("duel-*.json")) if results.is_dir() else []):
         if path.stem == name:
@@ -394,6 +426,8 @@ def rival_spread(results, seed, months, opponent, held, b_value, name):
         try:
             rec = json.loads(path.read_text())
             if (rec.get("seed"), rec.get("months"), rec.get("opponent", "PrismaticAI")) != (seed, months, opponent) or was_held(rec) != held:
+                continue
+            if rival_settings(rec) != settings:
                 continue
             runs.append((path.stem, int(rec["final"]["2"]["value"])))
         except (ValueError, KeyError, TypeError, OSError):
@@ -403,7 +437,8 @@ def rival_spread(results, seed, months, opponent, held, b_value, name):
     values = [v for _, v in runs]
     spread = round((max(values) - min(values)) / min(values), 4) if len(values) >= 2 and min(values) > 0 else None
     return {"spread": spread, "runs": len(values), "min": min(values) if values else None, "max": max(values) if values else None,
-            "of": "B's final company value over the recorded duels of this seed, months, opponent and start, this one included",
+            "of": "B's final company value over the recorded duels of this seed, months, opponent, start and rival settings, this one included",
+            "rival_settings": "recorded" if settings is not None else "not recorded",
             "records": [n for n, _ in runs]}
 
 
@@ -508,6 +543,7 @@ def duel(panel, cfg, poll=POLL, sleep=time.sleep):
     # Today's read of the plan, kept for the fallback: the newest 200 panel sentences, read now,
     # before the duel's months push them out.
     status_plan = [e["text"] for e in panel.get("/api/status")["events"] if e["kind"] == "ai" and e["text"].startswith("planner")]
+    rival = rival_config(panel)
     start = months_seen(panel)
     seen, console = start, {}
     while seen - start < cfg["months"]:
@@ -538,18 +574,19 @@ def duel(panel, cfg, poll=POLL, sleep=time.sleep):
     held = reads["held"]["tick"] if reads["held"] else None
     results = cfg["root"] / "research" / "results"
     name = claim_name(results, cfg["seed"], sleep=sleep)
-    rival = rival_spread(results, cfg["seed"], cfg["months"], cfg["opponent"], bool(cfg["start_paused"]), b.get("value"), name)
-    payload = verdict_payload(cfg, revision(str(cfg["root"])), held, a, b, rival, winner, store, fallback,
+    spread = rival_spread(results, cfg["seed"], cfg["months"], cfg["opponent"], bool(cfg["start_paused"]), b.get("value"), name,
+                          rival["settings"] if rival else None)
+    payload = verdict_payload(cfg, revision(str(cfg["root"])), held, a, b, spread, winner, store, fallback,
                               f"research/results/{name}.json", panel.base)
     verdict = publish_verdict(panel, store, payload, sleep=sleep)
     return {"name": name, "b_name": b_name, "record": {
         "experiment": f"duel in one game: planned bot (A, company 1) vs {b_name} (B, company 2)", "label": cfg["label"],
-        "opponent": cfg["opponent"], "bot_settings": cfg["bot_settings"], "seed": cfg["seed"], "months": cfg["months"],
+        "opponent": cfg["opponent"], "rival": rival, "bot_settings": cfg["bot_settings"], "seed": cfg["seed"], "months": cfg["months"],
         "start_paused": cfg["start_paused"], "held_start_tick": held, "held_start": reads["held"],
         "store": store.record() if store is not None else None, "fallback": fallback,
         "missing_months": reads["missing_months"], "bot_log_capped": reads.get("bot_log_capped", False),
         "plan": reads["plan"], "plan_events": reads["plan_events"], "final": final, "winner": winner,
-        "rival_spread": rival, "verdict_event": dict(verdict, data=payload),
+        "rival_spread": spread, "verdict_event": dict(verdict, data=payload),
         "series": series, "bot_log": reads["bot_log"]}}
 
 
@@ -579,8 +616,14 @@ def markdown(rec, b_name):
         source = (f"No store: {rec['fallback']}. The plan, the AI log (the newest 5000 bus events"
                   + (", cut there" if rec["bot_log_capped"] else "") + f") and the months were read as before I0083. {told}")
     r = rec["rival_spread"]
-    spread = (f"Rival spread {r['spread'] * 100:.1f}% over {r['runs']} duels of this seed, length, opponent and start."
-              if r["spread"] is not None else f"Rival spread not measured: {r['runs']} duel(s) of this seed, length, opponent and start.")
+    group = "this seed, length, opponent, start and rival settings" if rec.get("rival") else "this seed, length, opponent and start (B's settings not recorded)"
+    spread = (f"Rival spread {r['spread'] * 100:.1f}% over {r['runs']} duels of {group}."
+              if r["spread"] is not None else f"Rival spread not measured: {r['runs']} duel(s) of {group}.")
+    rival = rec.get("rival")
+    if rival:
+        st = rival["settings"]
+        spread += (f" B ran {rival['ai']} with {len(st)} settings" +
+                   (f", autopilot={st['autopilot']}" if "autopilot" in st else "") + " (`rival` in the record).")
     plan = "\n".join("- " + p for p in rec["plan"]) or "- no planner line recorded"
     return f"""# Duel in one game: planned bot vs {b_name} (seed {rec['seed']}, {rec['months']} months)
 

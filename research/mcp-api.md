@@ -9,7 +9,9 @@ Script API's static functions.
 
 Rule `project.public-api-is-exposed` requires 100% in every dimension. On 2026-11-15 it reported
 commands 0/146, console 83/86 and Script API 0/660. On 2026-11-17, against a panel on this build:
-commands 146/146, Script API 630/630, console 87/87 reachable with 3 gated.
+commands 146/146, Script API 630/630, console 87/87 reachable with 3 gated. Re-measured on
+2026-11-19 against a fresh research build of master (42528010af, the same `src/` as 00d09d4c90):
+the same counts, exit 0 (rule `project.public-api-is-exposed`, "Current state").
 
 The console is counted as the build can reach it. A command the build lacks by design is reported
 as gated, with its reason, not as missing: a registration inside a preprocessor conditional of
