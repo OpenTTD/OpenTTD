@@ -1624,6 +1624,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Vælg højden p
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industri tæthed: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angiv hvor mange industrier skal genereres og hvilket niveau der bevares i løbet af spillet
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :Kun generere primære industrier: {STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :Hvis aktiveret, genereres kun primære industrier under kortgenerering og spil.
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Maksimal afstand fra kant til olieindustrier: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grænse for hvor langt fra kortets kant olieraffinaderier kan blive bygget. På ø-kort sikrer dette at de er nær kysten. På kort større end 256 felter bliver denne værdi automatisk skaleret op
@@ -1949,8 +1951,14 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vis en avis nå
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åbning af industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vis en avis når nye industrier åbner
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Lukning af industrier, som virksomheden betjener: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Vis det i avisen, når de brancher, som virksomheden betjener, lukker ned
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Lukning af brancher betjent af konkurrent(er): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Vis det i avisen, når brancher, der betjenes af konkurrenter, lukker ned
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Lukning af industrier, der ikke betjenes af nogen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Vis det i avisen, når brancher, der ikke betjenes af nogen, lukker
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiændringer: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vis en avis om globale ændringer i økonomi
@@ -2628,7 +2636,7 @@ STR_NETWORK_ERROR_SERVER_FULL                                   :{WHITE}Serveren
 STR_NETWORK_ERROR_SERVER_BANNED                                 :{WHITE}Du er udelukket fra denne server
 STR_NETWORK_ERROR_KICKED                                        :{WHITE}Du blev smidt ud af spillet
 STR_NETWORK_ERROR_KICK_MESSAGE                                  :{WHITE}Grund: {STRING}
-STR_NETWORK_ERROR_CHEATER                                       :{WHITE}Snyderi er ikke tilladt på denne server
+STR_NETWORK_ERROR_CHEATER                                       :Snyderi er ikke tilladt på denne server
 STR_NETWORK_ERROR_TOO_MANY_COMMANDS                             :{WHITE}Du sendte for mange kommandoer til serveren
 STR_NETWORK_ERROR_TIMEOUT_PASSWORD                              :Du tog for lang tid om at indtaste adgangskoden
 STR_NETWORK_ERROR_TIMEOUT_COMPUTER                              :Din computer er for langsom at holde trit med serveren
@@ -2694,10 +2702,10 @@ STR_NETWORK_MESSAGE_SERVER_SHUTDOWN                             :{WHITE}Serveren
 STR_NETWORK_MESSAGE_SERVER_REBOOT                               :{WHITE}Serveren genstarter...{}{}Vent venligst...
 STR_NETWORK_MESSAGE_KICKED                                      :*** {STRING} blev smidt ud. Grund: ({STRING})
 
-STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :{WHITE}Server registrering mislykkedes
+STR_NETWORK_ERROR_COORDINATOR_REGISTRATION_FAILED               :Server registrering mislykkedes
 STR_NETWORK_ERROR_COORDINATOR_REUSE_OF_INVITE_CODE              :En anden server har registreret sig med samme invitationskode. Skifter til "lokal" spiltype.
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :{WHITE}Din server tillader ikke forbindelser udefra
-STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :{WHITE}Andre spillere vil ikke kunne forbinde til din server
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED                          :Din server tillader ikke forbindelser udefra
+STR_NETWORK_ERROR_COORDINATOR_ISOLATED_DETAIL                   :Andre spillere vil ikke kunne forbinde til din server
 
 # Content downloading window
 STR_CONTENT_TITLE                                               :{WHITE}Online indhold
@@ -5134,7 +5142,7 @@ STR_ERROR_SITE_UNSUITABLE                                       :upassende place
 STR_ERROR_ALREADY_BUILT                                         :{WHITE}... allerede bygget
 STR_ERROR_OWNED_BY                                              :{WHITE}... ejes af {STRING}
 STR_ERROR_AREA_IS_OWNED_BY_ANOTHER                              :{WHITE}... området ejes af et andet selskab
-STR_ERROR_TERRAFORM_LIMIT_REACHED                               :{WHITE}... grænsen for landskabsændringer er nået
+STR_ERROR_TERRAFORM_LIMIT_REACHED                               :grænsen for landskabsændringer er nået
 STR_ERROR_CLEARING_LIMIT_REACHED                                :{WHITE}... grænsen for rydning af felter er nået
 STR_ERROR_TREE_PLANT_LIMIT_REACHED                              :{WHITE}... grænse for plantning af træer er nået
 STR_ERROR_NAME_MUST_BE_UNIQUE                                   :{WHITE}Navnet skal være unikt
@@ -5233,7 +5241,7 @@ STR_ERROR_CAN_T_RENAME_STATION                                  :Kan ikke omdøb
 STR_ERROR_CAN_T_MOVE_STATION_NAME                               :{WHITE}Kan ikke flytte stationsskiltet...
 STR_ERROR_DRIVE_THROUGH_ON_TOWN_ROAD                            :{WHITE}... denne vej er ejet af en by
 STR_ERROR_DRIVE_THROUGH_DIRECTION                               :{WHITE}... vejen peger i den forkerte retning
-STR_ERROR_DRIVE_THROUGH_CORNER                                  :{WHITE}... drive-through stops kan ikke have hjørner
+STR_ERROR_DRIVE_THROUGH_CORNER                                  :drive-through stops kan ikke have hjørner
 STR_ERROR_DRIVE_THROUGH_JUNCTION                                :{WHITE}... drive-through stops kan ikke have kryds
 
 # Station destruction related errors
@@ -5247,12 +5255,12 @@ STR_ERROR_MUST_REMOVE_ROAD_STOP_FIRST                           :{WHITE}Det er n
 STR_ERROR_THERE_IS_NO_STATION                                   :der er ingen station her
 
 STR_ERROR_MUST_DEMOLISH_RAILROAD                                :{WHITE}Det er nødvendigt at rive stationen ned først
-STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :{WHITE}Det er nødvendigt at nedrive rutebilstationen først
+STR_ERROR_MUST_DEMOLISH_BUS_STATION_FIRST                       :det er nødvendigt at nedrive rutebilstationen først
 STR_ERROR_MUST_DEMOLISH_TRUCK_STATION_FIRST                     :{WHITE}Det er nødvendigt at rive fragtcentralen ned først
 STR_ERROR_MUST_DEMOLISH_PASSENGER_TRAM_STATION_FIRST            :{WHITE}Passager-sporvognsstation skal fjernes først
 STR_ERROR_MUST_DEMOLISH_CARGO_TRAM_STATION_FIRST                :{WHITE}Fragt-sporvognsstation skal fjernes først
 STR_ERROR_MUST_DEMOLISH_DOCK_FIRST                              :{WHITE}Det er nødvendigt at rive havnen ned først
-STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :{WHITE}Det er nødvendigt at rive lufthavnen ned først
+STR_ERROR_MUST_DEMOLISH_AIRPORT_FIRST                           :det er nødvendigt at rive lufthavnen ned først
 
 # Waypoint related errors
 STR_ERROR_WAYPOINT_ADJOINS_MORE_THAN_ONE_EXISTING               :{WHITE}Støder op til mere end et eksisterende rutepunkt
@@ -5285,7 +5293,7 @@ STR_ERROR_SHIP_MUST_BE_STOPPED_INSIDE_DEPOT                     :{WHITE}... skal
 STR_ERROR_AIRCRAFT_MUST_BE_STOPPED_INSIDE_HANGAR                :{WHITE}... skal være stoppet i en hangar
 
 STR_ERROR_TRAINS_CAN_ONLY_BE_ALTERED_INSIDE_A_DEPOT             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
-STR_ERROR_TRAIN_TOO_LONG                                        :{WHITE}Toget er for langt
+STR_ERROR_TRAIN_TOO_LONG                                        :toget er for langt
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE                  :{WHITE}Kan ikke vende køretøjet om...
 STR_ERROR_CAN_T_REVERSE_DIRECTION_RAIL_VEHICLE_MULTIPLE_UNITS   :{WHITE}... består af flere enheder
 STR_ERROR_INCOMPATIBLE_RAIL_TYPES                               :Skinnetyperne passer ikke sammen
@@ -5299,14 +5307,14 @@ STR_ERROR_UNABLE_TO_FIND_LOCAL_HANGAR                           :Kan ikke finde 
 STR_ERROR_DEPOT_WRONG_DEPOT_TYPE                                :Forkert depottype
 
 # Depot unbunching related errors
-STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :{WHITE}... kan kun have én opsamlingsordre
+STR_ERROR_UNBUNCHING_ONLY_ONE_ALLOWED                           :kan kun have én opsamlingsordre
 STR_ERROR_UNBUNCHING_NO_FULL_LOAD                               :{WHITE}... kan ikke bruge ordrer om fuld last, når køretøjet har en opsamlingsordre
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_FULL_LOAD                    :{WHITE}... kan ikke pakke et køretøj op med fuld last
 STR_ERROR_UNBUNCHING_NO_CONDITIONAL                             :{WHITE}... kan ikke bruge betingede ordrer, når køretøjet har en opsamlingsordre
 STR_ERROR_UNBUNCHING_NO_UNBUNCHING_CONDITIONAL                  :{WHITE}... kan ikke pakke et køretøj op med en betinget ordre
 
 # Autoreplace related errors
-STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{WHITE}{VEHICLE} er blevet for langt efter udskiftning
+STR_ERROR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                      :{VEHICLE} er blevet for langt efter udskiftning
 STR_ERROR_AUTOREPLACE_NOTHING_TO_DO                             :{WHITE}Ingen autoudskiftning/-fornyelse foretaget.
 STR_ERROR_AUTOREPLACE_MONEY_LIMIT                               :(ikke penge nok)
 STR_ERROR_AUTOREPLACE_INCOMPATIBLE_CARGO                        :{WHITE}Nyt fartøj kan ikke transportere {STRING}
@@ -5363,7 +5371,7 @@ STR_ERROR_CAN_T_PLANT_TREE_HERE                                 :Kan ikke plante
 
 # Bridge related errors
 STR_ERROR_CAN_T_BUILD_BRIDGE_HERE                               :Kan ikke bygge en bro her...
-STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :{WHITE}Det er nødvendigt at rive broen ned først
+STR_ERROR_MUST_DEMOLISH_BRIDGE_FIRST                            :det er nødvendigt at rive broen ned først
 STR_ERROR_CAN_T_START_AND_END_ON                                :{WHITE}Kan ikke starte og slutte på samme position
 STR_ERROR_BRIDGEHEADS_NOT_SAME_HEIGHT                           :{WHITE}Brohoveder er ikke i samme niveau
 STR_ERROR_BRIDGE_TOO_LOW_FOR_TERRAIN                            :broen er for lav til terrænet
@@ -5504,7 +5512,7 @@ STR_ERROR_TRAIN_START_NO_POWER                                  :Toget får inge
 
 STR_ERROR_CAN_T_MAKE_ROAD_VEHICLE_TURN                          :{WHITE}Tillader ikke køretøjer at vende om...
 
-STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :{WHITE}Flyet er i luften
+STR_ERROR_AIRCRAFT_IS_IN_FLIGHT                                 :flyet er i luften
 
 # Order related errors
 STR_ERROR_NO_MORE_SPACE_FOR_ORDERS                              :{WHITE}Ikke mere plads til ordrer

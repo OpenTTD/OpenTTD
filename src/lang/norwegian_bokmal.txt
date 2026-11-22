@@ -1092,7 +1092,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :Aktiv driver: {
 STR_GAME_OPTIONS_INTERFACE                                      :Grensesnitt
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :Grensesnittstørrelse
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra for å endre grensesnittstørrelse. Ctrl+dra for kontinuerlig justering
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :Dra for å endre grensesnittstørrelse. Skala er begrenset av vindusstørrelse. Ctrl+dra for kontinuerlig justering
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :Detekter størrelse automatisk
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :Slå på for å detektere grensesnittstørrelsen automatisk
 
@@ -1626,6 +1626,8 @@ STR_CONFIG_SETTING_TERRAIN_TYPE_HELPTEXT                        :Velg høyden ti
 STR_CONFIG_SETTING_INDUSTRY_DENSITY                             :Industritetthet: {STRING}
 STR_CONFIG_SETTING_INDUSTRY_DENSITY_HELPTEXT                    :Angi hvor mange næringer som skal genereres og hvilket nivå som skal opprettholdes i løpet av spillet
 
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY                  :Bare generer primære industrier: {STRING}
+STR_CONFIG_SETTING_SPAWN_PRIMARY_INDUSTRY_ONLY_HELPTEXT         :Hvis aktivert, vil kun primære industrier bli generert under kartgenerering og spilling
 
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE                        :Største avstand fra kant for oljeraffinerier: {STRING}
 STR_CONFIG_SETTING_OIL_REF_EDGE_DISTANCE_HELPTEXT               :Grense for hvor langt fra kartkanten oljeraffinerier og oljerigger kan bygges. På øykart sørger dette for at de er nær kysten. På kart større enn 256 ruter, er denne verdien skalert opp
@@ -1951,20 +1953,26 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :Vise nyhetsoppd
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :Åpning av industrier: {STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :Vise nyhetsoppdatering når nye industrier åpner drift
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :Nedleggelse av industri betjent av selskapet: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :Vis en avis når industri betjent av selskapet legger ned
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :Nedleggelse av industri betjent av konkurrenten(e): {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :Vis en avis når industri betjent av konkurrenter legger ned
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :Nedleggelse av industri ikke betjent av noen: {STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :Vis en avis når industri ikke betjent av noen legger ned
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :Økonomiske endringer: {STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :Vis en nyhetsoppdatering om globale forandringer i økonomi
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY                :Produksjonsendringer hos industrier betjent av selskapet: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Vise nyhetsoppdateringer når produksjonsnivået endrer seg for industrier som er tilknyttet selskapet
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_COMPANY_HELPTEXT       :Vis en avis når produksjonsnivået endrer seg for industrier betjent av selskapet
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :Produksjonsendringer hos industrier betjent av konkurrent(er): {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Vise nyhetsoppdateringer når produksjonsnivået endrer seg for industrier som er tilknyttet konkurrentene
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :Vis en avis når produksjonsnivået endrer seg for industrier betjent av konkurrenter
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :Andre industriproduksjonsendringer: {STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Vise nyhetsoppdatering når produksjonsnivået endrer seg for industrier som ikke er tilknyttet selskapet eller andre konkurrenter
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :Vis en avis når produksjonsnivået endrer seg for industrier betjent av ingen
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :Forslag / informasjon om selskapets kjøretøyer: {STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :Vise meldinger om kjøretøy som trenger oppmerksomhet
@@ -2960,7 +2968,7 @@ STR_BUILD_SIGNAL_ELECTRIC_EXIT_TOOLTIP                          :{BLACK}Utgangss
 STR_BUILD_SIGNAL_ELECTRIC_COMBO_TOOLTIP                         :{BLACK}Kombinasjonssignal (lyssignal){}Kombinasjonssignalet fungerer både som inn- og utgangssignal. Dette gjør at du kan bygge store "grener" med forsignaler.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_TOOLTIP                           :{BLACK}Avanserte signal (lyssignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested. Vanlige avanserte signaler kan passeres bakfra.
 STR_BUILD_SIGNAL_ELECTRIC_PBS_OWAY_TOOLTIP                      :{BLACK}Enveis avansert signal (lyssignal){}Et avansert signal tillater flere tog å kjøre samtidig på samme signalblokk, dersom togene kan reservere en rute til et trygt stoppested . Enveis avanserte signaler kan ikke passeres bakfra.
-STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverter signal{}Klikk på et eksisterende signal for å konvertere det til valgt type og variant. Ctrl+klikk for å endre eksisterende variant. Shift+klikk viser kostnadsestimat
+STR_BUILD_SIGNAL_CONVERT_TOOLTIP                                :{BLACK}Konverter signal{}Klikk på et eksisterende signal for å konvertere det til valgt type og variant. Ctrl+klikk for å endre eksisterende variant. Trykk Shift for å vise kun kostnadsestimat
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_TOOLTIP                   :{BLACK}Signaltetthet ved dra-og-slipp
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_DECREASE_TOOLTIP          :{BLACK}Senk signalavstand ved dra-og-slipp
 STR_BUILD_SIGNAL_DRAG_SIGNALS_DENSITY_INCREASE_TOOLTIP          :{BLACK}Øk signalavstand ved dra-og-slipp
@@ -4361,10 +4369,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}{NUM} kj
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG} ({CARGO_SHORT})
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra jernbanemateriell med venstreklikk for å legge til/fjerne fra tog, høyreklikk for informasjon. Ctrl+klikk for å utføre begge funksjonene på hele toget
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøy - høyreklikk på kjøretøy for mer informasjon
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - høyreklikk på skip for mer informasjon
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - høyreklikk på luftfartøy for mer informasjon
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}Tog - dra jernbanemateriell med venstreklikk for å legge til/fjerne fra tog, høyreklikk for informasjon. Ctrl+klikk for å utføre begge funksjonene på hele toget. Hold Ctrl+Shift for å vise varetype
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}Kjøretøy - høyreklikk på kjøretøy for informasjon. Hold Ctrl+Shift for å vise varetype
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}Skip - høyreklikk på skip for informasjon. Hold Ctrl+Shift for å vise varetype
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}Luftfartøy - høyreklikk på luftfartøy for informasjon. Hold Ctrl+Shift for å vise varetype
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}Dra jernbanemateriell hit for å selge det
