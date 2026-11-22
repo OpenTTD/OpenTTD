@@ -1,0 +1,2863 @@
+{
+ "schema": "ai-battle-record/v1",
+ "scoring": "points-per-match/v2",
+ "id": "battle-20261122T004102-8d325d2f",
+ "generated_at": "2026-11-22T00:41:02+00:00",
+ "edition": "8d325d2f3c4d08b9",
+ "provenance": {
+  "prismatic_path": "tools/research/prismatic-ai/PrismaticAI",
+  "referee_path": "tools/research/ai-battle/referee/BattleReferee",
+  "rev": "8c8d025388e85261a60027d9983d8588d720a2e9",
+  "dirty": false,
+  "baseset": "opengfx-8.0.tar",
+  "ais": [
+   "41444d4c-AdmiralAI-25.tar",
+   "4349564c-CivilAI-37.tar",
+   "484f4745-AAAHogEx-115.tar",
+   "4c444146-LuDiAI_AfterFix-v27.tar",
+   "PrismaticAI.tar",
+   "library/4356524f-CivilAI_Pathfinder.Road-4.tar",
+   "library/4752412a-Graph.AyStar-4.tar",
+   "library/4752412a-Graph.AyStar-6.tar",
+   "library/5046524c-Pathfinder.Rail-1.tar",
+   "library/51554248-Queue.BinaryHeap-1.tar",
+   "library/51554648-Queue.FibonacciHeap-2.tar"
+  ]
+ },
+ "match_cfg": {
+  "years": 20,
+  "start_year": 1960,
+  "landscape": "temperate",
+  "map_x": 8,
+  "map_y": 8,
+  "breakdowns": 1
+ },
+ "contestants": [
+  {
+   "key": "PrismaticAI pre-g150",
+   "ai": "PrismaticAI",
+   "settings": "aggressiveness=50,air_add_waiting=0,air_grow_money=0,air_level_max=35,air_level_step=0,air_max_tiles=480,air_routes_max=3,cash_reserve=0,catchment_stops=2,invest_ppv_div=5,invest_road_cap=14,line_budget=80000,max_routes=30,own_fail_pause=0,own_lines=0,rail_twin_max=2"
+  },
+  {
+   "key": "AAAHogEx",
+   "ai": "AAAHogEx",
+   "settings": ""
+  },
+  {
+   "key": "LuDiAI AfterFix",
+   "ai": "LuDiAI AfterFix",
+   "settings": ""
+  },
+  {
+   "key": "CivilAI",
+   "ai": "CivilAI",
+   "settings": ""
+  },
+  {
+   "key": "AdmiralAI",
+   "ai": "AdmiralAI",
+   "settings": ""
+  },
+  {
+   "key": "PrismaticAI GA g326.0",
+   "ai": "PrismaticAI",
+   "settings": "aggressiveness=90,air_add_waiting=70,air_full_load=0,air_grow_money=0,air_keep_last=1,air_level_max=10,air_level_once=1,air_level_step=8,air_max_tiles=480,air_planes=2,air_reuse=0,air_routes_max=4,air_towns=35,cash_reserve=20000,catchment_stops=6,intercity=1,invest_air_cap=8,invest_borrow=1,invest_min=550,invest_ppv_div=3,invest_road_cap=6,line_budget=90000,max_routes=10,own_fail_pause=6,own_lines=4,rail_twin_max=16,self_steward=1,statue_money=0"
+  },
+  {
+   "key": "PrismaticAI GA g326.brainSafe",
+   "ai": "PrismaticAI",
+   "settings": "aggressiveness=60,air_add_waiting=80,air_full_load=0,air_grow_money=4000,air_keep_last=1,air_level_max=5,air_level_once=1,air_level_step=7,air_max_tiles=420,air_planes=1,air_reuse=0,air_routes_max=4,air_towns=50,cash_reserve=40000,catchment_stops=2,intercity=1,invest_air_cap=8,invest_borrow=1,invest_min=300,invest_ppv_div=2,invest_road_cap=18,line_budget=40000,max_routes=30,own_fail_pause=1,own_lines=0,rail_twin_max=0,self_steward=1,statue_money=0"
+  },
+  {
+   "key": "PrismaticAI GA g326.brainExplore",
+   "ai": "PrismaticAI",
+   "settings": "aggressiveness=60,air_add_waiting=80,air_full_load=0,air_grow_money=1000,air_keep_last=1,air_level_max=5,air_level_once=1,air_level_step=7,air_max_tiles=420,air_planes=1,air_reuse=0,air_routes_max=4,air_towns=50,cash_reserve=40000,catchment_stops=2,intercity=1,invest_air_cap=8,invest_borrow=1,invest_min=300,invest_ppv_div=4,invest_road_cap=18,line_budget=200000,max_routes=30,own_fail_pause=1,own_lines=0,rail_twin_max=8,self_steward=1,statue_money=0"
+  },
+  {
+   "key": "PrismaticAI GA g326.3",
+   "ai": "PrismaticAI",
+   "settings": "aggressiveness=80,air_add_waiting=100,air_full_load=0,air_grow_money=0,air_keep_last=1,air_level_max=5,air_level_once=1,air_level_step=8,air_max_tiles=420,air_planes=2,air_reuse=0,air_routes_max=4,air_towns=50,cash_reserve=10000,catchment_stops=6,intercity=1,invest_air_cap=6,invest_borrow=1,invest_min=300,invest_ppv_div=2,invest_road_cap=6,line_budget=40000,max_routes=8,own_fail_pause=5,own_lines=4,rail_twin_max=16,self_steward=1,statue_money=0"
+  },
+  {
+   "key": "PrismaticAI",
+   "ai": "PrismaticAI",
+   "settings": ""
+  }
+ ],
+ "hosts": [
+  {
+   "name": "imac",
+   "versions": [
+    "20261119-master-gdf1e05e7d8"
+   ]
+  },
+  {
+   "name": "mbp",
+   "versions": [
+    "20261120-master-m17653b726e"
+   ]
+  },
+  {
+   "name": "mbp2",
+   "versions": [
+    "20261119-master-gdf1e05e7d8"
+   ]
+  }
+ ],
+ "matches": [
+  {
+   "id": "m-0001",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 109736582,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "PrismaticAI pre-g150",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 73273017,
+     "vehicles": 310,
+     "stations": 131,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 15084874,
+     "vehicles": 105,
+     "stations": 64,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2854595,
+     "vehicles": 206,
+     "stations": 20,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 2371394,
+     "vehicles": 109,
+     "stations": 36,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 589235,
+     "vehicles": 59,
+     "stations": 9,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0002",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 109736582,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.0"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 67109359,
+     "vehicles": 363,
+     "stations": 115,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 14409222,
+     "vehicles": 51,
+     "stations": 63,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 12198289,
+     "vehicles": 255,
+     "stations": 117,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:392->255"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1320549,
+     "vehicles": 184,
+     "stations": 19,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 366692,
+     "vehicles": 68,
+     "stations": 14,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0003",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 109736582,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 57068998,
+     "vehicles": 173,
+     "stations": 104,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 13207206,
+     "vehicles": 62,
+     "stations": 66,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 8501096,
+     "vehicles": 432,
+     "stations": 64,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2764426,
+     "vehicles": 258,
+     "stations": 25,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1248344,
+     "vehicles": 63,
+     "stations": 15,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0004",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 109736582,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 67717542,
+     "vehicles": 236,
+     "stations": 117,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 12195782,
+     "vehicles": 76,
+     "stations": 63,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 8533162,
+     "vehicles": 467,
+     "stations": 102,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 3327991,
+     "vehicles": 307,
+     "stations": 24,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1202871,
+     "vehicles": 142,
+     "stations": 25,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0005",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 109736582,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.3"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 65676997,
+     "vehicles": 219,
+     "stations": 115,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.3",
+     "value": 15402051,
+     "vehicles": 46,
+     "stations": 70,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6022253,
+     "vehicles": 331,
+     "stations": 84,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 3179212,
+     "vehicles": 271,
+     "stations": 28,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1322871,
+     "vehicles": 111,
+     "stations": 13,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0006",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 987934185,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 50035346,
+     "vehicles": 279,
+     "stations": 143,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI",
+     "value": 14684991,
+     "vehicles": 59,
+     "stations": 56,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 996777,
+     "vehicles": 75,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 705020,
+     "vehicles": 19,
+     "stations": 14,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 665183,
+     "vehicles": 113,
+     "stations": 29,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0007",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 987934185,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI pre-g150"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 50897079,
+     "vehicles": 395,
+     "stations": 153,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 10504478,
+     "vehicles": 66,
+     "stations": 57,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 2104646,
+     "vehicles": 350,
+     "stations": 76,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 767602,
+     "vehicles": 27,
+     "stations": 7,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 463989,
+     "vehicles": 63,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0008",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 987934185,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.0",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 51042379,
+     "vehicles": 403,
+     "stations": 160,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 6880961,
+     "vehicles": 31,
+     "stations": 50,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 5241400,
+     "vehicles": 529,
+     "stations": 103,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1173431,
+     "vehicles": 26,
+     "stations": 14,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 320074,
+     "vehicles": 29,
+     "stations": 3,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:46->29"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0009",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 987934185,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 42201120,
+     "vehicles": 396,
+     "stations": 146,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 6926310,
+     "vehicles": 41,
+     "stations": 53,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3901742,
+     "vehicles": 280,
+     "stations": 96,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2068933,
+     "vehicles": 144,
+     "stations": 17,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1183682,
+     "vehicles": 16,
+     "stations": 13,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:29->16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0010",
+   "host": "imac",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 987934185,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 55485076,
+     "vehicles": 306,
+     "stations": 127,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 6863457,
+     "vehicles": 44,
+     "stations": 56,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3856601,
+     "vehicles": 505,
+     "stations": 106,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1428386,
+     "vehicles": 47,
+     "stations": 12,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1099793,
+     "vehicles": 66,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0011",
+   "host": "imac",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 987934185,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.3",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 52428411,
+     "vehicles": 432,
+     "stations": 147,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.3",
+     "value": 7373504,
+     "vehicles": 34,
+     "stations": 56,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3765318,
+     "vehicles": 507,
+     "stations": 117,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1467180,
+     "vehicles": 76,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1236542,
+     "vehicles": 76,
+     "stations": 13,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0012",
+   "host": "imac",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 110474791,
+     "vehicles": 461,
+     "stations": 161,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI",
+     "value": 20076698,
+     "vehicles": 67,
+     "stations": 65,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 2793157,
+     "vehicles": 53,
+     "stations": 21,
+     "errors": 62,
+     "anomalies": [
+      "squirrel_errors:62"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1089127,
+     "vehicles": 99,
+     "stations": 12,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 294340,
+     "vehicles": 13,
+     "stations": 11,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0013",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI pre-g150",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 98323279,
+     "vehicles": 367,
+     "stations": 145,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 15888942,
+     "vehicles": 74,
+     "stations": 54,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6354109,
+     "vehicles": 151,
+     "stations": 53,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 3935344,
+     "vehicles": 179,
+     "stations": 14,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 436666,
+     "vehicles": 7,
+     "stations": 11,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0014",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.0",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 103760991,
+     "vehicles": 354,
+     "stations": 130,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 15766760,
+     "vehicles": 60,
+     "stations": 72,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6554794,
+     "vehicles": 276,
+     "stations": 87,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 475694,
+     "vehicles": 12,
+     "stations": 4,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:45->12"
+     ]
+    },
+    {
+     "key": "CivilAI",
+     "value": 136416,
+     "vehicles": 32,
+     "stations": 15,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:51->32"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0015",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 101527157,
+     "vehicles": 350,
+     "stations": 146,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 13816299,
+     "vehicles": 61,
+     "stations": 70,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7363939,
+     "vehicles": 200,
+     "stations": 51,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1405031,
+     "vehicles": 60,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 130908,
+     "vehicles": 23,
+     "stations": 7,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:47->23"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0016",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 84606306,
+     "vehicles": 311,
+     "stations": 129,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 16151432,
+     "vehicles": 67,
+     "stations": 77,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3562332,
+     "vehicles": 309,
+     "stations": 81,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1041616,
+     "vehicles": 71,
+     "stations": 13,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1,
+     "vehicles": 15,
+     "stations": 5,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:41->15"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0017",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.3",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 106827878,
+     "vehicles": 554,
+     "stations": 162,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.3",
+     "value": 11039864,
+     "vehicles": 54,
+     "stations": 56,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 5458893,
+     "vehicles": 155,
+     "stations": 61,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1641268,
+     "vehicles": 66,
+     "stations": 12,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 159543,
+     "vehicles": 24,
+     "stations": 7,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:49->24"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0019",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 168844187,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI pre-g150",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 80444662,
+     "vehicles": 294,
+     "stations": 133,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 17310942,
+     "vehicles": 61,
+     "stations": 65,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7450700,
+     "vehicles": 169,
+     "stations": 84,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1099787,
+     "vehicles": 15,
+     "stations": 11,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1078605,
+     "vehicles": 113,
+     "stations": 16,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0020",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 168844187,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.0",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 103647179,
+     "vehicles": 427,
+     "stations": 162,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 12547396,
+     "vehicles": 47,
+     "stations": 68,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 5774757,
+     "vehicles": 146,
+     "stations": 52,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1088934,
+     "vehicles": 30,
+     "stations": 12,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:51->30"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 946008,
+     "vehicles": 64,
+     "stations": 18,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:101->64"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0021",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 168844187,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 100810034,
+     "vehicles": 396,
+     "stations": 145,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 14829111,
+     "vehicles": 37,
+     "stations": 64,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7218053,
+     "vehicles": 320,
+     "stations": 69,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1124216,
+     "vehicles": 40,
+     "stations": 12,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 879904,
+     "vehicles": 115,
+     "stations": 19,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0022",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 168844187,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 115400821,
+     "vehicles": 371,
+     "stations": 161,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 10902264,
+     "vehicles": 60,
+     "stations": 65,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 4611707,
+     "vehicles": 463,
+     "stations": 124,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 867587,
+     "vehicles": 9,
+     "stations": 9,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 755991,
+     "vehicles": 85,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0023",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 168844187,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.3",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 104660682,
+     "vehicles": 325,
+     "stations": 150,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.3",
+     "value": 19998491,
+     "vehicles": 51,
+     "stations": 74,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3730618,
+     "vehicles": 389,
+     "stations": 112,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1089062,
+     "vehicles": 7,
+     "stations": 9,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 634602,
+     "vehicles": 54,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0024",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 736843653,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 82885516,
+     "vehicles": 318,
+     "stations": 130,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI",
+     "value": 13727217,
+     "vehicles": 53,
+     "stations": 52,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7136228,
+     "vehicles": 124,
+     "stations": 44,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 953297,
+     "vehicles": 34,
+     "stations": 9,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:63->34"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 603753,
+     "vehicles": 77,
+     "stations": 7,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0025",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 736843653,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI pre-g150",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 97995930,
+     "vehicles": 433,
+     "stations": 137,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7551632,
+     "vehicles": 195,
+     "stations": 52,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 7255693,
+     "vehicles": 59,
+     "stations": 59,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1453584,
+     "vehicles": 38,
+     "stations": 4,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 5511,
+     "vehicles": 8,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0026",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 736843653,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "PrismaticAI GA g326.0",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 89675051,
+     "vehicles": 467,
+     "stations": 131,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 7365056,
+     "vehicles": 36,
+     "stations": 54,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6660628,
+     "vehicles": 186,
+     "stations": 44,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 419909,
+     "vehicles": 23,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:67->23"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1,
+     "vehicles": 2,
+     "stations": 2,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0027",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 736843653,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 76456764,
+     "vehicles": 299,
+     "stations": 137,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 9400652,
+     "vehicles": 41,
+     "stations": 61,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 5085628,
+     "vehicles": 334,
+     "stations": 78,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 339154,
+     "vehicles": 35,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1,
+     "vehicles": 3,
+     "stations": 2,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0028",
+   "host": "mbp2",
+   "host_version": "20261119-master-gdf1e05e7d8",
+   "seed": 736843653,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 73420254,
+     "vehicles": 577,
+     "stations": 143,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 8972038,
+     "vehicles": 44,
+     "stations": 55,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 5641440,
+     "vehicles": 258,
+     "stations": 77,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 944067,
+     "vehicles": 6,
+     "stations": 6,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 534219,
+     "vehicles": 38,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0036",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 314183378,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 67036152,
+     "vehicles": 275,
+     "stations": 133,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI",
+     "value": 12742552,
+     "vehicles": 54,
+     "stations": 70,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7856178,
+     "vehicles": 288,
+     "stations": 55,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1354147,
+     "vehicles": 206,
+     "stations": 25,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 117417,
+     "vehicles": 27,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0037",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 314183378,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI pre-g150"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 63394600,
+     "vehicles": 216,
+     "stations": 115,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 13629312,
+     "vehicles": 48,
+     "stations": 64,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6718481,
+     "vehicles": 139,
+     "stations": 54,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1611615,
+     "vehicles": 177,
+     "stations": 19,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 964115,
+     "vehicles": 9,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:18->9"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0038",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 314183378,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.0",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 50214348,
+     "vehicles": 365,
+     "stations": 127,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 22166793,
+     "vehicles": 75,
+     "stations": 67,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 2105843,
+     "vehicles": 44,
+     "stations": 36,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1902019,
+     "vehicles": 167,
+     "stations": 16,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1,
+     "vehicles": 8,
+     "stations": 5,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0039",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 314183378,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 80676879,
+     "vehicles": 425,
+     "stations": 141,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 18810610,
+     "vehicles": 54,
+     "stations": 67,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2427617,
+     "vehicles": 162,
+     "stations": 19,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 2038202,
+     "vehicles": 282,
+     "stations": 68,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1,
+     "vehicles": 10,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:15->10"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0040",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 314183378,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 71018428,
+     "vehicles": 375,
+     "stations": 138,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 19562645,
+     "vehicles": 85,
+     "stations": 68,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 1515407,
+     "vehicles": 124,
+     "stations": 52,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1026491,
+     "vehicles": 169,
+     "stations": 18,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 268762,
+     "vehicles": 7,
+     "stations": 6,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:23->7"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0041",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 314183378,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.3",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 61789030,
+     "vehicles": 296,
+     "stations": 115,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.3",
+     "value": 20497981,
+     "vehicles": 63,
+     "stations": 67,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3816344,
+     "vehicles": 81,
+     "stations": 32,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 3213849,
+     "vehicles": 255,
+     "stations": 25,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1,
+     "vehicles": 5,
+     "stations": 5,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0042",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 910313474,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 65946248,
+     "vehicles": 336,
+     "stations": 131,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI",
+     "value": 17637049,
+     "vehicles": 49,
+     "stations": 74,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 4593026,
+     "vehicles": 512,
+     "stations": 112,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 624479,
+     "vehicles": 27,
+     "stations": 4,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:58->27"
+     ]
+    },
+    {
+     "key": "CivilAI",
+     "value": 1,
+     "vehicles": 16,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:25->16"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0043",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 910313474,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI pre-g150",
+    "AAAHogEx"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 79603673,
+     "vehicles": 283,
+     "stations": 130,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI pre-g150",
+     "value": 16064795,
+     "vehicles": 34,
+     "stations": 67,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6296564,
+     "vehicles": 513,
+     "stations": 125,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1846276,
+     "vehicles": 147,
+     "stations": 18,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 1026751,
+     "vehicles": 8,
+     "stations": 10,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:12->8"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m-0044",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 910313474,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.0",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 72973240,
+     "vehicles": 318,
+     "stations": 142,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 17245558,
+     "vehicles": 54,
+     "stations": 60,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6988372,
+     "vehicles": 166,
+     "stations": 53,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:243->166"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2024552,
+     "vehicles": 158,
+     "stations": 18,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 724189,
+     "vehicles": 5,
+     "stations": 7,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0045",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 910313474,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 72653770,
+     "vehicles": 351,
+     "stations": 138,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 14976199,
+     "vehicles": 51,
+     "stations": 55,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 7558652,
+     "vehicles": 229,
+     "stations": 66,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2509255,
+     "vehicles": 167,
+     "stations": 20,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 64146,
+     "vehicles": 1,
+     "stations": 2,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0046",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 910313474,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 76864725,
+     "vehicles": 293,
+     "stations": 129,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 12771478,
+     "vehicles": 53,
+     "stations": 52,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 4421751,
+     "vehicles": 404,
+     "stations": 99,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2007436,
+     "vehicles": 159,
+     "stations": 24,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 864586,
+     "vehicles": 7,
+     "stations": 8,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0047",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 910313474,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI GA g326.3",
+    "AAAHogEx",
+    "LuDiAI AfterFix"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 73908552,
+     "vehicles": 425,
+     "stations": 148,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.3",
+     "value": 14137786,
+     "vehicles": 39,
+     "stations": 60,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 6563308,
+     "vehicles": 506,
+     "stations": 124,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2465262,
+     "vehicles": 148,
+     "stations": 14,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 651209,
+     "vehicles": 3,
+     "stations": 4,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0048",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 709227424,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "LuDiAI AfterFix",
+    "CivilAI",
+    "AdmiralAI",
+    "PrismaticAI",
+    "AAAHogEx"
+   ],
+   "replica_of": "m-0012",
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 111442925,
+     "vehicles": 398,
+     "stations": 130,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI",
+     "value": 21338129,
+     "vehicles": 77,
+     "stations": 73,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 3574958,
+     "vehicles": 57,
+     "stations": 21,
+     "errors": 62,
+     "anomalies": [
+      "squirrel_errors:62"
+     ]
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1739203,
+     "vehicles": 55,
+     "stations": 6,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 549143,
+     "vehicles": 7,
+     "stations": 6,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0050",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 1320840860,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.0",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 71574517,
+     "vehicles": 318,
+     "stations": 134,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.0",
+     "value": 12559074,
+     "vehicles": 62,
+     "stations": 64,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 2921733,
+     "vehicles": 108,
+     "stations": 45,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 2115198,
+     "vehicles": 83,
+     "stations": 16,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:139->83"
+     ]
+    },
+    {
+     "key": "CivilAI",
+     "value": 1560204,
+     "vehicles": 188,
+     "stations": 15,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0051",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 1320840860,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainSafe",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 64150489,
+     "vehicles": 363,
+     "stations": 137,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainSafe",
+     "value": 11255369,
+     "vehicles": 45,
+     "stations": 56,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 4809738,
+     "vehicles": 221,
+     "stations": 54,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1827625,
+     "vehicles": 139,
+     "stations": 20,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 661259,
+     "vehicles": 70,
+     "stations": 15,
+     "errors": 0,
+     "anomalies": []
+    }
+   ]
+  },
+  {
+   "id": "m-0052",
+   "host": "mbp",
+   "host_version": "20261120-master-m17653b726e",
+   "seed": 1320840860,
+   "years": 20,
+   "ticks": 541014,
+   "lineup": [
+    "AdmiralAI",
+    "PrismaticAI GA g326.brainExplore",
+    "AAAHogEx",
+    "LuDiAI AfterFix",
+    "CivilAI"
+   ],
+   "replica_of": null,
+   "status": "done",
+   "exit_code": 0,
+   "standings": [
+    {
+     "key": "AAAHogEx",
+     "value": 77948290,
+     "vehicles": 241,
+     "stations": 116,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "PrismaticAI GA g326.brainExplore",
+     "value": 18727740,
+     "vehicles": 69,
+     "stations": 65,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "AdmiralAI",
+     "value": 4098425,
+     "vehicles": 96,
+     "stations": 32,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "CivilAI",
+     "value": 2965619,
+     "vehicles": 78,
+     "stations": 21,
+     "errors": 0,
+     "anomalies": []
+    },
+    {
+     "key": "LuDiAI AfterFix",
+     "value": 1397464,
+     "vehicles": 56,
+     "stations": 14,
+     "errors": 0,
+     "anomalies": [
+      "fleet_drop:106->56"
+     ]
+    }
+   ]
+  }
+ ],
+ "leaderboard": [
+  {
+   "key": "AAAHogEx",
+   "played": 42,
+   "wins": 42,
+   "points": 168,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 1.0,
+   "avg_value": 76514418,
+   "avg_points": 4.0
+  },
+  {
+   "key": "PrismaticAI",
+   "played": 5,
+   "wins": 0,
+   "points": 15,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 2.0,
+   "avg_value": 15773701,
+   "avg_points": 3.0
+  },
+  {
+   "key": "PrismaticAI GA g326.3",
+   "played": 6,
+   "wins": 0,
+   "points": 18,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 2.0,
+   "avg_value": 14741612,
+   "avg_points": 3.0
+  },
+  {
+   "key": "PrismaticAI GA g326.0",
+   "played": 8,
+   "wins": 0,
+   "points": 24,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 2.0,
+   "avg_value": 13617602,
+   "avg_points": 3.0
+  },
+  {
+   "key": "PrismaticAI GA g326.brainExplore",
+   "played": 8,
+   "wins": 0,
+   "points": 24,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 2.0,
+   "avg_value": 13268354,
+   "avg_points": 3.0
+  },
+  {
+   "key": "PrismaticAI GA g326.brainSafe",
+   "played": 8,
+   "wins": 0,
+   "points": 24,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 2.0,
+   "avg_value": 12902719,
+   "avg_points": 3.0
+  },
+  {
+   "key": "PrismaticAI pre-g150",
+   "played": 7,
+   "wins": 0,
+   "points": 20,
+   "errors": 0,
+   "anomalies": 0,
+   "avg_rank": 2.14,
+   "avg_value": 13677005,
+   "avg_points": 2.857
+  },
+  {
+   "key": "AdmiralAI",
+   "played": 42,
+   "wins": 0,
+   "points": 81,
+   "errors": 62,
+   "anomalies": 3,
+   "avg_rank": 3.07,
+   "avg_value": 5295517,
+   "avg_points": 1.929
+  },
+  {
+   "key": "LuDiAI AfterFix",
+   "played": 42,
+   "wins": 0,
+   "points": 33,
+   "errors": 0,
+   "anomalies": 6,
+   "avg_rank": 4.21,
+   "avg_value": 1547503,
+   "avg_points": 0.786
+  },
+  {
+   "key": "CivilAI",
+   "played": 42,
+   "wins": 0,
+   "points": 13,
+   "errors": 0,
+   "anomalies": 13,
+   "avg_rank": 4.69,
+   "avg_value": 711398,
+   "avg_points": 0.31
+  }
+ ],
+ "determinism": [
+  {
+   "seed": 709227424,
+   "original": "m-0012",
+   "replay": "m-0048",
+   "hosts": [
+    "imac",
+    "mbp"
+   ],
+   "versions": [
+    "20261119-master-gdf1e05e7d8",
+    "20261120-master-m17653b726e"
+   ],
+   "identical": false
+  }
+ ]
+}

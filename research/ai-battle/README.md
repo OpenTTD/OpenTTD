@@ -22,30 +22,26 @@ The table below is derived from the newest record under `research/results/battle
 is stale.
 
 <!-- battle:begin -->
-<!-- derived from research/results/battle-20261122T003042-08697b91.json by `battle.py report`; `battle.py check` fails when it is stale -->
-Latest record: [`battle-20261122T003042-08697b91`](../results/battle-20261122T003042-08697b91.md) (0/1 replays identical).
+<!-- derived from research/results/battle-20261122T013743-144c6422.json by `battle.py report`; `battle.py check` fails when it is stale -->
+Latest record: [`battle-20261122T013743-144c6422`](../results/battle-20261122T013743-144c6422.md) (0/0 replays identical).
 
-- Edition `08697b919260b5aa`: PrismaticAI and referee at `8c8d025388e85261a60027d9983d8588d720a2e9`, base set `opengfx-8.0.tar`
+- Edition `144c64224c550110`: PrismaticAI and referee at `8c8d025388e85261a60027d9983d8588d720a2e9`, base set `opengfx-8.0.tar`
 - 20-year free-for-all from 1960, map 256x256 temperate, breakdowns 1
-- 39 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
-- Replays: 0 of 1 identical to their original on another arena
+- 45 scored match(es) on `imac` (20261119-master-gdf1e05e7d8), `mbp` (20261120-master-m17653b726e), `mbp2` (20261119-master-gdf1e05e7d8)
+- Replays: 0 of 0 identical to their original on another arena
 
 | # | Contestant | Played | Wins | Points | Points/match | Avg rank | Avg final value | Squirrel errors | Matches with anomalies |
 |---|---|---|---|---|---|---|---|---|---|
-| 1 | AAAHogEx | 39 | 39 | 156 | 4.0 | 1.0 | 115.6 M | 0 | 0 |
-| 2 | PrismaticAI GA g325.3 | 7 | 0 | 21 | 3.0 | 2.0 | 16.3 M | 0 | 0 |
-| 3 | PrismaticAI | 5 | 0 | 15 | 3.0 | 2.0 | 15.2 M | 0 | 0 |
-| 4 | PrismaticAI pre-g150 | 6 | 0 | 18 | 3.0 | 2.0 | 15.2 M | 0 | 0 |
-| 5 | PrismaticAI GA g325.brainExplore | 7 | 0 | 21 | 3.0 | 2.0 | 15.1 M | 0 | 0 |
-| 6 | PrismaticAI GA g325.brainSafe | 6 | 0 | 18 | 3.0 | 2.0 | 12.8 M | 0 | 0 |
-| 7 | PrismaticAI GA g325.0 | 8 | 0 | 23 | 2.875 | 2.12 | 14.5 M | 0 | 0 |
-| 8 | AdmiralAI | 39 | 0 | 77 | 1.974 | 3.03 | 7.0 M | 0 | 1 |
-| 9 | LuDiAI AfterFix | 39 | 0 | 26 | 0.667 | 4.33 | 1.3 M | 0 | 2 |
-| 10 | CivilAI | 39 | 0 | 15 | 0.385 | 4.62 | 845.0 k | 0 | 6 |
-
-| Seed | Original | Replay | Arenas | Identical |
-|---|---|---|---|---|
-| 1936504216 | m-0010 | m-0048 | imac / mbp | NO |
+| 1 | AAAHogEx | 45 | 45 | 180 | 4.0 | 1.0 | 95.9 M | 0 | 0 |
+| 2 | PrismaticAI GA g331.0 | 8 | 0 | 24 | 3.0 | 2.0 | 17.4 M | 0 | 0 |
+| 3 | PrismaticAI GA g331.brainExplore | 8 | 0 | 24 | 3.0 | 2.0 | 16.3 M | 0 | 0 |
+| 4 | PrismaticAI GA g331.brainSafe | 8 | 0 | 23 | 2.875 | 2.12 | 17.2 M | 0 | 0 |
+| 5 | PrismaticAI | 7 | 0 | 20 | 2.857 | 2.14 | 16.5 M | 0 | 0 |
+| 6 | PrismaticAI GA g331.3 | 7 | 0 | 20 | 2.857 | 2.14 | 16.0 M | 0 | 0 |
+| 7 | PrismaticAI pre-g150 | 7 | 0 | 20 | 2.857 | 2.14 | 15.7 M | 0 | 0 |
+| 8 | AdmiralAI | 45 | 0 | 93 | 2.067 | 2.93 | 8.1 M | 0 | 1 |
+| 9 | LuDiAI AfterFix | 45 | 0 | 43 | 0.956 | 4.04 | 2.0 M | 0 | 1 |
+| 10 | CivilAI | 45 | 0 | 3 | 0.067 | 4.93 | 731.7 k | 0 | 8 |
 <!-- battle:end -->
 
 ## How it fits together
@@ -338,7 +334,8 @@ The first editions showed two failures. The battle now catches both by itself.
 - **Levelling clears trees, and the town may then refuse (2026-11-22).** Levelling an airport site
   clears its tree tiles at -35 town rating each, and below -200 the town refuses the airport just
   paid for (52 of 146 levelled-and-refused sites in the replay logs). A guard that skipped such
-  sites lost in all 4 of the 12 replays it changed (-5% to -66%) and was not committed; see
+  sites lost in all 4 of the 12 replays it changed (-5% to -66%), and replanting trees after the
+  refusal won the airports back but came out -6.4% over the 12; neither was committed. See
   [the knowledge record](../../.ai/repo/knowledge/curated/levelling-an-airport-site-clears-trees-and-costs-town-rating.md).
   The levelling log lines now carry the real cost again (from 8c8d025388 they said "for 0").
 - **New maps every generation.** A match's seed includes its edition, so each GA generation meets

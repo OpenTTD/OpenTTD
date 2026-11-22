@@ -3,7 +3,7 @@ schema: knowledge/v1
 id: levelling-an-airport-site-clears-trees-and-costs-town-rating
 kind: knowledge
 class: fact
-title: "Levelling an airport site clears its tree tiles, each costs town rating, and a guard against it lost in replays"
+title: "Levelling an airport site clears its tree tiles, each costs town rating, and neither a guard nor replanting paid off"
 description: "Before changing how PrismaticAI levels airport sites: why a levelled site can be refused with ERR_LOCAL_AUTHORITY_REFUSES, and the measured result of skipping such sites."
 status: verified
 epistemics: observed
@@ -59,6 +59,11 @@ caller's accounting; the replay is identical to the unit and logs 16947 and 3683
 - Read a "levelled ... and the airport was still refused: ERR_LOCAL_AUTHORITY_REFUSES" line as
   tree clearing, not as a bad site; the town refuses every other site of that search too.
 - Do not reintroduce a tree-count guard without a better model: the band's lower bound is up to
-  200 points pessimistic and the guard changes the search path in many games. A cheaper fix to
-  try is planting trees back (`AITile.PlantTree`, +7 per tile up to 220) only after such a
-  refusal, which acts in the few games where the refusal happened.
+  200 points pessimistic and the guard changes the search path in many games.
+- Replanting after the refusal was tried next (2026-11-22): a band of trees three tiles wide
+  around the levelled site (`AITile.PlantTreeRectangle`, +7 rating per tile up to 220), then one
+  more `BuildAirport`. It worked as a mechanism (5 of the 12 replays planted, for 1500 to 9390,
+  and 4 then built the airport), but the games came out -21.0%, +0.2%, -34.2%, +14.5%, -24.2%
+  (-6.4% geometric over the 12), and on 1425f2c3 m-0015 2.27M against 2.58M with 4 aircraft
+  instead of none. The airports a forested town refuses are not worth winning back; m-0015's
+  weakness is not its missing aircraft. Not committed.
