@@ -6,7 +6,7 @@ class: fact
 title: "Town-authority rules (ratings, gates, actions) are derived from src/ into one model; read it, do not copy numbers"
 description: "Before writing bot, script or panel logic about town ratings: where the derived model is, what it holds, and the rules a company most often trips over."
 status: verified
-epistemics: derived
+epistemics: observed
 date: 2026-11-22
 tags: [town, town-rating, prismatic-ai, rhai, control-panel, derived-model]
 route: project
