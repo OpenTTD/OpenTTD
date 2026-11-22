@@ -276,7 +276,7 @@ generated config silently dropped the heightmap rotation and the town count, and
 without a byte-order mark garbled every non-ASCII name. Both are fixed and covered (the config is
 grouped by section, the GameScript starts with a UTF-8 BOM and a test checks it).
 
-## Decision: closed with three items NOT RUN, two of them run since
+## Decision: closed with three items NOT RUN, all three run since
 
 Asked in session b841bd49 (AskUserQuestion, 2026-11-20): "Disk has 16 GiB free, below the shared
 35 GiB floor. Every remaining step of the real-world slice needs a new build: gate.sh change, the
@@ -297,7 +297,7 @@ Two of the three were run afterwards, on 2026-11-22, when the owner asked in ses
 finish everything ("ano, vse dotahni / porad se s ostatnimi llms/ais/nodes/peers"). This Mac was
 still under the floor, so they ran on lundra, a tailnet build host. The run used Linux Mint 22.3
 with GCC and CMake there, and a detached worktree of its own under `~/ow07`, outside lundra's
-checkout. The third, the external schema validator, is still NOT RUN.
+checkout. The third, the external schema validator, ran the same day (below).
 
 The build was dedicated (`-DOPTION_DEDICATED=ON`), because lundra has no SDL3 or Allegro, so the
 GUI was not compiled. The liblzma headers came from `apt-get download liblzma-dev`, unpacked in user
@@ -335,6 +335,19 @@ Running it found two defects, both fixed:
 - `load-check` put the GameScript and base set only where macOS looks. With `-c` the config file's
   directory is the personal directory on every platform, so both now go there as well. That fix was
   not re-run on macOS.
+
+**External schema validation: PASS (2026-11-22).** Ajv 8.20.0 checked the files against
+`tools/research/schema/real-world-scenario.v1.schema.json` (draft 2020-12, `strict: false`, all
+errors). Ajv is independent of the crate's own checks; it came from a copy already installed on this
+Mac, so nothing was downloaded.
+
+- Valid: the committed `fixtures/brno/snapshot.json`, and the Brno scenario the panel compiled in
+  process (`GET /api/realworld/scenario?name=brno` on :8800, field `scenario`).
+- Two negative controls were refused, as they should be: the snapshot with its first source's
+  `license` removed, and the scenario with an entity's `evidence` set to `VERIFIED`.
+- `fixtures/springfield/nominatim.json` is a raw Nominatim response used by the resolver tests, not
+  a snapshot, and the schema rightly refuses it.
+- The live Olomouc snapshot was not kept after the lundra run, so it was not validated externally.
 
 ## Validation
 
