@@ -52,11 +52,18 @@ pub fn run(o: &Options) -> Result<(Value, i32), String> {
     }
     let pd = work.join("home/Documents/OpenTTD");
     std::fs::create_dir_all(pd.join("save")).map_err(|e| e.to_string())?;
-    copy_dir(&out.join("game").join(crate::gamescript::NAME), &pd.join("game").join(crate::gamescript::NAME))?;
+    // The GameScript and the base set go both into HOME's personal directory (where macOS looks)
+    // and into the config file's directory, which -c makes the personal directory on every
+    // platform (on Linux the HOME one is ~/.local/share/openttd, not Documents/OpenTTD).
+    for dir in [pd.clone(), work.clone()] {
+        copy_dir(&out.join("game").join(crate::gamescript::NAME), &dir.join("game").join(crate::gamescript::NAME))?;
+    }
     let mut baseset_note = "none linked: the binary's own baseset directory is used".to_string();
     if let Some(b) = &o.baseset {
         if b.is_dir() {
-            std::os::unix::fs::symlink(b, pd.join("baseset")).map_err(|e| format!("baseset link: {e}"))?;
+            for dir in [&pd, &work] {
+                std::os::unix::fs::symlink(b, dir.join("baseset")).map_err(|e| format!("baseset link: {e}"))?;
+            }
             baseset_note = format!("linked read-only from {}", b.display());
         }
     }
