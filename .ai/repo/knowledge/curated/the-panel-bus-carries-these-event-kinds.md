@@ -97,7 +97,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `plan.directive` | panel | `panel_decision.rs:pull` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | Prismatic's directive was pulled: refused by the contract, or each step with its state (applied, pending approval, refused, error) (`POST /api/decision/pull`); `inputs.stored` is the fit it sent (its samples query or bus, rows, model, I0085) or the fallback |
 | `plan.directive_outcome` | panel | `panel.rs:watch, panel_decision.rs:on_decision` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a directive that waited (plan.directive outcome pending) has the game's verdict for every step, or waited an hour without one (`expired`); `inputs.live.directive_seq` names its plan.directive |
 | `plan.kernel` | external (`POST /api/bus/publish`) | `kernel_feed.rs:event (mcp-kernel-feed --publish)` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | an AlgoGlyph kernel answered a request fed from the store (I0086) |
-| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, winner}`, read from the store (I0083) |
+| `plan.duel` | external (`POST /api/bus/publish`) | `tools/research/mcp-duel:publish_verdict` | `{decision, version: {revision, params, digest}, inputs: {live, stored: {query, rows} \| {fallback}}, choice}` | a duel ended; `choice` is its verdict `{seed, months, held_start_tick, a, b, rival_spread, rival, winner}`, read from the store (I0083) |
 | `game.new_world` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's tick went back |
 | `game.month` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's month changed |
 | `game.paused` | hub (its own bus and store) | `hub.rs:derive_state_events` | `{date}` | an MCP-only instance's paused flag went on |
@@ -157,7 +157,7 @@ Each planning decision publishes one `plan.*` event beside its `panel.*` sentenc
 --publish` and `tools/research/mcp-duel` (once a duel's months are played) post them to
 `POST /api/bus/publish`, which accepts only kinds the table marks external and only with the four
 fields. A duel's `plan.duel` carries its verdict as `choice` (`{seed, months, held_start_tick, a, b,
-rival_spread, winner}`) and in `inputs.stored` the store queries its plan, AI log and months came
+rival_spread, rival, winner}`, `rival` being B's live settings or null) and in `inputs.stored` the store queries its plan, AI log and months came
 from, with their row counts, or the fallback it took without a store (I0083).
 
 **Calibration reads the store (I0082).** `plan.calibration` (`POST /api/calibration`) carries the
