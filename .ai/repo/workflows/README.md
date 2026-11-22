@@ -22,6 +22,7 @@ and the workflows show when to apply them.
 |---|---|
 | [`task-lifecycle.md`](task-lifecycle.md) | every session: start, orient, checkpoint, check, hand over or finish |
 | [`plan.md`](plan.md) | the repository has a plan under `../project/` and work is taken from it |
+| [`delivery.md`](delivery.md) | a change goes to `master`: a pull request with auto-merge, merged by GitHub when the required check is green |
 | [`continuity.md`](continuity.md) | resuming after a session ended, or leaving work for one that has not begun |
 | [`a-decision-reads-the-store.md`](a-decision-reads-the-store.md) | a planning decision should come from recorded history (the panel's store) instead of a constant or one snapshot |
 | [`ai-battle-last-place-diagnosis.md`](ai-battle-last-place-diagnosis.md) | a PrismaticAI configuration ended last, went bankrupt or stalled in the AI battle, and the cause should become a bot fix |
