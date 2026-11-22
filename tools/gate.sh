@@ -124,7 +124,9 @@ baseset_available() {
     while IFS= read -r f; do
       case "$f" in
         *.tar)
-          if tar -tf "$f" 2>/dev/null | grep -qiE '\.obg$'; then return 0; fi ;;
+          # grep -c reads the whole listing: grep -q would stop at the match, tar would die of
+          # SIGPIPE, and pipefail would report a present base set as missing (seen on GNU tar).
+          if [[ "$(tar -tf "$f" 2>/dev/null | grep -ciE '\.obg$')" -gt 0 ]]; then return 0; fi ;;
         *.obg|*.OBG)
           case "$(basename "$f" | tr '[:upper:]' '[:lower:]')" in
             orig_*) ;;
