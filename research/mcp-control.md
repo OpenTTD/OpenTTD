@@ -464,6 +464,14 @@ the caller declares; nothing checks it, the loopback API authenticates no one), 
 "auto-approve"}` for the panel's switch, where no person approved, or `{channel: "outside the
 panel"}` for one approved elsewhere, as in the game's console.
 
+With `$MAJORDOMUS_URL` (this checkout's Majordomus server, loopback) and `$MAJORDOMUS_SESSION` set,
+the panel also mirrors each `plan.directive` as a typed `decision` record of the Majordomus mesh and
+each `plan.directive_outcome` as an `outcome` record that cites it (src/panel_mesh.rs, I4665): task
+`openttd:panel-<port>:directive-<seq>`, the panel event as a tool source (so the record is
+`evidenced`), a retry key per event. It is research-only, opt-in and off the game's path: the write runs
+on its own thread, and whether it was written is a `panel.mesh` line; a refusal or an unreachable
+server never fails a directive. The bus and the store stay the record of truth.
+
 `POST /api/decision/pull {url, key}` with an idempotency `key` (1-128 letters, digits and `_ . : -`)
 runs once per key (research/agent-loop.md step 3): its first completed answer is kept for a day,
 and a repeat answers it again with `replayed: true`, applying nothing and publishing no second

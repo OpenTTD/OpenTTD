@@ -1176,10 +1176,16 @@ impl Game {
             self.event("server", &format!("refused to publish {kind}: not a plan.* kind of src/panel_events.rs KINDS"));
             return None;
         }
-        Some(self.bus.publish(kind, data))
+        let mirrored = data.clone();
+        let seq = self.bus.publish(kind, data);
+        // RESEARCH-ONLY, opt-in: the directive's decision and outcome as typed mesh records (src/panel_mesh.rs).
+        for line in crate::panel_mesh::take_lines() { self.event("mesh", &line); }
+        crate::panel_mesh::mirror(kind, seq, &mirrored, &format!("panel-{}", self.args.panel_port));
+        Some(seq)
     }
 
     pub fn events_json(&self) -> Vec<Value> {
+        for line in crate::panel_mesh::take_lines() { self.event("mesh", &line); }
         self.events.lock().unwrap().iter().cloned().collect()
     }
 

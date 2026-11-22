@@ -84,6 +84,7 @@ be the panel's and the hub's both (`game.month`), as two rows with their own pro
 | `panel.rhai` | panel | `panel.rs:Game::event` | `{text}` | a Rhai script ran |
 | `panel.view` | panel | `panel.rs:Game::event` | `{text}` | a GUI client attached |
 | `panel.ai` | panel | `panel.rs:Game::event` | `{text}` | the bot's `planner:` lines, its start, the held start, calibration, Prismatic's directive |
+| `panel.mesh` | panel | `panel.rs:Game::event` | `{text}` | a plan.directive or plan.directive_outcome was mirrored to the Majordomus mesh as a typed record, or not (src/panel_mesh.rs; only with $MAJORDOMUS_URL and $MAJORDOMUS_SESSION) |
 | `panel.plan` | panel | `panel.rs:Game::event` | `{text}` | an action plan or an investment was decided |
 | `panel.intent` | panel | `panel.rs:Game::event` | `{text}` | a sentence was answered (`POST /api/intent`, `~ plan` in the console) |
 | `panel.duel` | panel | `panel_results.rs` | `{text}` | a duel started from the panel; the README scoreboard was regenerated |

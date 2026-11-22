@@ -89,6 +89,7 @@ pub const KINDS: &[Kind] = &[
     k("panel.rhai", By::Panel, "panel.rs:Game::event", "`{text}`", "a Rhai script ran"),
     k("panel.view", By::Panel, "panel.rs:Game::event", "`{text}`", "a GUI client attached"),
     k("panel.ai", By::Panel, "panel.rs:Game::event", "`{text}`", "the bot's `planner:` lines, its start, the held start, calibration, Prismatic's directive"),
+    k("panel.mesh", By::Panel, "panel.rs:Game::event", "`{text}`", "a plan.directive or plan.directive_outcome was mirrored to the Majordomus mesh as a typed record, or not (src/panel_mesh.rs; only with $MAJORDOMUS_URL and $MAJORDOMUS_SESSION)"),
     k("panel.plan", By::Panel, "panel.rs:Game::event", "`{text}`", "an action plan or an investment was decided"),
     k("panel.intent", By::Panel, "panel.rs:Game::event", "`{text}`", "a sentence was answered (`POST /api/intent`, `~ plan` in the console)"),
     k("panel.duel", By::Panel, "panel_results.rs", "`{text}`", "a duel started from the panel; the README scoreboard was regenerated"),

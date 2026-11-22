@@ -66,7 +66,7 @@ mod algoglyph;
 mod board;
 mod graph;
 mod plan;
-mod mesh_records;
+pub mod mesh_records;
 mod prismatic;
 
 use rhai::{Dynamic, Engine, EvalAltResult, Map};
