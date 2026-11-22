@@ -315,7 +315,10 @@ cmd_change() {
     echo "==> battle-postmortem check (research/battle-postmortem.md: every post-mortem .md is what its .json derives)"
     # RUSTFLAGS replaces a target's rustflags from a global cargo config; a `-C lto` there breaks
     # build scripts (research/live-arena.md). An RUSTFLAGS already set wins.
+    # `check` reads only the tracked .json/.md, never DuckDB: built without the `store` feature, so
+    # the gate needs no system libduckdb (a Linux host without Homebrew's failed here, 2026-11-22).
     RUSTFLAGS="${RUSTFLAGS:--C target-cpu=native}" cargo run --quiet --release --offline \
+      --no-default-features \
       --manifest-path tools/research/mcp-rhai/Cargo.toml --bin battle-postmortem -- check
   fi
   echo "==> tools/knowledge/refs check"
