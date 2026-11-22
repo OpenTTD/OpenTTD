@@ -186,5 +186,6 @@ from `GET /api/bots` before the first month, keeps them in the record as `rival`
 rival's spread by them; a record without them groups only with others without them
 (`tools/research/test_mcp_duel.py`, 22 tests). The three duels against the former rival ran with the
 fix and recorded the rival's settings. The panel's own reading of stored duels (`duel_outcomes.rs`,
-rule `own-lines-by-handed-v1`) reads each group against a rival spread too and does not separate
-rival configurations; it is not changed here.
+rule `own-lines-by-handed-v1`) reads each group against a rival spread too. It now groups by the
+verdict's `rival` as well (B's settings, which `mcp-duel`'s `plan.duel` carries and an imported
+record brings from its `rival.settings`); verdicts without them form their own unknown rival.

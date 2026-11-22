@@ -313,7 +313,7 @@ class StoreReads(Served):
         self.assertIsNone(refuse_external("plan.duel", data))
         self.assertEqual(data["decision"], "duel.verdict")
         choice = data["choice"]
-        self.assertEqual(set(choice), {"seed", "months", "held_start_tick", "a", "b", "rival_spread", "winner"})
+        self.assertEqual(set(choice), {"seed", "months", "held_start_tick", "a", "b", "rival_spread", "rival", "winner"})
         self.assertEqual((choice["seed"], choice["months"], choice["held_start_tick"]), (31337, 6, 1400))
         self.assertEqual(choice["a"], {"company": 1, "name": "Planned Transport", "value": 1000 * (6 * 28 + 1),
                                        "money": 100000 + 6 * 28, "loan": 300000})
