@@ -1269,9 +1269,15 @@ Open questions, not conclusions:
   document are all derived from it (rule `project.mcp-surfaces-are-derived`).
 - **Blackboard-style coordination.** The Majordomus peer board and blackboard are in use: agent
   sessions announce their intent and paths there, and `mcp-bus-blackboard` (with the Rhai rail monitor, [`research/rail-steward.md`](research/rail-steward.md)) posts a digest of every
-  running game's event bus to it ([`research/mcp-control.md`](./research/mcp-control.md)). Whether
-  shared state improves handoffs or just spreads a wrong assumption is an open question; its
-  existence is not evidence of better coordination.
+  running game's event bus to it ([`research/mcp-control.md`](./research/mcp-control.md)). Typed
+  records live in the same mesh journal (Majordomus I4665, merged 2026-11-22): observation,
+  hypothesis, plan, decision, blocker, handoff and outcome, written only by their own session at
+  the revision it read, inside its claimed paths, superseded rather than overwritten, and
+  `asserted` unless they cite a retrievable source. Rhai scripts here read and write them with
+  `mesh_records` / `mesh_record_write` ([`research/rhai-ide.md`](./research/rhai-ide.md)); tested
+  against a fixture of the API, the live check waits for Majordomus 1.2.0. Whether shared state
+  improves handoffs or just spreads a wrong assumption is an open question; its existence is not
+  evidence of better coordination.
 - **Retrieval with checked citations.** Sessions read the repository directly. `tools/knowledge/consult`
   gives an external model the context `majordomus context resolve` derives for a path and checks
   every file and symbol its answer cites ([`tools/knowledge/README.md`](./tools/knowledge/README.md));
