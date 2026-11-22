@@ -26,6 +26,7 @@ The model's parts:
 
 import argparse
 import json
+import os
 import re
 import subprocess
 import sys
@@ -42,6 +43,31 @@ DOC_BEGIN, DOC_END = "<!-- town-model:begin -->", "<!-- town-model:end -->"
 
 def rel(path):
     return str(path.relative_to(REPO))
+
+
+def tracked(base, pattern):
+    """Files under `base` matching `pattern` that the next commit can hold.
+
+    Counted like tools/surfaces/surfaces.py load_repo: what git tracks plus new files it would not
+    ignore, and inside a git hook (git exports GIT_INDEX_FILE) only the index, so a source file
+    written but never added cannot shape the derived model that CI then cannot reproduce. Outside
+    a git checkout of REPO every file on disk counts.
+    """
+    env = dict(os.environ)
+    if env.get("GIT_INDEX_FILE"):  # a hook may export it relative to the work tree
+        env["GIT_INDEX_FILE"] = os.path.abspath(env["GIT_INDEX_FILE"])
+    sources = ["--cached"] + ([] if env.get("GIT_INDEX_FILE") else ["--others", "--exclude-standard"])
+    try:
+        top = subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=base, env=env, check=True,
+                             capture_output=True, text=True).stdout.strip()
+        if Path(top).resolve() != REPO.resolve():
+            raise ValueError("not a checkout of REPO")
+        out = subprocess.run(["git", "ls-files", "-z", *sources, "--", "."], cwd=base, env=env,
+                             check=True, capture_output=True, text=True).stdout
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        return sorted(base.rglob(pattern))
+    return sorted(base / n for n in out.split("\0")
+                  if n and Path(n).match(pattern) and (base / n).is_file())
 
 
 def read_lines(path):
@@ -172,7 +198,7 @@ def comment_near(lines, idx):
 
 def source_files():
     skip = ("src/script/", "src/prismatic_mcp/", "src/saveload/", "src/3rdparty/", "src/tests/")
-    for p in sorted(SRC.rglob("*.cpp")):
+    for p in tracked(SRC, "*.cpp"):
         if not rel(p).startswith(skip) and "_gui" not in p.name:
             yield p
 
@@ -438,7 +464,7 @@ def derive_links():
 
 def derive_settings(names):
     out = {}
-    for ini in sorted((SRC / "table/settings").glob("*.ini")):
+    for ini in tracked(SRC / "table/settings", "*.ini"):
         lines = read_lines(ini)
         for i, l in enumerate(lines):
             m = re.match(r"var\s*=\s*(\S+)", l)

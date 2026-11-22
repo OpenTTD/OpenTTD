@@ -67,18 +67,26 @@ not theirs, and all five were right.
 | `readme-scoreboard` counts only the index inside a git hook, so a scoreboard naming an unadded record fails the commit | `tools/research/readme-scoreboard` | `tools/research/test_readme_scoreboard_index.py` |
 | The battle leaderboard and `battle.py check` read records the same way | `battle.py` | `test_ai_battle.py` |
 | `refs check` resolves a citation only against the index inside a hook | `tools/knowledge/refs.py` | `tools/knowledge/test_refs.py` |
+| The town-authority model derives only from source files the index holds inside a hook | `tools/research/town-model/derive.py` | `tools/research/test_town_model_index.py` |
+| Master moves only to a commit whose Surfaces "Check and build" passed, admins included | GitHub branch protection, set by the owner 2026-11-22 | `gh api repos/korczis/OpenTTD/branches/master/protection` |
 | A long-running job must be owned, bounded and stoppable | rule `project.long-runs-are-owned-bounded-and-stoppable` | review |
 
 Each new test fails against the code before the fix.
 
 ## What is still open
 
-- **A gate that does not depend on a clone's hooks.** Master can still receive a commit from a
-  clone whose hook does not run the checks. The backstop that holds everywhere is on the server:
-  branch protection requiring the Surfaces check before master moves. That is a repository
-  setting, so it is the owner's to turn on.
 - **Mesh-visible jobs in Majordomus.** A long-running process that is neither a build nor a session
   is invisible to every coordination layer. The generic fix belongs in Majordomus: a job record with
   machine, pid, budget, heartbeat and stop handle; one machine guard that jobs consult; and owner stop
   orders as typed records. The prismatic-majordomus landing seat accepted it as one owner-ordered
   issue on 2026-11-22. Its id is pending, because the issue allocator was unavailable.
+- **The paused arenas.** This Mac and lundra stay out of the tournament until someone makes their
+  battle binary executable again (`chmod +x ~/ttd-battle/openttd-src/build/openttd`). The reason
+  is written in `~/ttd-battle/PAUSED.txt` on each machine. With the guards in place, a host comes
+  back `busy` while it is over its floors.
+- **Not run for these fixes:** `tools/gate.sh change`. Its full C++ build and ctest would have
+  loaded a machine that was already over its floors (load 25 on 18 cores, 27 GiB free), and no
+  C++ changed. The Python tests and the checks named above were run.
+
+The orchestrator's own checkout, on the other Mac, was fast-forwarded to 28f104e on 2026-11-22, so
+its next run carries the guards.
