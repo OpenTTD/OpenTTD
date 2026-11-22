@@ -27,6 +27,7 @@ add_files(
     prismatic_mcp_registry.h
     prismatic_mcp_registry.cpp
     prismatic_mcp_ui.h
+    prismatic_mcp_text.h
     prismatic_mcp_ui.cpp
     prismatic_mcp_view.h
     prismatic_mcp_view.cpp

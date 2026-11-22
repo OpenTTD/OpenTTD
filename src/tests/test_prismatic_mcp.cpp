@@ -15,6 +15,7 @@
 #include "../prismatic_mcp/prismatic_mcp_ui.h"
 #include "../prismatic_mcp/prismatic_mcp_console.h"
 #include "../prismatic_mcp/prismatic_mcp_view.h"
+#include "../prismatic_mcp/prismatic_mcp_text.h"
 #include "../network/network.h"
 #include "../prismatic_mcp/prismatic_mcp_world.h"
 #include "../prismatic_mcp/prismatic_mcp_entities.h"
@@ -699,6 +700,18 @@ TEST_CASE("The approval state machine binds to canonical args, executes once, re
 		CHECK(ClassifySubmit(a, pause5, 10, idx) == SubmitDecision::Execute);
 		CHECK(ClassifySubmit(a, pause6, 10, idx) == SubmitDecision::CreatePending);
 	}
+}
+
+TEST_CASE("PrismaticMCP: game text reaches MCP clients as plain text")
+{
+	using PrismaticMCP::PlainText;
+	/* A news headline as GetDecodedString returns it: SCC codes (U+E054, U+E006, U+E052, U+E055)
+	 * around the words and the game's own blank line. */
+	const std::string headline = "\xEE\x81\x94\xEE\x80\x86New coal mine\xEE\x81\x92\n\nunder construction near Brno\xEE\x81\x95";
+	CHECK(PlainText(headline) == "New coal mine under construction near Brno");
+	CHECK(PlainText("  plain   text\t") == "plain text");
+	CHECK(PlainText("") == "");
+	CHECK(PlainText("Žabovřesky") == "Žabovřesky");
 }
 
 #endif /* OTTD_PRISMATIC_MCP_SERVER */
