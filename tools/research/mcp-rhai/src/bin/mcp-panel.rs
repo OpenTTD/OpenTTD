@@ -39,6 +39,8 @@ mod panel_bot;
 mod panel_play;
 #[path = "../panel_decision.rs"]
 mod panel_decision;
+#[path = "../panel_mesh.rs"]
+mod panel_mesh;
 #[path = "../panel_events.rs"]
 mod panel_events;
 #[path = "../panel_results.rs"]
