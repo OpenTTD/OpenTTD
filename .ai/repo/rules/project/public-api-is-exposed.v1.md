@@ -34,6 +34,13 @@ Swagger at least, and this is enforced. A surface nobody measures is claimed, no
 Measured against a panel on this build (seed 31337): commands 146/146, Script API 630/630,
 console 87/87 reachable (3 gated). The rule is met in every dimension.
 
+Re-measured 2026-11-19 on master: a fresh `tools/gate.sh research` build of 42528010af (PASS,
+127/127 ctest, 796 assertions in 27 `[prismatic_mcp]` cases), its own panel, then
+`mcp-api-coverage --repo . --panel http://127.0.0.1:8815`: commands 146/146, console 87/87
+(`newgrf_profile`, `reload_newgrfs`, `resettile` gated), Script API 630/630, 786 MCP tools and 867
+OpenAPI paths, exit 0. Nothing under `src/` or `tools/research/mcp-rhai/` changed up to 00d09d4c90,
+so the measurement holds there too.
+
 - Commands: met. Every entry is `openttd.cmd.<Name>`, derived from the command table
   (`src/prismatic_mcp/prismatic_mcp_commands.cpp`), approval-gated, with its OpenAPI route. Every
   parameter type has a JSON spelling derived from it (`prismatic_mcp_params.hpp`): integers, enums,

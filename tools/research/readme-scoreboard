@@ -66,8 +66,19 @@ def load():
             "a": int(final["1"]["value"]),
             "b": int(final["2"]["value"]),
             "won": str(data.get("winner", "")).startswith("A"),
+            "held": bool(data.get("held_start")),
+            "b_rail": int(final["2"].get("trains") or 0) > 0,
         })
     return runs
+
+
+def mix(runs):
+    """What the tally of all records mixes, derived from them: run lengths, held starts, and how
+    often the rival ran a train. Every record's own label names its bot revision or setting."""
+    months = sorted({r["months"] for r in runs if isinstance(r["months"], int)})
+    return {"months_min": months[0] if months else None, "months_max": months[-1] if months else None,
+            "held_start": sum(r["held"] for r in runs),
+            "rival_without_rail": sum(not r["b_rail"] for r in runs)}
 
 
 def render(runs):
@@ -76,6 +87,7 @@ def render(runs):
     series = [r for r in runs if r["seed"] == SEED and r["months"] == MONTHS]
     best = max(runs, key=lambda r: r["a"])
     wins = sum(r["won"] for r in runs)
+    m = mix(runs)
     rel = lambda p: p.relative_to(ROOT).as_posix()
     top = max(r["a"] for r in series)
     lines = [
@@ -86,6 +98,13 @@ def render(runs):
         f"bot unplanned, one game, one map (seed {best['seed']}, {best['months']} months) — "
         f"[evidence]({rel(best['path'].with_suffix('.md'))}). "
         f"The planned bot won **{wins} of {len(runs)}** recorded duels.",
+        ">",
+        f"> That tally counts separate experiments, not one: the records run {m['months_min']} to "
+        f"{m['months_max']} months, {m['held_start']} of them from a held start, with bot revisions "
+        f"and settings that changed between runs (each row's label names its change). In "
+        f"{m['rival_without_rail']} of {len(runs)} the rival ran no train. Which rival each record ran "
+        "against, and what company value counts and leaves out, is in the "
+        "[duel evidence audit](research/duel-evidence-audit.md).",
         "",
         "```mermaid",
         "---",
@@ -129,7 +148,7 @@ def summary(runs, current):
     row = lambda r: {"name": r["path"].stem, "seed": r["seed"], "months": r["months"], "label": r["label"],
                      "planned": r["a"], "unplanned": r["b"], "won": r["won"], "evidence": rel(r["path"].with_suffix(".md"))}
     return {"readme": "current" if current else "stale", "seed": SEED, "months": MONTHS,
-            "duels": len(runs), "wins": sum(r["won"] for r in runs),
+            "duels": len(runs), "wins": sum(r["won"] for r in runs), "mix": mix(runs),
             "best": row(best), "series": [row(r) for r in series]}
 
 
