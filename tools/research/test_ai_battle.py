@@ -7,7 +7,9 @@ Run: python3 -B tools/research/test_ai_battle.py
 Covered: the referee line parser and company-id mapping, the match status contract (exit 0 and the
 final-year report), scoring and its exclusions, the replay comparison, the console start script
 (double quotes, settings), tick arithmetic, the record validator, the derived Markdown and README
-region, and the tar export that strips a directory's parents.
+region, the tar export that strips a directory's parents, the run guards (probe parsing on
+macOS, Linux and garbage, the PAUSED marker, the STOP file, the resource floor, the ORCHESTRATOR
+file and the match's owner marker) and the records a commit can hold (git index in a hook).
 """
 import importlib.util
 import io
@@ -167,6 +169,237 @@ class HostShell(unittest.TestCase):
         self.assertEqual(r.returncode, 124)
         self.assertIn("timed out", r.stderr)
         self.assertEqual(host.try_sh("echo ok").stdout.strip(), "ok")
+
+
+MAC_PROBE = """VERSION OpenTTD 20261119-master-g9750b3f946
+NCPU 18
+LOAD { 62.23 50.52 45.42 }
+SWAP total = 37888.00M  used = 35840.50M  free = 2047.50M  (encrypted)
+DISK /dev/disk3s5   971298980 874618684  29954288    97%    /System/Volumes/Data
+"""
+
+LINUX_PROBE = """VERSION OpenTTD 15.0
+NCPU 8
+LOAD 0.52 1.58 0.59 1/389 12345
+MEM MemTotal:       16314248 kB
+MEM MemAvailable:   12000000 kB
+MEM SwapTotal:       2097148 kB
+MEM SwapFree:        2097148 kB
+DISK /dev/nvme0n1p2  490617784 104857600 360710144  23% /home
+"""
+
+
+class Guards(unittest.TestCase):
+    """The run guards: pause marker, STOP file, resource floor and traceable ownership."""
+    LIMITS = {"max_load_per_core": 1.0, "min_free_disk_gib": 35, "max_swap_used_gib": 16}
+
+    def test_probe_parses_a_macos_sample(self):
+        res = battle.parse_probe(MAC_PROBE)
+        self.assertEqual(res["version"], "20261119-master-g9750b3f946")
+        self.assertEqual((res["ncpu"], res["load"]), (18, [62.23, 50.52, 45.42]))
+        self.assertEqual((res["disk_free_kib"], res["disk_mount"]), (29954288, "/System/Volumes/Data"))
+        self.assertAlmostEqual(res["swap_used_mib"], 35840.5)
+        self.assertEqual((res["paused"], res["unparsed"]), (None, []))
+        self.assertEqual(battle.probe_state(res, 0, "", "b")[0], "online")
+
+    def test_probe_parses_a_linux_sample_and_uptime_fallbacks(self):
+        res = battle.parse_probe(LINUX_PROBE)
+        self.assertEqual((res["ncpu"], res["load"][:2]), (8, [0.52, 1.58]))
+        self.assertEqual((res["disk_free_kib"], res["disk_mount"]), (360710144, "/home"))
+        self.assertEqual((res["mem_avail_kib"], res["swap_used_mib"]), (12000000, 0))
+        self.assertEqual(res["unparsed"], [])
+        for line, want in (("LOAD 10:01  up 3 days,  2 users,  load average: 0.52, 0.58, 0.59", 0.52),
+                           ("LOAD  6:09  up 13 days, 21 users, load averages: 62.23 50.52 45.42", 62.23),
+                           ("LOAD 10:01 up 3 days, 2 users, load average: 0,52, 0,58, 0,59", 0.52)):
+            self.assertEqual(battle.parse_probe(line)["load"][0], want, line)
+
+    def test_garbage_probe_output_blocks_nothing_but_is_reported(self):
+        res = battle.parse_probe("NCPU lots\nLOAD n/a\nDISK df: no such file\nwhat is this\n")
+        self.assertEqual((res["ncpu"], res["load"], res["disk_free_kib"]), (None, None, None))
+        self.assertEqual(len(res["unparsed"]), 4)
+        self.assertEqual(battle.floor_decision(None, res["ncpu"], None, 3, self.LIMITS), (3, ""))
+        state, detail = battle.probe_state(res, 0, "", "b")   # no build line: not handed matches
+        self.assertEqual(state, "error")
+        self.assertIn("not understood", detail)
+        self.assertIn("no NCPU line", battle.parse_probe("VERSION OpenTTD x\n")["unparsed"])
+
+    def test_a_pause_marker_pauses_the_host_with_its_first_line(self):
+        res = battle.parse_probe(MAC_PROBE + "PAUSED /h/ttd-battle/PAUSED\nPAUSEDMSG need the cores\n")
+        self.assertEqual(battle.probe_state(res, 0, "", "b"), ("paused", "need the cores"))
+        res = battle.parse_probe("NO_BINARY\nPAUSED /h/ttd-battle/PAUSED.txt\nPAUSEDMSG \n")
+        self.assertEqual(battle.probe_state(res, 0, "", "b"), ("paused", "/h/ttd-battle/PAUSED.txt present"))
+        host = battle.Host({"name": "h", "ssh": None}, "$HOME/ttd-battle")
+        host.state, host.res = "paused", res
+        self.assertEqual(host.admit(0), 0)
+
+    def test_the_probe_script_finds_a_pause_file_in_the_root(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            host = battle.Host({"name": "h", "ssh": None, "binary": f"{tmp}/none"}, tmp)
+            Path(tmp, "PAUSED-by-alice").write_text("Stop ttd-battle\nsecond line\n")
+            out = subprocess.run(["/bin/sh", "-c", battle.probe_script(host.binary, tmp)],
+                                 capture_output=True, text=True)
+            self.assertEqual(out.returncode, 0)
+            res = battle.parse_probe(out.stdout)
+            self.assertEqual(res["paused"], "Stop ttd-battle")
+            self.assertTrue(res["no_binary"])
+            self.assertIsNotNone(res["disk_free_kib"])   # df of the root works on this machine
+
+    def test_floor_decision(self):
+        gib = battle.GIB_KIB
+        fd = battle.floor_decision
+        self.assertEqual(fd(2.0, 18, 100 * gib, 4, self.LIMITS), (4, ""))
+        n, why = fd(86.0, 18, 100 * gib, 4, self.LIMITS)
+        self.assertEqual(n, 0)
+        self.assertIn("load 86.0 on 18 cores = 4.78/core > ceiling 1.0", why)
+        n, why = fd(15.5, 18, 100 * gib, 4, self.LIMITS)       # room for 2 more under 18.0
+        self.assertEqual(n, 2)
+        self.assertIn("room for 2", why)
+        self.assertEqual(fd(17.5, 18, 100 * gib, 4, self.LIMITS)[0], 0)
+        n, why = fd(1.0, 18, 30 * gib, 4, self.LIMITS)
+        self.assertEqual((n, why), (0, "free disk 30.0 GiB < floor 35 GiB"))
+        n, why = fd(1.0, 18, 100 * gib, 4, self.LIMITS, swap_used_mib=35 * 1024)
+        self.assertEqual((n, why), (0, "swap 35.0 GiB used > ceiling 16 GiB"))
+        self.assertEqual(fd(None, None, None, 2, self.LIMITS), (2, ""))   # unknown: never blocks
+        self.assertEqual(fd(2.0, 18, 100 * gib, 0, self.LIMITS), (0, ""))  # full, not busy
+        self.assertEqual(fd(3.0, 4, 100 * gib, 2, dict(self.LIMITS, max_load_per_core=2.0)), (2, ""))
+
+    def test_host_floor_overrides_and_busy_state(self):
+        host = battle.Host({"name": "h", "ssh": None, "slots": 32,
+                            "resource_floor": {"max_load_per_core": 0.5}},
+                           "$HOME/ttd-battle", {"min_free_disk_gib": 50})
+        self.assertEqual(host.limits, {"max_load_per_core": 0.5, "min_free_disk_gib": 50,
+                                       "max_swap_used_gib": 16})
+        host.state, host.res = "online", battle.parse_probe(MAC_PROBE)
+        self.assertEqual(host.admit(0), 0)
+        self.assertEqual(host.state, "busy")
+        self.assertIn("free disk 28.6 GiB < floor 50 GiB", host.detail)
+
+    def test_orchestrator_file_names_owner_and_how_to_stop(self):
+        text = battle.orchestrator_text("mac one.local", 4242, "2026-11-22T05:00:00+00:00", "c" * 40,
+                                        "a" * 40, "ed1", "$HOME/ttd-battle", "/Users/x/ttd-battle")
+        lines = dict(l.split("=", 1) for l in text.splitlines() if "=" in l and not l.startswith("#"))
+        self.assertEqual((lines["host"], lines["pid"], lines["commit"]), ("mac one.local", "4242", "c" * 40))
+        self.assertEqual(lines["started_at"], "2026-11-22T05:00:00+00:00")
+        self.assertEqual(lines["marker"], "TTD_BATTLE_ORCHESTRATOR=mac_one.local:4242")
+        self.assertIn("$HOME/ttd-battle/PAUSED", lines["how_to_stop"])
+        self.assertIn("SIGTERM pid 4242 on host mac one.local", lines["how_to_stop"])
+        self.assertIn("/Users/x/ttd-battle/STOP", lines["how_to_stop"])
+        self.assertNotIn("\nEOS\n", text)   # it goes through a quoted here-document
+
+    def test_claim_writes_the_orchestrator_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            host = battle.Host({"name": "h", "ssh": None}, f"{tmp}/root")
+            text = battle.orchestrator_text("h", 1, "t", "c", "a", "e", host.root, tmp)
+            self.assertTrue(host.claim(text))
+            self.assertEqual(Path(tmp, "root", "ORCHESTRATOR").read_text(), text)
+
+    def test_match_launch_carries_the_orchestrator_marker(self):
+        host = battle.Host({"name": "h", "ssh": None}, "$HOME/ttd-battle")
+        m = {"id": "m-0001", "edition": "abc", "lineup": [{"ai": "A"}], "ticks": 7, "seed": 3}
+        text = battle.launch_script(host, m, MC, battle.owner_marker("mac.local", 99))
+        self.assertIn("export TTD_BATTLE_ORCHESTRATOR=mac.local:99\n", text)
+        self.assertIn('echo "$TTD_BATTLE_ORCHESTRATOR" > orchestrator', text)
+        self.assertIn("'ttd-battle[mac.local:99]'", text)
+        self.assertEqual(battle.owner_marker("a b;rm", 1), "a_b_rm:1")
+
+    def test_stop_file(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertIsNone(battle.stop_requested(Path(tmp)))
+            Path(tmp, "STOP").write_text("")
+            self.assertEqual(battle.stop_requested(Path(tmp)), f"{Path(tmp) / 'STOP'} present")
+            Path(tmp, "STOP").write_text("owner: stop ttd-battle\n")
+            self.assertEqual(battle.stop_requested(Path(tmp)), "owner: stop ttd-battle")
+
+    @staticmethod
+    def orchestrator(tmp):
+        cache = Path(tmp)
+        (cache / "arena").mkdir()
+        (cache / "arena" / "PROVENANCE.json").write_text(json.dumps({"rev": "a" * 40}))
+        cfg = {"cache": cache, "results": cache / "results", "hosts_file": cache / "hosts.json",
+               "remote_root": f"{tmp}/remote", "seed": "s", "match": MC,
+               "contestants": [{"ai": "A", "label": "A"}, {"ai": "B", "label": "B"}]}
+        (cache / "hosts.json").write_text(json.dumps({"hosts": [{"name": "h", "ssh": None, "slots": 3}]}))
+        orch = battle.Orchestrator(cfg, edition="e1")
+        host = orch.hosts[0]
+        host.synced_digest = orch.digest            # nothing to rsync
+        host.launched = []
+
+        def probe():
+            host.state, host.detail, host.res = "online", "", battle.parse_probe(LINUX_PROBE)
+
+        def try_sh(script, timeout=60):
+            host.launched.append(script)
+            return subprocess.CompletedProcess(script, 0, "launched\n", "")
+        host.probe, host.try_sh = probe, try_sh
+        return orch, host
+
+    def test_a_stop_file_stops_scheduling_everywhere(self):
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as tmp:
+            orch, host = self.orchestrator(tmp)
+            Path(tmp, "STOP").write_text("owner says stop\n")
+            with mock.patch.object(battle, "log"):
+                orch.schedule_pass()
+            self.assertEqual((orch.matches, host.launched), ({}, []))
+            self.assertTrue(any("STOP" in e["msg"] and "owner says stop" in e["msg"] for e in orch.events))
+            Path(tmp, "STOP").unlink()
+            with mock.patch.object(battle, "log"):
+                orch.schedule_pass()
+            self.assertEqual(len(orch.matches), 3)       # 3 slots, load 1.58 of 8 cores
+            self.assertTrue(host.launched[0].startswith("mkdir -p"))   # ORCHESTRATOR first
+            self.assertIn(f"TTD_BATTLE_ORCHESTRATOR={orch.owner}", host.launched[1])
+            self.assertTrue(any("removed: scheduling resumes" in e["msg"] for e in orch.events))
+
+    def test_a_loaded_host_is_busy_and_gets_no_match(self):
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as tmp:
+            orch, host = self.orchestrator(tmp)
+            loaded = MAC_PROBE.replace("29954288", "99954288").replace("used = 35840.50M", "used = 0.00M")
+            host.probe = lambda: setattr(host, "res", battle.parse_probe(loaded)) or setattr(
+                host, "state", "online")
+            with mock.patch.object(battle, "log"):
+                orch.schedule_pass()
+            self.assertEqual((host.state, orch.matches, host.launched), ("busy", {}, []))
+            self.assertIn("62.2 on 18 cores", host.detail)
+
+
+def init_repo(path: Path) -> None:
+    for args in (["init", "-q"], ["config", "user.email", "t@example.invalid"],
+                 ["config", "user.name", "t"]):
+        subprocess.run(["git", "-C", str(path), *args], check=True, capture_output=True)
+
+
+class TrackedRecords(unittest.TestCase):
+    def test_a_hook_counts_only_staged_records(self):
+        import os
+        from unittest import mock
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp).resolve()
+            init_repo(root)
+            results = root / "research" / "results"
+            results.mkdir(parents=True)
+            staged, untracked = results / "battle-1-a.json", results / "battle-2-b.json"
+            staged.write_text("{}")
+            untracked.write_text("{}")
+            (results / "other.json").write_text("{}")
+            env = {k: v for k, v in os.environ.items() if not k.startswith("GIT_")}
+            with mock.patch.dict(os.environ, env, clear=True):
+                subprocess.run(["git", "-C", str(root), "add", str(staged)], check=True)
+                self.assertEqual(battle.tracked_records("battle-*.json", results, root), [staged, untracked])
+                # git may export a relative index path to a hook: it is made absolute first.
+                with mock.patch.dict(os.environ, {"GIT_INDEX_FILE": os.path.relpath(
+                        root / ".git" / "index")}):
+                    self.assertEqual(battle.tracked_records("battle-*.json", results, root), [staged])
+                # Not a checkout of the repository (another toplevel): every record on disk.
+                self.assertEqual(battle.tracked_records("battle-*.json", results, root / "research"),
+                                 [staged, untracked])
+
+    def test_outside_git_every_record_on_disk_counts(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp).resolve()
+            (d / "battle-1.json").write_text("{}")
+            self.assertEqual(battle.tracked_records("battle-*.json", d, d), [d / "battle-1.json"])
+            self.assertEqual(battle.tracked_records("battle-*.json", d / "missing", d), [])
 
 
 class Scoring(unittest.TestCase):

@@ -107,6 +107,24 @@ every `offline_probe_every_s`, so a machine that comes up joins without a restar
 that fails stays out until a later probe. After `run` stops, matches already running keep going
 on their hosts, and the next `run` of the same edition picks them up again.
 
+Guards (rule `project.long-runs-are-owned-bounded-and-stoppable`, after
+[the 2026-11-19 incident](../incident-2026-11-19-ai-battle-overload.md)):
+
+- **Pause a machine**: create `~/ttd-battle/PAUSED` on it, with the reason on its first line. The
+  probe reports the host `paused` and nothing new starts there. Any session may do this.
+- **Stop the tournament**: create `~/ttd-battle/STOP` beside the orchestrator. Scheduling stops
+  everywhere until the file is removed. SIGTERM on the orchestrator also stops it.
+- **Floors**: before adding matches, each host's load per core, used swap and free disk are read
+  (`resource_floor` in `battle.json`, overridable per host in `hosts.json`; defaults 1.0 load per
+  core, 16 GiB swap, 35 GiB free). A host over a ceiling or under the floor is `busy`.
+- **Owner on every arena**: `~/ttd-battle/ORCHESTRATOR` names the orchestrator's host, pid,
+  commit and how to stop it. Every match carries `TTD_BATTLE_ORCHESTRATOR=<host:pid>` and shows
+  as `ttd-battle[<host:pid>]` in `ps`.
+
+Pause and stop stop new matches only. Running matches finish on their own, or stop through
+their pid files (`kill $(cat <match dir>/pid)`). Killing matches by name does not stop the
+tournament, because their slots are refilled on the next pass.
+
 Prerequisites. The orchestrating machine needs Python 3.9 or newer, `rsync`, a local build
 (`fetch` uses it), and OpenGFX at the `baseset` path. Each arena needs SSH key access, `rsync`,
 and an OpenTTD binary at `$HOME/dev/OpenTTD/build/openttd`. A headless `-DOPTION_DEDICATED=ON`

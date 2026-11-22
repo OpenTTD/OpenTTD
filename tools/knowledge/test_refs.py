@@ -7,6 +7,7 @@ import contextlib
 import importlib.util
 import io
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -104,6 +105,26 @@ class RefsTest(unittest.TestCase):
         code, out = self.run_cli("check")
         self.assertEqual(code, 1)
         self.assertIn(".ai/repo/new/README.md", out)
+
+    def test_inside_a_hook_a_file_written_but_not_added_does_not_resolve(self) -> None:
+        # A record citing an unadded file would pass a pre-commit check and fail in CI, whose
+        # checkout does not have it: inside a hook (GIT_INDEX_FILE set) only the index counts.
+        self.write("src/net/client.cpp", "void Client::Join() {}\n")
+        self.write(".ai/repo/new/README.md", "`src/net/client.cpp:Client::Join`\n")
+        sh(self.root, "git", "add", ".ai/repo/new/README.md")
+        code, out = self.run_cli("check")
+        self.assertEqual(code, 0, out)
+        old = os.environ.get("GIT_INDEX_FILE")
+        os.environ["GIT_INDEX_FILE"] = str(self.root / ".git" / "index")
+        try:
+            code, out = self.run_cli("check")
+        finally:
+            if old is None:
+                os.environ.pop("GIT_INDEX_FILE")
+            else:
+                os.environ["GIT_INDEX_FILE"] = old
+        self.assertEqual(code, 1, out)
+        self.assertIn("src/net/client.cpp:Client::Join is not a tracked file", out)
 
     def test_superseded_record_is_history_and_not_judged(self) -> None:
         self.write(".ai/repo/old/README.md", "---\nid: old\nstatus: superseded\n---\n\n`src/gone.cpp`\n")
