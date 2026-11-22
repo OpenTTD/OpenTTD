@@ -66,4 +66,7 @@ caller's accounting; the replay is identical to the unit and logs 16947 and 3683
   and 4 then built the airport), but the games came out -21.0%, +0.2%, -34.2%, +14.5%, -24.2%
   (-6.4% geometric over the 12), and on 1425f2c3 m-0015 2.27M against 2.58M with 4 aircraft
   instead of none. The airports a forested town refuses are not worth winning back; m-0015's
-  weakness is not its missing aircraft. Not committed.
+  weakness is not its missing aircraft. A second sample of 30 other matches (random from the
+  2026-11-22 editions, all on 8c8d025388) changed 9 games, 5 up and 4 down (-18.6% to +22.3%),
+  0.0% geometric over the 30: over 42 replays replanting is neutral to slightly negative, so it is
+  not committed.
