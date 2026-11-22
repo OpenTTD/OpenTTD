@@ -60,8 +60,10 @@ function PrismaticAI::AirportType() {
  * 3 of 32 cost more than 1.1 times it (12981 cost 40685, 27137 cost 112145). Moving the loan
  * changes the company's money by a few units (interest at a month's end during the levelling), and
  * on cheap sites, where the estimate held, that alone sent replays of whole games another way.
- * Returns whether the site was levelled. */
-function PrismaticAI::LevelKeeping(t, far, keep, cost, funds) {
+ * `spent` is the caller's AIAccounting: a nested one would take the levelling's cost out of the
+ * caller's when it is destroyed (ScriptAccounting restores the outer count), and from 8c8d025388
+ * the arena logs said "levelled ... for 0". Returns whether the site was levelled. */
+function PrismaticAI::LevelKeeping(t, far, keep, cost, funds, spent) {
 	local loan = AICompany.GetLoanAmount();
 	local headroom = AICompany.GetMaxLoanAmount() - loan;
 	local cut = 0;
@@ -70,7 +72,6 @@ function PrismaticAI::LevelKeeping(t, far, keep, cost, funds) {
 		cut = min(loan, ((keep - headroom + step - 1) / step) * step);
 		if (cut > 0 && !AICompany.SetLoanAmount(loan - cut)) cut = 0;
 	}
-	local spent = AIAccounting();
 	local ok = AITile.LevelTiles(t, far);
 	if (cut > 0) AILog.Info("PrismaticAI: levelled tile " + t + " with " + cut + " of the loan paid down: " +
 		(ok ? "done" : "stopped") + " for " + spent.GetCosts() + " (estimated " + cost + ", keeping " + keep + ")");
@@ -153,14 +154,17 @@ function PrismaticAI::BuildAirportNear(town, type, pax) {
 			local step_max = AIR_LEVEL_STEP > 0 ? AIR_LEVEL_STEP : (AIR_LEVEL_REFUSED ? 1 : 255);
 			local level_ok = !level_lost && hi - lo <= step_max && cost <= AIR_LEVEL_MAX && funds - 4 * cost >= keep;
 			local real = AIAccounting();
-			if (level_ok && PrismaticAI.LevelKeeping(t, far, keep, cost, funds) && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
+			local levelled = level_ok && PrismaticAI.LevelKeeping(t, far, keep, cost, funds, real);
+			local level_err = levelled ? "" : AIError.GetLastErrorString();
+			if (levelled && AIAirport.BuildAirport(t, type, AIStation.STATION_NEW)) {
 				AILog.Info("PrismaticAI: built airport in " + AITown.GetName(town) + " at tile " + t + " after levelling it for " + real.GetCosts() + " (estimated " + cost + ")");
 				return t;
 			}
 			/* Say why: a test pass that succeeded leaves ERR_NONE as the last error. */
 			if (level_ok && AIR_LEVEL_ONCE == 1) level_lost = true;
 			if (level_ok) AIR_LEVEL_REFUSED = true;
-			if (level_ok) AILog.Warning("PrismaticAI: levelled tile " + t + " for " + real.GetCosts() + " (estimated " + cost + ") and the airport was still refused: " + AIError.GetLastErrorString());
+			if (level_ok) AILog.Warning("PrismaticAI: levelled tile " + t + " for " + real.GetCosts() + " (estimated " + cost + ") and the airport was still refused: " +
+				(levelled ? AIError.GetLastErrorString() : "levelling failed, " + level_err) + " (bank " + AICompany.GetBankBalance(AICompany.COMPANY_SELF) + ")");
 			if (!level_ok) {
 				AILog.Warning("PrismaticAI: airport at tile " + t + " refused: levelling costs " + cost + ", height range " + (hi - lo) +
 					" (air_level_max " + AIR_LEVEL_MAX + "; funds " + funds + ", keeping " + keep + " for the airports and a plane)");

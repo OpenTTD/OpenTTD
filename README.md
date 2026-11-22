@@ -309,6 +309,7 @@ decides when a measurement may change a default.
 | [A default build and its 98/98 tests say nothing about research code; verify with the option ON](.ai/repo/knowledge/curated/gated-code-is-invisible-to-a-default-build.md) | When rebasing onto upstream, merging, or changing a header the gated code includes. |
 | [Under set -o pipefail, producer \| grep -q reports a match as a failure](.ai/repo/knowledge/curated/grep-q-under-pipefail-is-a-false-negative.md) | When a gate or research script checks a binary or a log with strings/cat piped into grep -q. |
 | [-g loads a heightmap, savegame or scenario headlessly; -G is the map-generation random seed](.ai/repo/knowledge/curated/heightmap-flag-is-lowercase-g.md) | When seeding a world from real elevation data, or reading a command line that passes -G. |
+| [Levelling an airport site clears its tree tiles, each costs town rating, and a guard against it lost in replays](.ai/repo/knowledge/curated/levelling-an-airport-site-clears-trees-and-costs-town-rating.md) | Before changing how PrismaticAI levels airport sites: why a levelled site can be refused with ERR_LOCAL_AUTHORITY_REFUSES, and the measured result of skipping such sites. |
 | [A link's capacity in the game's link graph is the capacity of the trips run over it, not of the vehicles assigned to it](.ai/repo/knowledge/curated/link-graph-capacity-counts-trips-not-vehicles.md) | Before judging a route's fleet from cargo_link capacity and usage (openttd://world/graph), or sizing a fleet from it. |
 | [On macOS a missing base graphics set hangs every headless run instead of failing it](.ai/repo/knowledge/curated/macos-missing-baseset-hangs-headless-runs.md) | When a regression ctest case times out at 120 s, or a research run exits 124 with no research_status line. |
 | [Every MCP tool is exposed, but about 2% are ever called, and a call counts as covered before its arguments are checked](.ai/repo/knowledge/curated/mcp-exercise-coverage-is-two-percent.md) | Before claiming MCP coverage, reading openttd://mcp/coverage, or extending tools/research/mcp-coverage-check; the measured gap and the smallest generic way to close it. |
@@ -524,8 +525,8 @@ from the code. The right-hand column says what was counted.
 | **14** | [Rhai scripts that drive a live game (director, narrator, steward, …)](research/mcp-control.md) | tracked files `tools/research/mcp-panel/rhai/*.rhai` |
 | **35** | [architecture decisions (ADRs)](.ai/repo/adrs/README.md) | tracked files `.ai/repo/adrs/0*.md` |
 | **93** | [planned issues, each with its evidence](.ai/repo/project/README.md) | tracked files `.ai/repo/project/issues/*.yaml` |
-| **87** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
-| **816** | published documents on the site and the wiki | published documents under `/` |
+| **88** | [knowledge records (curated and candidates)](.ai/repo/knowledge/README.md) | tracked files `.ai/repo/knowledge/*/*.md` |
+| **823** | published documents on the site and the wiki | published documents under `/` |
 <!-- surfaces:end facts -->
 
 ## How it compares
