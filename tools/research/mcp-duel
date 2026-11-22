@@ -466,9 +466,11 @@ def side(c, number):
     return {"company": number, "name": c.get("name"), "value": c.get("value"), "money": c.get("money"), "loan": c.get("loan")}
 
 
-def verdict_payload(cfg, rev, held, a, b, rival, winner, store, fallback, record, panel_base):
+def verdict_payload(cfg, rev, held, a, b, rival, winner, store, fallback, record, panel_base, rival_settings=None):
     """The data of plan.duel: {decision, version, inputs, choice} (panel_events.rs plan), with the
-    verdict {seed, months, held_start_tick, a, b, rival_spread} (and the winner) as its choice."""
+    verdict {seed, months, held_start_tick, a, b, rival_spread, rival} (and the winner) as its choice:
+    `rival` is B's live settings ({name: value}, None when unread), so a reader of stored verdicts
+    (duel_outcomes.rs) groups duels by the rival that ran, not by the opponent's name."""
     params = {"months": cfg["months"], "opponent": cfg["opponent"], "bot_settings": cfg["bot_settings"],
               "start_paused": cfg["start_paused"], "page": PAGE}
     live = {"panel": panel_base, "clock": "GET /api/resources/game/state (game_date)",
@@ -480,7 +482,7 @@ def verdict_payload(cfg, rev, held, a, b, rival, winner, store, fallback, record
     else:
         stored = {"fallback": fallback}
     choice = {"seed": cfg["seed"], "months": cfg["months"], "held_start_tick": held, "a": side(a, 1), "b": side(b, 2),
-              "rival_spread": rival, "winner": winner}
+              "rival_spread": rival, "rival": rival_settings, "winner": winner}
     return {"decision": "duel.verdict", "version": {"revision": rev, "params": params, "digest": fnv1a64(params)},
             "inputs": {"live": live, "stored": stored}, "choice": choice}
 
@@ -577,7 +579,7 @@ def duel(panel, cfg, poll=POLL, sleep=time.sleep):
     spread = rival_spread(results, cfg["seed"], cfg["months"], cfg["opponent"], bool(cfg["start_paused"]), b.get("value"), name,
                           rival["settings"] if rival else None)
     payload = verdict_payload(cfg, revision(str(cfg["root"])), held, a, b, spread, winner, store, fallback,
-                              f"research/results/{name}.json", panel.base)
+                              f"research/results/{name}.json", panel.base, rival["settings"] if rival else None)
     verdict = publish_verdict(panel, store, payload, sleep=sleep)
     return {"name": name, "b_name": b_name, "record": {
         "experiment": f"duel in one game: planned bot (A, company 1) vs {b_name} (B, company 2)", "label": cfg["label"],

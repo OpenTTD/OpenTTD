@@ -10,6 +10,12 @@
 //! research/results; `mcp-panel --import-duels` imports them once into a store of their own
 //! (`duel-import`), as I0082 imported the retired calibration file, so the decision reads one kind
 //! from the stores and never a file.
+//!
+//! Arms are compared only against the same rival: the verdict's `rival` (company B's live settings,
+//! which `mcp-duel` records since 2026-11-20) is part of every group, and verdicts without it form
+//! their own "unknown" rival. The opponent's name alone does not say which rival ran: since
+//! df1e05e7d8 `PrismaticAI` with its defaults grows on autopilot, where earlier B built buses, and
+//! a spread over both is not a spread (research/duel-evidence-audit.md).
 use serde_json::{json, Value};
 use std::collections::BTreeMap;
 
@@ -35,7 +41,8 @@ pub const IMPORT_INSTANCE: &str = "duel-import";
 
 /// The rule, as the event names it.
 pub const RULE: &str = "own-lines-by-handed-v1: outcomes are plan.duel verdicts of held-start duels of at least 60 months against \
-PrismaticAI, each with what its run handed over (freight lines h, own_lines, rail_after). Pairs: within one seed, length and h, each \
+PrismaticAI, each with what its run handed over (freight lines h, own_lines, rail_after). Pairs: within one seed, length, h and rival \
+(B's recorded settings; verdicts without them are their own unknown rival), each \
 own_lines value against the smallest, gain = A/A_smallest - 1, read against the rival's spread (max B - min B) / min B of that group: \
 pays when gain > spread, costs when gain < -spread, else inside. Near pairs have h within 1 of this plan's (else every pair is read). \
 own_lines: some near pair pays and none costs: twice the largest value that paid, at most 16 (the best measured still paid); none pays: 0; \
@@ -56,6 +63,18 @@ pub fn outcomes_sql() -> String {
 AND TRY_CAST(json_extract_string(data, '$.choice.months') AS INTEGER) >= {MIN_MONTHS}) \
 SELECT instance, seq, ts_ms, kind, CAST(data AS VARCHAR) AS data FROM events \
 WHERE instance IN (SELECT instance FROM d) AND kind IN ('plan.duel', 'plan.bot_settings') ORDER BY instance, ts_ms, seq")
+}
+
+/// The rival a verdict ran against, as a group key: B's recorded settings as compact JSON with
+/// sorted keys, or "unknown" when the verdict has none (every duel before 2026-11-20).
+pub fn rival_of(choice: &Value) -> String {
+    match choice.get("rival") {
+        Some(Value::Object(m)) => {
+            let sorted: BTreeMap<&String, &Value> = m.iter().collect();
+            serde_json::to_string(&sorted).unwrap_or_else(|_| "unknown".into())
+        }
+        _ => "unknown".into(),
+    }
 }
 
 fn int(v: &Value) -> Option<i64> {
@@ -125,7 +144,7 @@ pub fn outcomes_of(columns: &Value, rows: &[Value]) -> (Vec<Value>, BTreeMap<Str
                     continue;
                 };
                 out.push(json!({"instance": instance, "seq": at(row, "seq"), "seed": c["seed"], "months": months,
-                                "held_start_tick": c["held_start_tick"], "a": a, "b": b, "handed": handed,
+                                "held_start_tick": c["held_start_tick"], "a": a, "b": b, "handed": handed, "rival": rival_of(c),
                                 "own_lines": int(&plan["own_lines"]).unwrap_or(0), "rail_after": plan["rail_after"],
                                 "record": data.pointer("/inputs/live/record").cloned().unwrap_or(Value::Null), "plan_from": from}));
             }
@@ -158,21 +177,22 @@ fn verdict(gain: f64, spread: Option<f64>) -> &'static str {
     }
 }
 
-type Key = (String, i64, i64);
+type Key = (String, i64, i64, String);
 
 fn key(o: &Value) -> Key {
-    (o["seed"].to_string(), o["months"].as_i64().unwrap_or(0), o["handed"].as_i64().unwrap_or(0))
+    (o["seed"].to_string(), o["months"].as_i64().unwrap_or(0), o["handed"].as_i64().unwrap_or(0),
+     o["rival"].as_str().unwrap_or("unknown").to_string())
 }
 
-/// Every own_lines comparison the outcomes make: within one seed, length and handed-over count,
-/// each own_lines value against the smallest, with the group's rival spread and the verdict.
+/// Every own_lines comparison the outcomes make: within one seed, length, handed-over count and
+/// rival, each own_lines value against the smallest, with the group's rival spread and the verdict.
 pub fn own_pairs(outcomes: &[Value]) -> Vec<Value> {
     let mut groups: BTreeMap<Key, Vec<&Value>> = BTreeMap::new();
     for o in outcomes {
         groups.entry(key(o)).or_default().push(o);
     }
     let mut out = Vec::new();
-    for ((seed, months, handed), arms) in groups {
+    for ((seed, months, handed, rival), arms) in groups {
         let mut by_own: BTreeMap<i64, Vec<f64>> = BTreeMap::new();
         for o in &arms {
             by_own.entry(o["own_lines"].as_i64().unwrap_or(0)).or_default().push(o["a"].as_f64().unwrap_or(0.0));
@@ -184,7 +204,7 @@ pub fn own_pairs(outcomes: &[Value]) -> Vec<Value> {
             if base_a <= 0.0 { continue; }
             let gain = round4(mean(a) / base_a - 1.0);
             out.push(json!({"seed": serde_json::from_str::<Value>(&seed).unwrap_or(Value::Null), "months": months, "handed": handed,
-                            "base_own": base, "own": own, "a_base": base_a, "a": mean(a), "gain": gain, "spread": s,
+                            "rival": rival, "base_own": base, "own": own, "a_base": base_a, "a": mean(a), "gain": gain, "spread": s,
                             "verdict": verdict(gain, s),
                             "records": arms.iter().map(|o| o["record"].clone()).collect::<Vec<_>>()}));
         }
@@ -192,7 +212,7 @@ pub fn own_pairs(outcomes: &[Value]) -> Vec<Value> {
     out
 }
 
-/// Every rail_after reading: within one seed, length, handed-over count and own_lines, groups whose
+/// Every rail_after reading: within one seed, length, handed-over count, rival and own_lines, groups whose
 /// arms differ in rail_after; the best arm counts when it beats every other beyond the group's
 /// rival spread, as its share rail_after / handed.
 pub fn rail_pairs(outcomes: &[Value]) -> Vec<Value> {
@@ -201,7 +221,7 @@ pub fn rail_pairs(outcomes: &[Value]) -> Vec<Value> {
         groups.entry((key(o), o["own_lines"].as_i64().unwrap_or(0))).or_default().push(o);
     }
     let mut out = Vec::new();
-    for (((seed, months, handed), own), arms) in groups {
+    for (((seed, months, handed, rival), own), arms) in groups {
         let mut by_after: BTreeMap<i64, Vec<f64>> = BTreeMap::new();
         for o in &arms {
             by_after.entry(o["rail_after"].as_i64().unwrap_or(0)).or_default().push(o["a"].as_f64().unwrap_or(0.0));
@@ -212,7 +232,7 @@ pub fn rail_pairs(outcomes: &[Value]) -> Vec<Value> {
         let s = spread(&arms.iter().filter_map(|o| o["b"].as_f64()).collect::<Vec<_>>());
         let beats = s.is_some_and(|s| means.iter().filter(|(k, _)| *k != best).all(|(_, a)| *a > 0.0 && best_a / a - 1.0 > s));
         out.push(json!({"seed": serde_json::from_str::<Value>(&seed).unwrap_or(Value::Null), "months": months, "handed": handed,
-                        "own_lines": own, "arms": means.iter().map(|(k, a)| json!({"rail_after": k, "a": a})).collect::<Vec<_>>(),
+                        "rival": rival, "own_lines": own, "arms": means.iter().map(|(k, a)| json!({"rail_after": k, "a": a})).collect::<Vec<_>>(),
                         "best": best, "share": round4(best as f64 / handed as f64), "spread": s, "counts": beats}));
     }
     out
@@ -385,7 +405,8 @@ pub fn import_event(name: &str, rec: &Value) -> Result<Value, String> {
         json!({"record": format!("research/results/{name}.json"), "imported_from": "research/results"}),
         &Stored::Fallback("imported once from research/results (I0087): the duel ran before mcp-duel published plan.duel (I0083)".into()),
         json!({"seed": rec["seed"], "months": rec["months"], "held_start_tick": held, "a": side(a, 1), "b": side(b, 2),
-               "rival_spread": rec["rival_spread"], "winner": rec["winner"], "plan": record_plan(rec)}));
+               "rival_spread": rec["rival_spread"], "rival": rec.pointer("/rival/settings").cloned().unwrap_or(Value::Null),
+               "winner": rec["winner"], "plan": record_plan(rec)}));
     Ok(json!({"seq": 0, "ts_ms": ts, "kind": "plan.duel", "data": data}))
 }
 
@@ -444,6 +465,40 @@ mod tests {
         let data = json!({"decision": "duel.verdict", "version": {"params": {"opponent": "PrismaticAI"}},
                           "inputs": {"live": {"record": format!("research/results/{instance}-{seq}.json")}}, "choice": choice});
         json!([instance, seq, seq * 10, "plan.duel", data.to_string()])
+    }
+
+    /// The same row with B's recorded settings as the verdict's `rival`.
+    fn duel_against(rival: Value, instance: &str, seq: i64, seed: i64, months: i64, a: f64, b: f64, plan: Option<Value>) -> Value {
+        let row = duel(instance, seq, seed, months, a, b, plan);
+        let mut data: Value = serde_json::from_str(row[4].as_str().unwrap()).unwrap();
+        data["choice"]["rival"] = rival;
+        json!([row[0], row[1], row[2], row[3], data.to_string()])
+    }
+
+    #[test]
+    fn arms_are_compared_only_against_the_same_rival() {
+        let buses = json!({"autopilot": 0, "max_routes": 4});
+        let auto = json!({"max_routes": 4, "autopilot": 1});
+        // own_lines 0 against 8 on one seed, twice: once against each rival. The autopilot rival is
+        // worth ~60x the bus-only one; mixed, the "spread" would be ~6000% and nothing could pay.
+        let rows = vec![duel_against(buses.clone(), "hub", 1, 4242, 120, 1_000_000.0, 40_000.0, handed(10, 0, None)),
+                        duel_against(buses.clone(), "hub", 2, 4242, 120, 1_300_000.0, 41_000.0, handed(10, 8, None)),
+                        duel_against(auto.clone(), "hub", 3, 4242, 120, 4_000_000.0, 2_500_000.0, handed(10, 0, None)),
+                        duel_against(auto.clone(), "hub", 4, 4242, 120, 4_100_000.0, 2_600_000.0, handed(10, 8, None)),
+                        duel("hub", 5, 4242, 120, 900_000.0, 30_000.0, handed(10, 0, None))];
+        let (o, skipped) = outcomes_of(&cols(), &rows);
+        assert!(skipped.is_empty());
+        assert_eq!(o[0]["rival"], o[1]["rival"]);
+        assert_eq!(o[2]["rival"], rival_of(&json!({"rival": {"autopilot": 1, "max_routes": 4}})), "key order does not matter");
+        assert_eq!(o[4]["rival"], "unknown");
+        let pairs = own_pairs(&o);
+        assert_eq!(pairs.len(), 2, "one pair per rival; the lone unknown arm has nothing to pair with");
+        let by_rival: BTreeMap<String, &Value> = pairs.iter().map(|p| (p["rival"].as_str().unwrap().to_string(), p)).collect();
+        let bus = by_rival[&rival_of(&json!({"rival": buses}))];
+        assert_eq!((bus["gain"].clone(), bus["spread"].clone(), bus["verdict"].clone()), (json!(0.3), json!(0.025), json!("pays")));
+        let ap = by_rival[&rival_of(&json!({"rival": auto}))];
+        assert_eq!((ap["gain"].clone(), ap["spread"].clone(), ap["verdict"].clone()), (json!(0.025), json!(0.04), json!("inside")));
+        assert_eq!(bus["records"].as_array().unwrap().len(), 2);
     }
 
     fn handed(h: i64, own: i64, after: Option<i64>) -> Option<Value> {
