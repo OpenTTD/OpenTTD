@@ -548,9 +548,9 @@ struct CompanyFinancesWindow : Window {
 	 * If it has, rescale the window to fit the new amount.
 	 */
 	const IntervalTimer<TimerWindow> rescale_interval = {std::chrono::seconds(3), [this](auto) {
-		const Company *c = Company::Get(this->window_number);
-		if (c->money > CompanyFinancesWindow::max_money) {
-			CompanyFinancesWindow::max_money = std::max(c->money * 2, CompanyFinancesWindow::max_money * 4);
+		const Money company_max = std::abs(Company::Get(this->window_number)->money);
+		if (company_max > CompanyFinancesWindow::max_money) {
+			CompanyFinancesWindow::max_money = std::max(company_max * 2, CompanyFinancesWindow::max_money * 4);
 			this->SetupWidgets();
 			this->ReInit();
 		}
