@@ -47,7 +47,7 @@ jobs:
 
     - name: Setup vcpkg
       id: vcpkg
-      uses: OpenTTD/actions/setup-vcpkg@v7
+      uses: OpenTTD/actions/setup-vcpkg@v8
 
     - name: Install dependencies
       shell: bash
