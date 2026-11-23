@@ -64,7 +64,7 @@ jobs:
       uses: ammaraskar/msvc-problem-matcher@master
 
     - name: Configure developer command prompt for tools
-      uses: ilammy/msvc-dev-cmd@v1
+      uses: step-security/msvc-dev-cmd@v1
       with:
         arch: x64
 
@@ -87,7 +87,7 @@ jobs:
         echo "::endgroup::"
 
     - name: Configure developer command prompt for ${{ matrix.arch }}
-      uses: ilammy/msvc-dev-cmd@v1
+      uses: step-security/msvc-dev-cmd@v1
       with:
         arch: ${{ matrix.host }}
 
