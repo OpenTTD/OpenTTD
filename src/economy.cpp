@@ -70,22 +70,6 @@
 CargoPaymentPool _cargo_payment_pool("CargoPayment");
 INSTANTIATE_POOL_METHODS(CargoPayment)
 
-/**
- * Multiply two integer values and shift the results to right.
- *
- * This function multiplies two integer values. The result is
- * shifted by the amount of shift to right.
- *
- * @param a The first integer
- * @param b The second integer
- * @param shift The amount to shift the value to right.
- * @return The shifted result
- */
-static inline int32_t BigMulS(const int32_t a, const int32_t b, const uint8_t shift)
-{
-	return (int32_t)((int64_t)a * (int64_t)b >> shift);
-}
-
 typedef std::vector<Industry *> SmallIndustryList;
 
 /**
@@ -1011,10 +995,10 @@ Money GetTransportedGoodsIncome(uint num_pieces, uint dist, uint16_t transit_per
 	 */
 	if (periods_over_max > 0) {
 		const int time_factor = std::max(2 * MIN_TIME_FACTOR * TIME_FACTOR_FRAC * TIME_FACTOR_FRAC / (periods_over_max + 2 * TIME_FACTOR_FRAC), 1); // MIN_TIME_FACTOR / (x/(2 * TIME_FACTOR_FRAC) + 1) + 1, expressed as fixed point with TIME_FACTOR_FRAC_BITS.
-		return BigMulS(dist * time_factor * num_pieces, cs->current_payment, 21 + TIME_FACTOR_FRAC_BITS);
+		return (cs->current_payment * dist * time_factor * num_pieces) >> (21 + TIME_FACTOR_FRAC_BITS);
 	} else {
 		const int time_factor = std::max(MAX_TIME_FACTOR - periods_over_periods1 - periods_over_periods2, MIN_TIME_FACTOR);
-		return BigMulS(dist * time_factor * num_pieces, cs->current_payment, 21);
+		return (cs->current_payment * dist * time_factor * num_pieces) >> 21;
 	}
 }
 
