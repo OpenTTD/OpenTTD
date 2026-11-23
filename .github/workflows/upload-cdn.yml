@@ -88,10 +88,10 @@ jobs:
     - prepare
 
     name: Publish bundles
-    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v7
+    uses: OpenTTD/actions/.github/workflows/rw-cdn-upload.yml@v8
     secrets:
       CDN_SIGNING_KEY: ${{ secrets.CDN_SIGNING_KEY }}
-      DEPLOYMENT_APP_ID: ${{ secrets.DEPLOYMENT_APP_ID }}
+      DEPLOYMENT_APP_CLIENT_ID: ${{ secrets.DEPLOYMENT_APP_CLIENT_ID }}
       DEPLOYMENT_APP_PRIVATE_KEY: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
     with:
       artifact-name: cdn-bundles
@@ -103,7 +103,7 @@ jobs:
     - prepare
 
     name: Publish symbols
-    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v7
+    uses: OpenTTD/actions/.github/workflows/rw-symbols-upload.yml@v8
     secrets:
       SYMBOLS_SIGNING_KEY: ${{ secrets.SYMBOLS_SIGNING_KEY }}
     with:
@@ -122,12 +122,12 @@ jobs:
     steps:
     - name: Generate access token
       id: generate_token
-      uses: tibdex/github-app-token@v2
+      uses: actions/create-github-app-token@v3
       with:
-        app_id: ${{ secrets.DEPLOYMENT_APP_ID }}
-        private_key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
-        installation_retrieval_mode: "repository"
-        installation_retrieval_payload: "OpenTTD/workflows"
+        client-id: ${{ secrets.DEPLOYMENT_APP_CLIENT_ID }}
+        private-key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
+        repositories: |
+          OpenTTD/workflows
 
     - name: Trigger 'Publish Docs'
       uses: peter-evans/repository-dispatch@v4
