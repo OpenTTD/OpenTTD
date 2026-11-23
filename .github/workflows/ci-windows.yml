@@ -44,7 +44,7 @@ jobs:
       uses: ammaraskar/msvc-problem-matcher@master
 
     - name: Configure developer command prompt for ${{ inputs.arch }}
-      uses: ilammy/msvc-dev-cmd@v1
+      uses: step-security/msvc-dev-cmd@v1
       with:
         arch: ${{ inputs.arch }}
 
