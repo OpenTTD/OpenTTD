@@ -120,12 +120,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Decode the GitHub App Private Key
+      id: decode
+      run: |
+        private_key=$(echo "${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}" | base64 -d | awk 'BEGIN {ORS="\\n"} {print}' | head -c -2) &> /dev/null
+        echo "::add-mask::$private_key"
+        echo "private-key=$private_key" >> "$GITHUB_OUTPUT"
+
     - name: Generate access token
       id: generate_token
       uses: actions/create-github-app-token@v3
       with:
         client-id: ${{ secrets.DEPLOYMENT_APP_CLIENT_ID }}
-        private-key: ${{ secrets.DEPLOYMENT_APP_PRIVATE_KEY }}
+        private-key: ${{ steps.decode.outputs.private-key }}
         repositories: |
           OpenTTD/workflows
 
