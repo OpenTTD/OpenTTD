@@ -728,6 +728,8 @@ private:
 		STR_SORT_BY_NAME,
 		STR_SORT_BY_POPULATION,
 		STR_SORT_BY_RATING,
+		STR_SORT_BY_PRODUCTION,
+		STR_SORT_BY_TRANSPORTED,
 	};
 	static const std::initializer_list<GUITownList::SortFunction * const> sorter_funcs; ///< Functions to sort towns.
 
@@ -797,6 +799,35 @@ private:
 		/* Sort unrated towns always on ascending town name. */
 		if (before) return TownDirectoryWindow::TownNameSorter(a, b, filter);
 		return TownDirectoryWindow::TownNameSorter(b, a, filter);
+	}
+
+	/** Sort by cargo production. @copydoc GUIList::SorterWithFilter */
+	static bool TownProductionSorter(const Town * const &a, const Town * const &b, const bool &filter)
+	{
+		constexpr auto sum_production = [](int v, const Town::SuppliedCargo &s) -> int {
+			return v + s.history[LAST_MONTH].production;
+		};
+
+		int a_production = std::accumulate(a->supplied.begin(), a->supplied.end(), 0, sum_production);
+		int b_production = std::accumulate(b->supplied.begin(), b->supplied.end(), 0, sum_production);
+
+		if (a_production == b_production) TownDirectoryWindow::TownNameSorter(b, a, filter);
+		return a_production < b_production;
+	}
+
+	/** Sort by cargo transported. @copydoc GUIList::SorterWithFilter */
+	static bool TownTransportedSorter(const Town * const &a, const Town * const &b, const bool &filter)
+	{
+		constexpr auto percent_transported = [](int v, const Town::SuppliedCargo &s) -> int {
+			if (s.history[LAST_MONTH].production == 0) return v;
+			return v + (s.history[LAST_MONTH].transported * 256 / s.history[LAST_MONTH].production);
+		};
+
+		int a_transported = a->supplied.empty() ? 0 : std::accumulate(a->supplied.begin(), a->supplied.end(), 0, percent_transported) / a->supplied.size();
+		int b_transported = b->supplied.empty() ? 0 : std::accumulate(b->supplied.begin(), b->supplied.end(), 0, percent_transported) / b->supplied.size();
+
+		if (a_transported == b_transported) TownDirectoryWindow::TownNameSorter(b, a, filter);
+		return a_transported < b_transported;
 	}
 
 public:
@@ -1043,6 +1074,8 @@ const std::initializer_list<GUITownList::SortFunction * const> TownDirectoryWind
 	&TownNameSorter,
 	&TownPopulationSorter,
 	&TownRatingSorter,
+	&TownProductionSorter,
+	&TownTransportedSorter,
 };
 
 /** Window definition for the town directory window. */
