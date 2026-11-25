@@ -238,7 +238,7 @@ public:
 		 */
 
 		uint distance_travelled = abs(local_travelled.x) + abs(local_travelled.y);
-		uint distance_source_dest = DistanceManhattan(this->source_xy, current_tile);
+		uint distance_source_dest = IntSqrt(DistanceSquare(this->source_xy, current_tile));
 		return std::min(distance_travelled, distance_source_dest);
 	}
 
