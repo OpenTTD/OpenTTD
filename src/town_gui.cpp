@@ -823,8 +823,8 @@ private:
 			return v + (s.history[LAST_MONTH].transported * 256 / s.history[LAST_MONTH].production);
 		};
 
-		int a_transported = a->supplied.empty() ? 0 : std::accumulate(a->supplied.begin(), a->supplied.end(), 0, percent_transported) / a->supplied.size();
-		int b_transported = b->supplied.empty() ? 0 : std::accumulate(b->supplied.begin(), b->supplied.end(), 0, percent_transported) / b->supplied.size();
+		int a_transported = a->supplied.empty() ? 0 : std::accumulate(a->supplied.begin(), a->supplied.end(), 0, percent_transported) / static_cast<int>(a->supplied.size());
+		int b_transported = b->supplied.empty() ? 0 : std::accumulate(b->supplied.begin(), b->supplied.end(), 0, percent_transported) / static_cast<int>(b->supplied.size());
 
 		if (a_transported == b_transported) TownDirectoryWindow::TownNameSorter(b, a, filter);
 		return a_transported < b_transported;
