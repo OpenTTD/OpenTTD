@@ -217,7 +217,7 @@ public:
 		/* Distance is always requested when the cargo is still inside the
 		 * vehicle. So first finish the calculation for travelled to
 		 * become a vector. */
-		auto local_travelled = travelled;
+		auto local_travelled = this->travelled;
 		local_travelled.x -= TileX(current_tile);
 		local_travelled.y -= TileY(current_tile);
 
