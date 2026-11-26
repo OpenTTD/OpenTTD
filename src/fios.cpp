@@ -728,7 +728,12 @@ FiosNumberedSaveName::FiosNumberedSaveName(const std::string &prefix) : prefix(p
 
 	/* Callback for FiosFileScanner. */
 	static FiosGetTypeAndNameProc *const proc = [](SaveLoadOperation, std::string_view file, std::string_view ext) {
-		if (StrEqualsIgnoreCase(ext, ".sav") && file.starts_with(_prefix)) return std::tuple(FIOS_TYPE_FILE, std::string{});
+		if (StrEqualsIgnoreCase(ext, ".sav") && file.starts_with(_prefix)) {
+			std::string_view digits = file.substr(_prefix.size(), file.size() - _prefix.size() - ext.size());
+			if (!digits.empty() && digits.find_first_not_of("0123456789") == std::string_view::npos) {
+				return std::tuple(FIOS_TYPE_FILE, std::string{});
+			}
+		}
 		return std::tuple(FIOS_TYPE_INVALID, std::string{});
 	};
 
