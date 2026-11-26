@@ -213,6 +213,13 @@ enum class ViewportAutoscrolling : uint8_t {
 	EveryViewport, ///< Scroll all viewports at their edges.
 };
 
+/** Possible methods of positioning GUI elements. */
+enum class GUIPosition: uint8_t {
+	HorizontalLeft, ///< Arrange element horizontally and position it at the left side of the window.
+	HorizontalCentre, ///< Arrange element horizontally and position it at the centre of the window.
+	HorizontalRight, ///< Arrange element horizontally and position it at the right side of the window.
+};
+
 /** Settings related to the GUI and other stuff that is not saved in the savegame. */
 struct GUISettings {
 	bool sg_full_load_any; ///< new full load calculation, any cargo must be full read from pre v93 savegames
@@ -238,8 +245,8 @@ struct GUISettings {
 	uint8_t advanced_vehicle_list; ///< use the "advanced" vehicle list
 	uint8_t loading_indicators; ///< show loading indicators
 	DefaultRailRoadType default_rail_road_type; ///< the default rail type for the rail/road/tram GUI
-	uint8_t toolbar_pos; ///< position of toolbars, 0=left, 1=center, 2=right
-	uint8_t statusbar_pos; ///< position of statusbar, 0=left, 1=center, 2=right
+	GUIPosition toolbar_pos; ///< Position of the main toolbar.
+	GUIPosition statusbar_pos; ///< Position of the statusbar.
 	uint8_t window_snap_radius; ///< windows snap at each other if closer than this
 	uint8_t window_soft_limit; ///< soft limit of maximum number of non-stickied non-vital windows (0 = no limit)
 	ZoomLevel zoom_min; ///< minimum zoom out level

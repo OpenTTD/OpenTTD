@@ -3523,7 +3523,7 @@ void ReInitAllWindows(bool zoom_changed)
  * @param setting The actual setting used for the window's position.
  * @return X coordinate of left edge of the repositioned window.
  */
-static int PositionWindow(Window *w, WindowClass clss, int setting)
+static int PositionWindow(Window *w, WindowClass clss, GUIPosition setting)
 {
 	if (w == nullptr || w->window_class != clss) {
 		w = FindWindowById(clss, 0);
@@ -3532,9 +3532,9 @@ static int PositionWindow(Window *w, WindowClass clss, int setting)
 
 	int old_left = w->left;
 	switch (setting) {
-		case 1:  w->left = (_screen.width - w->width) / 2; break;
-		case 2:  w->left = _screen.width - w->width; break;
-		default: w->left = 0; break;
+		case GUIPosition::HorizontalLeft: w->left = 0; break;
+		case GUIPosition::HorizontalCentre: w->left = (_screen.width - w->width) / 2; break;
+		case GUIPosition::HorizontalRight: w->left = _screen.width - w->width; break;
 	}
 	if (w->viewport != nullptr) w->viewport->left += w->left - old_left;
 	AddDirtyBlock(0, w->top, _screen.width, w->top + w->height); // invalidate the whole row
