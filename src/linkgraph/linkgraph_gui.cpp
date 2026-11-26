@@ -370,8 +370,8 @@ bool LinkGraphOverlay::ShowTooltip(Point pt, TooltipCloseCondition close_cond)
 
 			/* Check the distance from the cursor to the line defined by the two stations. */
 			Point ptb = this->GetStationMiddle(Station::Get(j->first));
-			float dist = std::abs((int64_t)(ptb.x - pta.x) * (int64_t)(pta.y - pt.y) - (int64_t)(pta.x - pt.x) * (int64_t)(ptb.y - pta.y)) /
-				std::sqrt((int64_t)(ptb.x - pta.x) * (int64_t)(ptb.x - pta.x) + (int64_t)(ptb.y - pta.y) * (int64_t)(ptb.y - pta.y));
+			float dist = abs(static_cast<int64_t>(ptb.x - pta.x) * static_cast<int64_t>(pta.y - pt.y) - static_cast<int64_t>(pta.x - pt.x) * static_cast<int64_t>(ptb.y - pta.y)) /
+					std::sqrt(static_cast<int64_t>(ptb.x - pta.x) * static_cast<int64_t>(ptb.x - pta.x) + static_cast<int64_t>(ptb.y - pta.y) * static_cast<int64_t>(ptb.y - pta.y));
 			const auto &link = j->second;
 			if (dist <= 4 && link.Usage() > 0 &&
 					pt.x + 2 >= std::min(pta.x, ptb.x) &&

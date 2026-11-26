@@ -38,7 +38,7 @@ struct WaterRegionPatchKey {
 
 inline uint ManhattanDistance(const WaterRegionPatchKey &a, const WaterRegionPatchKey &b)
 {
-	return (std::abs(a.water_region_patch.x - b.water_region_patch.x) + std::abs(a.water_region_patch.y - b.water_region_patch.y)) * DIRECT_NEIGHBOUR_COST;
+	return (abs(a.water_region_patch.x - b.water_region_patch.x) + abs(a.water_region_patch.y - b.water_region_patch.y)) * DIRECT_NEIGHBOUR_COST;
 }
 
 /** Yapf Node for water regions. */

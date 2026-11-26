@@ -1583,7 +1583,7 @@ static uint CalculateCoverageLine(uint coverage, uint edge_multiplier)
 			current_score -= edge_histogram[h] * edge_multiplier;
 		}
 
-		if (std::abs(current_score) < std::abs(best_score)) {
+		if (abs(current_score) < abs(best_score)) {
 			best_score = current_score;
 			best_h = h;
 		}

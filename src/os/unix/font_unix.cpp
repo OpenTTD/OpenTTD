@@ -134,7 +134,7 @@ static int GetPreferredWeightDistance(int weight)
 	static constexpr int PREFERRED_WEIGHT_MIN = FC_WEIGHT_NORMAL;
 	static constexpr int PREFERRED_WEIGHT_MAX = FC_WEIGHT_MEDIUM;
 
-	if (weight < PREFERRED_WEIGHT_MIN) return std::abs(weight - PREFERRED_WEIGHT_MIN);
+	if (weight < PREFERRED_WEIGHT_MIN) return abs(weight - PREFERRED_WEIGHT_MIN);
 	if (weight > PREFERRED_WEIGHT_MAX) return weight - PREFERRED_WEIGHT_MAX;
 	return 0;
 }

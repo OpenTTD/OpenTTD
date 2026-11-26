@@ -47,7 +47,7 @@ static CommandCost ClearTile_Clear(TileIndex tile, DoCommandFlags flags)
 	if (IsSnowTile(tile)) {
 		price.AddCost(_price[clear_price_table[ground]]);
 		/* Add a little more for removing snow. */
-		price.AddCost(std::abs(_price[Price::ClearRough] - _price[Price::ClearGrass]));
+		price.AddCost(abs(_price[Price::ClearRough] - _price[Price::ClearGrass]));
 	} else if (ground != ClearGround::Grass || density != 0) {
 		price.AddCost(_price[clear_price_table[ground]]);
 	}

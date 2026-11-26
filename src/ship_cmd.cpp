@@ -174,8 +174,7 @@ static const Depot *FindClosestShipDepot(const Vehicle *v, uint max_distance)
 		/* Add neighbours of the current patch to the search queue. */
 		VisitWaterRegionPatchCallback visit_func = [&](const WaterRegionPatchDesc &water_region_patch) {
 			/* Note that we check the max distance per axis, not the total distance. */
-			if (std::abs(water_region_patch.x - start_patch.x) > max_region_distance ||
-					std::abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
+			if (abs(water_region_patch.x - start_patch.x) > max_region_distance || abs(water_region_patch.y - start_patch.y) > max_region_distance) return;
 
 			const int hash = CalculateWaterRegionPatchHash(water_region_patch);
 			if (visited_patch_hashes.count(hash) == 0) {

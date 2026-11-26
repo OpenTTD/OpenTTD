@@ -134,7 +134,7 @@ struct EnginePreviewWindow : Window {
 					}
 
 					this->vehicle_space = std::max<int>(this->vehicle_space, y - y_offs);
-					size.width = std::max(size.width, x + std::abs(x_offs));
+					size.width = std::max(size.width, x + abs(x_offs));
 				}
 
 				/* Then account for the description of each vehicle. */
