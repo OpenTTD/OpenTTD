@@ -88,9 +88,10 @@ struct StatusBarWindow : Window {
 				break;
 
 			case WID_S_RIGHT: {
-				int64_t max_money = UINT32_MAX;
-				for (const Company *c : Company::Iterate()) max_money = std::max<int64_t>(c->money, max_money);
-				d = GetStringBoundingBox(GetString(STR_JUST_CURRENCY_LONG, 100LL * max_money));
+				Money max_money = UINT32_MAX;
+				for (const Company *c : Company::Iterate()) max_money = std::max(abs(c->money), max_money);
+				d = GetStringBoundingBox(GetString(STR_JUST_CURRENCY_LONG, max_money));
+				d.width += WidgetDimensions::scaled.hsep_wide;
 				break;
 			}
 
