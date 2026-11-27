@@ -350,7 +350,7 @@ static const NIVariable _niv_industries[] = {
 	NIV(0x6B, "cargo transported this month"),
 	NIV(0x6C, "cargo produced last month"),
 	NIV(0x6D, "cargo transported last month"),
-	NIV(0x6E, "date since cargo was delivered"),
+	NIV(0x6E, "date when cargo was last delivered"),
 	NIV(0x6F, "waiting input cargo"),
 	NIV(0x70, "production rate"),
 	NIV(0x71, "percentage of cargo transported last month"),
