@@ -1090,7 +1090,7 @@ STR_GAME_OPTIONS_VIDEO_DRIVER_INFO                              :驱动程序：
 STR_GAME_OPTIONS_INTERFACE                                      :界面
 
 STR_GAME_OPTIONS_GUI_SCALE_FRAME                                :界面大小
-STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖动滑块以设置界面大小。按住 <Ctrl> 键以精准调整
+STR_GAME_OPTIONS_GUI_SCALE_TOOLTIP                              :拖动滑块以设置界面大小。范围受窗口大小限制。按住 <Ctrl> 键以精准调整
 STR_GAME_OPTIONS_GUI_SCALE_AUTO                                 :自动检测大小
 STR_GAME_OPTIONS_GUI_SCALE_AUTO_TOOLTIP                         :启用以自动检测界面大小
 
@@ -1951,8 +1951,14 @@ STR_CONFIG_SETTING_NEWS_COMPANY_INFORMATION_HELPTEXT            :报纸报道新
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN                           :工业开业：{STRING}
 STR_CONFIG_SETTING_NEWS_INDUSTRY_OPEN_HELPTEXT                  :报纸报道产业投产
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY                  :自家公司服务的工业设施倒闭：{STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_COMPANY_HELPTEXT         :报纸报道自家公司服务的工业设施倒闭
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER                    :对手公司服务的工业设施倒闭：{STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_OTHER_HELPTEXT           :报纸报道竞争对手服务的工业设施倒闭
 
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED                 :闲置的工业设施倒闭：{STRING}
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CLOSE_UNSERVED_HELPTEXT        :报纸报道闲置的工业设施倒闭
 
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES                         :经济变化：{STRING}
 STR_CONFIG_SETTING_NEWS_ECONOMY_CHANGES_HELPTEXT                :报纸报道全球经济变化情况
@@ -1964,7 +1970,7 @@ STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER                  :对手公司服
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_OTHER_HELPTEXT         :报纸报道竞争对手的产业产量变化情况
 
 STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED               :其它工业产量变化信息：{STRING}
-STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :报纸报道非玩家或竞争对手的工业产量变化
+STR_CONFIG_SETTING_NEWS_INDUSTRY_CHANGES_UNSERVED_HELPTEXT      :报纸报道闲置的工业产量变化
 
 STR_CONFIG_SETTING_NEWS_ADVICE                                  :对于公司载具的建议及信息：{STRING}
 STR_CONFIG_SETTING_NEWS_ADVICE_HELPTEXT                         :显示载具需要关注的消息
@@ -3178,18 +3184,20 @@ STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_CAPTION                 :{WHITE}移除�
 STR_FUND_INDUSTRY_REMOVE_ALL_INDUSTRIES_QUERY                   :{YELLOW}确定清除所有工业吗？
 
 # Industry cargoes window
-STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :{WHITE}产业链 - {STRING}
-STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :{WHITE}货物的产业链 - {STRING}
-STR_INDUSTRY_CARGOES_HOUSES                                     :{WHITE}房屋
+STR_INDUSTRY_CARGOES_INDUSTRY_CAPTION                           :产业链 - {STRING}
+STR_INDUSTRY_CARGOES_CARGO_CAPTION                              :货物的产业链 - {STRING}
+STR_INDUSTRY_CARGOES_SOURCES                                    :来源
+STR_INDUSTRY_CARGOES_DESTINATIONS                               :目的地
+STR_INDUSTRY_CARGOES_HOUSES                                     :房屋
 STR_INDUSTRY_CARGOES_ACCEPTS_PRODUCES_TOOLTIP                   :{STRING}{}接受：{CARGO_LIST}{}产出：{CARGO_LIST}
-STR_INDUSTRY_DISPLAY_CHAIN                                      :{BLACK}产业链
-STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :{BLACK}显示货物的上下游工业
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :{BLACK}在缩略地图显示
-STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :{BLACK}将该产业链的工业显示在缩略地图中
-STR_INDUSTRY_CARGOES_SELECT_CARGO                               :{BLACK}选择货物
-STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :{BLACK}选择显示的货物
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :{BLACK}选择工业
-STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :{BLACK}选择需要显示的工业
+STR_INDUSTRY_DISPLAY_CHAIN                                      :产业链
+STR_INDUSTRY_DISPLAY_CHAIN_TOOLTIP                              :显示货物的上下游工业
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP                            :在缩略地图显示
+STR_INDUSTRY_CARGOES_NOTIFY_SMALLMAP_TOOLTIP                    :将该产业链的工业显示在缩略地图中
+STR_INDUSTRY_CARGOES_SELECT_CARGO                               :选择货物
+STR_INDUSTRY_CARGOES_SELECT_CARGO_TOOLTIP                       :选择显示的货物
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY                            :选择工业
+STR_INDUSTRY_CARGOES_SELECT_INDUSTRY_TOOLTIP                    :选择需要显示的工业
 
 # Land area window
 STR_LAND_AREA_INFORMATION_CAPTION                               :{WHITE}地块信息
@@ -4359,10 +4367,10 @@ STR_DEPOT_VEHICLE_TOOLTIP_CHAIN                                 :{BLACK}载具 {
 STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG}（{CARGO_SHORT}）
 
 ###length VEHICLE_TYPES
-STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按 <Ctrl> 操作以同时操作该车厢与其之后的所有车厢
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 右击可查看详细信息
-STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 右击可查看详细信息
-STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 右击可查看详细信息
+STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按 <Ctrl> 操作以同时操作该车厢与其之后的所有车厢。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :汽车 - 右击可查看详细信息
+STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 右击可查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
+STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 右击可查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_SELL_TOOLTIP                                    :{BLACK}将列车拖到这里以出售

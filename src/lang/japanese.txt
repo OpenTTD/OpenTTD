@@ -4162,10 +4162,12 @@ STR_VEHICLE_LIST_AVAILABLE_SHIPS                                :購入可能な
 STR_VEHICLE_LIST_AVAILABLE_AIRCRAFT                             :購入可能な航空機
 
 STR_VEHICLE_LIST_MANAGE_LIST                                    :{BLACK}リストを管理
-STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}このリスト内のすべての車両に指令を送信する
+STR_VEHICLE_LIST_MANAGE_LIST_TOOLTIP                            :{BLACK}このリスト内のすべての輸送機器に指令を送信します
 STR_VEHICLE_LIST_REPLACE_VEHICLES                               :輸送機器更新
 STR_VEHICLE_LIST_SEND_FOR_SERVICING                             :回送して点検
-STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}収益(今年): {CURRENCY_LONG} (収益(去年): {CURRENCY_LONG})
+STR_VEHICLE_LIST_CREATE_GROUP                                   :グループを作成
+STR_VEHICLE_LIST_PROFIT_THIS_YEAR_LAST_YEAR                     :{TINY_FONT}{BLACK}今年の利益: {CURRENCY_LONG} (昨年: {CURRENCY_LONG})
+STR_VEHICLE_LIST_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{TINY_FONT}{BLACK}今期の利益: {CURRENCY_LONG} (前期: {CURRENCY_LONG})
 STR_VEHICLE_LIST_CARGO                                          :[{CARGO_LIST}]
 STR_VEHICLE_LIST_NAME_AND_CARGO                                 :{STRING} {STRING}
 
@@ -4195,24 +4197,26 @@ STR_GROUP_DEFAULT_AIRCRAFTS                                     :グループ化
 
 STR_GROUP_COUNT_WITH_SUBGROUP                                   :{TINY_FONT}{COMMA} (+{COMMA})
 
-STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}グループ - クリックするとこのグループに所属する全車両一覧を表示します。ドラック&ドロップで順序を並べ替えられます
+STR_GROUPS_CLICK_ON_GROUP_FOR_TOOLTIP                           :{BLACK}グループ - クリックするとこのグループに所属するすべての輸送機器を表示します。ドラック&ドロップで階層を入れ替えられます
 STR_GROUP_CREATE_TOOLTIP                                        :{BLACK}新規のグループを作成します
 STR_GROUP_DELETE_TOOLTIP                                        :{BLACK}選択したグループを削除します
 STR_GROUP_RENAME_TOOLTIP                                        :{BLACK}選択したグループの名称を変更します
-STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}選択したグループのカラーリングを変更する
+STR_GROUP_LIVERY_TOOLTIP                                        :{BLACK}選択したグループのカラーリングを変更します
 STR_GROUP_REPLACE_PROTECTION_TOOLTIP                            :{BLACK}このグループ内の輸送機器を全体を対象とする自動交換の際も交換されないようにします。Ctrl+クリックでサブグループも対象に含みます。
 
 STR_QUERY_GROUP_DELETE_CAPTION                                  :{WHITE}グループを削除
-STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}このグループとそれに属するすべてを削除してもよろしいですか?
+STR_GROUP_DELETE_QUERY_TEXT                                     :{WHITE}このグループとそれに属するすべてのサブグループを削除してもよろしいですか?
 
-STR_GROUP_ADD_SHARED_VEHICLE                                    :共有輸送機器を追加
+STR_GROUP_ADD_SHARED_VEHICLE                                    :共有指令の輸送機器を追加
 STR_GROUP_REMOVE_ALL_VEHICLES                                   :全輸送機器を削除
 
 STR_GROUP_RENAME_CAPTION                                        :{BLACK}グループ名を変更
 
 STR_GROUP_PROFIT_THIS_YEAR                                      :今年の利益:
-STR_GROUP_PROFIT_LAST_YEAR                                      :昨年の利益：
-STR_GROUP_OCCUPANCY                                             :選択中：
+STR_GROUP_PROFIT_THIS_PERIOD                                    :今期の利益:
+STR_GROUP_PROFIT_LAST_YEAR                                      :昨年の利益:
+STR_GROUP_PROFIT_LAST_PERIOD                                    :前期の利益:
+STR_GROUP_OCCUPANCY                                             :現在の収容率:
 STR_GROUP_OCCUPANCY_VALUE                                       :{NUM}%
 
 # Build vehicle window
@@ -4223,31 +4227,32 @@ STR_BUY_VEHICLE_TRAIN_MONORAIL_CAPTION                          :新規モノレ
 STR_BUY_VEHICLE_TRAIN_MAGLEV_CAPTION                            :新規リニア車両
 
 STR_BUY_VEHICLE_ROAD_VEHICLE_CAPTION                            :新規車両
-STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :新しい路面電車車両
+STR_BUY_VEHICLE_TRAM_VEHICLE_CAPTION                            :新規路面電車車両
 
 # Vehicle availability
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_ALL_CAPTION                               :新規列車
-STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :新しい車両
+STR_BUY_VEHICLE_ROAD_VEHICLE_ALL_CAPTION                        :新規車両
 STR_BUY_VEHICLE_SHIP_CAPTION                                    :新規船舶
 STR_BUY_VEHICLE_AIRCRAFT_CAPTION                                :新規航空機
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}価格: {GOLD}{CURRENCY_LONG}{BLACK} 重量: {GOLD}{WEIGHT_SHORT}
-STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}コスト：{GOLD} {CURRENCY_LONG} {BLACK}（修理コスト：{GOLD} {CURRENCY_LONG} {BLACK}）重量：{GOLD} {WEIGHT_SHORT}
+STR_PURCHASE_INFO_COST_REFIT_WEIGHT                             :{BLACK}価格: {GOLD}{CURRENCY_LONG}{BLACK} (改造費用: {GOLD}{CURRENCY_LONG}{BLACK}) 重量: {GOLD}{WEIGHT_SHORT}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}最高速度: {GOLD}{VELOCITY}{BLACK} 出力: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}最高速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_OCEAN                                   :{BLACK}外洋/湖での航行速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_SPEED_CANAL                                   :{BLACK}水路/川での航行速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST_YEAR                              :{BLACK}維持費: {GOLD}{CURRENCY_LONG}/年
+STR_PURCHASE_INFO_RUNNINGCOST_PERIOD                            :{BLACK}維持費: {GOLD}{CURRENCY_LONG}/期
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}収容量: {GOLD}{CARGO_LONG} {STRING}
 STR_PURCHASE_INFO_REFITTABLE                                    :(改造可能)
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}設計年: {GOLD}{NUM}{BLACK}　耐用年数: {GOLD}{COMMA}年
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}最高信頼度: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}価格: {GOLD}{CURRENCY_LONG}
-STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}コスト：{GOLD} {CURRENCY_LONG} {BLACK}（修理コスト：{GOLD} {CURRENCY_LONG} {BLACK}）
+STR_PURCHASE_INFO_COST_REFIT                                    :{BLACK}価格: {GOLD}{CURRENCY_LONG}{BLACK} (改造費用: {GOLD}{CURRENCY_LONG}{BLACK})
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}重量: {GOLD}{WEIGHT_SHORT}({WEIGHT_SHORT})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}価格: {GOLD}{CURRENCY_LONG}{BLACK}　最高速度: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}コスト：{GOLD} {CURRENCY_LONG} {BLACK}（修理コスト：{GOLD} {CURRENCY_LONG} {BLACK}）速度：{GOLD} {VELOCITY}
+STR_PURCHASE_INFO_COST_REFIT_SPEED                              :{BLACK}価格: {GOLD}{CURRENCY_LONG}{BLACK} (改造費用: {GOLD}{CURRENCY_LONG}{BLACK}) 最高速度: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}収容量: {GOLD}{CARGO_LONG}, {CARGO_LONG}
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}出力: {GOLD}+{POWER}(従動力車){BLACK}　重量: {GOLD}+{WEIGHT_SHORT}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}改造可能な貨物種類: {GOLD}{STRING}
@@ -4257,9 +4262,21 @@ STR_PURCHASE_INFO_ENGINES_ONLY                                  :エンジンの
 STR_PURCHASE_INFO_ALL_BUT                                       :{CARGO_LIST}を除いてすべて
 STR_PURCHASE_INFO_MAX_TE                                        :{BLACK}最大牽引力: {GOLD}{FORCE}
 STR_PURCHASE_INFO_AIRCRAFT_RANGE                                :{BLACK}航続距離: {GOLD}{COMMA} タイル
-STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}航空機の機種: {GOLD}{STRING}
+STR_PURCHASE_INFO_AIRCRAFT_TYPE                                 :{BLACK}航空機種類: {GOLD}{STRING}
+STR_PURCHASE_INFO_RAILTYPES                                     :{BLACK}線路種類: {GOLD}{STRING}
 
 # Vehicle sort details
+STR_PURCHASE_SORT_DETAILS_COST                                  :{CURRENCY_LONG}
+STR_PURCHASE_SORT_DETAILS_SPEED                                 :{VELOCITY}
+STR_PURCHASE_SORT_DETAILS_POWER                                 :{POWER}
+STR_PURCHASE_SORT_DETAILS_MAX_TE                                :{FORCE}
+STR_PURCHASE_SORT_DETAILS_INTRO_DATE                            :{NUM}
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_YEAR                      :{CURRENCY_LONG}/年
+STR_PURCHASE_SORT_DETAILS_RUNNINGCOST_PERIOD                    :{CURRENCY_LONG}/期
+STR_PURCHASE_SORT_DETAILS_RELIABILITY                           :{COMMA}%
+STR_PURCHASE_SORT_DETAILS_POWER_VS_RUNNING_COST                 :{DECIMAL}
+STR_PURCHASE_SORT_DETAILS_AIRCRAFT_RANGE                        :{COMMA}タイル
+STR_PURCHASE_SORT_DETAILS_CAPACITY                              :{COMMA}
 
 ###length 3
 STR_CARGO_TYPE_FILTER_ALL                                       :すべての積荷
@@ -4279,22 +4296,22 @@ STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_BUTTON                         :{BLACK}船舶�
 STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_BUTTON                     :{BLACK}航空機を購入
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}購入し改造する
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}購入し改造する
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}船の購入と修理
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}航空機の購入と修理
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_BUTTON                  :{BLACK}列車を購入し改造
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_BUTTON           :{BLACK}車両を購入し改造
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_BUTTON                   :{BLACK}船舶を購入し改造
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_BUTTON               :{BLACK}航空機を購入し改造
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}選択した列車を購入します。Shift を同時に押すことで購入費を見積もれます
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}選択した車両を購入します。Shift を同時に押すことで購入費を見積もれます
-STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}選択した船舶を購入します。Shift を同時に押すことで購入費を見積もれます。
-STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}選択した航空機を購入します。Shift を同時に押すことで購入費を見積もれます
+STR_BUY_VEHICLE_TRAIN_BUY_VEHICLE_TOOLTIP                       :{BLACK}選択した列車を購入します。Shift+クリックで費用の見積が出ます
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_VEHICLE_TOOLTIP                :{BLACK}選択した車両を購入します。Shift+クリックで費用の見積が出ます
+STR_BUY_VEHICLE_SHIP_BUY_VEHICLE_TOOLTIP                        :{BLACK}選択した船舶を購入します。Shift+クリックで費用の見積が出ます
+STR_BUY_VEHICLE_AIRCRAFT_BUY_VEHICLE_TOOLTIP                    :{BLACK}選択した航空機を購入します。Shift+クリックで費用の見積が出ます
 
 ###length VEHICLE_TYPES
-STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}ハイライトされた車両を購入して改造します。Shift を同時に押すことで購入費を見積もれます
-STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}ハイライトされた車両を購入して修理します。Shift を同時に押すことで購入費を見積もれます。
-STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}ハイライトされた船を購入して修理します。Shift を同時に押すことで購入費を見積もれます。
-STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}ハイライトされた航空機を購入して再配置します。Shift を同時に押すことで購入費を見積もれます。
+STR_BUY_VEHICLE_TRAIN_BUY_REFIT_VEHICLE_TOOLTIP                 :{BLACK}選択した列車を購入して改造します。Shift+クリックで費用の見積が出ます
+STR_BUY_VEHICLE_ROAD_VEHICLE_BUY_REFIT_VEHICLE_TOOLTIP          :{BLACK}選択した車両を購入して改造します。Shift+クリックで費用の見積が出ます
+STR_BUY_VEHICLE_SHIP_BUY_REFIT_VEHICLE_TOOLTIP                  :{BLACK}選択した船舶を購入して改造します。Shift+クリックで費用の見積が出ます
+STR_BUY_VEHICLE_AIRCRAFT_BUY_REFIT_VEHICLE_TOOLTIP              :{BLACK}選択した航空機を購入して改造します。Shift+クリックで費用の見積が出ます
 
 ###length VEHICLE_TYPES
 STR_BUY_VEHICLE_TRAIN_RENAME_BUTTON                             :{BLACK}名称を変更
@@ -4410,7 +4427,7 @@ STR_DEPOT_MASS_STOP_DEPOT_SHIP_TOOLTIP                          :{BLACK}造船�
 STR_DEPOT_MASS_STOP_HANGAR_TOOLTIP                              :{BLACK}格納庫内の全航空機の運用を停止します
 
 ###length VEHICLE_TYPES
-STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}車両庫内の全列車の運用を開始します
+STR_DEPOT_MASS_START_DEPOT_TRAIN_TOOLTIP                        :{BLACK}列車庫内の全列車の運用を開始します
 STR_DEPOT_MASS_START_DEPOT_ROAD_VEHICLE_TOOLTIP                 :{BLACK}車庫内の全車両の運用を開始します
 STR_DEPOT_MASS_START_DEPOT_SHIP_TOOLTIP                         :{BLACK}造船所内の全船舶の運用を開始します
 STR_DEPOT_MASS_START_HANGAR_TOOLTIP                             :{BLACK}格納庫内の全航空機の運用を開始します
@@ -4420,13 +4437,20 @@ STR_DEPOT_SELL_CONFIRMATION_TEXT                                :{YELLOW}庫内�
 
 # Engine preview window
 STR_ENGINE_PREVIEW_CAPTION                                      :{WHITE}製造会社からのメッセージ
+STR_ENGINE_PREVIEW_CAPTION_COUNT                                :{WHITE}製造会社からのメッセージ ({COMMA}/{COMMA})
 STR_ENGINE_PREVIEW_MESSAGE                                      :{GOLD}弊社は新たに{STRING}を設計いたしました。{}実地試験を行うにあたって貴社にご協力いただきたく、一年間の独占的使用権を提供したいと考えておりますがいかがでしょうか?
 
+STR_ENGINE_PREVIEW_PREVIOUS                                     :前の新車両
+STR_ENGINE_PREVIEW_PREVIOUS_TOOLTIP                             :クリックして前の新車両に移動します
+STR_ENGINE_PREVIEW_NEXT                                         :次の新車両
+STR_ENGINE_PREVIEW_NEXT_TOOLTIP                                 :クリックして次の新車両に移動します
+STR_ENGINE_PREVIEW_ENGINE_LIST                                  :{COMMA}: {ENGINE}
+STR_ENGINE_PREVIEW_ENGINE_LIST_TOOLTIP                          :クリックして新車両にジャンプします
 
 STR_ENGINE_PREVIEW_RAILROAD_LOCOMOTIVE                          :列車
 STR_ENGINE_PREVIEW_ELRAIL_LOCOMOTIVE                            :電気機関車
-STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール列車
-STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :リニア列車
+STR_ENGINE_PREVIEW_MONORAIL_LOCOMOTIVE                          :モノレール車両
+STR_ENGINE_PREVIEW_MAGLEV_LOCOMOTIVE                            :リニア車両
 
 STR_ENGINE_PREVIEW_ROAD_VEHICLE                                 :車両
 STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :路面電車車両
@@ -4434,6 +4458,17 @@ STR_ENGINE_PREVIEW_TRAM_VEHICLE                                 :路面電車車
 STR_ENGINE_PREVIEW_AIRCRAFT                                     :航空機
 STR_ENGINE_PREVIEW_SHIP                                         :船舶
 
+STR_ENGINE_PREVIEW_COST_WEIGHT                                  :価格: {CURRENCY_LONG}  重量: {WEIGHT_SHORT}
+STR_ENGINE_PREVIEW_COST_MAX_SPEED                               :価格: {CURRENCY_LONG}  最高速度: {VELOCITY}
+STR_ENGINE_PREVIEW_SPEED_POWER                                  :最高速度: {VELOCITY}  出力: {POWER}
+STR_ENGINE_PREVIEW_SPEED_POWER_MAX_TE                           :最高速度: {VELOCITY}  出力: {POWER}  最大牽引力: {FORCE}
+STR_ENGINE_PREVIEW_TYPE                                         :航空機種類: {STRING}
+STR_ENGINE_PREVIEW_TYPE_RANGE                                   :航空機種類: {STRING}   航続距離: {COMMA}タイル
+STR_ENGINE_PREVIEW_RUNCOST_YEAR                                 :維持費: {CURRENCY_LONG}/年
+STR_ENGINE_PREVIEW_RUNCOST_PERIOD                               :維持費: {CURRENCY_LONG}/期
+STR_ENGINE_PREVIEW_CAPACITY                                     :収容量: {CARGO_LONG}
+STR_ENGINE_PREVIEW_CAPACITY_2                                   :収容量: {CARGO_LONG}, {CARGO_LONG}
+STR_ENGINE_PREVIEW_RAILTYPES                                    :線路種類: {STRING}
 
 # Autoreplace window
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING}の自動置換 - {STRING}
@@ -4457,7 +4492,7 @@ STR_REPLACE_VEHICLES_NOW                                        :全輸送機器
 STR_REPLACE_VEHICLES_WHEN_OLD                                   :老朽機器のみ置換
 STR_REPLACE_START_BUTTON_TOOLTIP                                :{BLACK}クリックすると左で選択した輸送機器を右で選択した輸送機器へ置換を開始します
 STR_REPLACE_NOT_REPLACING                                       :{BLACK}置換なし
-STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}車両が選択されていません
+STR_REPLACE_NOT_REPLACING_VEHICLE_SELECTED                      :{BLACK}輸送機器が選択されていません
 STR_REPLACE_REPLACING_WHEN_OLD                                  :老朽化したら{ENGINE}に置換
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}置換終了
 STR_REPLACE_STOP_BUTTON_TOOLTIP                                 :{BLACK}クリックすると選択した輸送機器の置換を終了します
@@ -4480,11 +4515,11 @@ STR_REPLACE_MONORAIL_VEHICLES                                   :モノレール
 STR_REPLACE_MAGLEV_VEHICLES                                     :リニア車両
 
 STR_REPLACE_ROAD_VEHICLES                                       :車両
-STR_REPLACE_TRAM_VEHICLES                                       :路面電車の車両
+STR_REPLACE_TRAM_VEHICLES                                       :路面電車車両
 
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}列車の短縮({STRING}): {ORANGE}{STRING}
 STR_REPLACE_REMOVE_WAGON_TOOLTIP                                :{BLACK}機関車の交換で列車長が長くなる場合、列車長を維持する為に客車/貨車を減らすことができます。外されるのは従属部分の先頭からになります
-STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}. Ctrl+クリックでサブグループにも適用
+STR_REPLACE_REMOVE_WAGON_GROUP_HELP                             :{STRING}。Ctrl+クリックでサブグループにも適用されます
 
 # Vehicle view
 STR_VEHICLE_VIEW_CAPTION                                        :{WHITE}{VEHICLE}
@@ -4510,7 +4545,7 @@ STR_VEHICLE_VIEW_CLONE_AIRCRAFT_INFO                            :{BLACK}航空�
 STR_VEHICLE_VIEW_TRAIN_IGNORE_SIGNAL_TOOLTIP                    :{BLACK}赤信号を無視して進行させます
 STR_VEHICLE_VIEW_TRAIN_REVERSE_TOOLTIP                          :{BLACK}運転方向を反転させます
 STR_VEHICLE_VIEW_ROAD_VEHICLE_REVERSE_TOOLTIP                   :{BLACK}車両を反転します
-STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}移動先の中央のメインビュー。Ctrlキーを押しながらクリックすると移動先の新しいビューポートが開きます
+STR_VEHICLE_VIEW_ORDER_LOCATION_TOOLTIP                         :{BLACK}メイン画面を移動先の場所に移動します。Ctrl+クリックで移動先の場所を新しいビューポートに表示します
 
 ###length VEHICLE_TYPES
 STR_VEHICLE_VIEW_TRAIN_REFIT_TOOLTIP                            :{BLACK}現在とは異なる種類の貨物を運送するように列車を改造します
@@ -4531,32 +4566,34 @@ STR_VEHICLE_VIEW_SHIP_SHOW_DETAILS_TOOLTIP                      :{BLACK}船舶�
 STR_VEHICLE_VIEW_AIRCRAFT_SHOW_DETAILS_TOOLTIP                  :{BLACK}航空機の情報を表示します
 
 ###length VEHICLE_TYPES
-STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}現在の列車の動作-クリックして列車を停止/開始します
-STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}現在の車両の動作-クリックして車両を停止/開始します
-STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}現在の船のアクション-クリックして船を停止/開始します
-STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}現在の航空機のアクション-クリックして航空機を停止/開始します
+STR_VEHICLE_VIEW_TRAIN_STATUS_START_STOP_TOOLTIP                :{BLACK}現在の列車の状態 - クリックして列車を停止/開始します
+STR_VEHICLE_VIEW_ROAD_VEHICLE_STATUS_START_STOP_TOOLTIP         :{BLACK}現在の車両の状態 - クリックして車両を停止/開始します
+STR_VEHICLE_VIEW_SHIP_STATE_STATUS_STOP_TOOLTIP                 :{BLACK}現在の船舶の状態 - クリックして船舶を停止/開始します
+STR_VEHICLE_VIEW_AIRCRAFT_STATUS_START_STOP_TOOLTIP             :{BLACK}現在の航空機の状態 - クリックして航空機を停止/開始します
 
 # Messages in the start stop button in the vehicle view
 STR_VEHICLE_STATUS_LOADING_UNLOADING                            :{LTBLUE}積み降ろし中
 STR_VEHICLE_STATUS_LEAVING                                      :{LTBLUE}出発中
+STR_VEHICLE_STATUS_WAITING_UNBUNCHING                           :{LTBLUE}運転間隔調整中
 STR_VEHICLE_STATUS_CRASHED                                      :{RED}事故!
 STR_VEHICLE_STATUS_BROKEN_DOWN                                  :{RED}故障!
 STR_VEHICLE_STATUS_STOPPED                                      :{RED}運用停止中
-STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}減速中　{VELOCITY}
+STR_VEHICLE_STATUS_TRAIN_STOPPING_VEL                           :{RED}{VELOCITY} - 停止中
 STR_VEHICLE_STATUS_TRAIN_NO_POWER                               :{RED}動力車がありません
 STR_VEHICLE_STATUS_TRAIN_STUCK                                  :{ORANGE}先の区間が空くのを待っています
 STR_VEHICLE_STATUS_AIRCRAFT_TOO_FAR                             :{ORANGE}次の目的地が遠すぎます
 
-STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{STATION}へ向かっています　{VELOCITY}
-STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}指令なし　{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{WAYPOINT}へ向かっています　{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{DEPOT}へ回送中です　{VELOCITY}
-STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{DEPOT}へ保守回送中です　{VELOCITY}
+STR_VEHICLE_STATUS_HEADING_FOR_STATION_VEL                      :{LTBLUE}{1:VELOCITY} - {0:STATION}へ向かっています
+STR_VEHICLE_STATUS_NO_ORDERS_VEL                                :{LTBLUE}{VELOCITY} - 指令なし
+STR_VEHICLE_STATUS_HEADING_FOR_WAYPOINT_VEL                     :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT}へ向かっています
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_VEL                        :{ORANGE}{1:VELOCITY} - {0:DEPOT}へ回送中です
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_SERVICE_VEL                :{LTBLUE}{1:VELOCITY} - {0:DEPOT}へ保守回送中です
+STR_VEHICLE_STATUS_HEADING_FOR_DEPOT_UNBUNCH_VEL                :{LTBLUE}{1:VELOCITY} - {0:DEPOT}へ運転間隔調整および保守回送中です
 
-STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{STATION}に到達できません, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{WAYPOINT}に到達できません, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE} {DEPOT}車両基地に到達できません, {VELOCITY}
-STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE} {DEPOT}車両基地に到達できません, {VELOCITY}
+STR_VEHICLE_STATUS_CANNOT_REACH_STATION_VEL                     :{LTBLUE}{1:VELOCITY} - {0:STATION}に到達できません
+STR_VEHICLE_STATUS_CANNOT_REACH_WAYPOINT_VEL                    :{LTBLUE}{1:VELOCITY} - {0:WAYPOINT}に到達できません
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_VEL                       :{ORANGE}{1:VELOCITY} - {0:DEPOT}に到達できません
+STR_VEHICLE_STATUS_CANNOT_REACH_DEPOT_SERVICE_VEL               :{LTBLUE}{1:VELOCITY} - {0:DEPOT}に到達できません
 
 # Vehicle stopped/started animations
 STR_VEHICLE_COMMAND_STOPPED                                     :{RED}運用停止中
@@ -4571,18 +4608,22 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶に名前を付ける
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}航空機に名前を付ける
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA}年({COMMA}年)
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年({COMMA}年)
-STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}　維持費: 一年間{LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_INFO_AGE                                            :{COMMA}年 (耐用年数:{COMMA}年)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年 (耐用年数:{COMMA}年)
+STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}　維持費: {LTBLUE}{CURRENCY_LONG}/年
+STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}  維持費: {LTBLUE}{CURRENCY_LONG}/期
 
 STR_VEHICLE_INFO_MAX_SPEED                                      :{BLACK}最高速度: {LTBLUE}{VELOCITY}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度: {LTBLUE}{VELOCITY} {BLACK}航空機のタイプ: {LTBLUE}{STRING}
-STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}最高速度: {LTBLUE}{VELOCITY} {BLACK}航空機のタイプ: {LTBLUE}{STRING} {BLACK}範囲: {LTBLUE}{COMMA}タイル
+STR_VEHICLE_INFO_MAX_SPEED_TYPE                                 :{BLACK}最高速度: {LTBLUE}{VELOCITY}　{BLACK}航空機種類: {LTBLUE}{STRING}
+STR_VEHICLE_INFO_MAX_SPEED_TYPE_RANGE                           :{BLACK}最高速度: {LTBLUE}{VELOCITY}　{BLACK}航空機種類: {LTBLUE}{STRING}　{BLACK}航続距離: {LTBLUE}{COMMA}タイル
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED_MAX_TE                  :{BLACK}重量: {LTBLUE}{WEIGHT_SHORT}　{BLACK}出力: {LTBLUE}{POWER}{BLACK}　最高速度: {LTBLUE}{VELOCITY}　{BLACK}最大牽引力: {LTBLUE}{FORCE}
 
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG})
-STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年の収益: {LTBLUE}{CURRENCY_LONG}(昨年: {CURRENCY_LONG}) {BLACK}最低パフォーマンス: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR                     :{BLACK}今年の利益: {LTBLUE}{CURRENCY_LONG} (昨年: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_YEAR_LAST_YEAR_MIN_PERFORMANCE     :{BLACK}今年の利益: {LTBLUE}{CURRENCY_LONG} (昨年: {CURRENCY_LONG})　{BLACK}最低パフォーマンス: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD                 :{BLACK}今期の利益: {LTBLUE}{CURRENCY_LONG} (前期: {CURRENCY_LONG})
+STR_VEHICLE_INFO_PROFIT_THIS_PERIOD_LAST_PERIOD_MIN_PERFORMANCE :{BLACK}今期の利益: {LTBLUE}{CURRENCY_LONG} (前期: {CURRENCY_LONG})　{BLACK}最低パフォーマンス: {LTBLUE}{POWER_TO_WEIGHT}
+STR_VEHICLE_INFO_RELIABILITY_BREAKDOWNS                         :{BLACK}信頼度: {LTBLUE}{COMMA}% (最大: {COMMA}%)　{BLACK}前回点検以降の故障回数: {LTBLUE}{COMMA}
 
 STR_VEHICLE_INFO_BUILT_VALUE                                    :{LTBLUE}{ENGINE}　{BLACK}購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_INFO_CAPACITY                                       :{BLACK}収容能力: {LTBLUE}{CARGO_LONG}{STRING}
@@ -4590,12 +4631,22 @@ STR_VEHICLE_INFO_CAPACITY_CAPACITY                              :{BLACK}収容�
 
 STR_VEHICLE_INFO_FEEDER_CARGO_VALUE                             :{BLACK}転送による部分払い: {LTBLUE}{CURRENCY_LONG}
 
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}点検周期: {LTBLUE}{COMMA}{NBSP}日{BLACK} {STRING}
-STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}点検周期: {LTBLUE}{COMMA}%{BLACK} {STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_DAYS                     :{BLACK}点検周期: {LTBLUE}{COMMA}日{BLACK}　{STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_MINUTES                  :{BLACK}点検周期: {LTBLUE}{COMMA}分{BLACK}　{STRING}
+STR_VEHICLE_DETAILS_SERVICING_INTERVAL_PERCENT                  :{BLACK}点検周期: {LTBLUE}{COMMA}%{BLACK}　{STRING}
+STR_VEHICLE_DETAILS_LAST_SERVICE_DATE                           :前回点検: {LTBLUE}{DATE_LONG}
+STR_VEHICLE_DETAILS_LAST_SERVICE_MINUTES_AGO                    :前回点検: {LTBLUE}{NUM}分前
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}点検周期を10日延ばします。Ctrl+クリックで5日延ばします
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}点検周期を5分延ばします。Ctrl+クリックで1分延ばします
+STR_VEHICLE_DETAILS_INCREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}点検周期を10%延ばします。Ctrl+クリックで5%延ばします
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_DAYS    :{BLACK}点検周期を10日縮めます。Ctrl+クリックで5日縮めます
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_MINUTES :{BLACK}点検周期を5分縮めます。Ctrl+クリックで1分縮めます
+STR_VEHICLE_DETAILS_DECREASE_SERVICING_INTERVAL_TOOLTIP_PERCENT :{BLACK}点検周期を10%縮めます。Ctrl+クリックで5%縮めます
 
 STR_SERVICE_INTERVAL_DROPDOWN_TOOLTIP                           :{BLACK}点検周期の変更
 STR_VEHICLE_DETAILS_DEFAULT                                     :既定
 STR_VEHICLE_DETAILS_DAYS                                        :日
+STR_VEHICLE_DETAILS_MINUTES                                     :分
 STR_VEHICLE_DETAILS_PERCENT                                     :パーセント
 
 ###length VEHICLE_TYPES
@@ -4605,13 +4656,16 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}船舶�
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}航空機を名付ける
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入日: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 
+STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}列車全長: {LTBLUE}{DECIMAL}タイル
 
-STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}この列車の貨物最大収容量:
+STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY_TEXT                   :{BLACK}この列車の総積載量:
 STR_VEHICLE_DETAILS_TRAIN_TOTAL_CAPACITY                        :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT})
 
+STR_VEHICLE_DETAILS_TRAIN_CARGO_EMPTY                           :{LTBLUE}空荷 ({CARGO_LONG}){STRING}
+STR_VEHICLE_DETAILS_TRAIN_CARGO_FROM                            :{LTBLUE}{CARGO_LONG} ({CARGO_SHORT}) (積載地: {STATION}{STRING})
 
 STR_VEHICLE_DETAILS_CARGO_EMPTY                                 :{LTBLUE}空荷
 STR_VEHICLE_DETAILS_CARGO_FROM                                  :{LTBLUE}{CARGO_LONG} (積載地: {STATION})
@@ -4620,6 +4674,8 @@ STR_VEHICLE_DETAIL_TAB_CARGO                                    :{BLACK}貨物
 STR_VEHICLE_DETAILS_TRAIN_CARGO_TOOLTIP                         :{BLACK}運送している貨物の情報を表示します
 STR_VEHICLE_DETAIL_TAB_INFORMATION                              :{BLACK}情報
 STR_VEHICLE_DETAILS_TRAIN_INFORMATION_TOOLTIP                   :{BLACK}列車の情報を表示します
+STR_VEHICLE_DETAIL_TAB_TOTALS                                   :{BLACK}総計
+STR_VEHICLE_DETAILS_TRAIN_TOTALS_TOOLTIP                        :{BLACK}列車の総積載量、最大積載容量、および全長を表示します
 
 STR_VEHICLE_DETAILS_TRAIN_ARTICULATED_RV_CAPACITY               :{BLACK}収容量: {LTBLUE}{STRING}
 
