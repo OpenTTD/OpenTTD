@@ -1035,8 +1035,8 @@ void CallVehicleTicks()
 				/* Do not play any sound when stopped */
 				if (front->vehstatus.Test(VehState::Stopped) && (front->type != VehicleType::Train || front->cur_speed == 0)) continue;
 
-				/* Update motion counter for animation purposes. */
-				v->motion_counter += front->cur_speed;
+				/* Update motion counter for animation purposes. Relative motion is negative (animations go backwards) if the vehicle is reversing */
+				v->motion_counter += v->IsDrivingBackwards() ? -front->cur_speed : front->cur_speed;
 
 				/* Check vehicle type specifics */
 				switch (v->type) {
