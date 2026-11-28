@@ -128,6 +128,14 @@ enum StringControlCode : uint16_t {
 	SCC_PUSH_COLOUR,
 	SCC_POP_COLOUR,
 
+	/* Action codes */
+	SCC_ACTION_CODES_START, ///< The first control code regarding actions.
+	SCC_CTRL_CLICK = SCC_ACTION_CODES_START, ///< Insert a string for action that is used as Click with Ctrl key down.
+	SCC_CTRL_DRAG, ///< Insert a string for action that is used as Drag with Ctrl key down.
+	SCC_CTRL_CLICK_DRAG, ///< Insert a string for action that is used as Click and then Drag with Ctrl key down.
+	SCC_HOLD_CTRL_AND_SHIFT, ///< Insert a string for action that is used as holding both Ctrl and Shift keys at the same time.
+	SCC_SHIFT_COST_ESTIMATE, ///< Insert a string for modifying action that is used for showing a cost estimate only.
+
 	/**
 	 * The next variables are part of a NewGRF subsystem for creating text strings.
 	 * It uses a "stack" of bytes and reads from there.
@@ -167,6 +175,8 @@ enum StringControlCode : uint16_t {
 
 	SCC_NEWGRF_STRINL,                                ///< Inline another string at the current position, StringID is encoded in the string
 
+	SCC_CONTROL_LAST = SCC_NEWGRF_STRINL, ///< The last defined control code.
+
 	/* Special printable symbols.
 	 * These are mapped to the original glyphs */
 	SCC_LESS_THAN        = SCC_SPRITE_START + 0x3C,
@@ -188,5 +198,7 @@ enum StringControlCode : uint16_t {
 	SCC_SMALL_UP_ARROW   = SCC_SPRITE_START + 0xBC,
 	SCC_SMALL_DOWN_ARROW = SCC_SPRITE_START + 0xBD,
 };
+
+static_assert(SCC_CONTROL_LAST >= SCC_CONTROL_START && SCC_CONTROL_LAST <= SCC_CONTROL_END);
 
 #endif /* CONTROL_CODES_H */
