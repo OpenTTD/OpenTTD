@@ -44,6 +44,7 @@
 #include "pathfinder/water_regions.h"
 #include "town_type.h"
 #include "script/api/script_event_types.hpp"
+#include "spritecache.h"
 
 #include "table/strings.h"
 
@@ -824,10 +825,21 @@ static void DrawWaterEdges(bool canal, uint offset, TileIndex tile)
 	}
 }
 
-/** Draw a plain sea water tile with no edges */
-static void DrawSeaWater(TileIndex)
+/**
+ * Draw a plain sea water tile with no edges.
+ * @param tile The tile to draw as sea.
+ */
+static void DrawSeaWater(TileIndex tile)
 {
 	DrawGroundSprite(SPR_FLAT_WATER_TILE, PAL_NONE);
+
+	/* Add pseudo-random sea shimmer overlay sprites if provided. */
+	if (!SpriteExists(SPR_OVERLAY_SEA_SHIMMER_BASE)) return;
+	uint32_t hash = tile.base();
+	hash = ((hash >> 16) ^ hash) * 0x45d9f3bu;
+	hash = ((hash >> 16) ^ hash) * 0x45d9f3bu;
+	hash = (hash >> 16) ^ hash;
+	DrawGroundSprite(SPR_OVERLAY_SEA_SHIMMER_BASE + (hash % SPR_OVERLAY_SEA_SHIMMER_SPRITE_COUNT), PAL_NONE);
 }
 
 /**
