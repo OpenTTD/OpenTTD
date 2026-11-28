@@ -217,7 +217,7 @@ public:
 		/* Distance is always requested when the cargo is still inside the
 		 * vehicle. So first finish the calculation for travelled to
 		 * become a vector. */
-		auto local_travelled = travelled;
+		auto local_travelled = this->travelled;
 		local_travelled.x -= TileX(current_tile);
 		local_travelled.y -= TileY(current_tile);
 
@@ -238,7 +238,7 @@ public:
 		 */
 
 		uint distance_travelled = abs(local_travelled.x) + abs(local_travelled.y);
-		uint distance_source_dest = DistanceManhattan(this->source_xy, current_tile);
+		uint distance_source_dest = IntSqrt(DistanceSquare(this->source_xy, current_tile));
 		return std::min(distance_travelled, distance_source_dest);
 	}
 
