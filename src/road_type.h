@@ -59,6 +59,7 @@ enum class RoadBit : uint8_t {
 	SW = 1, ///< South-west part
 	SE = 2, ///< South-east part
 	NE = 3, ///< North-east part
+	End, ///< End marker.
 };
 
 /** Bitset of \c RoadBit elements. */
