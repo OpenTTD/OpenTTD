@@ -29,7 +29,7 @@ struct StationScopeResolver : public ScopeResolver {
 	TileIndex tile;                     ///< %Tile of the station.
 	struct BaseStation *st;             ///< Instance of the station.
 	const struct StationSpec *statspec; ///< Station (type) specification.
-	CargoType cargo_type;                 ///< Type of cargo of the station.
+	uint cargo; ///< Amount of the cargo at the station for choosen sprite group.
 	Axis axis;                          ///< Station axis, used only for the slope check callback.
 
 	/**
@@ -55,7 +55,7 @@ struct StationScopeResolver : public ScopeResolver {
 	 * @param tile %Tile of the station.
 	 */
 	StationScopeResolver(ResolverObject &ro, const StationSpec *statspec, BaseStation *st, TileIndex tile)
-		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo_type(INVALID_CARGO), axis(Axis::Invalid)
+		: ScopeResolver(ro), tile(tile), st(st), statspec(statspec), cargo(0), axis(Axis::Invalid)
 	{
 	}
 

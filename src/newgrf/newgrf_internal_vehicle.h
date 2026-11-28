@@ -13,7 +13,6 @@
 #include "../newgrf.h"
 #include "../engine_base.h"
 #include "../vehicle_func.h"
-#include "../cargotype.h"
 #include "newgrf_internal.h"
 
 /** Temporary engine data used when loading only */
