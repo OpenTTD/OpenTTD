@@ -19,6 +19,7 @@ add_test_files(
     test_network_crypto.cpp
     test_script_admin.cpp
     test_window_desc.cpp
+    tile_creation.cpp
     tilearea.cpp
     utf8.cpp
 )
