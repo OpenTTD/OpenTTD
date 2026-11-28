@@ -328,7 +328,7 @@ struct GSConfigWindow : public Window {
 					}
 				} else if (!bool_item && !config_item.complete_labels) {
 					/* Display a query box so users can enter a custom value. */
-					ShowQueryString(GetString(STR_JUST_INT, old_val), STR_CONFIG_SETTING_QUERY_CAPTION, INT32_DIGITS_WITH_SIGN_AND_TERMINATION, this, CS_NUMERAL_SIGNED, {});
+					ShowQueryString(GetString(STR_JUST_INT, old_val), STR_CONFIG_SETTING_QUERY_CAPTION, INT32_DIGITS_WITH_SIGN_AND_TERMINATION, this, CS_NUMERAL_SIGNED, QueryStringFlag::EnableDefault);
 				}
 				this->SetDirty();
 				break;
@@ -350,7 +350,15 @@ struct GSConfigWindow : public Window {
 
 	void OnQueryTextFinished(std::optional<std::string> str) override
 	{
+		/* The user pressed cancel. */
 		if (!str.has_value()) return;
+
+		if (str->empty()) {
+			/* Reset to default value. */
+			this->SetValue(std::nullopt);
+			return;
+		}
+
 		auto value = ParseInteger<int32_t>(*str, 10, true);
 		if (!value.has_value()) return;
 		this->SetValue(*value);
@@ -415,11 +423,15 @@ private:
 			|| _settings_client.gui.ai_developer_tools;
 	}
 
-	void SetValue(int value)
+	/**
+	 * Sets a value for a config setting.
+	 * @param value Value to set.
+	 */
+	void SetValue(std::optional<int> value)
 	{
 		const ScriptConfigItem &config_item = *this->visible_settings[this->clicked_row];
 		if (_game_mode == GameMode::Normal && !config_item.flags.Test(ScriptConfigFlag::InGame)) return;
-		this->gs_config->SetSetting(config_item.name, value);
+		this->gs_config->SetSetting(config_item.name, *value);
 		this->SetDirty();
 	}
 };
