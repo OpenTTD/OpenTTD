@@ -1471,6 +1471,65 @@ CommandCost CmdBuildSignalTrack(DoCommandFlags flags, TileIndex tile, TileIndex 
 }
 
 /**
+ * Convert all signals in an area.
+ * @param flags operation to perform
+ * @param tile end tile of area
+ * @param area_start start tile of area
+ * @param sigtype signal type to convert to
+ * @param sigvar signal variant to convert to
+ * @param ctrl_pressed toggle the target signal variant
+ * @return the cost of this operation or an error
+ */
+CommandCost CmdConvertSignals(DoCommandFlags flags, TileIndex tile, TileIndex area_start, SignalType sigtype, SignalVariant sigvar, bool ctrl_pressed)
+{
+	if (tile >= Map::Size() || area_start >= Map::Size()) return CMD_ERROR;
+	if (sigtype >= SignalType::End || sigvar >= SignalVariant::End) return CMD_ERROR;
+
+	CommandCost total_cost(ExpensesType::Construction);
+	CommandCost last_error(STR_ERROR_THERE_ARE_NO_SIGNALS);
+	bool found_signals = false;
+	bool changed_signals = false;
+	bool had_error = false;
+
+	for (TileIndex cur_tile : CreateOrthoDiagonalArea(tile, area_start, false)) {
+		if (!IsPlainRailTile(cur_tile) || !HasSignals(cur_tile)) continue;
+
+		for (Track track : GetTrackBits(cur_tile)) {
+			if (!HasSignalOnTrack(cur_tile, track)) continue;
+			found_signals = true;
+			SignalVariant target_variant;
+			SignalType target_type;
+			bool change_needed;
+
+			if (ctrl_pressed) {
+				target_variant = GetSignalVariant(cur_tile, track) == SignalVariant::Electric ? SignalVariant::Semaphore : SignalVariant::Electric;
+				target_type = GetSignalType(cur_tile, track);
+				change_needed = true;
+			} else {
+				target_variant = sigvar;
+				target_type = sigtype;
+				change_needed = GetSignalType(cur_tile, track) != target_type || GetSignalVariant(cur_tile, track) != target_variant;
+			}
+
+			CommandCost ret = Command<Commands::BuildSignal>::Do(flags, cur_tile, track, target_type, target_variant, true, false, false, SignalType::Block, SignalType::Block, 0, 0);
+			if (ret.Succeeded()) {
+				if (change_needed) {
+					changed_signals = true;
+				}
+				total_cost.AddCost(ret.GetCost());
+			} else {
+				last_error = ret;
+				had_error = true;
+			}
+		}
+	}
+
+	if (changed_signals) return total_cost;
+	if (found_signals && !had_error) return CommandCost(STR_ERROR_SIGNALS_ALREADY_CONVERTED);
+	return last_error;
+}
+
+/**
  * Remove signals
  * @param flags operation to perform
  * @param tile coordinates where signal is being deleted from

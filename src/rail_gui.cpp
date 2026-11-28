@@ -724,7 +724,11 @@ struct BuildRailToolbarWindow : Window {
 				break;
 
 			case WID_RAT_BUILD_SIGNALS:
-				VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
+				if (FindWindowById(WindowClass::BuildSignal, 0) != nullptr && _convert_signal_button) {
+					VpStartPlaceSizing(tile, VPM_X_AND_Y, DDSP_CONVERT_SIGNALS);
+				} else {
+					VpStartPlaceSizing(tile, VPM_SIGNALDIRS, DDSP_BUILD_SIGNALS);
+				}
 				break;
 
 			case WID_RAT_BUILD_BRIDGE:
@@ -745,9 +749,6 @@ struct BuildRailToolbarWindow : Window {
 
 	void OnPlaceDrag(ViewportPlaceMethod select_method, [[maybe_unused]] ViewportDragDropSelectionProcess select_proc, [[maybe_unused]] Point pt) override
 	{
-		/* no dragging if you have pressed the convert button */
-		if (FindWindowById(WindowClass::BuildSignal, 0) != nullptr && _convert_signal_button && this->IsWidgetLowered(WID_RAT_BUILD_SIGNALS)) return;
-
 		VpSelectTilesWithMethod(pt.x, pt.y, select_method);
 	}
 
@@ -772,6 +773,15 @@ struct BuildRailToolbarWindow : Window {
 
 				case DDSP_BUILD_SIGNALS:
 					HandleAutoSignalPlacement();
+					break;
+
+				case DDSP_CONVERT_SIGNALS:
+					if (start_tile == end_tile) {
+						GenericPlaceSignals(end_tile);
+						break;
+					}
+					Command<Commands::ConvertSignals>::Post(STR_ERROR_SIGNAL_CAN_T_CONVERT_SIGNALS_HERE, CcPlaySound_CONSTRUCTION_RAIL,
+							end_tile, start_tile, _cur_signal_type, _cur_signal_variant, _ctrl_pressed);
 					break;
 
 				case DDSP_DEMOLISH_AREA:
