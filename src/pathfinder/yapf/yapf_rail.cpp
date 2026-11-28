@@ -619,7 +619,7 @@ bool YapfTrainCheckReverse(const Train *v)
 	int reverse_penalty = 0;
 
 	/* Consider whether the train might back up at reduced speed. */
-	if (_settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::None && !v->Last()->CanLeadTrain()) {
+	if (_settings_game.difficulty.train_flip_reverse_allowed == TrainFlipReversingAllowed::None && !v->Last()->CanLeadConsist()) {
 		constexpr int DRIVING_BACKWARDS_PENALTY = 100 * YAPF_TILE_LENGTH;
 
 		if (!v->vehicle_flags.Test(VehicleFlag::DrivingBackwards)) {
