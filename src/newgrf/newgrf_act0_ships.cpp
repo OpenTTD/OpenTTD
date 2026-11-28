@@ -131,7 +131,6 @@ static ChangeInfoResult ShipVehicleChangeInfo(uint first, uint last, int prop, B
 
 			case 0x17: // Miscellaneous flags
 				ei->misc_flags = EngineMiscFlags{buf.ReadByte()};
-				_loaded_newgrf_features.has_2CC |= ei->misc_flags.Test(EngineMiscFlag::Uses2CC);
 				break;
 
 			case 0x18: // Cargo classes allowed

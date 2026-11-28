@@ -192,7 +192,7 @@ struct Company : CompanyProperties, CompanyPool::PoolItem<&_company_pool> {
 	 */
 	inline uint8_t GetCompanyRecolourOffset(LiveryScheme livery_scheme, bool use_secondary = true) const
 	{
-		return this->livery[livery_scheme].GetRecolourOffset(use_secondary);
+		return this->livery[livery_scheme].GetRecolourOffset(0, use_secondary);
 	}
 
 	static void PostDestructor(size_t index);

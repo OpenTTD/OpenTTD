@@ -166,7 +166,7 @@ void Train::ConsistChanged(ConsistChangeFlags allowed_changes)
 		u->tcache.cached_override = GetWagonOverrideSpriteSet(u->engine_type, u->cargo_type, u->gcache.first_engine);
 
 		/* Reset colour map */
-		u->colourmap = PAL_NONE;
+		u->colourmap.fill(PAL_NONE);
 
 		/* Update powered-wagon-status and visual effect */
 		u->UpdateVisualEffect(true);
@@ -563,7 +563,10 @@ static void GetRailIcon(EngineID engine, bool rear_head, int &y, EngineImageType
 	result->Set(GetDefaultTrainSprite(spritenum, Direction::W));
 }
 
-void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, PaletteID pal, EngineImageType image_type)
+/**
+ * Draw a train engine. @copydoc DrawVehicleEngine
+ */
+void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engine, const Livery::Palettes &pal, EngineImageType image_type)
 {
 	const GRFFile *grf = Engine::Get(engine)->GetGRF();
 	int vehicle_width = ScaleSpriteTrad(grf == nullptr ? TRAININFO_DEFAULT_VEHICLE_WIDTH : grf->traininfo_vehicle_width);
@@ -584,8 +587,8 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 				left - UnScaleGUI(rectf.left) + vehicle_width / 2,
 				right - UnScaleGUI(rectr.right) - (vehicle_width - vehicle_width / 2));
 
-		seqf.Draw(preferred_x - vehicle_width / 2, yf, pal, pal == PALETTE_CRASH);
-		seqr.Draw(preferred_x + (vehicle_width - vehicle_width / 2), yr, pal, pal == PALETTE_CRASH);
+		seqf.Draw(preferred_x - vehicle_width / 2, yf, pal, pal[0] == PALETTE_CRASH);
+		seqr.Draw(preferred_x + (vehicle_width - vehicle_width / 2), yr, pal, pal[0] == PALETTE_CRASH);
 	} else {
 		VehicleSpriteSeq seq;
 		GetRailIcon(engine, false, y, image_type, &seq);
@@ -596,7 +599,7 @@ void DrawTrainEngine(int left, int right, int preferred_x, int y, EngineID engin
 				left - UnScaleGUI(rect.left),
 				right - UnScaleGUI(rect.right));
 
-		seq.Draw(preferred_x, y, pal, pal == PALETTE_CRASH);
+		seq.Draw(preferred_x, y, pal, pal[0] == PALETTE_CRASH);
 	}
 }
 
@@ -3060,7 +3063,7 @@ void Train::MarkDirty()
 {
 	Train *v = this;
 	do {
-		v->colourmap = PAL_NONE;
+		v->colourmap.fill(PAL_NONE);
 		v->UpdateViewport(true, false);
 	} while ((v = v->Next()) != nullptr);
 
