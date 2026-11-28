@@ -125,6 +125,11 @@
 {
 	if (!::IsValidTile(tile)) return false;
 
+	if (::IsTileType(tile, TileType::Water)) {
+		const WaterTileType type = ::GetWaterTileType(tile);
+		return type == WaterTileType::ClearRocks || type == WaterTileType::CoastRocks;
+	}
+
 	return (::IsTileType(tile, TileType::Clear) && ::GetClearGround(tile) == ::ClearGround::Rocks);
 }
 

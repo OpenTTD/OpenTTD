@@ -19,6 +19,9 @@
  *
  * This version is not yet released. The following changes are not set in stone yet.
  *
+ * Other changes:
+ * \li AITile::IsRockTile will return true for rocks on water or coast tiles
+ *
  * \b 16.0
  *
  * API additions:
