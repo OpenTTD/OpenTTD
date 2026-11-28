@@ -146,6 +146,24 @@ public:
 	}
 
 	/**
+	 * Verifies that the current spritesets are the same size as requested for sprite variations.
+	 * @param feature GrfSpecFeature the set is defined for.
+	 * @param first_set First spriteset to define.
+	 * @param numsets Number of sets to define.
+	 * @param numents Number of sprites per set to define.
+	 * @return \c true if the currente spritesets match the requested spritesets.
+	 */
+	bool VerifySpriteSets(GrfSpecFeature feature, uint first_set, uint numsets, uint numents)
+	{
+		assert(feature < GrfSpecFeature::End);
+		for (uint i = 0; i < numsets; i++) {
+			SpriteSet &set = this->spritesets[feature][first_set + i];
+			if (set.num_sprites != numents) return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Check whether there are any valid spritesets for a feature.
 	 * @param feature GrfSpecFeature to check.
 	 * @return true if there are any valid sets.
