@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Slå på/av gra
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Levererad
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Slå på/av grafen för leverans av gods till denna stad
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Visa detaljerad prestationsgradering
 
 # Graph key window
@@ -3943,6 +3944,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Visa sta
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Resurser per månad och lokal gradering:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Resurser per minut och lokal gradering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppera med hänsyn till
 STR_STATION_VIEW_WAITING_STATION                                :Station: väntar

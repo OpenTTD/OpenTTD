@@ -751,6 +751,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Baskuligi diagr
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Liverita
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Baskuligi diagramon de ŝarĝoj, liverataj al tiu ĉi urbo
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Montri detalaj rendimentpritaksoj
 
 # Graph key window
@@ -4030,6 +4031,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Montri s
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Provizado po monato kaj lokaj taksoj:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Provizado po minuto kaj lokaj taksoj:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupigi laŭ
 STR_STATION_VIEW_WAITING_STATION                                :Stacio: Atendanta

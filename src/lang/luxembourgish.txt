@@ -655,6 +655,7 @@ STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Produzéiert
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportéiert
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Geliwwert
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Weis detailléiert Leeschtungsastellungen
 
 # Graph key window
@@ -3913,6 +3914,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Weis d'S
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Liwwerung pro Mount a lokal Bewertung:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Liwwerung pro Minut a lokal Bewertung:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppéier no
 STR_STATION_VIEW_WAITING_STATION                                :Statioun: Waardend

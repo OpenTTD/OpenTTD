@@ -602,6 +602,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}نمایش جزئیات رتبه بندی راندمان
 
 # Graph key window
@@ -3139,6 +3140,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}رده بندی
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}نشان دادن رتبه بندی ایستگاه
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}همگروه با
 STR_STATION_VIEW_WAITING_STATION                                :ایستگاه: منتظر است

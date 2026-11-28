@@ -750,6 +750,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Zobrazit nebo s
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Doručeno
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Zobrazit nebo skrýt graf nákladu dopraveného do tohoto města
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zobrazit podrobné hodnocení výkonu
 
 # Graph key window
@@ -4035,6 +4036,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ukázat 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Dodávka za měsíc a místní hodnocení:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Dodávka za minutu a místní hodnocení:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Seskupit podle
 STR_STATION_VIEW_WAITING_STATION                                :Stanice: Čekající

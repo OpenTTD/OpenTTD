@@ -650,6 +650,7 @@ STR_GRAPH_INDUSTRY_RANGE_WAITING                                :En espera
 
 STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} - Historial de carga
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar detalles de nivel de desempeño
 
 # Graph key window
@@ -3857,6 +3858,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Ver eval
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Abastecimiento por mes y calificación local:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Abastecimiento por minuto y calificación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA}/{STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
 STR_STATION_VIEW_WAITING_STATION                                :Estación: Esperando

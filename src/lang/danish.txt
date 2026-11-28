@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Vis graf over g
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Leveret
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Vis graf over fragt leveret til denne by
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vis detaljeret præstationsoversigt
 
 # Graph key window
@@ -3943,6 +3944,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vis stat
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Forsyninger pr. måned og lokal vurdering:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Forsyninger pr. minut og lokal vurdering:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppér efter
 STR_STATION_VIEW_WAITING_STATION                                :Station: Ventende

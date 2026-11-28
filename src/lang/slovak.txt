@@ -691,6 +691,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Ukázať detailné hodnotenie výkonu
 
 # Graph key window
@@ -3792,6 +3793,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Zobrazi�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Dodávka za mesiac a miestne hodnotenie:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Dodávka za minútu a miestne hodnotenie:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Zoskupiť podľa
 STR_STATION_VIEW_WAITING_STATION                                :Stanica: Čakajúce

@@ -542,6 +542,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Tunjukkan penarafan prestasi secara terperinci
 
 # Graph key window
@@ -2860,6 +2861,7 @@ STR_STATION_VIEW_ACCEPTS_CARGO                                  :{BLACK}Menerima
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Penarafan
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tunjukkan penarafan stesen
+
 
 STR_STATION_VIEW_PLANNED_AMOUNT                                 :Jumlah: Telah dirancang
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} melalui {STATION}

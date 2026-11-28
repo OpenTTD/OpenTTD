@@ -245,6 +245,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 # Graph key window
 
 # Company league window
@@ -1138,6 +1139,7 @@ STR_STATION_VIEW_RESERVED                                       :{YELLOW}({CARGO
 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}प्रति माह आपूर्ति और स्थानीय रेटिंग:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}प्रति मिनट आपूर्ति और स्थानीय रेटिंग:
+
 
 STR_STATION_VIEW_VIA                                            :{YELLOW}{CARGO_SHORT} {STATION} द्वारा
 

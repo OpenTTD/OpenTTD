@@ -593,6 +593,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Taispeáin rátálacha feidhmíochta mionsonraithe
 
 # Graph key window
@@ -3450,6 +3451,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{BLACK}Cheannai
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Rátálacha
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Taispeáin rátálacha na stáisiún
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grúpáil de réir
 STR_STATION_VIEW_WAITING_STATION                                :Stáisiún: Ag fanacht

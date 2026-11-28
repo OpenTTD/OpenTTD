@@ -790,6 +790,7 @@ STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} -
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Постачання
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Перевезено
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показати детальні оцінки ефективності
 
 # Graph key window
@@ -4024,6 +4025,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Пока
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Постачання впродовж місяця і місцевий рейтинг:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Постачання впродовж хвилини і місцевий рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Групувати по
 STR_STATION_VIEW_WAITING_STATION                                :Станція: Очікується

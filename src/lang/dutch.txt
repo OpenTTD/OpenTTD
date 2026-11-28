@@ -653,6 +653,7 @@ STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} -
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Toevoer
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Vervoerd
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Gedetailleerde prestatiescores weergeven
 
 # Graph key window
@@ -3871,6 +3872,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Bekijk d
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Toevoer per maand en lokale reputatie:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Toevoer per minuut en lokale reputatie:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Groeperen op
 STR_STATION_VIEW_WAITING_STATION                                :Station: wachtend

@@ -664,6 +664,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Mostra/amaga el
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregat
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Mostra/amaga el gràfic de càrrega entregada a aquesta població.
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostra ratis de rendiment detallats
 
 # Graph key window
@@ -3936,6 +3937,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra e
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Subministrament mensual i rati local:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Subministrament per minut i rati local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupa per
 STR_STATION_VIEW_WAITING_STATION                                :Estació: En espera

@@ -664,6 +664,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Bu kasabadan ta
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Teslim edildi
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Bu kasabaya getirilen kargonun grafiğini aç
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Detaylı performans oranlarını göster
 
 # Graph key window
@@ -3938,6 +3939,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}İstasyo
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Aylık tedarik ve yerel değerlendirmeniz:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Dakika boyunca tedarik ve yerel değerlendirmeniz:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} (%{COMMA})
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupla
 STR_STATION_VIEW_WAITING_STATION                                :Durak: Bekleyen

@@ -812,6 +812,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Parodyti išsamų našumo reitingą
 
 # Graph key window
@@ -3868,6 +3869,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Reitingai
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rodyti stoties reitingus
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupuoti pagal
 STR_STATION_VIEW_WAITING_STATION                                :Stotis: Laukia

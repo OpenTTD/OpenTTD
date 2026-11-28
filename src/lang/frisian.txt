@@ -562,6 +562,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Lit detaillearre prestaasjewurdearring sjen
 
 # Graph key window
@@ -3007,6 +3008,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stasjonwurdearing sjen litte
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Groepearje by
 STR_STATION_VIEW_WAITING_STATION                                :Stasjon: Wachtsjend

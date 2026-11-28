@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :この街から
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :到着
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :この街へ搬送された貨物の表示/非表示を切り替えます
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}格付の詳細情報を表示します
 
 # Graph key window
@@ -3938,6 +3939,7 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}月間�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}分間の貨物別供給と地元評価:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
 
+
 STR_STATION_VIEW_GROUP                                          :{BLACK}グループ分け:
 STR_STATION_VIEW_WAITING_STATION                                :積込待ち (停留施設別)
 STR_STATION_VIEW_WAITING_AMOUNT                                 :積込待ち (貨物量別)
@@ -4608,8 +4610,8 @@ STR_VEHICLE_DETAILS_ROAD_VEHICLE_RENAME                         :{BLACK}車両�
 STR_VEHICLE_DETAILS_SHIP_RENAME                                 :{BLACK}船舶に名前を付ける
 STR_VEHICLE_DETAILS_AIRCRAFT_RENAME                             :{BLACK}航空機に名前を付ける
 
-STR_VEHICLE_INFO_AGE                                            :{COMMA}年 (耐用年数:{COMMA}年)
-STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年 (耐用年数:{COMMA}年)
+STR_VEHICLE_INFO_AGE                                            :{COMMA}年 (耐用年数: {COMMA}年)
+STR_VEHICLE_INFO_AGE_RED                                        :{RED}{COMMA}年 (耐用年数: {COMMA}年)
 STR_VEHICLE_INFO_AGE_RUNNING_COST_YR                            :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}　維持費: {LTBLUE}{CURRENCY_LONG}/年
 STR_VEHICLE_INFO_AGE_RUNNING_COST_PERIOD                        :{BLACK}使用年数: {LTBLUE}{STRING}{BLACK}  維持費: {LTBLUE}{CURRENCY_LONG}/期
 
@@ -4656,7 +4658,7 @@ STR_QUERY_RENAME_SHIP_CAPTION                                   :{WHITE}船舶�
 STR_QUERY_RENAME_AIRCRAFT_CAPTION                               :{WHITE}航空機を名付ける
 
 # Extra buttons for train details windows
-STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
+STR_VEHICLE_DETAILS_TRAIN_ENGINE_BUILT_AND_VALUE                :{LTBLUE}{ENGINE}{BLACK}　購入年: {LTBLUE}{NUM}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 STR_VEHICLE_DETAILS_TRAIN_WAGON_VALUE                           :{LTBLUE}{ENGINE}{BLACK}　車両価値: {LTBLUE}{CURRENCY_LONG}
 
 STR_VEHICLE_DETAILS_TRAIN_LENGTH                                :{BLACK}列車全長: {LTBLUE}{DECIMAL}タイル
@@ -4718,26 +4720,26 @@ STR_ORDERS_END_OF_ORDERS                                        :- - 指令終�
 STR_ORDERS_END_OF_SHARED_ORDERS                                 :- - 共有指令終了- -
 
 # Order bottom buttons
-STR_ORDER_NON_STOP                                              :{BLACK}直通運転
+STR_ORDER_NON_STOP                                              :{BLACK}直行運転
 STR_ORDER_GO_TO                                                 :各停運転
-STR_ORDER_GO_NON_STOP_TO                                        :直通運転
+STR_ORDER_GO_NON_STOP_TO                                        :直行運転
 STR_ORDER_GO_VIA                                                :各停運転し通過
-STR_ORDER_GO_NON_STOP_VIA                                       :直通運転し通過
+STR_ORDER_GO_NON_STOP_VIA                                       :直行運転し通過
 STR_ORDER_TOOLTIP_NON_STOP                                      :{BLACK}選択した指令先にどのように向かうかを設定します
 
-STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}いずれかを全積載
+STR_ORDER_TOGGLE_FULL_LOAD                                      :{BLACK}いずれかを満載
 STR_ORDER_DROP_LOAD_IF_POSSIBLE                                 :可能なら積載
-STR_ORDER_DROP_FULL_LOAD_ALL                                    :全積載
-STR_ORDER_DROP_FULL_LOAD_ANY                                    :いずれかを全積載
-STR_ORDER_DROP_NO_LOADING                                       :荷積み無し
+STR_ORDER_DROP_FULL_LOAD_ALL                                    :満載
+STR_ORDER_DROP_FULL_LOAD_ANY                                    :いずれかを満載
+STR_ORDER_DROP_NO_LOADING                                       :積み込み無し
 STR_ORDER_TOOLTIP_FULL_LOAD                                     :{BLACK}選択した指令先での荷積み方式を変更します
 
-STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}すべて荷降ろしする
-STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :貨物を納入できるなら荷降ろしする
-STR_ORDER_DROP_UNLOAD                                           :すべて荷降ろしする
+STR_ORDER_TOGGLE_UNLOAD                                         :{BLACK}すべて強制荷降ろし
+STR_ORDER_DROP_UNLOAD_IF_ACCEPTED                               :納入可能なら荷降ろし
+STR_ORDER_DROP_UNLOAD                                           :納入不可でも強制荷降ろし
 STR_ORDER_DROP_TRANSFER                                         :転送
-STR_ORDER_DROP_NO_UNLOADING                                     :荷下ろし無し
-STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}選択した指令先での荷下ろし方式を変更します
+STR_ORDER_DROP_NO_UNLOADING                                     :荷降ろし無し
+STR_ORDER_TOOLTIP_UNLOAD                                        :{BLACK}選択した指令先での荷降ろし方式を変更します
 
 STR_ORDER_REFIT                                                 :{BLACK}改造
 STR_ORDER_REFIT_TOOLTIP                                         :{BLACK}改造後搬送する貨物種類を選択してください。Ctrl+クリックで改造指令をキャンセルします
@@ -4749,9 +4751,14 @@ STR_ORDER_DROP_REFIT_AUTO_ANY                                   :改造可能な
 STR_ORDER_DROP_GO_ALWAYS_DEPOT                                  :常に行く
 STR_ORDER_DROP_SERVICE_DEPOT                                    :必要であれば点検
 STR_ORDER_DROP_HALT_DEPOT                                       :運用停止
+STR_ORDER_DROP_UNBUNCH                                          :運転間隔調整
 
 # Depot action tooltips, one per vehicle type
 ###length VEHICLE_TYPES
+STR_ORDER_TRAIN_DEPOT_ACTION_TOOLTIP                            :{BLACK}この列車庫で実行する作業を選択してください
+STR_ORDER_ROAD_DEPOT_ACTION_TOOLTIP                             :{BLACK}この車庫で実行する作業を選択してください
+STR_ORDER_SHIP_DEPOT_ACTION_TOOLTIP                             :{BLACK}この造船所で実行する作業を選択してください
+STR_ORDER_HANGAR_ACTION_TOOLTIP                                 :{BLACK}この格納庫で実行する作業を選択してください
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_VARIABLE_TOOLTIP                          :{BLACK}輸送機器データに基づく条件分岐
@@ -4766,6 +4773,7 @@ STR_ORDER_CONDITIONAL_REQUIRES_SERVICE                          :点検要求
 STR_ORDER_CONDITIONAL_UNCONDITIONALLY                           :常に
 STR_ORDER_CONDITIONAL_REMAINING_LIFETIME                        :耐用年数までの残期間(年)
 STR_ORDER_CONDITIONAL_MAX_RELIABILITY                           :最大信頼度
+STR_ORDER_CONDITIONAL_DRIVING_BACKWARDS                         :低速後退中
 ###next-name-looks-similar
 
 STR_ORDER_CONDITIONAL_COMPARATOR_TOOLTIP                        :{BLACK}輸送機器のデータと指定の数値でどのような条件式を組むかを決定します
@@ -4785,8 +4793,9 @@ STR_ORDERS_SKIP_BUTTON                                          :{BLACK}スキ�
 STR_ORDERS_SKIP_TOOLTIP                                         :{BLACK}現在の指令をスキップして、次へ移動します。Ctrl+クリックで、選択した指令まで移動します
 
 STR_ORDERS_DELETE_BUTTON                                        :{BLACK}削除
+STR_ORDERS_DELETE_ALL_BUTTON                                    :{BLACK}すべて削除
 STR_ORDERS_DELETE_TOOLTIP                                       :{BLACK}選択した指令を削除します
-STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}指令をすべて除去
+STR_ORDERS_DELETE_ALL_TOOLTIP                                   :{BLACK}すべての指令を削除します
 STR_ORDERS_STOP_SHARING_BUTTON                                  :{BLACK}共有を解除
 STR_ORDERS_STOP_SHARING_TOOLTIP                                 :{BLACK}指令の共有を解除します。Ctrl+クリックで全指令を消去します
 
@@ -4795,16 +4804,16 @@ STR_ORDER_GO_TO_NEAREST_DEPOT                                   :最寄りの車
 STR_ORDER_GO_TO_NEAREST_HANGAR                                  :最寄りの格納庫へ向かう
 STR_ORDER_CONDITIONAL                                           :条件分岐
 STR_ORDER_SHARE                                                 :指令を共有
-STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}選択した指令の前またはリストの終わりに新規指令を挿入します。Ctrlを押しながら停留施設をクリックした場合は指令に「いずれかの貨物の満載まで待機」、中継駅の場合は「直通運転」、車両庫では「保守回送」がそれぞれ付きます。「指令を共有」またはCtrlを押しながら他の輸送機器をクリックするとその輸送機器と指令を共有します。普通に他の輸送機器をクリックした場合は指令をコピーします。指令で車両庫を経由するよう設定すると自動点検は無効になります
+STR_ORDERS_GO_TO_TOOLTIP                                        :{BLACK}選択した指令の前またはリストの終わりに新規指令を挿入します。Ctrlを押しながら停留施設をクリックした場合は指令に「いずれかの貨物の満載まで待機」、中継点の場合は「直行運転」、車庫では「運転間隔調整」がそれぞれ付きます。「指令を共有」またはCtrlを押しながら他の輸送機器をクリックするとその輸送機器と指令を共有します。普通に他の輸送機器をクリックした場合は指令をコピーします。指令で車庫を経由するよう設定すると自動点検は無効になります
 
-STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この指令リストを共有している全車両を表示します
+STR_ORDERS_VEH_WITH_SHARED_ORDERS_LIST_TOOLTIP                  :{BLACK}この指令リストを共有している全輸送機器を表示します
 
 # String parts to build the order string
-STR_ORDER_GO_TO_WAYPOINT                                        :{WAYPOINT}を経由する
-STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直通運転で{WAYPOINT}を経由する
+STR_ORDER_GO_TO_WAYPOINT                                        :各停運転し通過 {WAYPOINT}
+STR_ORDER_GO_NON_STOP_TO_WAYPOINT                               :直行運転し通過 {WAYPOINT}
 
-STR_ORDER_SERVICE_AT                                            :保守回送
-STR_ORDER_SERVICE_NON_STOP_AT                                   :保守回送(直行)
+STR_ORDER_SERVICE_AT                                            :各停運転し保守回送
+STR_ORDER_SERVICE_NON_STOP_AT                                   :直行運転し保守回送
 
 ###length 3
 STR_ORDER_TRAIN_DEPOT                                           :列車庫
@@ -4812,12 +4821,15 @@ STR_ORDER_ROAD_VEHICLE_DEPOT                                    :車庫
 STR_ORDER_SHIP_DEPOT                                            :造船所
 ###next-name-looks-similar
 
-STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{1:DEPOT}へ{0:STRING}
+STR_ORDER_GO_TO_NEAREST_HANGAR_FORMAT                           :{STRING} 最寄の格納庫
+STR_ORDER_GO_TO_NEAREST_DEPOT_FORMAT                            :{STRING} 最寄の{STRING}
+STR_ORDER_GO_TO_DEPOT_FORMAT                                    :{STRING} {DEPOT}
 
 STR_ORDER_REFIT_ORDER                                           :({STRING}に改造)
 STR_ORDER_REFIT_STOP_ORDER                                      :({STRING}に改造して、運用停止)
 STR_ORDER_STOP_ORDER                                            :(運用停止)
 
+STR_ORDER_WAIT_TO_UNBUNCH                                       :{SPACE}(運転間隔調整)
 
 STR_ORDER_GO_TO_STATION                                         :{STRING} {STATION}
 STR_ORDER_GO_TO_STATION_CAN_T_USE_STATION                       :{PUSH_COLOUR}{RED}(駅を使用できません){POP_COLOUR} {STRING} {STATION}
@@ -4862,9 +4874,9 @@ STR_ORDER_STOP_LOCATION_FAR_END                                 :[停止位置:�
 
 STR_ORDER_OUT_OF_RANGE                                          :{RED} (航続距離不足)
 
-STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :指令{COMMA}に飛ぶ
-STR_ORDER_CONDITIONAL_NUM                                       :{1:STRING}が{3:COMMA}{2:STRING}時、指令{0:COMMA}に飛ぶ
-STR_ORDER_CONDITIONAL_TRUE_FALSE                                :{1:STRING}が{2:STRING}時、指令{0:COMMA}に飛ぶ
+STR_ORDER_CONDITIONAL_UNCONDITIONAL                             :指令{COMMA}にジャンプ
+STR_ORDER_CONDITIONAL_NUM                                       :{1:STRING}が{3:COMMA}{2:STRING}時、指令{0:COMMA}にジャンプ
+STR_ORDER_CONDITIONAL_TRUE_FALSE                                :{1:STRING}が{2:STRING}時、指令{0:COMMA}にジャンプ
 
 STR_INVALID_ORDER                                               :{RED} (不正な指令)
 

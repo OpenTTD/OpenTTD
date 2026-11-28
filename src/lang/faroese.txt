@@ -540,6 +540,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Vís avriks metingar í smálutum
 
 # Graph key window
@@ -2805,6 +2806,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Metingar
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vís støð metingar
+
 
 
 

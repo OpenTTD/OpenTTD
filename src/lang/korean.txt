@@ -664,6 +664,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :이 도시에�
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :수송됨
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :이 도시로 수송된 화물양 그래프를 표시하거나 숨깁니다
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}상세 성취도를 봅니다.
 
 # Graph key window
@@ -3944,6 +3945,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}역의 �
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}1개월당 공급량 및 지역 당국 등급:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}분당 공급량 및 지역 당국 등급:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}그룹화
 STR_STATION_VIEW_WAITING_STATION                                :역: 대기

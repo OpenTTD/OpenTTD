@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Bật/tắt đ�
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Đã vận chuyển
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Bật/tắt đồ thị hàng hóa được vận chuyển tới thị trấn này
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Hiện chi tiết đánh giá chỉ số năng suất
 
 # Graph key window
@@ -3935,6 +3936,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Hiện u
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Nguồn cung mỗi tháng và tín nhiệm địa phương:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Nguồn cung cấp mỗi phút và tín nhiệm địa phương:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Nhóm bằng
 STR_STATION_VIEW_WAITING_STATION                                :Nhà ga: chờ đợi

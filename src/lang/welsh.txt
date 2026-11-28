@@ -654,6 +654,7 @@ STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Cyflenwad
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Cludwyd
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Danfonwyd
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Dangos manwl amcangyfrif perfformiad
 
 # Graph key window
@@ -3906,6 +3907,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Dangos g
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Cyflenwad bob mis a gradd lleol:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Cyflenwad bob munud a gradd lleol:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grwpio yn ôl
 STR_STATION_VIEW_WAITING_STATION                                :Gorsaf: Yn aros

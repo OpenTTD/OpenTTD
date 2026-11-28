@@ -751,6 +751,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Monstrare censiones effectus descriptas
 
 # Graph key window
@@ -3369,6 +3370,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Censiones
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Monstrare censiones stationum
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Ordo
 STR_STATION_VIEW_WAITING_STATION                                :Statione: Manentia

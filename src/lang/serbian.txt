@@ -815,6 +815,7 @@ STR_GRAPH_INDUSTRY_RANGE_DELIVERED                              :Isporučeno
 STR_GRAPH_INDUSTRY_RANGE_WAITING                                :Na čekanju
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Prikaži detaljne ocene učinka
 
 # Graph key window
@@ -3882,6 +3883,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}Ocene
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Prikaži ocene stanice
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Sortiraj po
 STR_STATION_VIEW_WAITING_STATION                                :Stanica: Čekajuća

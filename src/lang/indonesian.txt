@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Tampilkan atau 
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Telah dikirim
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Tampilkan atau sembunyikan grafik kargo yang dikirim ke kota ini
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Tampilkan rincian penilaian kinerja
 
 # Graph key window
@@ -3935,6 +3936,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Tampilkn
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Suplai per bulan dan penilaian lokal:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Suplai per menit dan penilaian lokal:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Pengelompokkan
 STR_STATION_VIEW_WAITING_STATION                                :Station: Menunggu

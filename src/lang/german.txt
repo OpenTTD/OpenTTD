@@ -654,6 +654,7 @@ STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} ‚
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Angebot
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportiert
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Zeige detailierte Leistungsaufschl√ºsselung
 
 # Graph key window
@@ -3872,6 +3873,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Stations
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Versorgung pro Monat und lokale Bewertung
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Versorgung pro Minute und lokale Bewertung:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Gruppieren nach
 STR_STATION_VIEW_WAITING_STATION                                :Station: Wartend

@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Valitse, näyte
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Toimitettu
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Valitse, näytetäänkö tähän kuntaan toimitetun rahdin kuvaaja
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näytä tarkat suorituskykyarviot
 
 # Graph key window
@@ -3943,6 +3944,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näytä 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Kuukausittainen tarjonta ja paikallinen arvio:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Minuutittainen tarjonta ja paikallinen arvio:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}{NBSP}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Ryhmittele
 STR_STATION_VIEW_WAITING_STATION                                :Asema: Odottaa

@@ -664,6 +664,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Mostrar/Ocultar
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Entregue
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Mostrar/Ocultar gráfico das cargas entregues a esta localidade
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Mostrar avaliações detalhadas de desempenho
 
 # Graph key window
@@ -3944,6 +3945,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostrar 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Fornecimento por mês e avaliação local:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Fornecimento por minuto e avaliação local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
 STR_STATION_VIEW_WAITING_STATION                                :Estação: Aguardando

@@ -632,6 +632,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Покажи подробен рейтинг на представянето
 
 # Graph key window
@@ -3782,6 +3783,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Пока
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Доставки на месец и местен рейтинг:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Доставки на минута и местен рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}По група
 STR_STATION_VIEW_WAITING_STATION                                :Станция: Изчакване

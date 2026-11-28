@@ -801,6 +801,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Переклю�
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Доставлено
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Переключить отображение графика грузов, доставленных в город
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Показать составляющие части рейтинга
 
 # Graph key window
@@ -4118,6 +4119,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Пока
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Приход за месяц и рейтинг:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Приход за минуту и рейтинг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Группировать
 STR_STATION_VIEW_WAITING_STATION                                :по станции (ожидающие)

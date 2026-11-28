@@ -593,6 +593,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}عرض كامل تفاصيل الأداء
 
 # Graph key window
@@ -3119,6 +3120,7 @@ STR_STATION_VIEW_EXCLUSIVE_RIGHTS_COMPANY                       :{YELLOW}{COMPAN
 
 STR_STATION_VIEW_RATINGS_BUTTON                                 :{BLACK}معدل النقل
 STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}اظهار معدل النقل للمحطة
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}جمع بواسطة
 STR_STATION_VIEW_WAITING_AMOUNT                                 :الكمية: في الانتظار

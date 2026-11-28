@@ -1042,6 +1042,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Przełącz wyś
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Dostarczony
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Przełącz wyświetlanie wykresu ładunku dostarczonego do tego miasta
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Pokaż szczegóły oceny wydajności
 
 # Graph key window
@@ -4323,6 +4324,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Pokaż o
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Miesięczna dostawa i lokalna ocena:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Dostawa w ciągu minuty i lokalna ocena:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupuj według
 STR_STATION_VIEW_WAITING_STATION                                :Stacja: W oczekiwaniu

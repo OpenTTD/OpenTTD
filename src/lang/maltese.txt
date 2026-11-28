@@ -326,6 +326,7 @@ STR_GRAPH_Y_LABEL_NUMBER                                        :{TINY_FONT}{COM
 
 
 
+
 # Graph key window
 
 # Company league window
@@ -1085,6 +1086,7 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+
 
 
 

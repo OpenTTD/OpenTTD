@@ -524,6 +524,7 @@ STR_GRAPH_CARGO_PAYMENT_CARGO                                   :{TINY_FONT}{BLA
 
 
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}सविस्तर कामगिरी रेटिंग दाखवा
 
 # Graph key window
@@ -1437,6 +1438,7 @@ STR_STATION_LIST_WAYPOINT                                       :{YELLOW}{WAYPOI
 # Station view window
 STR_STATION_VIEW_CAPTION                                        :{WHITE}{STATION} {STATION_FEATURES}
 STR_STATION_VIEW_WAITING_CARGO                                  :{WHITE}{CARGO_LONG}
+
 
 
 

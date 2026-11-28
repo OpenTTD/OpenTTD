@@ -665,6 +665,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Pārslēgt uz �
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Piegādāts
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Pārslēgt grafiku uz šo pilsētu piegādātajām kravām
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Rādīt detalizētus uzņēmējdarbības vērtējumus
 
 # Graph key window
@@ -3927,6 +3928,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Rādīt 
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Piegāde mēnesī un vietējais vērtējums:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Piegāde minūtē un vietējais vērtējums:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Grupēt pēc
 STR_STATION_VIEW_WAITING_STATION                                :Piestātne: Gaida

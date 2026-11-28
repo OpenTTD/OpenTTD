@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :切换显示从
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :已接受
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :切换显示运往该城镇的货物图表
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}查看详细数据
 
 # Graph key window
@@ -3944,6 +3945,7 @@ STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}每月�
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}每分钟供应量与本地评价：
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}：{YELLOW}{COMMA} / {STRING}（{COMMA}%）
 
+
 STR_STATION_VIEW_GROUP                                          :{BLACK}群组方式
 STR_STATION_VIEW_WAITING_STATION                                :等候装载的货物，按站名排序
 STR_STATION_VIEW_WAITING_AMOUNT                                 :等候装载的货物，按总量排序
@@ -4368,7 +4370,7 @@ STR_DEPOT_VEHICLE_TOOLTIP_CARGO                                 :{}{CARGO_LONG}�
 
 ###length VEHICLE_TYPES
 STR_DEPOT_TRAIN_LIST_TOOLTIP                                    :{BLACK}列车 - 左键拖动可调整车厢，右击可查看详情。按 <Ctrl> 操作以同时操作该车厢与其之后的所有车厢。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
-STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :汽车 - 右击可查看详细信息
+STR_DEPOT_ROAD_VEHICLE_LIST_TOOLTIP                             :{BLACK}汽车 - 右击可查看详细信息
 STR_DEPOT_SHIP_LIST_TOOLTIP                                     :{BLACK}船只 - 右击可查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
 STR_DEPOT_AIRCRAFT_LIST_TOOLTIP                                 :{BLACK}飞机 - 右击可查看详细信息。同时按住 <Ctrl> 与 <Shift> 键以显示货物种类
 

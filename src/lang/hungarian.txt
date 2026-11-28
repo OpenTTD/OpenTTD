@@ -726,6 +726,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Az ebből a vá
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Leszállítva
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Az ebbe a városba szállított rakomány grafikonja be/ki
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Részletes teljesítményértékelés megjelenítése
 
 # Graph key window
@@ -4007,6 +4008,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Vélemé
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Havi ellátás és helyi minősítés:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Percenkénti ellátás és helyi minősítés:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Csoportosítás
 STR_STATION_VIEW_WAITING_STATION                                :Állomás: várakozik

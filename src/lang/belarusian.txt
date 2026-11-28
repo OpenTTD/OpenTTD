@@ -955,6 +955,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Уключыц�
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Дастаўлена
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Уключыць/выключыць адлюстраваньне грузу дастаўленага ў гэты горад на ґрафіку
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Паказаць складнікі рэйтынґу
 
 # Graph key window
@@ -4063,6 +4064,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Пака
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Прыход за месяц і рэйтынг:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Прыход за хвіліну і рэйтынг:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Групаваць
 STR_STATION_VIEW_WAITING_STATION                                :па станцыі (якія чакаюць)

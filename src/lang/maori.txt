@@ -663,6 +663,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Hohoko i te kau
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Kua tukuna
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Hohoko i te kauwhata mō te utanga kua kawea ki tēnei tāone
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Whakaari i ngā taipitopito arotake tutukinga
 
 # Graph key window
@@ -3930,6 +3931,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Whakaari
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Ratonga i ia marama me te hau:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Ratonga i ia meneti me te hau:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Whakarōpū
 STR_STATION_VIEW_WAITING_STATION                                :Teihana: Kei te tatari

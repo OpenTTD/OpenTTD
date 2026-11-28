@@ -719,6 +719,7 @@ STR_GRAPH_TOWN_RANGE_TRANSPORTED_TOOLTIP                        :Lülita asulast
 STR_GRAPH_TOWN_RANGE_DELIVERED                                  :Toimetatud
 STR_GRAPH_TOWN_RANGE_DELIVERED_TOOLTIP                          :Lülita asulasse viidud kauba graafik
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Näita põhjalike tegevushinnanguid
 
 # Graph key window
@@ -3983,6 +3984,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Näita j
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Toodangut minutis ja kohalik hinnang:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Toodangut minutis ja kohalik hinnang:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Jaotusalus
 STR_STATION_VIEW_WAITING_STATION                                :Jaam: ootel

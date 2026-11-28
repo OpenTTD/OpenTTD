@@ -654,6 +654,7 @@ STR_GRAPH_TOWN_CARGO_CAPTION                                    :{WHITE}{TOWN} -
 STR_GRAPH_TOWN_RANGE_PRODUCED                                   :Suministros
 STR_GRAPH_TOWN_RANGE_TRANSPORTED                                :Transportado
 
+
 STR_GRAPH_PERFORMANCE_DETAIL_TOOLTIP                            :{BLACK}Amosar puntuacións de rendemento detalladas
 
 # Graph key window
@@ -3866,6 +3867,7 @@ STR_STATION_VIEW_RATINGS_TOOLTIP                                :{BLACK}Mostra-l
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MONTH                     :{BLACK}Abastecemento por mes e calificación local:
 STR_STATION_VIEW_SUPPLY_RATINGS_TITLE_MINUTE                    :{BLACK}Abastecemento por minuto e calificación local:
 STR_STATION_VIEW_CARGO_SUPPLY_RATING                            :{WHITE}{STRING}: {YELLOW}{COMMA} / {STRING} ({COMMA}%)
+
 
 STR_STATION_VIEW_GROUP                                          :{BLACK}Agrupar por
 STR_STATION_VIEW_WAITING_STATION                                :Estación: en agarda
