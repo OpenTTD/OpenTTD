@@ -565,7 +565,7 @@ struct SignWindow : Window, SignList {
 		}
 	}
 
-	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile) override
+	void OnPlaceObject([[maybe_unused]] Point pt, TileIndex tile, [[maybe_unused]] bool query) override
 	{
 		switch (this->last_user_action) {
 			case WID_QES_MOVE: // Place sign button
